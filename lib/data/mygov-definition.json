@@ -1,0 +1,155 @@
+{
+  "name":     "myGov",
+  "agency":   "DHS",
+  "description":  "Description",
+  "target_users": "Users",
+  "displayHero": false,
+  "displayKPIs": false,
+  "widgets":  [
+    {
+      "id":   "new-accounts",
+      "updated_at": "2016-12-28T01:01:01.111Z",
+      "name": "New Accounts",
+      "type": "bar",
+      "size": "large",
+      "units": "n",
+      "definition": "The number of new myGov accounts created each month.",
+      "datasets": ["new-accounts"],
+      "description": "some text"
+    },
+    {
+      "id":   "total-accounts",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
+      "name": "Total Accounts",
+      "type": "sparkline",
+      "size": "small",
+      "units": "n",
+      "definition":"The total number of myGov accounts.",
+      "datasets": ["total-accounts"]
+    },
+    {
+      "id":   "fact-1",
+      "updated_at":  "2016-08-25T01:01:01.111Z",
+      "name": "Fact",
+      "type": "fact",
+      "size": "small",
+      "units": "n",
+      "description": "As of April, 43% of accounts are linked to more than one member service."
+    },
+    {
+      "id":   "fact-2",
+      "updated_at":  "2016-08-25T01:01:01.111Z",
+      "name": "Fact",
+      "type": "fact",
+      "size": "small",
+      "units": "n",
+      "description": "Chrome was the most popular browser used to access myGov with over 104 million hits."
+    },
+    {
+      "id":   "member-service-adoption",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
+      "name": "Member Service Adoption",
+      "type": "line",
+      "size": "large",
+      "units": "%",
+      "definition": "The number of members services adopted by myGov users.",
+      "displayRoundedData" : false,
+      "datasets": ["linked-accounts-01", "linked-accounts-02", "linked-accounts-03", "linked-accounts-04", "linked-accounts-05"]
+    },
+    {
+      "id":   "sign-ins-per-account",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
+      "name": "Sign-ins per myGov Account",
+      "type": "line",
+      "size": "medium",
+      "units": "n",
+      "definition": "Monthly frequency of account sign-ins.",
+      "datasets": ["sign-ins-per-account"]
+    },
+    {
+      "id":   "navigations-per-signin",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
+      "name": "Visits To Member Services",
+      "type": "line",
+      "size": "medium",
+      "units": "n",
+      "definition":"The average number of member services visited for each sign-in.",
+      "datasets": ["navigations-per-signin"]
+    },
+    {
+      "id":   "device-usage",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
+      "name": "Device Usage",
+      "type": "line",
+      "size": "medium",
+      "units": "%",
+      "displayRoundedData" : false,
+      "datasets": ["device-types-01", "device-types-03", "device-types-04"]
+    },
+    {
+      "id":   "browser-types",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
+      "name": "Browser types",
+      "type": "bar",
+      "stacked": "percentage",
+      "size": "medium",
+      "units": "%",
+      "displayRoundedData" : false,
+      "definition": "Types of browsers used to access myGov",
+      "datasets": ["browser-usage-chrome", "browser-usage-safari", "browser-usage-mozilla", "browser-usage-IE", "browser-usage-other"]
+    },
+    {
+      "id":   "linked-member-services",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
+      "name": "Linked Member Services",
+      "type": "bar",
+      "size": "medium",
+      "units": "%",
+      "stacking": "percentage",
+      "displayRoundedData" : false,
+      "definition": "The adoption of each member service by myGov users.",
+      "datasets": ["links-by-member-service-01", "links-by-member-service-02", "links-by-member-service-03", "links-by-member-service-05", "links-by-member-service-07","links-by-member-service-09"]
+    },
+    {
+      "id":   "member-service-activity",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
+      "name": "Member Services Activity",
+      "type": "bar",
+      "size": "medium",
+      "units": "%",
+      "stacking": "percentage",
+      "displayRoundedData" : false,
+      "definition": "The use of member services by myGov users.",
+      "datasets": ["navigations-by-service-01", "navigations-by-service-03", "navigations-by-service-04", "navigations-by-service-05", "navigations-by-service-06"]
+    },
+    {
+      "id":   "traffic-source",
+      "updated_at":  "2016-12-28T01:01:01.111Z",
+      "name": "Traffic source",
+      "type": "bar",
+      "size": "large",
+      "units": "%",
+      "stacking": "percentage",
+      "displayRoundedData" : false,
+      "range": 13,
+      "definition": "Source of web traffic to myGov",
+      "datasets": ["web-traffic-source-01", "web-traffic-source-02", "web-traffic-source-03", "web-traffic-source-04", "web-traffic-source-05"]
+    }
+  ],
+  "url":    "https://my.gov.au",
+  "notes": [
+    { "title":  "Where is this information from?",
+      "body":   "myGov & Australian Department of Human Services." },
+    { "title":  "What is myGov?",
+      "body":   "myGov is a secure, fast and simple way to access Australian Government services online with one username and password." },
+    { "title":  "What is an \"Active Account\"?",
+      "body":   "An account on myGov with at least 1 linked member service."},
+    { "title":  "What is a \"Sign-in\"?",
+      "body":   "A log in to the myGov service. In a given month, multiple sign-ins by a single account will be counted multiple times." },
+    { "title":  "What is a member service?",
+      "body":   "This is an Australian Government service available to users through the myGov account." }
+  ],
+  "layout":   [
+    ["new-accounts", "total-accounts", "fact-1", "member-service-adoption", "sign-ins-per-account", "navigations-per-signin", "linked-member-services", "member-service-activity", "traffic-source", "fact-2", "device-usage", "browser-types"]
+  ]
+}

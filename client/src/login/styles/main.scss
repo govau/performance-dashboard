@@ -1,0 +1,34 @@
+@charset "utf-8";
+
+@import '../../_shared/styles/variables';
+@import '../../app_shell/styles/variables';
+
+/**
+ *
+ * Ui-kit and overrides
+ *
+ */
+
+@import "vendor/gov-au-ui-kit/ui-kit";
+
+@import './../../_common/styles/_vendor/bootstrap/bootstrap-grid';
+
+
+/**
+ *
+ * Login
+ *
+ */
+
+
+// vendor
+
+// components
+@import "../../_common/styles/components/type";
+
+@import 'components/sign-in';
+@import 'components/2fa';
+
+
+// layout
+@import 'layouts/main';

@@ -1,0 +1,50 @@
+{
+  "name":         "Digital Marketplace",
+  "url":          "https://gov.au/marketplace",
+  "agency":       "DTO",
+  "description":  "Marketplace",
+  "target_users": "Local, state and federal government buyers and sellers of digital services are the primary user groups.",
+  "notes": [
+    { "title":  "What is the Digital Marketplace?",
+      "body":   "As part of the National Innovation and Science Agenda, the DTA is delivering the Digital Marketplace. The current Beta release provides a richer and simpler environment for technology procurement, enabling businesses, especially SMEs and start-ups, to provide specialist digital services to government. The vision is to create an end-to-end digital environment that accommodates the level of simplicity, creativity and structure appropriate to each procurement interaction." },
+    { "title":  "Who is the user group of the Digital Marketplace?",
+      "body":   "Local, state and federal government buyers and sellers of digital services are the primary user groups." },
+    { "title":  "Metrics relating to the operations of the marketplace will be published as the data becomes available." }
+  ],
+  "widgets":  [
+    {
+      "id":           "briefs_total_count",
+      "updated_at":   "2017-02-01T23:11:18.675Z",
+      "name":         "Total opportunities",
+      "type":         "sparkline",
+      "size":         "small",
+      "units":        "n",
+      "description":  "This is the total number of requests for digital services or specialists published by government buyers in the Digital Marketplace.",
+      "datasets":    ["briefs_total_count"]
+    },
+    {
+      "id":           "buyer_count",
+      "updated_at":   "2017-02-01T23:11:18.675Z",
+      "name":         "Registered buyers",
+      "type":         "sparkline",
+      "size":         "small",
+
+      "units":        "n",
+      "description":  "This is total number of registered buyers from across local, state and federal government.",
+      "datasets":    ["buyer_count"]
+    },
+    {
+      "id":           "supplier_count",
+      "updated_at":   "2017-02-01T23:11:18.675Z",
+      "name":         "Approved suppliers",
+      "type":         "sparkline",
+      "size":         "small",
+      "units":        "n",
+      "description":  "This is the total number of digital businesses registered as sellers in the Digital Marketplace.",
+      "datasets":    ["supplier_count"]
+    }
+  ],
+  "layout": [
+    ["briefs_total_count", "buyer_count", "supplier_count"]
+  ]
+}

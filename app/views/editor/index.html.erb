@@ -1,0 +1,18 @@
+<script type="text/javascript">
+  window.__EDITOR_STATE__ = <%== render(template: "/editor/index.json.jbuilder") %>;
+</script>
+<div id="editor_index" class="editor__root"></div>
+<script>
+  <%
+    # Insert skeleton screen with JavaScript, so that if JavaScript is disabled
+    # the user won't see this HTML and will only see the interstitial.
+   %>
+  document.getElementById('editor_index').innerHTML +=
+    '<div class="container">' +
+      '<div style="display:table;width:100%;height:300px;">' +
+        '<div style="display:table-cell;vertical-align:middle;text-align:center">' +
+          '<div class="progress-line"></div>' +
+        '</div>' +
+      '</div>' +
+    '</div>';
+</script>

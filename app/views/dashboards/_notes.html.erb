@@ -1,0 +1,13 @@
+<dl>
+  <% dashboard.notes.each do |note| %>
+    <dt><%= note['title'] %></dt>
+    <dd><%= note['body'] %></dd>
+    <% if note['list'] %>
+      <ul style='margin-top:0'>
+        <% note['list'].each do |item| %>
+          <li><%= item %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  <% end %>
+</dl>

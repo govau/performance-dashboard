@@ -1,0 +1,22 @@
+<h2><%= t "devise.invitations.new.header" %></h2>
+
+<%= form_for resource, :as => resource_name, :url => invitation_path(resource_name), :html => {:method => :post} do |f| %>
+  <%= devise_error_messages! %>
+
+  <% resource.class.invite_key_fields.each do |field| -%>
+    <p><%= f.label field %><br />
+    <%= f.text_field field %></p>
+  <% end -%>
+
+  <%- if @show_dashboards %>
+    <p><%= f.label 'Dashboards (only select within a single organisation)' %></p>
+      <%= f.grouped_collection_select :dashboard_ids, @organisations, :dashboards, :name, :id, :name, { include_blank: false }, { multiple: true, size: @select_size, style: 'height: 100%' } %>
+    </p>
+  <%- else %>
+    <%= f.hidden_field :dashboard_ids, multiple: true, value: @organisations.first.dashboards.first.id %>
+  <%- end %>
+
+  <%= f.hidden_field :organisation_id, value: current_user.organisation_id %>
+
+  <p><%= f.submit t("devise.invitations.new.submit_button") %></p>
+<% end %>

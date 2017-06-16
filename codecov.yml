@@ -1,0 +1,22 @@
+coverage:
+  precision: 2
+  round: down
+  range: 70...100
+
+  status:
+    # Learn more at http://docs.codecov.io/docs/codecov-yaml
+    project: true
+    patch: true
+    changes: false
+
+  notify:
+    slack:
+    default:                  
+        url: "https://hooks.slack.com/services/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"  #*S unique Slack notifications url
+        branches: null                # -> see "branch patterns" below
+        threshold: null               # -> see "threshold" below
+        attachments: "sunburst, diff" # list of attachments to include in notification
+
+comment:
+  layout: "header, diff"
+  behavior: default  # update if exists else create new

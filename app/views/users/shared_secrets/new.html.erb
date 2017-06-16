@@ -1,0 +1,23 @@
+<div class="sign-in">
+  <h1>To finish creating your account you need to set up 2-factor verification</h1>
+  <h2 class="step">Step 2 of 2</h2>
+  <p>A 6-digit code has been set up in your <strong>Google Authenticator</strong> app. Enter the code in the box below and then click <strong>Verify</strong>.</p>
+
+  <section class="sign-in-form">
+    <%= form_tag([:users, :shared_secrets], method: :post) do %>
+      <%= render partial: 'alert', locals: { alert_type: 'warning', message: @form_error } %>
+      <%= label_tag 'code', 'Enter the 6-digit code' %>
+      <%= text_field_tag :code, nil, autocomplete: :off, maxlength: 6 %>
+      <div class="form-footer-actions">
+        <div class="form-options">
+          <p>
+            <%= submit_tag 'Verify', role: :button %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+    <p class="inline">Haven't received the code?&nbsp;
+      <%= button_to 'Try again', users_shared_secret_path, method: :delete, class: 'button-link' %>
+    </p>
+  </section>
+</article>

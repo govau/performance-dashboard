@@ -1,0 +1,61 @@
+@charset "utf-8";
+
+
+@import '../../_shared/styles/variables';
+@import '../../app_shell/styles/variables';
+
+/**
+ *
+ * Vendor, inc Bootstrap and its ui-kit themed bootstrap components
+ *
+ */
+
+@import './../../_shared/styles/_vendor/bootstrap/bootstrap';
+@import './../../_shared/components/uikit-type/type';
+@import './../../_shared/components/uikit-links/links';
+@import './../../_shared/components/uikit-buttons/buttons';
+@import './../../_shared/components/uikit-breadcrumbs/breadcrumbs';
+@import './../../_shared/components/uikit-alert/alert';
+.UIK-alert .alert__icon { // todo
+  width: 65px;
+}
+@import './../../_shared/components/uikit-form-group/form-group';
+@import './../../_shared/components/uikit-form-validation-summary/form-validation-summary';
+@import './../../_shared/components/uikit-field-validation/field-validation';
+@import './../../_shared/styles/_vendor/bootstrap/uikit-components/form-groups';
+
+@import './../../_shared/styles/_vendor/animate';
+@import './../../_shared/styles/_vendor/ceaser-easings';
+
+
+
+/**
+ *
+ * Editor
+ *
+ */
+
+// layout
+@import 'layouts/app-layout';
+@import 'layouts/page-layout';
+
+// components
+@import '../../_common/styles/components/type';
+@import '../../_common/styles/components/flex-grid';
+@import '../../_common/styles/components/forms';
+@import 'components/date-fields';
+@import 'components/timeseries-pagination';
+@import 'components/traffic-light';
+@import 'components/widget-list';
+@import 'components/widget-list-alert';
+@import "../../_shared/components/chartWidget/widgetCard";
+@import "../../_shared/components/chartWidget/widget";
+
+// page components
+@import 'pages/dashboards';
+@import 'pages/dashboardwidgets';
+@import 'pages/dashboardwidgetdatagroupsimple';
+@import 'pages/dashboardwidgetdatagrouptimeseries';
+
+@import 'pages/user';
+// themes

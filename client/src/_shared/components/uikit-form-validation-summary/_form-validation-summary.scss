@@ -1,0 +1,19 @@
+
+.UIK-form-validation-summary {
+  .heading-text {
+    margin-bottom: 6px;
+  }
+
+  .list-ordered {
+    list-style: decimal inside;
+    margin-bottom: 4px;
+    padding-left: 0;
+    &.has-singular {
+      list-style: none;
+    }
+  }
+
+  .list-ordered-item {
+    display: list-item;
+  }
+}

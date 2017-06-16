@@ -1,0 +1,19 @@
+<div class="widget__data sr-only--and-no-js">
+  <table class="data-table table">
+    <% widget.datasets.each do |dataset| %>
+      <caption><%= widget.name || widget.id %> (<%= widget.units_to_s %>)</caption>
+        <tr>
+          <th scope="col">Date</th>
+          <th scope="col">Value</th>
+        </tr>
+        <% if dataset.datapoints.any? %>
+          <% dataset.datapoints.each do |datapoint| %>
+            <tr>
+              <td scope="row"><%= datapoint.label %></td>
+              <td scope="row"><%= datapoint.value(widget.prefix, widget.suffix) %></td>
+            </tr>
+          <% end %>
+        <%end %>
+    <% end %>
+  </table>
+</div>

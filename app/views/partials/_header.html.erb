@@ -1,0 +1,46 @@
+<%
+  #
+  # client/src/_shared/scripts/components/uikit-components/govauHeader.js
+  #
+
+  is_public_site = local_assigns.has_key?(:is_public_site) ? is_public_site : false
+
+%>
+<div class="govau-header <%= current_user.present? ? 'is-loggedin' : '' %>">
+  <div class="container">
+    <div class="govau-header__container">
+
+      <div class="govau-header__container__logo">
+        <a href="/">
+          <% if is_public_site %>
+            <img src="<%= getPublicImageSrc('performance-dashboard-logo.svg') %>" width="394" height="29" alt="Performance Dashboards" />
+          <% else %>
+            <img src="<%= getPublicImageSrc('editor-logo.svg') %>" width="240" height="54" alt="Performance Dashboards - Editor" />
+          <% end %>
+        </a>
+      </div>
+
+      <div class="govau-header__container__utils">
+        <% if is_public_site %>
+
+          <%= render :partial => "partials/toggle-switch"  if display_high_contrast_mode? %>
+
+        <% else %>
+
+          <% if show_auth? %>
+              <% if current_user.present? -%>
+                  <div class="user-email">
+                    <%= link_to current_user.email, user_path %>
+                  </div>
+                  <%= link_to 'Sign out', destroy_user_session_path, class: "UIK-button btn sign-out" %>
+              <% else %>
+                  <a href="/login" class="UIK-button btn sign-out">Sign in</a>
+              <% end %>
+          <% end %>
+
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

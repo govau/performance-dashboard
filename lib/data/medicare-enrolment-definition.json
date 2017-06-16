@@ -1,0 +1,167 @@
+{
+  "name":         "Medicare Newborn Enrolment",
+  "url":          "https://www.humanservices.gov.au/",
+  "agency":       "DHS",
+  "description":  "Description",
+  "target_users": "Users",
+  "notes": [
+    { "title":  "Where is this information from?",
+      "body":   "The Department of Human Services, the federal government department that administers Medicare." },
+    { "title":  "What is Medicare Newborn Enrolment?",
+      "body":   "The trial was conducted between 22 April 2016 and 29 July 2016. It shows how sharing of information with consent can be used so people don’t have to provide the same information multiple times. It is designed to significantly reduce paperwork for new parents by using hospital data to enrol their newborns into Medicare. The Department of Human Services will continue to work with the DTO to evaluate the trial and consider options for a future digital enrolment service." },
+    { "title":  "Who is the user group of Medicare Newborn Enrolment?",
+      "body":   "The trial was conducted with the Gold Coast University Hospital and applies only to mothers of newborns." },
+    { "title":  "User satisfaction",
+      "body":   "User satisfaction measures the percentage of users who responded “satisfied” and “very satisfied” in a survey conducted in July 2016." },
+    { "title":  "Cost per transaction",
+      "body":   "We do not have data for this KPI. We are determining the best way to measure Cost per transaction." },
+    { "title":  "Digital take-up",
+      "body":   "Digital take-up measures the number of users who opted to take part in the trial as a percentage of all newborns born in the hospital during the trial period." },
+    { "title":  "Completion rate",
+      "body":   "Completion rate measures the number of users who were successfully enrolled in Medicare as a percentage of total users who opted-in to the trial." }
+  ],
+  "widgets":  [
+    {
+      "id":   "kpis",
+      "updated_at": "2017-02-27T01:01:01.111Z",
+      "name": "Kpis",
+      "type": "full",
+      "size": "extra-large",
+      "units": "n",
+      "is_hero": true,
+      "datasets": ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"]
+    },
+    {
+      "id":   "user-satisfaction",
+      "updated_at": "2017-02-27T01:01:01.111Z",
+      "name": "User satisfaction",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "definition": "Overall satisfaction score includes all ratings weighted from 100% for very satisfied to 0% for very dissatisfied",
+      "datasets": ["user-satisfaction"]
+    },
+    {
+      "id":   "cost-per-transaction",
+      "updated_at": "2017-02-27T01:01:01.111Z",
+      "name": "Cost per transaction",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "$",
+      "datasets": ["cost-per-transaction"]
+    },
+    {
+      "id":   "digital-take-up",
+      "updated_at": "2017-02-27T01:01:01.111Z",
+      "name": "Digital take-up",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "datasets": ["digital-take-up"]
+    },
+    {
+      "id":   "completion-rate",
+      "updated_at": "2017-02-27T01:01:01.111Z",
+      "name": "Completion rate",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "definition": "Percentage of transactions made using the digital service.",
+      "datasets": ["completion-rate"]
+    },
+    {
+      "id":   "reasons-unable-to-enrol",
+      "updated_at": "2017-01-10T01:01:01.111Z",
+      "name": "Reasons unable to participate in the trial",
+      "type": "bar",
+      "size": "large",
+      "units": "%",
+      "stacking": "percentage",
+      "displayRoundedData" : false,
+      "definition": "This shows the percentage of newborns who were unable to be enrolled using the trial and the reason why.",
+      "datasets": ["reason-unable-to-enrol-01", "reason-unable-to-enrol-02","reason-unable-to-enrol-03","reason-unable-to-enrol-04","reason-unable-to-enrol-05"]
+    },
+    {
+      "id":   "number-of-newborns-by-month",
+      "updated_at": "2017-02-27T01:01:01.111Z",
+      "name": "Number of newborns",
+      "type": "line",
+      "size": "medium",
+      "units": "n",
+      "displayRoundedData" : false,
+      "definition":"This shows the total number of enrolled newborns compared to the total number of newborns.",
+      "datasets": ["number-of-newborns-enrolled","total-number-of-newborns-by-month"]
+    },
+    {
+      "id":   "total-number-of-newborns-enrolled",
+      "updated_at": "2017-01-10T01:01:01.111Z",
+      "name": "Total number of newborns enrolled",
+      "type": "sparkline",
+      "size": "small",
+      "units": "n",
+      "displayRoundedData" : false,
+      "definition":"This shows the total number of newborns enrolled over the life of the trial.",
+      "datasets": ["total-number-of-newborns-enrolled"]
+    },
+    {
+      "id":   "number-of-participating-mothers",
+      "updated_at": "2017-02-27T01:01:01.111Z",
+      "name": "Number of participating mothers",
+      "type": "line",
+      "size": "medium",
+      "units": "n",
+      "definition":"This shows the total number of mothers participating in the newborn Medicare enrolments trial.",
+      "datasets": ["number-of-participating-mothers"]
+    },
+    {
+      "id":   "fact-1",
+      "updated_at": "2017-01-10T01:01:01.111Z",
+      "name": "Fact",
+      "type": "fact",
+      "size": "extra-small",
+      "units": "n",
+      "description": "30 day reduction in speed of enrolment because new mothers no longer need to complete a manual form."
+    },
+    {
+      "id":   "fact-2",
+      "updated_at": "2017-01-10T01:01:01.111Z",
+      "name": "Fact",
+      "type": "fact",
+      "size": "small",
+      "units": "n",
+      "description": "75.8% of applicants’ contact details are updated as a result of this process, this makes it far easier for them to interact with Medicare!"
+    },
+    {
+      "id":   "fact-3",
+      "updated_at": "2017-01-10T01:01:01.111Z",
+      "name": "Fact",
+      "type": "fact",
+      "size": "extra-small",
+      "units": "n",
+      "description": "73.6% of new mothers eligible for the trial are now participating, compared to 22.4% in week 1."
+    },
+    {
+      "id":   "fact-4",
+      "updated_at": "2017-01-10T01:01:01.111Z",
+      "name": "Fact",
+      "type": "fact",
+      "size": "extra-small",
+      "units": "n",
+      "description": "100% of mothers who had previously enrolled a child said that the process had improved since their last enrolment."
+    },
+    {
+      "id":   "fact-5",
+      "updated_at": "2017-01-10T01:01:01.111Z",
+      "name": "Fact",
+      "type": "fact",
+      "size": "extra-small",
+      "units": "n",
+      "description": "Since April 2016, 2182 newborns have been enrolled using the Medicare Newborn Enrolment Pilot."
+    }
+  ],
+  "layout":   [
+    ["kpis"],
+    ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"],
+    ["fact-1","number-of-participating-mothers","fact-3", "number-of-newborns-by-month","fact-5","fact-4", "fact-2","reasons-unable-to-enrol"]
+  ]
+}

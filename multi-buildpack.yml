@@ -1,0 +1,3 @@
+buildpacks:
+  - https://github.com/cloudfoundry/nodejs-buildpack
+  - https://github.com/maxious/ruby-buildpack

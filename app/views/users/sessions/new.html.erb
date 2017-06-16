@@ -1,0 +1,56 @@
+<%
+
+  # Layout based off
+  # https://gov-au-beta.apps.platform.digital.gov.au/users/sign_in
+  #
+  # https://github.com/AusDTO/gov-au-beta/blob/develop/app/views/layouts/application.html.haml
+  # https://github.com/AusDTO/gov-au-beta/blob/develop/app/views/devise/sessions/new.html.haml
+  # https://github.com/AusDTO/gov-au-beta/blob/develop/app/assets/stylesheets/_sign-in.scss
+
+  content_for :title, 'User Login'
+  content_for :description, 'Performance Dashboard Login'
+%>
+
+<div class="sign-in">
+  <h3>Sign in to the Editor</h3>
+
+  <section class="sign-in-form">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+
+      <%= render partial: 'alert', locals: { alert_type: 'info', message: notice } %>
+      <%= render partial: 'alert', locals: { alert_type: 'warning', message: alert } %>
+
+      <p>
+        <%= f.label :email, 'Email address' %>
+        <%= f.email_field :email, autofocus: true %>
+      </p>
+
+      <p>
+        <%= f.label :password %>
+        <%= f.password_field :password, autocomplete: "off" %>
+      </p>
+
+      <div class="form-footer-actions">
+        <div class="form-options">
+          <% if devise_mapping.rememberable? -%>
+            <div class="remember-me">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+        </div>
+
+        <div class="form-footer-actions">
+          <%= f.submit "Sign in", :role => 'button' %>
+        </div>
+      </div>
+
+    <% end %>
+
+    <div class="sign-in-footer-links">
+      <%= render "devise/shared/links" %>
+    </div>
+
+  </section>
+
+</div>

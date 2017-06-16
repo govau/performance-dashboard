@@ -1,0 +1,30 @@
+exports[`(Components) Header - header  should match Snapshot 1`] = `
+<header
+  className="govau-header">
+  <div
+    className="container">
+    <div
+      className="govau-header__container">
+      <div
+        className="govau-header__container__logo">
+        <a
+          href="/editor">
+          <img
+            alt="Performance Dashboards - Editor"
+            height="54"
+            src="test-file-stub"
+            width="240" />
+        </a>
+      </div>
+      <div
+        className="govau-header__container__utils">
+        <a
+          className="UIK-button btn sign-out"
+          href={undefined}>
+          Sign in
+        </a>
+      </div>
+    </div>
+  </div>
+</header>
+`;

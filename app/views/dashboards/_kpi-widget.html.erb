@@ -1,0 +1,29 @@
+<%
+  # usage at dashboard#show
+%>
+<div class="D1_kpi-group <%= widget.has_current_data? ? 'has-data' : 'has-no-data'; %>" data-id="<%= widget.id %>">
+  <div class="widget <%= widget.name_slug %> <%= widget.style %>">
+    <div id="<%= widget.name_slug %>" data-id="<%= widget.id %>" class="widget__title">
+      <h2><%= widget.name %></h2>
+      <a href="#dashboard-notes" title="View KPI <%= widget.name %> definition" class="fa fa-question-circle info" ga-on="click" ga-event-category="<%= GA::CATEGORY_SEEK_MORE_INFO %>" ga-event-action="<%= GA::ACTION_CLICK %>" ga-event-label="Hero title - <%= widget.name %>"><span class="sr-only"><%= widget.name %> definition</span></a>
+      <div class="meta-group">
+        <time class="widget__last-updated">Last updated <%= widget.last_updated_at %></time>
+      </div>
+      <div class="meta-group">
+        <% if widget.show_description? %>
+          <div class="widget__definition">
+            <span class="widget__definition--title" aria-describedby="tooltip--<%= widget.name_slug %>">What is this?</span>
+            <div class="widget__definition--content" role="tooltip" id="tooltip--<%= widget.name_slug %>">
+              <div class="widget__definition--content__inner">
+                <%= widget.description %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+    <div data-data="<%= render partial: 'chart/widget', locals: { widget: widget } %>" aria-hidden="true" class="widget__inner <%= widget.type %> <%= widget.style %>">
+    </div>
+    <%= render :partial => 'data_table', :locals => { :widget => widget } %>
+  </div>
+</div>

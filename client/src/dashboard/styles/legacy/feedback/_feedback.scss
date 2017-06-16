@@ -1,0 +1,26 @@
+.feedback-intro {
+  clear: both;
+  margin-top: $spacing-unit;
+  margin-bottom: $spacing-unit;
+
+  @include media(768px) {
+    @include span-columns(12);
+  }
+}
+
+.feedback-form {
+  clear: both;
+  margin-bottom: $spacing-unit;
+
+  @include media(768px) {
+    @include span-columns(12);
+  }
+
+  .smcx-widget {
+    margin: 0 auto; // centre
+  }
+}
+
+.feedback-tail-breadcrumb {
+  margin-bottom: $spacing-unit;
+}

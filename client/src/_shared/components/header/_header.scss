@@ -1,0 +1,81 @@
+.govau-header {
+
+  background-color: $UIKIT_180_navy;
+  background-image: url('./header-bg.jpg');
+  background-position: top right;
+  background-repeat: no-repeat;
+
+  &__container {
+    display: table;
+    width: 100%;
+
+    padding: $spacer-y*.6 0 ($spacer-y *1.2)*.6;
+
+    @media (min-width:420px) {
+      min-height: 116px;
+      padding: $spacer-y 0 $spacer-y *1.2;
+    }
+
+    &__logo,
+    &__utils {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    &__logo {
+      padding-right: 1em;
+      img {
+        max-width: 100%; // resize the image when screen size gets smaller
+        display: block;
+      }
+      a {
+        vertical-align: middle;
+        display:inline-block;
+      }
+    }
+    &__utils {
+      a {
+        margin-left: $spacer-x;
+      }
+    }
+
+    &__utils {
+      text-align: right;
+      color: white;
+
+      @include clearfix;
+
+      .user-email {
+        display: block;
+        margin-bottom: 8px;
+
+        position: relative;
+
+        a {
+          color: white;
+        }
+
+        svg {
+          position: absolute;
+          left: -26px;
+          top: 3px;
+          color: white;
+        }
+      }
+
+      .btn {
+        float: right;
+      }
+    }
+  }
+
+  &.is-loggedin {
+    .user-email {
+      display:none;
+
+      @media (min-width:$screen-sm) {
+        display:block;
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+.updated-at {
+  @media(max-width: 768px) {
+    p {
+      font-size: 13px;
+    }
+  }
+}
+
+.dashboards-heading {
+  margin-top: 0;
+  font-size: 2.25rem;
+  font-weight: 400;
+}
+
+.dashboard__top {
+  color: $secondary-text-colour;
+}
+
+.hero {
+  @include media($screen-sm) {
+    min-height: $spacing-unit;
+  }
+}
+
+.hero-region {
+  background-color: $pale-grey;
+  padding-bottom: $spacing-unit / 2;
+  padding-top: $spacing-unit / 2;
+}
+
+.below-the-line-bg {
+  background-color: $light-grey;
+  padding-top: 18px;
+}
+
+.meta-group {
+  display: block;
+}
+
+
+.back-link {
+  cursor: pointer;
+  color: #025a96;
+  text-decoration: underline;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 600;
+}
+
+.widget.dashboard-information {
+  margin-bottom: 30px;
+
+  ul {
+    list-style: none;
+    padding-left: 0;
+    @media (min-width: $screen-md) {
+      margin-top: 0;
+    }
+  }
+
+  @media (min-width: $screen-md) {
+    .widget-text__footer {
+      float:right;
+      text-align: right;
+    }
+  }
+
+  h4 {
+    margin-top: 0;
+    font-size: 20px;
+    font-size: 1.25rem;
+    margin-bottom: 5px;
+    font-weight: 400;
+  }
+
+  .link--external-alt {
+    color: $brand-primary-colour;
+    border-bottom: 0;
+    text-decoration: underline;
+    margin-right: 0;
+
+    @media(min-width: $screen-sm) {
+      margin-right: 1.6em;
+    }
+
+
+    &:hover {
+      color: $white;
+    }
+  }
+}

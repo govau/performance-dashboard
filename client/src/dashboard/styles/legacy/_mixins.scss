@@ -1,0 +1,40 @@
+@mixin flex-item($col) {
+  padding: $default-padding / 4;
+  width: 100%;
+
+  /* Small devices (tablets, 768px and up), 2 itmes in a row */
+  @include media($screen-sm) {
+    width: 50%;
+  }
+
+  /* Medium devices (desktops, 992px and up), 2 itmes in a row */
+  @include media($screen-md) {
+    width: 33.333333%;
+  }
+
+  /* Large devices (large desktops, 1200px and up), 4 itmes in a row */
+  @include media($screen-lg) {
+    width: calc(100% / #{$col});
+  }
+}
+
+@mixin vertical-align($position: relative) {
+  @include transform(translateY(-50%));
+  position: $position;
+  top: 50%;
+}
+
+@mixin custom-col($x) {
+  position: relative;
+  padding: 0 $gutter;
+
+  @include media($screen-sm) {
+    width: calc(100% / #{$x});
+    float: left;
+  }
+}
+
+@mixin add-gutter($gutter-width: 30px) {
+  padding-left: $gutter-width / 2;
+  padding-right: $gutter-width / 2;
+}

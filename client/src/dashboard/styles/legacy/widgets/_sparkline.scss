@@ -1,0 +1,58 @@
+.sparkline__inner {
+  .metric-trend {
+    color: $cerulean;
+  }
+
+  .value {
+    font-weight: 300;
+  }
+
+  .metric-unit {
+    font-weight: 600;
+  }
+
+  .metric-meta {
+    .metric-trend {
+      margin-right: 5px;
+    }
+  }
+
+  .decorator {
+    .fa {
+      width: 17px;
+    }
+  }
+}
+
+
+.widget__inner {
+  .sparkline__inner {
+    text-align: center;
+
+    .chart {
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      width: 80%;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.dashboard__secondary {
+  .widget__inner {
+    .sparkline__inner {
+      @media screen and (min-width: $screen-sm) {
+        height: 300px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+      }
+
+      @media screen and (min-width: $screen-md) {
+        height: auto;
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+<div class="sign-in">
+  <h1>Can’t scan the QR code?</h1>
+
+  <p>In the <strong>Google Authenticator</strong> app
+    select <strong>Set up account</strong> and then select
+    <strong>Enter provided key</strong>.</p>
+  <p><strong>Enter this key into the app</strong></p>
+  <div class="callout">
+    <h3><%= @secret %></h3>
+  </div>
+  <%= button_to 'Generate a new code', users_shared_secret_path, method: :delete %>
+  <p><%= link_to 'Next', new_users_shared_secret_path, role: :button %></p>
+</div>

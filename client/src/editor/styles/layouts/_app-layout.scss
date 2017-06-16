@@ -1,0 +1,128 @@
+// todo - review all of the below commented out codes
+
+/**
+
+ Route transitions works by _simultaneously_ adding classes on the injected
+ page:
+      .fadeIn.fadeIn-active
+      .fadeOut.fadeOut-active
+
+  * Set TransitionGroup's transitionEnterTimeout and transitionLeaveTimeout to
+  determine the duration for when to remove these classes.
+
+  * Set CSS transition and animations to control the look and feel of the
+  transition
+
+  ** Important **
+  * Pages must have an absolute placement in the parent so that they stack
+  behind one another
+    ie. .app-scene nests many .app-page
+
+
+  Layout:
+
+  <body class="editor">
+    <div class="editor__top-bar">
+    </div>
+    <div class="editor__app-scene">
+      <div class="editor__app-page">
+      </div>
+    </div>
+  </body>
+
+ */
+
+.editor {
+  //border: 8px solid red;
+  height: 100%;
+  width: 100%;
+}
+
+.editor__top-bar {
+  // header-height - todo
+  //height: 146px;
+  //@media (min-width:$screen-sm) {
+  //  height: 166px;
+  //}
+
+  //border: 8px solid orange;
+  //position: fixed;
+  //left: 0;
+  //right: 0;
+  //top: 0;
+  //height: 202px;
+}
+
+.editor__app {
+  //border: 6px solid purple;
+  height: 100%;
+  width: 100%;
+
+  // header-height - todo
+  //padding-top: 146px;
+  //@media (min-width:$screen-sm) {
+  //  padding-top: 166px;
+  //}
+
+  > div {
+   height: 100%;
+   width: 100%;
+  }
+}
+
+.app-scene {
+  //border: 8px solid yellow;
+  //height: 100%;
+  //width: 100%;
+  //position: relative;
+  //margin-top: 102px;
+
+  // animate
+  transform: translate3d(0, 0, 0);
+}
+
+.app-page-parent {
+//  border: 8px solid blue;
+ height: 100%;
+ width: 100%;
+//  position: absolute;
+//  top: 0;
+//  //top: #{69 +52}px;
+//  left: 0;
+//  right: 0;
+//  bottom: 0;
+//  overflow: hidden;
+ transform: translate3d(0, 0, 0);
+
+ // .app-page
+ > div {
+   transform: translate3d(0, 0, 0);
+   //border: 8px solid pink;
+   background-color: white;
+   padding-bottom: 2em;
+
+  //  height: 100%;
+  //  overflow: scroll;
+
+   // animate
+   @extend .animated;
+   animation-duration: 500ms;
+
+   .fadeIn {
+    //  animation-duration: 200ms;   // transitionEnterTimeout
+   }
+   .fadeOut {
+     //animation-duration: 500ms;   // transitionLeaveTimeout
+   }
+ }
+}
+
+
+.editor {
+  &__main {
+    min-height: 300px;
+    margin-top: 1em;
+    margin-bottom: 2em;
+  }
+}
+

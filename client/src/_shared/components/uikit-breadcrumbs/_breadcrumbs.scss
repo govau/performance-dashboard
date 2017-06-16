@@ -1,0 +1,36 @@
+.breadcrumbs {
+  width: 100%;
+  margin: 0;
+
+  a {
+    &.active {
+      border-bottom: 0 !important;
+      background: none !important;
+    }
+  }
+
+  ol,
+  ul {
+    margin: 0;
+    padding: $UIKIT_180_small-spacing 0 .8 * $UIKIT_180_medium-spacing;
+    line-height: $UIKIT_180_medium-spacing;
+    list-style: none;
+
+    li {
+      display: inline-block;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      margin-bottom: 4px;
+
+      &:not(:last-child) {
+        background-image: url('~gov-au-ui-kit/assets/img/icons/arrow-right.svg');
+        margin-right: $UIKIT_180_small-spacing;
+        padding-right: $UIKIT_180_medium-spacing;
+        background-repeat: no-repeat;
+        background-position: right;
+        background-size: $UIKIT_180_tiny-spacing auto;
+      }
+    }
+  }
+}

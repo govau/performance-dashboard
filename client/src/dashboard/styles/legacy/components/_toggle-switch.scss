@@ -1,0 +1,47 @@
+@import '../_vendor/css-toggle-switch/toggle-switch';
+
+.toggle-switch {
+  color: $white;
+  position: relative;
+
+  .switch-material {
+    &.switch-light {
+      float: right;
+
+      .switch-text {
+        float:left;
+        padding-right: $gutter;
+        font-weight:300;
+
+        @media screen and (max-width: $screen-sm - 1) {
+          display: none;
+        }
+      }
+
+      a {
+        top: 0;
+        width: 1.5em;
+        height: 1.5em;
+      }
+
+      > span {
+        background: $secondary-text-colour;
+        float: right;
+        top: 0;
+      }
+
+      input:checked ~ span {
+        background: black;
+
+        a {
+          background-color: $white;
+          background-position: center;
+          background-size: 70%;
+          background-color: $white;
+          background-repeat: no-repeat;
+          background-image: url('../../images/low-vision-icon.png');
+        }
+      }
+    }
+  }
+}

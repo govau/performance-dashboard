@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Editor - Performance Dashboards</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <%
+    #
+    # Production mode or not required for webpack-dev-server mode
+    #
+    if !development_server? %>
+      <%= getPublicStylesheet('app_shell.css') %>
+      <%= getPublicStylesheet('editor-mcss.css') %>
+      <%= getPublicStylesheet('editor.css') %>
+  <% end %>
+  <%= render :partial => "partials/rollbar", :locals => { :token => ENV['ROLLBAR_ACCESS_TOKEN_EDITOR_CLIENT'] } %>
+</head>
+<body class="editor <%= body_class(yield(:body_class_names)) %>">
+
+  <div class="editor__top-bar">
+    <section>
+      <%= render :partial => "partials/phase-banner", :locals => { :message => "This is a working alpha and has limited functionality" } %>
+    </section>
+
+    <header class="main__header">
+      <%= render :partial => "partials/header" %>
+    </header>
+  </div>
+
+  <div class="editor__app">
+    <noscript>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-8 offset-xs-2">
+            <div class="card card-block">
+              <h4 class="card-title" style="margin-top:0">It looks like you have JavaScript turned off!</h4>
+              <p class="card-text">The use of the Editor requires JavaScript to be enabled. Please enable JavaScript in your Browser Settings and then refresh this page.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </noscript>
+
+    <%= yield %>
+  </div>
+
+  <% if is_production? %>
+  <% end %>
+  <%
+    #
+    # Production mode or webpack-dev-server mode
+    #
+    if !development_server? %>
+    <%= getPublicJavascript('app_shell.js') %>
+    <%= getPublicJavascript('editor-vendor.js') %>
+    <%= getPublicJavascript('editor.js') %>
+  <% else %>
+      <script src="http://localhost:8080/javascripts/app_shell.js"></script>
+      <script src="http://localhost:8080/javascripts/editor-vendor.js"></script>
+      <script src="http://localhost:8080/javascripts/editor.js"></script>
+  <% end %>
+</body>
+</html>

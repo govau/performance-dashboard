@@ -1,0 +1,14 @@
+.page-users {
+  .users-list__item {
+    padding: $spacer-y*1.8 0 $spacer-y*2;
+    border-bottom: 1px solid $DB-color-grey-border;
+
+    h1 {
+      margin-bottom: 1em;
+    }
+
+    .btn {
+      margin-right: $spacer-x * 2;
+    }
+  }
+}

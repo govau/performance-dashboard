@@ -1,0 +1,17 @@
+common: &common
+  auth: true
+
+cloudfoundry:
+  <<: *common
+
+development:
+  <<: *common
+
+production:
+  <<: *common
+  two_factor: true
+
+staging:
+  <<: *common
+
+test:

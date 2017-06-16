@@ -1,0 +1,12 @@
+sensu-server:
+  image: ausdto/monitoring-stack
+  ports:
+    - "5672:5672"
+    - "3000:3000"
+
+dashboard-gov-au:
+  build: .
+  hostname: dashboard-gov-au
+  links:
+    - sensu-server
+

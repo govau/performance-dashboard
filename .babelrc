@@ -1,0 +1,20 @@
+{
+  "presets": ["es2015", "react", "stage-0"],
+  "plugins": [
+    ["module-resolver", {
+      "alias": {
+        "dashboard": "./client/src/dashboard/scripts",
+        "dashboard-legacy": "./client/src/_dashboard-legacy",
+        "editor": "./client/src/editor/scripts",
+        "shared": "./client/src/_shared"
+      }
+    }],
+    "transform-class-properties",
+    "transform-proto-to-assign",
+    ["transform-es2015-classes", {
+      "loose": true
+    }],
+    "transform-object-rest-spread",
+    "transform-es2015-destructuring"
+  ]
+}

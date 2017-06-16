@@ -1,0 +1,20 @@
+.page-dashboardwidgetdatagrouptimeseries {
+
+  &__form-help {
+    font-size: $font-size-sm;
+    line-height: 1.8;
+    margin-bottom: $spacer-y * 2;
+  }
+
+  .form-preview {
+    margin-top: $spacer-y;
+  }
+
+  .form-actions-buttons {
+    margin-top: $spacer-y;
+
+    .btn:first-child {
+      margin-right: $spacer-x;
+    }
+  }
+}

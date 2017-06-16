@@ -1,0 +1,73 @@
+<% content_for :title, 'Account Details' %>
+
+<div id="user_show">
+      <div class="page page-users">
+          <div class="page__header">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-xs-12 col-lg-8">
+                          <div class="breadcrumbs" aria-label="breadcrumb">
+                              <ol>
+                                  <li>Account Details</li>
+                              </ol>
+                          </div>
+                          <h1 class="h3">Account Details</h1></div>
+                  </div>
+              </div>
+          </div>
+          <div class="container">
+              <div class="page__body">
+                  <div class="row">
+                      <div class="col-xs-12 col-lg-8">
+                          <section class="users-list__item">
+                              <article>
+                                  <% if flash[:api_token] -%>
+                                    <div class="UIK-alert alert alert-success" role="alert">
+                                      <div class="alert__icon"><i>success</i></div>
+                                      <div class="alert__text">
+                                        <span className="heading-text">New API Token</span>
+                                        <p><strong><%= flash[:api_token] %></strong></p>
+                                        <p>Make sure to copy your new api token now. You won’t be able to see it again!</p>
+                                      </div>
+                                    </div>
+                                  <% end -%>
+                                  <table class="table">
+                                    <tr> <th>Email</th><td><%= current_user.email %> </td></tr>
+                                    <tr> <th>Signed in</th><td><%= pluralize(current_user.sign_in_count, 'time') %> </td></tr>
+                                    <tr> <th>Signed in at</th><td><%= current_user.current_sign_in_at.to_s(:long) %> </td></tr>
+                                    <tr> <th>Last signed in at</th><td><%= current_user.last_sign_in_at.to_s(:long) %> </td></tr>
+                                    <tr> <th>Last signed in from IP</th><td><%= current_user.last_sign_in_ip %> </td></tr>
+                                  </table>
+                              </article>
+                          </section>
+                          <section class="users-list__item">
+                            <h3>API Tokens</h3>
+                            <% if current_user.tokens.api.any? %>
+                              <table class="table">
+                                <thead>
+                                  <tr>
+                                    <th>Token</th>
+                                    <th>Created At</th>
+                                    <th>Active</th>
+                                    <th></th>
+                                  </tr>
+                                </thead>
+                                <% current_user.tokens.api.decorate.each do |token| %>
+                                  <tr>
+                                    <td><%= token.to_short_s %></td>
+                                    <td><%= token.created_at.to_s(:long) %></td>
+                                    <td><%= token.active? %> </td>
+                                  </tr>
+                                <% end %>
+                              </table>
+                            <% end %>
+                            <p>
+                              <%= button_to('Generate API Token', user_tokens_path, :class => 'UIK-button btn btn-primary') %>
+                            </p>
+                          </section>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+</div>

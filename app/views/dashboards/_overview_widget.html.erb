@@ -1,0 +1,10 @@
+<div class="D1_kpi-group <%= widget.has_current_data? ? 'has-data' : 'has-no-data'; %>" data-id="<%= widget.id %>">
+  <div class="widget <%= widget.name_slug %> <%= widget.style %>">
+    <div class="widget__title <%= widget.name_slug %>">
+      <h4><%= widget.name %></h4>
+    </div>
+    <div class="widget__inner <%= widget.name_slug %>" data-data="<%= render partial: 'chart/widget', locals: { widget: widget } %>" aria-hidden="true">
+    </div>
+    <%= render :partial => 'data_table_summary', :locals => { :widget => widget } %>
+  </div>
+</div>

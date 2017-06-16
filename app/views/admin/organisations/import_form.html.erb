@@ -1,0 +1,23 @@
+<%= semantic_form_for @organisation, url: { action: :import, method: :patch } do |f| %>
+
+  <h2>Warning</h2>
+  <p>Selecting a dashboard below will overwrite all its existing data with the
+    JSON data you provide. Any edits made to the existing data will be lost.</p>
+  <p><strong>YOU HAVE BEEN WARNED.</strong></p>
+  <p>&nbsp;</p>
+
+  <%= f.inputs do %>
+    <%= f.input :data, as: :file, label: 'Data JSON' %>
+    <%= f.input :definition, as: :file, label: 'Definition JSON' %>
+    <li class="select input optional">
+      <label for="organisation_dashboard" class="label">
+        Select dashboard to replace (or leave empty to create new dashboard)
+      </label>
+      <%= select_tag 'organisation[dashboard_id]',
+        options_from_collection_for_select(@organisation.dashboards, 'id', 'name'),
+        include_blank: '[ Create new dashboard ]' %>
+    </li>
+  <%- end %>
+
+  <%= f.actions %>
+<%- end %>

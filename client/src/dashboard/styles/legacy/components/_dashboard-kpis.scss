@@ -1,0 +1,265 @@
+.dashboard__kpis {
+  background-color: $white;
+  margin: 15px 0;
+
+  @media (min-width:$screen-sm) {
+    margin: 2em 0;
+  }
+
+  @media(max-width: $screen-sm - 1) {
+    padding-top: 10px;
+  }
+
+  .widget__title::before {
+    display: inline-block;
+    content: '\f111';
+    font-family: 'fontawesome';
+    padding-right: 10px;
+
+    @media(max-width: $screen-sm - 1) {
+      float: left;
+    }
+  }
+
+  .widget__definition,
+  .widget__data-source,
+  .widget__last-updated {
+    display: none;
+  }
+
+  .widget {
+    .widget__title {
+      text-align: center;
+      height: 30px;
+      padding: 0;
+
+      width: 100%;
+
+
+      h2 {
+        display: inline;
+        font-size: 1.25rem;
+        line-height: 1;
+      }
+    }
+  }
+
+  .chart {
+    display: none;
+  }
+
+  @include media($screen-sm) {
+    .chart {
+      display: block;
+    }
+  }
+
+  .widget {
+    border: 0;
+    box-shadow: none;
+  }
+
+  .widget__title {
+    padding: 0;
+
+    h4 {
+      font-weight: 600;
+    }
+  }
+
+  .widget__inner {
+    .sparkline__inner {
+      .chart {
+        display: none;
+
+        @include media($screen-sm) {
+          display: block;
+        }
+      }
+    }
+  }
+
+  @media (max-width: $screen-sm - 1) {
+    .widget {
+      .widget__title {
+        border-bottom: 0;
+        text-align: left;
+      }
+    }
+  }
+
+  @media (min-width: $screen-md) {
+    .widget {
+      .widget__title {
+        margin-bottom: 20px;
+      }
+    }
+  }
+
+  @media (max-width: $screen-sm - 1) {
+    .widget {
+      margin: 0;
+
+      .widget__title {
+        border-bottom: 0;
+        text-align: left;
+      }
+
+      .sparkline__inner {
+        float: right;
+      }
+
+      .widget__inner {
+        padding: 0;
+      }
+    }
+
+  }
+
+  @media (max-width: $screen-sm) {
+    .widget {
+      width: 100%;
+      padding: 5px 0;
+
+      .widget__inner {
+        position: relative;
+      }
+
+      .widget__title {
+        h2 {
+          font-size: 1em;
+          line-height: 1;
+        }
+      }
+
+      .summary-text {
+        display: none;
+      }
+
+      .metric-meta {
+        display: none;
+      }
+    }
+  }
+}
+
+@media (max-width: $screen-sm-minor){
+  .dashboard__kpis{
+    .widget {
+
+      .widget__title {
+        @include span-columns(8);
+        @include omega(2n);
+      }
+
+      .widget__inner {
+        @include span-columns(4);
+        @include omega(2n);
+        margin-top: 3px;
+      }
+    }
+  }
+}
+
+@media (min-width: $screen-sm) and (max-width: $screen-md - 1 ) {//includes 767
+  .dashboard__kpis {
+    .aus-width-one-fourth {
+      @include span-columns(3);
+    }
+
+    .widget {
+      border: 0;
+      box-shadow: none;
+      padding: 0;
+      margin: 15px 0 0 0;
+      min-height: 0;
+      height: auto;
+      display: block;
+
+      .widget__inner {
+        position: relative;
+        padding:0;
+        width: 100%;
+
+        .sparkline {
+          max-width: 100%;
+          display:block;
+        }
+      }
+
+      .sparkline__inner {
+        float: none;
+
+        .chart {
+          display: block;
+        }
+      }
+
+      .metric-meta {
+        display: block !important;
+
+        .metric-trend {
+          margin-right: 5px;
+          display: inline-block;
+        }
+      }
+
+      .summary-text {
+        display: inline-block !important;
+      }
+
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .card__right {
+    &.dashboard__kpis {
+      .widget__title {
+        padding: 0;
+      }
+    }
+  }
+}
+
+.no-js {
+  .widget__definition--title {
+    display: none;
+  }
+
+  .toggle-group {
+    display: none;
+  }
+
+  .widget {
+    overflow: auto;
+
+    .widget__data {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0 15px;
+      overflow: visible;
+
+      table {
+        width: 100%;
+        text-align: left;
+        border: $table-border;
+        margin-bottom: 10px;
+
+        & > tbody > tr:nth-of-type(odd) {
+          background-color: $table-odd-row-bg-colour;
+          padding: 10px;
+        }
+      }
+
+      caption {
+        text-align: left;
+        text-transform: capitalize;
+        font-weight: 600;
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

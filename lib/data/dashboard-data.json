@@ -1,0 +1,445 @@
+{
+  "version":      "1",
+  "updated_at":   "2017-01-18T00:57:58.459Z",
+  "name":         "Dashboard",
+  "url":          "https://dashboard.gov.au/",
+  "agency":       "DTA",
+  "description":  "Dashboard",
+  "notes":        "",
+  "datasets":     [
+    {
+     "id":            "user-satisfaction",
+      "recorded_at":  "2016-11-08T01:01:01.111Z",
+      "name":         "User satisfaction",
+      "units":        "%",
+      "note": "User satisfaction measures the percentage of users who responded \"satisfied\" or \"very satisfied\" in our feedback survey. This figure is not yet statistically significant because of the low number of feedback responses from August 2016 onwards. In addition, we have no data for the months of May, June and July 2016 because no users provided feedback. We are determining the best way to encourage more feedback from our users.",
+      "data":          [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": null },
+        { "label": "2016-08", "value": null },
+        { "label": "2016-09", "value": null },
+        { "label": "2016-10", "value": null },
+        { "label": "2016-11", "value": null },
+        { "label": "2016-12", "value": null },
+        { "label": "2017-01", "value": null }
+      ]
+     },
+     {
+       "id":           "cost-per-transaction",
+       "recorded_at":  "2016-11-08T01:01:01.111Z",
+       "units":        "$",
+       "name":         "Cost per transaction",
+       "note":         "Cost per transaction measures the costs of delivering a service for each time a user views the Performance Dashboard. It is calculated by determining the labour costs, including training, travel and other overheads, for the reporting period. (It does not include items such as product development and administration.) This figure is then divided by the number of sessions as recorded by Google Analytics for dashboard.gov.au. The result is an average cost per transaction for the reporting period. Over time, as more users view the dashboard, we expect this figure to come down. As we release self-service features, we anticipate this figure will come down.",
+       "data":         [
+         { "label": "2016-05", "value": null },
+         { "label": "2016-06", "value": null },
+         { "label": "2016-07", "value": null },
+         { "label": "2016-08", "value": 29.44 },
+         { "label": "2016-09", "value": 27.23 },
+         { "label": "2016-10", "value": 15.02 },
+         { "label": "2016-11", "value": 12.30 },
+         { "label": "2016-12", "value": 7.28 },
+         { "label": "2017-01", "value": 5.82 }
+       ]
+     },
+    {
+      "id":           "digital-take-up",
+      "name":         "Digital take-up",
+      "units":        "%",
+      "recorded_at":  "2016-11-08T01:01:01.111Z",
+      "note": "Digital take-up measures the percentage of services in public beta or live phases that have published a service dashboard to the Performance Dashboard. When a service enters public beta, it is required to publish its performance data on the dashboard. Digital take-up shows how many services have done this.",
+      "data":          [
+        { "label": "2016-05", "value": 0 },
+        { "label": "2016-06", "value": 0 },
+        { "label": "2016-07", "value": 67 },
+        { "label": "2016-08", "value": 100 },
+        { "label": "2016-09", "value": 100 },
+        { "label": "2016-10", "value": 100 },
+        { "label": "2016-11", "value": 100 },
+        { "label": "2016-12", "value": 100 },
+        { "label": "2017-01", "value": 100 }
+      ]
+    },
+    {
+      "id":           "completion-rate",
+      "recorded_at":  "2016-11-08T01:01:01.111Z",
+      "units":        "%",
+      "name":         "Completion rate",
+      "note": "Completion rate measures the percentage of users who view Dashboard.gov.au and who then go on to view one or more service dashboards. For example, some users may only view the Dashboard.gov.au home page. Other users may then view a service dashboard. When users do this, we consider it a successful completion.",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 73.39 },
+        { "label": "2016-08", "value": 90.27 },
+        { "label": "2016-09", "value": 84.28 },
+        { "label": "2016-10", "value": 60.82 },
+        { "label": "2016-11", "value": 63.1 },
+        { "label": "2016-12", "value": 63.43 },
+        { "label": "2017-01", "value": 66.87 }
+      ]
+    },
+    {
+      "id":           "total-users",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Total Users on month",
+      "name":         "Users",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 121 },
+        { "label": "2016-08", "value": 833 },
+        { "label": "2016-09", "value": 825 },
+        { "label": "2016-10", "value": 922 },
+        { "label": "2016-11", "value": 930 },
+        { "label": "2016-12", "value": 1038 },
+        { "label": "2017-01", "value": 873 }
+      ]
+    },
+    {
+      "id":           "dashboards-betapub",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Public Beta",
+      "name":         "Public Beta",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": 0 },
+        { "label": "2016-06", "value": 0 },
+        { "label": "2016-07", "value": 2 },
+        { "label": "2016-08", "value": 2 },
+        { "label": "2016-09", "value": 2 },
+        { "label": "2016-10", "value": 2 },
+        { "label": "2016-11", "value": 2 },
+        { "label": "2016-12", "value": 2 },
+        { "label": "2017-01", "value": 2 }
+      ]
+    },
+    {
+      "id":           "dashboards-prebeta",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Pre-Beta",
+      "name":         "Pre Beta",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": 0 },
+        { "label": "2016-06", "value": 0 },
+        { "label": "2016-07", "value": 1 },
+        { "label": "2016-08", "value": 3 },
+        { "label": "2016-09", "value": 3 },
+        { "label": "2016-10", "value": 3 },
+        { "label": "2016-11", "value": 3 },
+        { "label": "2016-12", "value": 3 },
+        { "label": "2017-01", "value": 3 }
+      ]
+    },
+    {
+      "id":           "dashboards-nontransf",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Non-transformational",
+      "name":         "Non-transformational",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": 1 },
+        { "label": "2016-06", "value": 1 },
+        { "label": "2016-07", "value": 1 },
+        { "label": "2016-08", "value": 1 },
+        { "label": "2016-09", "value": 1 },
+        { "label": "2016-10", "value": 1 },
+        { "label": "2016-11", "value": 1 },
+        { "label": "2016-12", "value": 1 },
+        { "label": "2017-01", "value": 1 }
+      ]
+    },
+    {
+      "id":           "dashboards-other",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Other",
+      "name":         "Other",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": 0 },
+        { "label": "2016-06", "value": 0 },
+        { "label": "2016-07", "value": 0 },
+        { "label": "2016-08", "value": 0 },
+        { "label": "2016-09", "value": 0 },
+        { "label": "2016-10", "value": 0 },
+        { "label": "2016-11", "value": 0 },
+        { "label": "2016-12", "value": 0 },
+        { "label": "2017-01", "value": 0 }
+      ]
+    },
+
+    {
+      "id":           "dashboard-pageviews-over-session",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Dashboard PageViews over Session on month",
+      "name":         "Page Views",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 2.8 },
+        { "label": "2016-08", "value": 3.28 },
+        { "label": "2016-09", "value": 2.94 },
+        { "label": "2016-10", "value": 3.21 },
+        { "label": "2016-11", "value": 2.85 },
+        { "label": "2016-12", "value": 2.79 },
+        { "label": "2017-01", "value": 2.73 }
+      ]
+    },
+    {
+      "id":           "average-session-time",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "i",
+      "definition":   "Average Session Time on month",
+      "name":         "Session Time",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 83 },
+        { "label": "2016-08", "value": 231 },
+        { "label": "2016-09", "value": 195 },
+        { "label": "2016-10", "value": 177 },
+        { "label": "2016-11", "value": 139 },
+        { "label": "2016-12", "value": 121 },
+        { "label": "2017-01", "value": 173 }
+      ]
+    },
+    {
+      "id":           "automated-vs-manual-automated",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Automated vs Manual on month - automated",
+      "name":         "Automated",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": 0 },
+        { "label": "2016-06", "value": 0 },
+        { "label": "2016-07", "value": 0 },
+        { "label": "2016-08", "value": 0 },
+        { "label": "2016-09", "value": 0 },
+        { "label": "2016-10", "value": 0 },
+        { "label": "2016-11", "value": 0 },
+        { "label": "2016-12", "value": 0 },
+        { "label": "2017-01", "value": 0 }
+      ]
+    },
+    {
+      "id":           "automated-vs-manual-manual",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Automated vs Manual on month - manual",
+      "name":         "Manual",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": 1 },
+        { "label": "2016-06", "value": 1 },
+        { "label": "2016-07", "value": 3 },
+        { "label": "2016-08", "value": 6 },
+        { "label": "2016-09", "value": 6 },
+        { "label": "2016-10", "value": 6 },
+        { "label": "2016-11", "value": 6 },
+        { "label": "2016-12", "value": 6 },
+        { "label": "2017-01", "value": 6 }
+      ]
+    },
+    {
+      "id":           "traffic-sources-by-channel-direct",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "%",
+      "definition":   "Traffic sources by Channel on month - direct",
+      "name":         "Direct",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 64.8, "raw": 116, "rawTotal": 179 },
+        { "label": "2016-08", "value": 49.32, "raw": 618, "rawTotal": 1253 },
+        { "label": "2016-09", "value": 50.16, "raw": 631, "rawTotal": 1258 },
+        { "label": "2016-10", "value": 39.84, "raw": 559, "rawTotal": 1403 },
+        { "label": "2016-11", "value": 44.05, "raw": 585, "rawTotal": 1328 },
+        { "label": "2016-12", "value": 30.06, "raw": 410, "rawTotal": 1340 },
+        { "label": "2017-01", "value": 30, "raw": 365, "rawTotal": 1213 }
+      ]
+    },
+    {
+      "id":           "traffic-sources-by-channel-referral",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Traffic sources by Channel on month - referral",
+      "name":         "Referral",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 29.05, "raw": 52, "rawTotal": 179 },
+        { "label": "2016-08", "value": 38.07, "raw": 477, "rawTotal": 1253 },
+        { "label": "2016-09", "value": 37.51, "raw": 472, "rawTotal": 1258 },
+        { "label": "2016-10", "value": 36.64, "raw": 524, "rawTotal": 1403 },
+        { "label": "2016-11", "value": 34.49, "raw": 458, "rawTotal": 1328 },
+        { "label": "2016-12", "value": 49.40, "raw": 662, "rawTotal": 1340 },
+        { "label": "2017-01", "value": 41, "raw": 493, "rawTotal": 1213 }
+      ]
+    },
+    {
+      "id":           "traffic-sources-by-channel-organic",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Traffic sources by Channel on month - organic",
+      "name":         "Organic",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 4.47, "raw": 8, "rawTotal": 179 },
+        { "label": "2016-08", "value": 10.38, "raw": 130, "rawTotal": 1253 },
+        { "label": "2016-09", "value": 11.60, "raw": 146, "rawTotal": 1258 },
+        { "label": "2016-10", "value": 20.81, "raw": 292, "rawTotal": 1403 },
+        { "label": "2016-11", "value": 21.32, "raw": 282, "rawTotal": 1328 },
+        { "label": "2016-12", "value": 19.7, "raw": 264, "rawTotal": 1340 },
+        { "label": "2017-01", "value": 28, "raw": 343, "rawTotal": 1213 }
+      ]
+    },
+    {
+      "id":           "traffic-sources-by-channel-social",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Traffic sources by Channel on month - social",
+      "name":         "Social",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 1.68, "raw": 3, "rawTotal": 179 },
+        { "label": "2016-08", "value": 2.23, "raw": 28, "rawTotal": 1253 },
+        { "label": "2016-09", "value": 0.72, "raw": 9, "rawTotal": 1258 },
+        { "label": "2016-10", "value": 2, "raw": 28, "rawTotal": 1403 },
+        { "label": "2016-11", "value": 0.26, "raw": 3, "rawTotal": 1328 },
+        { "label": "2016-12", "value": 0.3, "raw": 4, "rawTotal": 1340 },
+        { "label": "2017-01", "value": 1, "raw": 12, "rawTotal": 1213 }
+      ]
+    },
+    {
+      "id":           "new-returning-new",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "New and returning users on month - new",
+      "name":         "New",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 113 },
+        { "label": "2016-08", "value": 767 },
+        { "label": "2016-09", "value": 727 },
+        { "label": "2016-10", "value": 814 },
+        { "label": "2016-11", "value": 816 },
+        { "label": "2016-12", "value": 945 },
+        { "label": "2017-01", "value": 783 }
+      ]
+    },
+    {
+      "id":           "new-returning-returning",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "New and returning users on month - returning",
+      "name":         "Returning",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 66 },
+        { "label": "2016-08", "value": 486 },
+        { "label": "2016-09", "value": 531 },
+        { "label": "2016-10", "value": 589 },
+        { "label": "2016-11", "value": 512 },
+        { "label": "2016-12", "value": 395 },
+        { "label": "2017-01", "value": 439 }
+      ]
+    },
+    {
+      "id":           "ddd-sessions-by-device-mobile",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Devices used - mobile",
+      "name":         "Mobile",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 36 },
+        { "label": "2016-08", "value": 124 },
+        { "label": "2016-09", "value": 127 },
+        { "label": "2016-10", "value": 213 },
+        { "label": "2016-11", "value": 240 },
+        { "label": "2016-12", "value": 234 },
+        { "label": "2017-01", "value": 183 }
+      ]
+    },
+    {
+      "id":           "ddd-sessions-by-device-tablet",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Devices used - tablet",
+      "name":         "Tablet",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 5 },
+        { "label": "2016-08", "value": 33 },
+        { "label": "2016-09", "value": 31 },
+        { "label": "2016-10", "value": 62 },
+        { "label": "2016-11", "value": 57 },
+        { "label": "2016-12", "value": 54 },
+        { "label": "2017-01", "value": 30 }
+      ]
+    },
+    {
+      "id":           "ddd-sessions-by-device-desktop",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Devices used - desktop",
+      "name":         "Desktop",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": 138 },
+        { "label": "2016-08", "value": 1096 },
+        { "label": "2016-09", "value": 1100 },
+        { "label": "2016-10", "value": 1128 },
+        { "label": "2016-11", "value": 1031 },
+        { "label": "2016-12", "value": 1052 },
+        { "label": "2017-01", "value": 1009 }
+      ]
+    },
+    {
+      "id":           "red-tape-reduction",
+      "recorded_at":  "2016-10-23T20:25:04Z",
+      "units":        "n",
+      "definition":   "Red tape reduction",
+      "name":         "Monthly reduction",
+      "note": "NEED TO CONTENT",
+      "data": [
+        { "label": "2016-05", "value": null },
+        { "label": "2016-06", "value": null },
+        { "label": "2016-07", "value": null },
+        { "label": "2016-08", "value": 6665.96 },
+        { "label": "2016-09", "value": 6692.56 },
+        { "label": "2016-10", "value": 7463.96 },
+        { "label": "2016-11", "value": 7064.96 },
+        { "label": "2016-12", "value": 7128.80 },
+        { "label": "2017-01", "value": 6501.04 }
+      ]
+    }
+  ]
+}

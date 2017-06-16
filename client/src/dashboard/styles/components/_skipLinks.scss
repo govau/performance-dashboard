@@ -1,0 +1,24 @@
+// todo - move to storybook
+
+.skip {
+  position: absolute;
+  z-index: 1000;
+  top: -1000px;
+  left: -1000px;
+  height: 1px;
+  width: 1px;
+  text-align: left;
+  overflow: hidden;
+  padding: 4px;
+}
+
+a.skip:active,
+a.skip:focus,
+a.skip:hover {
+  left: 0;
+  top: 0;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  background-color: yellow;
+}

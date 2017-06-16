@@ -1,0 +1,227 @@
+{
+    "version": "1",
+    "updated_at": "2016-07-01T01:01:01.111Z",
+    "name": "Australian Citizenship Appointment Booking Service",
+    "url": "https://appointments.border.gov.au/",
+    "agency": "DIBP",
+    "service": "https://appointments.border.gov.au/",
+    "description": "Australian Citizenship Appointment Booking Service Dashboard",
+    "notes": "",
+    "datasets": [{
+            "id": "user-satisfaction",
+            "recorded_at": "2016-11-09T01:01:01.111Z",
+            "units": "%",
+            "name": "User satisfaction",
+            "note": "",
+            "data": [
+                { "label": "2016-03", "value": 99 },
+                { "label": "2016-04", "value": 95 },
+                { "label": "2016-05", "value": 90 },
+                { "label": "2016-06", "value": 97 },
+                { "label": "2016-07", "value": 96 },
+                { "label": "2016-08", "value": 97 },
+                { "label": "2016-09", "value": 94 },
+                { "label": "2016-10", "value": 97 }
+            ]
+        }, {
+            "id": "cost-per-transaction",
+            "recorded_at": "2016-11-09T01:01:01.111Z",
+            "units": "$",
+            "name": "Cost per transaction",
+            "note": "",
+            "data": [
+              { "label": "2016-03", "value": null },
+              { "label": "2016-04", "value": null },
+              { "label": "2016-05", "value": null },
+              { "label": "2016-06", "value": null },
+              { "label": "2016-07", "value": null },
+              { "label": "2016-08", "value": null },
+              { "label": "2016-09", "value": null },
+              { "label": "2016-10", "value": null }
+            ]
+        }, {
+            "id": "completion-rate",
+            "recorded_at": "2016-11-09T01:01:01.111Z",
+            "units": "%",
+            "name": "Completion rate",
+            "note": "",
+            "data": [
+                { "label": "2016-03", "value": 94 },
+                { "label": "2016-04", "value": 92 },
+                { "label": "2016-05", "value": 97 },
+                { "label": "2016-06", "value": 98 },
+                { "label": "2016-07", "value": 99 },
+                { "label": "2016-08", "value": 99 },
+                { "label": "2016-09", "value": 100 },
+                { "label": "2016-10", "value": 100 }
+            ]
+        }, {
+            "id": "digital-take-up",
+            "recorded_at": "2016-11-09T01:01:01.111Z",
+            "units": "%",
+            "name": "Digital take-up",
+            "note": "",
+            "data": [
+                { "label": "2016-03", "value": 1.9 },
+                { "label": "2016-04", "value": 15 },
+                { "label": "2016-05", "value": 14 },
+                { "label": "2016-06", "value": 23 },
+                { "label": "2016-07", "value": 21.93 },
+                { "label": "2016-08", "value": 25 },
+                { "label": "2016-09", "value": 22 },
+                { "label": "2016-10", "value": 30 }
+            ]
+        },
+
+        {
+            "id": "device-type-01",
+            "label": "Mobile",
+            "name": "Device Usage - Mobile",
+            "recorded_at": "2016-11-09T01:01:01.111Z",
+            "units": "i",
+            "note": "note for this dataset",
+            "data": [
+                { "label": "2016-03", "value": 43 },
+                { "label": "2016-04", "value": 48 },
+                { "label": "2016-05", "value": 47 },
+                { "label": "2016-06", "value": 49 },
+                { "label": "2016-07", "value": 50 },
+                { "label": "2016-08", "value": 51 },
+                { "label": "2016-09", "value": 54 },
+                { "label": "2016-10", "value": 55 }
+            ]
+        }, {
+            "id": "device-type-02",
+            "label": "Tablet",
+            "name": "Device Usage - Tablet",
+            "recorded_at": "2016-11-09T01:01:01.111Z",
+            "units": "i",
+            "note": "note for this dataset",
+            "data": [
+                { "label": "2016-03", "value": 6 },
+                { "label": "2016-04", "value": 6 },
+                { "label": "2016-05", "value": 6 },
+                { "label": "2016-06", "value": 2 },
+                { "label": "2016-07", "value": 3 },
+                { "label": "2016-08", "value": 5 },
+                { "label": "2016-09", "value": 5 },
+                { "label": "2016-10", "value": 5 }
+            ]
+        },
+
+        {
+            "id": "device-type-03",
+            "label": "Desktop",
+            "name": "Device Usage - Desktop",
+            "recorded_at": "2016-11-09T01:01:01.111Z",
+            "units": "i",
+            "note": "note for this dataset",
+            "data": [
+                { "label": "2016-03", "value": 51 },
+                { "label": "2016-04", "value": 46 },
+                { "label": "2016-05", "value": 47 },
+                { "label": "2016-06", "value": 49 },
+                { "label": "2016-07", "value": 47 },
+                { "label": "2016-08", "value": 44 },
+                { "label": "2016-09", "value": 41 },
+                { "label": "2016-10", "value": 40 }
+            ]
+        },
+
+        {
+            "id": "browser-usage-chrome",
+            "label": "Chrome",
+            "name": "Browser Usage - Chrome",
+            "recorded_at": "2016-11-09T01:01:01.111Z",
+            "units": "i",
+            "note": "note for this dataset",
+            "data": [
+                { "label": "2016-03", "value": 16 },
+                { "label": "2016-04", "value": 15 },
+                { "label": "2016-05", "value": 17 },
+                { "label": "2016-06", "value": 16 },
+                { "label": "2016-07", "value": 17 },
+                { "label": "2016-08", "value": 18 },
+                { "label": "2016-09", "value": 20 },
+                { "label": "2016-10", "value": 17 }
+            ]
+        },
+
+        {
+            "id": "browser-usage-safari",
+            "label": "Safari",
+            "name": "Browser Usage - Safari",
+            "recorded_at": "2016-11-09T01:01:01.111Z",
+            "units": "i",
+            "note": "note for this dataset",
+            "data": [
+                { "label": "2016-03", "value": 34 },
+                { "label": "2016-04", "value": 41 },
+                { "label": "2016-05", "value": 38 },
+                { "label": "2016-06", "value": 37 },
+                { "label": "2016-07", "value": 37 },
+                { "label": "2016-08", "value": 47 },
+                { "label": "2016-09", "value": 50 },
+                { "label": "2016-10", "value": 52 }
+            ]
+        },
+
+        {
+            "id": "browser-usage-mozilla",
+            "label": "Firefox",
+            "name": "Browser Usage - Firefox",
+            "recorded_at": "2016-11-09T01:01:01.111Z",
+            "units": "i",
+            "note": "note for this dataset",
+            "data": [
+                { "label": "2016-03", "value": 23 },
+                { "label": "2016-04", "value": 28 },
+                { "label": "2016-05", "value": 28 },
+                { "label": "2016-06", "value": 30 },
+                { "label": "2016-07", "value": 29 },
+                { "label": "2016-08", "value": 26 },
+                { "label": "2016-09", "value": 22 },
+                { "label": "2016-10", "value": 22 }
+            ]
+        },
+
+        {
+            "id": "browser-usage-IE",
+            "label": "Internet Explorer",
+            "name": "Browser Usage - Internet Explorer",
+            "recorded_at": "2016-11-09T01:01:01.111Z",
+            "units": "i",
+            "note": "note for this dataset",
+            "data": [
+                { "label": "2016-03", "value": 16 },
+                { "label": "2016-04", "value": 6 },
+                { "label": "2016-05", "value": 6 },
+                { "label": "2016-06", "value": 6 },
+                { "label": "2016-07", "value": 6 },
+                { "label": "2016-08", "value": 5 },
+                { "label": "2016-09", "value": 5 },
+                { "label": "2016-10", "value": 5 }
+            ]
+        },
+
+        {
+            "id": "browser-usage-other",
+            "label": "Other",
+            "name": "Browser Usage - Other",
+            "recorded_at": "2016-11-09T01:01:01.111Z",
+            "units": "i",
+            "note": "note for this dataset",
+            "data": [
+                { "label": "2016-03", "value": 11 },
+                { "label": "2016-04", "value": 10 },
+                { "label": "2016-05", "value": 11 },
+                { "label": "2016-06", "value": 11 },
+                { "label": "2016-07", "value": 11 },
+                { "label": "2016-08", "value": 4 },
+                { "label": "2016-09", "value": 3 },
+                { "label": "2016-10", "value": 4 }
+            ]
+        }
+
+    ]
+}

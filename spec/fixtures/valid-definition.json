@@ -1,0 +1,119 @@
+{
+  "name":         "Australian Citizenship Appointment Booking Service",
+  "agency":       "DIBP",
+  "description":  "Description",
+  "target_users": "Users",
+  "widgets":  [
+    {
+      "id":   "user-satisfaction",
+      "updated_at": "2016-11-09T01:01:01.111Z",
+      "name": "User satisfaction",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "description": "Overall satisfaction score includes all ratings weighted from 100% for very satisfied to 0% for very dissatisfied",
+      "datasets": ["user-satisfaction"]
+    },
+    {
+      "id":   "cost-per-transaction",
+      "updated_at": "2016-11-09T01:01:01.111Z",
+      "name": "Cost per transaction",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "$",
+      "datasets": ["cost-per-transaction"]
+    },
+    {
+      "id":   "digital-take-up",
+      "updated_at": "2016-11-09T01:01:01.111Z",
+      "name": "Digital take-up",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "datasets": ["digital-take-up"]
+    },
+    {
+      "id":   "completion-rate",
+      "updated_at": "2016-11-09T01:01:01.111Z",
+      "name": "Completion rate",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "description": "Percentage of transactions made using the digital service.",
+      "datasets": ["completion-rate"]
+    },
+    {
+      "id":   "device-usage",
+      "updated_at": "2016-11-09T01:01:01.111Z",
+      "name": "Devices used by users",
+      "type": "bar",
+      "size": "medium",
+      "stacking": "percentage",
+      "units": "%",
+      "displayRoundedData" : true,
+      "definition":"This shows the types of devices used by users to access the appointment booking service.",
+      "datasets": ["device-type-01", "device-type-02", "device-type-03"]
+    },
+    {
+      "id":   "browser-type",
+      "updated_at": "2016-11-09T01:01:01.111Z",
+      "name": "Browsers used by users",
+      "type": "bar",
+      "stacking": "percentage",
+      "size": "medium",
+      "units": "%",
+      "displayRoundedData" : true,
+      "definition":"This shows the types of browsers used by users to access the appointment booking service.",
+      "datasets": ["browser-usage-chrome","browser-usage-safari", "browser-usage-mozilla","browser-usage-IE", "browser-usage-other"]
+    },
+    {
+      "id":   "fact-2",
+      "updated_at": "2016-11-09T01:01:01.111Z",
+      "name": "Fact",
+      "type": "fact",
+      "size": "medium",
+      "units": "n",
+      "description": "Prior to the digital transformation clients could only reschedule a citizenship test appointment to a more suitable time by calling the Department."
+    },
+    {
+      "id":   "fact-1",
+      "updated_at": "2016-11-09T01:01:01.111Z",
+      "name": "Fact",
+      "type": "fact",
+      "size": "medium",
+      "units": "n",
+      "description": "The Appointment Booking Service was developed to replace the Department’s existing booking system. User research found that users wanted a more efficient and effective way to reschedule their citizenship test appointment to a time and/or day that better suited them. "
+    },
+    {
+      "id":   "kpis",
+      "updated_at": "2016-11-09T01:01:01.111Z",
+      "name": "Kpis",
+      "type": "full",
+      "size": "extra-large",
+      "units": "n",
+      "is_hero": true,
+      "datasets": ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"]
+    }
+  ],
+  "notes": [
+    { "title":  "Where is this information from?",
+      "body":   "Department of Immigration and Border Protection." },
+    { "title":  "What is Australian Citizenship Appointment Booking Service?",
+      "body":   "The Australian Citizenship Appointment Booking Service makes it quicker, easier and more convenient for users to reschedule a citizenship test appointment. Prior to the introduction of the online service, users were only able to change their appointment by calling the Department. The public beta release of the service is currently available in Melbourne, Victoria." },
+    { "title":  "User satisfaction",
+      "body":   "User satisfaction measures the percentage of users who responded \"satisfied\" and \"very satisfied\" with the appointment booking service using the feedback kiosks located in the Department’s citizenship areas." },
+    { "title":  "Cost per transaction",
+      "body":   "This data is not available." },
+    { "title":  "Digital take-up",
+      "body":   "Digital take-up measures the number of users who had an appointment booked using the new service as a percentage of all appointments that have been made Australia-wide." },
+    { "title":  "Completion rate",
+      "body":   "Completion rate measures the number of users who were able to use the digital service without having to contact the Department for assistance when rescheduling their appointment." }
+  ],
+  "url": "https://www.border.gov.au/",
+  "layout":   [
+    ["kpis"],
+    ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"],
+    ["fact-1", "device-usage"],
+    ["browser-type","fact-2"]
+  ]
+}

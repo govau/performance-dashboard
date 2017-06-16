@@ -1,0 +1,18 @@
+<h1>Enter the code from your authenticator app</h1>
+<%= render partial: 'alert', locals: { alert_type: 'success', message: flash[:notice] } %>
+<p>A 6-digit code has been set up in your <strong>Google Authenticator app</strong>.</p>
+
+<div class="authenticator-app-image card mb-1">
+  <div class="card-block">
+    <img src="<%= getPublicImageSrc('google-authenticator-app.png') %>" width="100" height="100">
+  </div>
+</div>
+
+<p>Enter the code in the box below and then click <strong>Verify</strong>.</p>
+
+<%= form_tag([resource_name, :two_factor_authentication], :method => :put, :autocomplete => :off) do %>
+<%= label_tag 'code', 'Enter the 6-digit code' %>
+  <%= text_field_tag :code %>
+  <%= submit_tag 'Verify', class:'verify', role: :button %>
+<% end %>
+<%= link_to "Sign out", destroy_user_session_path, :method => :delete %>

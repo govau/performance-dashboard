@@ -1,0 +1,67 @@
+.traffic-light {
+  text-transform: uppercase;
+  font-size: $font-size-xs;
+
+  &__top,
+  &__bottom {
+    @include clearfix;
+    display: block;
+    width: 100%;
+
+    @media (min-width: $screen-sm) {
+      text-align: right;
+    }
+  }
+
+  &__top {
+    @media (min-width: $screen-sm) {
+      margin-bottom: 6px;
+    }
+  }
+
+  &__bottom__left {
+    float:left;
+    margin-right: 1em;
+  }
+  &__bottom__right {
+    float: right;
+  }
+
+  time {
+    @include strong;
+  }
+
+  .status-label {
+    @include strong;
+  }
+
+  .status-key-group {
+    position: relative;
+  }
+
+  .status-label {
+    position: absolute;
+    top: -6px;
+  }
+
+  @media (min-width: $screen-sm) {
+    .status-label {
+      position: static; // reset
+    }
+    .status-key {
+      position: absolute;
+      right: 100%;
+      top: -3px;
+    }
+  }
+
+  .status-label {
+    white-space: nowrap;
+  }
+
+  .status-key {
+    svg {
+      margin-right: 3px;
+    }
+  }
+}

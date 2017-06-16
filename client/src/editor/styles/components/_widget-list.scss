@@ -1,0 +1,53 @@
+.widget-list__item {
+
+  header {
+    @include clearfix;
+    margin-bottom: $spacer-y;
+  }
+
+  .ctas {
+    a {
+      margin-bottom: 1.2em;
+    }
+  }
+
+  .preview {
+    padding: $spacer*.75 $spacer*.75+.2;
+    @media (min-width:$screen-sm) {
+      padding: $spacer $spacer+.2;
+    }
+    background-color: $DB-color-heading-bg;
+  }
+
+  .most-recent-text {
+    font-size: $font-size-xs;
+    text-transform: uppercase;
+  }
+
+  .preview-table {
+    display: table;
+    width: 100%;
+
+    margin-bottom: .5em;
+    @media (min-width:$screen-sm) {
+      margin-bottom: 1em;
+    }
+
+    .key,
+    .description,
+    .value {
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    .key {
+      width: 32px;
+      padding-top: 2px;
+    }
+
+    .value {
+      text-align: right;
+      font-weight: $DB-font-weight-bold;
+    }
+  }
+}

@@ -1,0 +1,5 @@
+<div class="container">
+  <%= render partial: 'alert', locals: { alert_type: 'success', message: 'Thanks. Your account has been created and verified. You are now signed in.' } %>
+
+  <p><%= link_to 'Continue to the Editor', editor_path, role: :button %></p>
+</div>

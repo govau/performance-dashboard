@@ -1,0 +1,93 @@
+@import './_vendor/gov-au-ui-kit/utils/colours';
+@import './_vendor/gov-au-ui-kit/variables';
+
+
+/**
+ *
+ */
+$dashboard-constants: (
+
+  // color palette
+
+  COLOR_CERULEAN: #0579c7,
+  COLOR_PALE_BLUE: #e6fafc,
+
+  COLOR_LIGHT_GREY_LIGHTEST: #ccc,
+  COLOR_LIGHT_GREY: #717171,
+
+  COLOR_GROUP_LEGEND_A: #cf7e33,
+  COLOR_GROUP_LEGEND_B: #7e985c,
+  COLOR_GROUP_LEGEND_C: #007cc3,
+  COLOR_GROUP_LEGEND_D: #6e63a7,
+  COLOR_GROUP_LEGEND_E: #40bdac,
+
+  COLOR_SUCCESS: $UIKIT_180_green,
+  COLOR_ERROR: $UIKIT_180_red,
+  COLOR_INFO: $UIKIT_180_blue,
+  COLOR_WARNING: $UIKIT_180_yellow,
+
+  FONT_FAMILY_SERIF: $UIKIT_180_base-serif,
+  FONT_FAMILY_SANS_SERIF: $UIKIT_180_base-sans-serif,
+  FONT_FAMILY_MONOSPACE: $UIKIT_180_base-monospace,
+
+  FONT_WEIGHT_LIGHT: 300,
+  FONT_WEIGHT_REGULAR: 400,
+  FONT_WEIGHT_SEMI_BOLD: 600,
+  FONT_WEIGHT_BOLD: 700,
+
+  // breakpoints
+  SCREEN_MIN: 320px
+);
+
+/**
+  * Accessor for Application constants.
+  * @usage:
+    var-get('color_header_bg');
+  *
+ */
+@function get($const) {
+  @return map-get($dashboard-constants, $const)
+}
+
+
+
+/**
+ *
+ * EXPORTS
+ *
+ */
+
+$color-brand-primary: $UIKIT_180_aqua;
+$color-brand-supp: #00a1bb !default;
+$color-line-border: #ccc !default;
+
+$color-user-satisfaction: get(COLOR_GROUP_LEGEND_A);
+$color-cost-per-transaction: get(COLOR_GROUP_LEGEND_B);
+$color-digital-take-up: get(COLOR_GROUP_LEGEND_C);
+$color-completion-rate: get(COLOR_GROUP_LEGEND_D);
+
+// todo - deprecate
+$color-is-success: get(COLOR_SUCCESS);
+$color-is-error: get(COLOR_ERROR);
+$color-is-info: get(COLOR_INFO);
+$color-is-warning: get(COLOR_WARNING);
+
+$DB-color-success: $color-is-success;
+$DB-color-error: $color-is-error;
+$DB-color-info: $color-is-info;
+$DB-color-warning: $color-is-warning;
+
+$DB-color-body-bg: $UIKIT_180_background-colour;
+$DB-color-body-text: $UIKIT_180_body-text-colour;
+$DB-color-body-text-grey: get(COLOR_LIGHT_GREY);
+$DB-color-heading-bg: get(COLOR_PALE_BLUE);
+$DB-color-grey-border: get(COLOR_LIGHT_GREY_LIGHTEST);
+
+$DB-font-weight-light: get(FONT_WEIGHT_LIGHT);
+$DB-font-weight-regular: get(FONT_WEIGHT_REGULAR);
+$DB-font-weight-semi-bold: get(FONT_WEIGHT_SEMI_BOLD);
+$DB-font-weight-bold: get(FONT_WEIGHT_BOLD);
+
+$DB-font-family-serif: $UIKIT_180_base-serif;
+$DB-font-family-sans-serif: $UIKIT_180_base-sans-serif;
+$DB-font-family-monospace: $UIKIT_180_base-monospace;

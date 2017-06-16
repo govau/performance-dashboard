@@ -1,0 +1,127 @@
+svg:not(:root) {
+  display: block;
+  overflow: visible;
+}
+
+.patterns {
+  position: absolute;
+  left: -1000px;
+}
+
+// scss-lint:disable all
+.line-group {
+  fill: none;
+
+
+  circle {
+    fill-opacity: 0 !important;
+    stroke-width: 0;
+
+    &.is-hover {
+      fill: $white;
+      stroke-width: 1px;
+      fill-opacity: 1 !important;
+    }
+
+    &.is-null {
+      stroke-width: 0;
+    }
+  }
+}
+// scss-lint:enable all
+
+.layer--bottom {
+  rect {
+    fill: none;
+
+    &.empty {
+      fill: url('#diagonal-stripe-1');
+      fill-opacity: 0.3;
+    }
+  }
+}
+
+.axis {
+  path,
+  line {
+    fill: none;
+    stroke: $axis-stroke-colour;
+    stroke-width: 1px;
+  }
+}
+
+.line {
+  fill: none;
+  stroke-width: 4px;
+  stroke-linecap: round;
+  stroke-linejoin: bevel;
+}
+
+.sparkline {
+  .line {
+    stroke-width: 4px;
+  }
+
+  .ruler-wrapper {
+    display: none;
+  }
+
+  circle {
+    &.is-hover {
+      stroke-width: 2px;
+
+      &.is-null {
+        stroke-width: 0;
+      }
+    }
+  }
+}
+
+.tick {
+  text {
+    font-size: 12px;
+    fill: $secondary-text-colour;
+  }
+
+  line {
+    display: none;
+  }
+}
+
+.y {
+  &.axis {
+    .domain {
+      display: none;
+    }
+  }
+}
+
+.hero {
+  .line-group {
+    path,
+    line {
+      stroke-opacity: 0.7;
+      shape-rendering: inherit;
+      stroke-linecap: round;
+    }
+  }
+}
+
+
+
+.ruler-wrapper {
+  text {
+    display: none;
+  }
+
+  &.is-hover {
+    .ruler {
+      stroke-width: 1px;
+    }
+
+    text {
+      display: block;
+      fill: $back-link-colour;
+    }
+  }
+}

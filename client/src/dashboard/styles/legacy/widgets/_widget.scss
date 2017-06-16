@@ -1,0 +1,406 @@
+.widget__definition--title {
+  cursor: pointer;
+  color: $link-colour;
+  position: relative;
+  border-bottom: 1px solid $brand-primary-colour;
+
+  &:hover {
+    color: $link-hover-colour;
+  }
+
+  &::after {
+    visibility: hidden;
+    content: '\f0de';
+    font-family: 'fontawesome';
+    text-decoration: none;
+    position: absolute;
+    font-size: 30px;
+    line-height: 0;
+    color: $charcoal-grey;
+    bottom: -10px;
+    left: 50%;
+  }
+}
+
+// the "what is this" tooltip
+.widget__definition--content {
+  z-index: 99;
+  position: absolute;
+  max-width: calc(100% - 30px);
+  padding: 5px 15px;
+  visibility: hidden;
+
+  .widget__definition--content__inner {
+    background: $charcoal-grey;
+    color: $white;
+    border-radius: 1px;
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .dashboard__kpis &,
+  .fact & {
+    display: none;
+  }
+}
+
+.widget__definition {
+  &.is-open {
+    .widget__definition--title {
+      &::after {
+        visibility: visible;
+      }
+    }
+
+    .widget__definition--content {
+      visibility: visible;
+    }
+  }
+}
+
+
+
+.widget {
+  position: relative;
+
+  .widget__data {
+    @extend .sr-only;
+  }
+
+  .widget__inner {
+    position: relative;
+  }
+
+  &.widget-text {
+    min-height: 170px;
+
+    @include media($screen-sm) {
+      height: auto;
+    }
+  }
+
+  .widget__title {
+    h3 {
+      margin-top: 0;
+      margin-bottom: 4px;
+    }
+
+    .widget__last-updated,
+    .widget__definition,
+    .widget__data-source {
+      font-size: 0.875 * $fallback;
+      font-size: 0.875rem;
+      font-weight: 300;
+      margin-bottom: 0;
+    }
+
+    .widget__data-source {
+      display: inline-block;
+    }
+
+    .info {
+      display: inline-block;
+      vertical-align: top;
+      padding-left: 5px;
+
+      .dashboard__secondary & {
+        display: none;
+      }
+    }
+
+    @media screen and(max-width: $screen-sm) {
+      a:first-of-type {
+        padding-left: 0;
+        border-left: none;
+      }
+    }
+  }
+
+  .widget__last-updated {
+    color: $secondary-text-colour;
+  }
+}
+
+.fact {
+  .widget__title {
+    margin-bottom: 0;
+    display: none;
+  }
+
+  .widget__inner {
+    padding-top: 0;
+    margin-top: 0 !important;
+    height:100%;
+  }
+}
+
+
+.no-js {
+  .widget__definition {
+    a {
+      display: none;
+    }
+
+    .widget__definition--content {
+      display: block;
+      visibility: visible;
+      position: relative;
+      max-width: 100%;
+      padding: 0;
+    }
+  }
+}
+
+.widget__note {
+  position: absolute;
+  top: 0;
+  z-index: 9;
+  font-size: 0.875 * $fallback;
+  font-size: 0.875rem;
+  font-weight: 300;
+  display: inline-block;
+  text-align: left;
+
+  .fa {
+    color: $brand-colour;
+    vertical-align: top;
+    padding-left: 8px;
+  }
+
+  .widget__note__content {
+    visibility: visible;
+    opacity: 0.95;
+    display: block;
+    position: absolute;
+    background: $white;
+    box-shadow: $widget-note-box-shadow;
+    width: $note-width;
+    right: 0;
+
+    &::before {
+      transform: rotate(45deg);
+      content: '';
+      width: 14px;
+      height: 14px;
+      background: $white;
+      position: absolute;
+      right: 3px;
+      top: -5px;
+      border-top: 1px solid $pale-grey;
+      border-left: 1px solid $pale-grey;
+    }
+
+    @include media($screen-sm) {
+      top: 0;
+      left: 30px;
+      right: 0;
+
+      &::before {
+        transform: rotate(45deg);
+        left: -8px;
+        top: 5px;
+      }
+    }
+  }
+
+  .sparkline & {
+    top: 20px;
+
+    @include media($screen-sm) {
+      top: 30px;
+    }
+
+    .widget__note__content {
+      top: 20px;
+      right: 0;
+
+      &::before {
+        transform: rotate(45deg);
+
+        left: $note-width - 15;
+        top: -8px;
+      }
+
+      @include media($screen-sm) {
+        left: -$note-width / 2;
+
+        &::before {
+          left: $note-width / 2 + 10;
+          top: -8px;
+        }
+      }
+    }
+  }
+
+  &.is-closed {
+    .widget__note__content {
+      visibility: hidden;
+      opacity: 0;
+      transition: all 0.25s ease-in;
+    }
+  }
+}
+
+.fancy-tooltip {
+  .date {
+    color: $secondary-text-colour;
+  }
+}
+
+.widget-text {
+  dt {
+    font-weight: 600;
+  }
+
+  dd {
+    margin-bottom: $gutter / 2;
+  }
+
+  .department {
+    font-weight: 600;
+  }
+
+  .widget__title {
+    padding: 0;
+  }
+
+  .widget-text__footer {
+    text-align: left;
+
+    @include media($screen-sm +1) {
+      text-align: right;
+    }
+
+    a {
+      font-weight: 600;
+      .fa {
+        padding-left: 5px;
+      }
+    }
+  }
+}
+
+.missing-data {
+  color: $missing-data-colour;
+}
+
+@each $metric, $color in $metrics {
+  &.#{$metric} {
+    .widget__title {
+      border-bottom: 2px solid $color;
+    }
+
+    .fa-circle {
+      color: $color;
+    }
+  }
+
+  .dashboard__kpis {
+    .widget {
+      &.#{$metric} {
+        .widget__title::before {
+          content: '\f111';
+          font-family: 'fontawesome';
+          padding-right: 10px;
+          color: $color;
+
+          @include media($screen-sm) {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+.meta-group {
+  display: inline-block;
+}
+
+.legend {
+  padding-bottom: 5px;
+
+  table {
+    width: 100%;
+    font-size: 0.9 * $fallback;
+    font-size: 0.9rem;
+  }
+
+  th {
+    font-weight: 400;
+    text-align: left;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 88px;  // todo - improve magical numbers - charts can grow taller if legends go over 2 lines
+    overflow: hidden;
+    position: relative;
+  }
+
+  td {
+    text-align: right;
+    font-weight: 600;
+  }
+}
+
+.dashboard__secondary {
+  .widget__inner {
+    .chart {
+      height: 200px;
+    }
+
+    @media screen and (min-width: $screen-md) {
+      .sparkline__inner {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    &.single {
+
+      th {
+        vertical-align: bottom;
+        max-width: 150px;
+      }
+
+      td {
+        line-height: 1;
+
+        @media screen and (min-width: $screen-sm) {
+          font-size: 2.75 * $fallback;
+          font-size: 1.7rem;
+          font-weight: 300;
+        }
+
+        @media screen and (min-width: $screen-md) {
+          text-align: left;
+        }
+      }
+    }
+  }
+}
+
+.widget__title {
+  svg {
+    display: none;
+
+    .is-high-contrast & {
+      display: inline-block;
+      margin-right: 5px;
+    }
+
+    @media screen and (min-width: $screen-sm) {
+      display: none;
+    }
+  }
+}
+
+.is-high-contrast {
+  .dashboard__kpis {
+    .widget {
+      .widget__title::before {
+        display: none;
+      }
+    }
+  }
+}
+

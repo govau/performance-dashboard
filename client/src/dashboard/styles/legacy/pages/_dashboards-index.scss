@@ -1,0 +1,170 @@
+.dashboards_index {
+
+  .metric-link {
+    margin-left: 15px;
+    margin-right: 15px;
+    clear:both;
+    padding-bottom: 15px;
+    text-align: center;
+    border-bottom: 1px solid $axis-stroke-colour;
+
+    a {
+      color: $brand-primary-colour;
+      margin: 10px 0 8px 0;
+      font-weight: 700;
+      border-bottom: 0;
+      text-decoration: underline;
+
+      &:hover {
+        color: $white;
+      }
+
+      @media(max-width: $screen-sm) {
+        margin-left: -15px;
+      }
+    }
+  }
+
+  .metric-definitions {
+    margin-right: 0 !important;
+    margin-bottom: 37px;
+
+    &.col-md-8.col-sm-12 {
+      padding-left: 0px;
+      padding-right: 0px;
+    }
+
+    @media(max-width: $screen-sm) {
+      margin-top: 30px;
+      margin-bottom: 0;
+    }
+
+    @media(max-width: $screen-md) {
+      margin-top: 15px;
+      margin-bottom: 0;
+    }
+  }
+
+  h1 {
+    margin-top: 30px;
+    margin-bottom: 10px;
+  }
+
+  .metric-definitions__metric {
+    p {
+      padding-top:9px;
+      font-size: 14px;
+      font-size: 0.875rem;
+    }
+
+    .widget__title {
+      line-height: 1.2;
+    }
+
+    @media(max-width: $screen-sm) {
+      margin-bottom: 15px;
+
+      p {
+        padding-top:4px;
+        font-size: 13px;
+      }
+    }
+
+    h4 {
+      margin-top: 0;
+      margin-bottom:0;
+      height:35px;
+      font-weight:600;
+    }
+  }
+
+  .dashboards-intro {
+    clear: both;
+    margin-bottom: 40px;
+
+    @media(max-width: $screen-md) {
+      margin-bottom: 15px;
+      padding-top: 8px;
+    }
+
+    @media(max-width: 768px) {
+     margin: 0;
+   }
+
+   p:first-child {
+     margin-bottom: 0;
+   }
+  }
+
+  @media(min-width: $screen-sm){
+    h1 {
+      margin-top: 50px;
+      margin-bottom: 40px;
+    }
+  }
+
+  .metrics {
+    .metric-overview {
+      p {
+        font-weight: 600;
+      }
+    }
+
+    h2 {
+      margin-top: 0;
+      margin-bottom: 0;
+      height: 35px;
+      font-size: 1rem;
+    }
+  }
+
+  .dashboards-intro-sec {
+    color: $charcoal-grey;
+
+    @media(max-width: $screen-sm) {
+      padding-left:0;
+      margin-top: 30px;
+
+      .media {
+        height: auto;
+        float: left;
+
+        @media (max-width: $screen-sm){
+          margin-right: 15px;
+          margin-left: 15px;
+          margin-bottom: 30px;
+        }
+      }
+    }
+
+    @media(min-width: 769px) {
+      .media {
+        float:right;
+      }
+
+      .media-body {
+        width: auto;
+      }
+    }
+
+    .number-of-dashboards {
+      font-size: 80px;
+      line-height:1;
+      font-weight: bold;
+
+      @media(max-width: $screen-sm) {
+        float: left;
+      }
+    }
+
+    span:not(.number-of-dashboards) {
+      font-size: 30px;
+      line-height: 36px;
+      justify-content: flex-end;
+
+      @media(max-width: $screen-sm) {
+        float: none;
+      }
+    }
+  }
+}

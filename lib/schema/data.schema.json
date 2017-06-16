@@ -1,0 +1,128 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Draft Format for describing data for dashboards",
+  "name": "Dashboard Data",
+  "definitions": {
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time",
+      "name": "recorded_at",
+      "description": "The datetime the measurement was recorded. JSON datetime format (YY-MM-DDTHH:MM:SS.sssZ)."
+    },
+    "tags": {
+      "type": "array",
+      "name": "tags",
+      "description": "An array of arbitrary tags.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "data": {
+      "type": "object",
+      "minProperties": 1,
+      "properties": {
+        "label": { "type": "string" },
+        "value": { "type": ["number", "null"] }
+      },
+      "required": ["label", "value"]
+    },
+    "annotation": {
+      "type": "object",
+      "description": "A single annotation for a data set",
+      "minProperties": 1,
+      "properties": {
+        "label": { "type": "string" },
+        "value": { "type": "string" }
+      },
+      "required": ["label", "value"]
+    },
+    "benchmark": {
+      "type": "object",
+      "name": "Benchmark",
+      "description": "A benchmark for referencing",
+      "minProperties": 1,
+      "properties": {
+        "value": { "type": "number" },
+        "effective_at": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["value", "effective_at"]
+    },
+    "units": {
+      "type": "string",
+      "enum": ["$","%","n","i","f"]
+    },
+    "metric": {
+      "type": "object",
+      "name": "metric",
+      "properties": {
+        "id":           {
+          "type":     "string",
+          "pattern": "^[\\w\\-.]+$"
+        },
+        "recorded_at":  { "$ref": "#/definitions/recorded_at" },
+        "units":        { "$ref": "#/definitions/units" },
+        "name":         { "type": "string" },
+        "notes":        { "type": "string" },
+        "data":         {
+          "type": [ "array", "null" ],
+          "items": { "$ref": "#/definitions/data" }
+        },
+        "annotations":  {
+          "type": "array",
+          "items": { "$ref": "#/definitions/annotation" }
+        }
+      },
+      "required": ["id", "recorded_at", "name"]
+    }
+  },
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "The version of the dashboard schema to be used",
+      "enum": ["1"]
+    },
+    "namespace": {
+      "type": "string",
+      "description": "A unique namespace for the data. Generally a domain or provided as part of the onboarding"
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The datetime the document was updated. JSON datetime format (YY-MM-DDTHH:MM:SS.sssZ).",
+      "name": "updated_at"
+    },
+    "agency": {
+      "type": "string",
+      "description": "The name of the agency who owns the data.",
+      "name": "agency"
+    },
+    "service": {
+      "type": "string",
+      "description": "The name of the service.",
+      "name": "Service"
+    },
+    "datasets": {
+      "type": "array",
+      "description": "An array of service metrics.",
+      "name": "metric",
+      "items": {
+        "oneOf": [
+          { "$ref": "#/definitions/metric" }
+        ]
+      }
+    },
+    "notes": {
+      "type": "string",
+      "description": "Notes or annotations regarding the data",
+      "name": "Notes"
+    }
+  },
+  "required": [
+    "version",
+    "updated_at",
+    "datasets"
+  ]
+}

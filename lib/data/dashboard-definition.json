@@ -1,0 +1,253 @@
+{
+  "name":         "Performance Dashboard Dashboard",
+  "url":          "https://dashboard.gov.au/",
+  "agency":       "DTA",
+  "description":  "NEED TO CONTENT",
+  "target_users": "Users",
+  "notes": [
+    { "title": "Where is this information from?",
+      "body": "The Digital Transformation Agency (DTA)" },
+    { "title": "What is the Performance Dashboard?",
+      "body": "The Performance Dashboard shows how government services are performing. Government services are required to publish 4 key performance indicators (KPIs) on the Performance Dashboard. These KPIs are cost per transaction, user satisfaction, digital take-up and completion rate." },
+    { "title": "Who are the users of the Performance Dashboard?",
+      "body": "The Performance Dashboard’s users are anyone with an interest in how government services are performing, including the general public. Our vision is to drive the continuous improvement of government services, so our primary users are likely to include:",
+      "list": [
+        "service managers — senior executives in government who can make decisions on service improvement",
+        "digital transformation champions — people who lead a digital shift in government agencies",
+        "digital transformation teams — government agency staff who have embarked on the transformation process"] },
+    { "title": "User satisfaction",
+      "body": "User satisfaction measures the percentage of users who responded “satisfied” or “very satisfied” in our feedback survey. This figure is not yet statistically significant because of the low number of feedback responses received. We have an average population size of 900 users visiting the Performance Dashboard each month. In order to achieve a 90% confidence level in the feedback received, allowing for a 20% margin of error, we have determined that the minimum required sample size is 17 responses in the month.  We are determining the best way to encourage more feedback from our users." },
+    { "title": "Confidence level",
+      "body": "A measure of how certain you are that your sample accurately reflects the population, within its margin of error. Common standards used by researchers are 90%, 95%, and 99%." },
+    { "title": "Margin of error",
+      "body": "A percentage that describes how closely the answer your sample gave is to the “true value” that your population would provide. The smaller the margin of error is, the closer you are to having the exact answer, at a given confidence level." },
+    { "title": "Cost per transaction",
+      "body": "Cost per transaction measures the costs of delivering a service for each time a user views the Performance Dashboard. It is calculated by determining the labour costs, including training, travel and other overheads, for the reporting period. (It does not include items such as product development and administration.) This figure is then divided by the number of sessions as recorded by Google Analytics for dashboard.gov.au. The result is an average cost per transaction for the reporting period. Over time, as more users view the dashboard, we expect this figure to come down. As we release self-service features, we anticipate this figure will come down." },
+    { "title": "Digital take-up",
+      "body": "Digital take-up measures the percentage of services in public beta or live phases that have published a service dashboard to the Performance Dashboard. When a service enters public beta, it is required to publish its performance data on the dashboard. Digital take-up shows how many services have done this." },
+    { "title": "Completion rate",
+      "body": "Completion rate measures the percentage of users who view Dashboard.gov.au and who then go on to view one or more service dashboards. For example, some users may only view the Dashboard.gov.au home page. Other users may then view a service dashboard. When users do this, we consider it a successful completion." },
+    { "title": "Red tape reduction",
+      "body": "The Red Tape Reduction figure is calculated in accordance with guidance from the Department of the Prime Minister and Cabinet. It calculates a dollar figure based on the amount of time that is saved by businesses or individuals through government improving its services." }
+  ],
+  "widgets":  [
+    {
+      "id":   "kpis",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "Kpis",
+      "type": "full",
+      "size": "extra-large",
+      "units": "n",
+      "is_hero": true,
+      "datasets": ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"]
+    },
+    {
+      "id":   "user-satisfaction",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "User satisfaction",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "definition": "Overall satisfaction score includes all ratings weighted from 100% for very satisfied to 0% for very dissatisfied",
+      "datasets": ["user-satisfaction"]
+    },
+    {
+      "id":   "cost-per-transaction",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "Cost per transaction",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "$",
+      "datasets": ["cost-per-transaction"]
+    },
+    {
+      "id":   "digital-take-up",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "Digital take-up",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "datasets": ["digital-take-up"]
+    },
+    {
+      "id":   "completion-rate",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "Completion rate",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "definition": "Percentage of transactions made using the digital service.",
+      "datasets": ["completion-rate"]
+    },
+    {
+      "id":   "total-users",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "Number of users",
+      "type": "bar",
+      "size": "medium",
+      "units": "n",
+      "displayRoundedData" : false,
+      "definition": "This shows the number of people visiting the Performance Dashboard each month.",
+      "datasets": ["total-users"]
+    },
+    {
+      "id":   "fact-5",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "Most-visited dashboards",
+      "type": "fact",
+      "units": "n",
+      "size": "medium",
+      "description": "The top 3 most-visited service dashboards are: 1. Australian Citizenship Appointment Booking Service 2. myGov 3. Medicare Newborn Enrolment."
+    },
+    {
+      "id":   "dashboard-count",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "Types of service",
+      "type": "bar",
+      "stacking": "normal",
+      "units": "n",
+      "size": "extra-large",
+      "description": "This shows which the development phase the services that have published on the Performance Dashboard are in. It also shows services that are not going through a digital transformation and other types of projects such as information websites",
+      "datasets": ["dashboards-betapub", "dashboards-prebeta", "dashboards-nontransf", "dashboards-other"]
+    },
+    {
+      "id":   "fact-1",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "Fact",
+      "type": "fact",
+      "units": "n",
+      "size": "medium",
+      "description": "The Performance Dashboard’s 3 primary goals are to increase the number of service dashboards it hosts, improve user engagement and to encourage automated publishing of data."
+    },
+    {
+      "id":   "avg-dashboard-page-views",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "Dashboards viewed",
+      "type": "line",
+      "size": "large",
+      "units": "n",
+      "displayRoundedData" : false,
+      "definition": "This shows the average number of service dashboards viewed each time a user visits the Performance Dashboard.",
+      "datasets": ["dashboard-pageviews-over-session"]
+    },
+    {
+      "id":   "avg-session-time",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "Average session length",
+      "type": "line",
+      "size": "medium",
+      "units": "s",
+      "displayRoundedData" : false,
+      "definition": "This shows the average length of time users spend visiting the Performance Dashboard.",
+      "datasets": ["average-session-time"]
+    },
+    {
+      "id":   "fact-2",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "Fact",
+      "type": "fact",
+      "units": "n",
+      "size": "small",
+      "description": "We expect that rising user numbers, more dashboard views and longer session lengths will reveal higher levels of user engagement."
+    },
+    {
+      "id":   "fact-3",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "Fact",
+      "type": "fact",
+      "units": "n",
+      "size": "medium",
+      "description": "Our user satisfaction figures are not yet statistically significant because of the low feedback response so far. However, the average session length of more than 3 minutes shows that users are engaging well with the data provided."
+    },
+    {
+      "id":   "fact-4",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "Fact",
+      "type": "fact",
+      "units": "n",
+      "size": "medium",
+      "description": "The Performance Dashboard is being continuously improved to enable more than 100 high-volume services to publish updates to their own service dashboards in the coming months. The ability to enter data automatically is part of this improvement."
+    },
+    {
+      "id":   "fact-red-tape",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "Fact",
+      "type": "fact",
+      "units": "n",
+      "size": "medium",
+      "description": "As the cost per transaction comes down, we expect that in the coming months, it will be lower than the amount saved in red tape reduction (currently, $5.32 per transaction). The red tape reduction amount saved by the Performance Dashboard this financial year is $41,517.28."
+    },
+    {
+      "id":   "automated-vs-manual",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "How data is entered",
+      "type": "bar",
+      "size": "medium",
+      "stacking": "normal",
+      "units": "n",
+      "displayRoundedData" : true,
+      "definition": "This shows how many services enter data manually to their dashboard and how many use automated procedures such as APIs.",
+      "datasets": ["automated-vs-manual-automated", "automated-vs-manual-manual"]
+    },
+    {
+      "id":   "traffic-sources",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "How users find the dashboard",
+      "type": "bar",
+      "size": "large",
+      "units": "%",
+      "displayRoundedData" : true,
+      "definition": "This shows how users navigate to the Performance Dashboard. It show how many users type in the URL directly, find the dashboard on a search engine, click on a link in an article or another website, or come to it via social media.",
+      "datasets": [
+        "traffic-sources-by-channel-direct",
+        "traffic-sources-by-channel-referral",
+        "traffic-sources-by-channel-organic",
+        "traffic-sources-by-channel-social"
+      ]
+    },
+    {
+      "id":   "new-and-returning-users",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "New and returning users",
+      "type": "pie",
+      "size": "medium",
+      "units": "%",
+      "displayRoundedData" : false,
+      "definition": "This shows the percentage of users visiting the Performance Dashboard for the first time compared to the percentage of users who have visited it before.",
+      "datasets": ["new-returning-new", "new-returning-returning"]
+    },
+    {
+      "id":   "ddd-sessions-by-device",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "Devices used",
+      "type": "pie",
+      "size": "small",
+      "units": "%",
+      "displayRoundedData" : false,
+      "definition": "This shows which devices are used to view the Performance Dashboard.",
+      "datasets": [
+        "ddd-sessions-by-device-mobile",
+        "ddd-sessions-by-device-tablet",
+        "ddd-sessions-by-device-desktop"
+      ]
+    },
+    {
+      "id":   "red-tape",
+      "updated_at": "2017-02-01T01:02:02.240Z",
+      "name": "Red tape reduction",
+      "type": "bar",
+      "size": "medium",
+      "units": "$",
+      "displayRoundedData" : true,
+      "definition": "This shows the total monthly amount saved in red tape reduction, and represents the savings to business and individuals that have been achieved as a result of the introduction of the Performance Dashboard as a way to access government information.",
+      "datasets": [
+        "red-tape-reduction"
+      ]
+    }
+  ],
+  "layout": [
+    ["kpis"],
+    ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"],
+    ["fact-1", "total-users", "avg-dashboard-page-views", "fact-2", "fact-3", "avg-session-time", "dashboard-count", "fact-4", "automated-vs-manual", "traffic-sources", "ddd-sessions-by-device", "new-and-returning-users", "fact-5", "fact-red-tape", "red-tape"]
+  ]
+}

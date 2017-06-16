@@ -1,0 +1,42 @@
+$UIKIT_180_gov-ui-kit-image-base-url: '../latest/img/' !default;
+
+$UIKIT_180_base-z-index: 0;
+$UIKIT_180_base-border-radius: 3px;
+$UIKIT_180_tiny-border-radius: 1px;
+$UIKIT_180_large-border-radius: ($UIKIT_180_base-border-radius * 4);
+
+$UIKIT_180_transition-timing: .2s;
+$UIKIT_180_transition-timing-fast: $UIKIT_180_transition-timing / 2;
+$UIKIT_180_transition-easing: ease-in-out;
+
+$UIKIT_180_base-serif: 'Book Antiqua', Georgia, 'Bitstream Vera Serif', serif;
+$UIKIT_180_base-sans-serif: 'Open Sans', Verdana, 'Bitstream Vera Sans', sans-serif;
+$UIKIT_180_base-monospace: 'Lucida Sans Typewriter', 'Lucida Console', Monaco, 'Bitstream Vera Sans Mono', monospace;
+
+$UIKIT_180_base-font-family: $UIKIT_180_base-sans-serif;
+
+// Leading/line-height.
+$UIKIT_180_base-leading: 1.6;
+$UIKIT_180_base-heading-leading: 1.4;
+$UIKIT_180_small-leading: 1.2;
+$UIKIT_180_double-leading: 2;
+
+// Base spacing, relative to leading.
+$UIKIT_180_base-spacing: $UIKIT_180_base-leading * 1em;
+$UIKIT_180_large-spacing: $UIKIT_180_base-spacing * 2;
+$UIKIT_180_medium-spacing: $UIKIT_180_base-spacing * 0.75;
+$UIKIT_180_small-spacing: $UIKIT_180_base-spacing / 2;
+$UIKIT_180_tiny-spacing: $UIKIT_180_base-spacing / 4;
+
+// Font weights
+$UIKIT_180_base-font-weight: 400;
+$UIKIT_180_bold-font-weight: 700;
+$UIKIT_180_heading-font-weight: $UIKIT_180_bold-font-weight;
+
+// Font sizes
+$UIKIT_180_smaller-font-size: 62.5%;
+$UIKIT_180_small-font-size: 87.5%;
+$UIKIT_180_large-font-size: 150%;
+
+// Font styles
+$UIKIT_180_base-font-style: normal;

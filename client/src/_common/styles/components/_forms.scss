@@ -1,0 +1,20 @@
+// class names consistent with Bootstrap forms
+
+.form-group {
+  margin-bottom: 1em;
+
+  .help-block {
+    font-size: rem(12);
+    color: #c00;
+  }
+
+  .info-block {
+    font-size: rem(12);
+    color: $text-muted;
+  }
+}
+
+.form__help-block {
+  font-size: rem(12);
+  color: #c00;
+}

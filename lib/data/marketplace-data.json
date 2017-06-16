@@ -1,0 +1,123 @@
+{
+  "version":      "1",
+  "updated_at":   "2016-08-26T10:35:02.000Z",
+  "name":         "Marketplace",
+  "url":          "https://gov.au/marketplace",
+  "agency":       "DTA",
+  "description":  "Marketplace",
+  "notes":        "",
+  "displayHero": false,
+  "datasets":     [
+    {
+       "id":            "user-satisfaction",
+        "recorded_at":  "2016-08-26T01:01:01.111Z",
+        "name":         "User satisfaction",
+      "units":        "%",
+        "data":          [
+          { "label": "2016-07", "value": null },
+          { "label": "2016-08", "value": null },
+          { "label": "2016-09", "value": null },
+          { "label": "2016-10", "value": null },
+          { "label": "2016-11", "value": null },
+          { "label": "2016-12", "value": null },
+          { "label": "2017-01", "value": null },
+          { "label": "2017-02", "value": null }
+        ]
+     },
+     {
+         "id":           "cost-per-transaction",
+         "recorded_at":  "2016-08-26T01:01:01.111Z",
+         "units":        "$",
+         "name":         "Cost per transaction",
+         "note":         "",
+         "data":         [
+           { "label": "2016-07", "value": null },
+           { "label": "2016-08", "value": null },
+           { "label": "2016-09", "value": null },
+           { "label": "2016-10", "value": null },
+           { "label": "2016-11", "value": null },
+           { "label": "2016-12", "value": null },
+           { "label": "2017-01", "value": null },
+           { "label": "2017-02", "value": null }
+         ]
+     },
+    {
+        "id":           "digital-take-up",
+        "name":         "Digital take-up",
+        "units":        "%",
+        "recorded_at":  "2016-08-26T01:01:01.111Z",
+        "data":          [
+          { "label": "2016-07", "value": null },
+          { "label": "2016-08", "value": null },
+          { "label": "2016-09", "value": null },
+          { "label": "2016-10", "value": null },
+          { "label": "2016-11", "value": null },
+          { "label": "2016-12", "value": null },
+          { "label": "2017-01", "value": null },
+          { "label": "2017-02", "value": null }
+        ]
+      },
+      {
+        "id":           "completion-rate",
+        "recorded_at":  "2016-08-26T01:01:01.111Z",
+        "units":        "%",
+        "name":         "Completion rate",
+        "data":          [
+          { "label": "2016-07", "value": null },
+          { "label": "2016-08", "value": null },
+          { "label": "2016-09", "value": null },
+          { "label": "2016-10", "value": null },
+          { "label": "2016-11", "value": null },
+          { "label": "2016-12", "value": null },
+          { "label": "2017-01", "value": null },
+          { "label": "2017-02", "value": null }
+        ]
+      },
+      {
+        "id":           "briefs_total_count",
+        "recorded_at":  "2017-02-01T23:11:18.675Z",
+        "units":        "i",
+        "name":         "Total opportunities",
+        "data":          [
+          { "label": "2016-07", "value": null },
+          { "label": "2016-08", "value": null },
+          { "label": "2016-09", "value": 13 },
+          { "label": "2016-10", "value": 29 },
+          { "label": "2016-11", "value": 42 },
+          { "label": "2016-12", "value": 58 },
+          { "label": "2017-01", "value": 74 }
+        ]
+      },
+      {
+        "id":           "buyer_count",
+        "recorded_at":  "2017-02-01T23:11:18.675Z",
+        "units":        "i",
+        "name":         "Registered buyers",
+        "data":          [
+          { "label": "2016-07", "value": 1 },
+          { "label": "2016-08", "value": 79 },
+          { "label": "2016-09", "value": 150 },
+          { "label": "2016-10", "value": 193 },
+          { "label": "2016-11", "value": 239 },
+          { "label": "2016-12", "value": 270 },
+          { "label": "2017-01", "value": 305 },
+          { "label": "2017-02", "value": 313 }
+        ]
+      },
+      {
+        "id":           "supplier_count",
+        "recorded_at":  "2017-02-01T23:11:18.675Z",
+        "units":        "i",
+        "name":         "Approved suppliers",
+        "data":          [
+          { "label": "2016-07", "value": null },
+          { "label": "2016-08", "value": 222 },
+          { "label": "2016-09", "value": 244 },
+          { "label": "2016-10", "value": 244 },
+          { "label": "2016-11", "value": 251 },
+          { "label": "2016-12", "value": 254 },
+          { "label": "2017-01", "value": 254 }
+        ]
+      }
+  ]
+}

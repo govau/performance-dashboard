@@ -1,0 +1,63 @@
+/**
+
+  client/src/_shared/scripts/components/uikit-components/alert.js
+
+ */
+
+.UIK-alert {
+  display: table;
+  width: 100%;
+  border-radius: $border-radius-lg;
+  padding: 0;
+
+  &.alert-success {
+    .alert__icon {
+      background: $alert-success-border;
+    }
+  }
+
+  &.alert-error {
+    @extend .alert-danger;
+  }
+  &.alert-error,
+  &.alert-danger {
+    .alert__icon {
+      background: $alert-danger-border;
+    }
+  }
+
+  &.alert-info {
+    .alert__icon {
+      background: $alert-info-border;
+    }
+  }
+  &.alert-warning {
+    .alert__icon {
+      background: $alert-warning-border;
+    }
+  }
+
+  .alert__icon,
+  .alert__text {
+    display: table-cell;
+    vertical-align: middle;
+    padding: $alert-padding-y $alert-padding-x;
+  }
+
+  .alert__icon {
+    color: white;
+    text-align: center;
+    padding: 16px;
+    //max-width: 32px;
+    line-height: 1;
+  }
+
+  .alert__text {
+    span {
+      display:block;
+    }
+    p {
+      margin-bottom: 4px;
+    }
+  }
+}

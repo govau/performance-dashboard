@@ -1,0 +1,13 @@
+<% if message.present? %>
+  <div class="UIK-alert alert alert-<%= alert_type %>" role="alert">
+    <div class="alert__icon">
+      <svg width="31" height="31" class="icon icon-<%= alert_type %>" fill="currentColor">
+        <title>success</title>
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-<%= alert_type %>"></use>
+      </svg>
+    </div>
+    <div class="alert__text">
+      <p><%= message %></p>
+    </div>
+  </div>
+<% end %>

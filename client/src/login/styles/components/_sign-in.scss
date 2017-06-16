@@ -1,0 +1,310 @@
+/**
+  Styling based off:
+  https://gov-au-beta.apps.platform.digital.gov.au/users/sign_in
+
+  * https://github.com/AusDTO/gov-au-beta/blob/develop/app/views/layouts/application.html.haml
+  * https://github.com/AusDTO/gov-au-beta/blob/develop/app/views/devise/sessions/new.html.haml
+  * https://github.com/AusDTO/gov-au-beta/blob/develop/app/assets/stylesheets/_sign-in.scss
+*/
+
+
+//small center column layout. Should this go into UI Kit?
+//some visual defects with grid in chrome
+.sign-in {
+  //@include outer-container;
+  //@include span-columns(12 of 12);
+  //@include link-colours($non-black, $light-aqua, $non-black);
+  //@include button-colours($button-bg-colour, $button-bg-colour--hover, $button-bg-colour--active, $button-text-colour);
+  //margin-top: 2 * $base-spacing;
+
+  //@include media($tablet) {
+  //  @include span-columns(7 of 12);
+  //  @include shift(2.5 of 12);
+  //}
+  //
+  //@include media($desktop) {
+  //  @include span-columns(6 of 16);
+  //  @include shift(5 of 16);
+  //}
+  .callout {
+    background: $light-green;
+
+    .fa-check-circle {
+      color: $success-colour;
+    }
+  }
+}
+
+
+.login-form,
+.sign-in-form {
+  //should we make all input labels bold?
+  label {
+    font-weight: 700;
+  }
+
+  //why isn't checkbox text same size as body?
+  form input[type="checkbox"] + label {
+    font-size: rem(16);
+    padding-left: 40px;
+
+    @include media($tablet) {
+      font-size: rem(17);
+    }
+
+  }
+
+  //formatting of form footer actions
+  .form-footer-actions {
+
+    input[type="submit"] {
+      margin-bottom: 0;
+      margin-top: $small-spacing;
+    }
+
+    .form-options {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+
+      .remember-me {
+        display: block;
+
+        //Adjust alignment of checkbox
+        input[type="checkbox"] + label::before {
+          left: 0;
+          top: 11px;
+        }
+
+        input[type="checkbox"]:checked + label::after {
+          left: 5px;
+          top: 16px;
+        }
+
+        @include media($mobile) {
+
+          display: table-cell;
+          text-align: left;
+          width: 50%;
+
+          + p {
+            display: table-cell;
+            text-align: right;
+            width: 50%;
+          }
+        }
+      }
+    }
+  }
+
+  //formatting of form footer secondary links
+  .sign-in-footer-links {
+    text-align: center;
+
+    //should we have this defined globally?
+    .background-border-heading {
+      border-bottom: 1px solid $border-colour;
+      line-height: 1;
+      margin-bottom: $small-spacing;
+      margin-top: 0;
+      text-align: center;
+
+      span {
+        background-color: $white;
+        font-size: rem(20);
+        font-weight: $heading-font-weight;
+        padding: 0 $small-spacing;
+        position: relative;
+        top: 11px;
+      }
+    }
+
+    //should we have this defined globally?
+    .primary-link {
+      color: $aqua;
+      font-weight: $heading-font-weight;
+
+      &:hover,
+      &:focus {
+        color: $link-colour;
+      }
+    }
+  }
+}
+
+
+
+
+// overrides
+
+article { //needed to over ride UI kit styles
+  .sign-in {
+    h1 {
+      @media(min-width: $screen-sm){
+        font-size: 1.625rem;
+        font-weight: 700;
+        margin-bottom: 2.1125rem;
+        line-height: 2.275rem;
+
+        &:first-of-type {
+          margin-top: 2.3125rem;
+        }
+      }
+    }
+
+    h2 {
+      @media(min-width: $screen-sm){
+        font-size: 1.0625rem;
+        font-weight: 700;
+        margin-bottom: 0.7375rem;
+      }
+
+      &.step {
+        @media(min-width: $screen-sm){
+          font-size: 1.125rem;
+          font-weight: 700;
+        }
+      }
+    }
+
+    button, .button, [role='button'], [type='button'] {
+      @media(min-width: $screen-sm){
+        line-height: 25px;
+        font-size: 1.125rem;
+        margin-top: 1.125rem;
+      }
+    }
+
+    .actions {
+      margin-bottom: 13px;
+
+      input[type='submit'] {
+        background-color: $white;
+        color: #313131;
+        border: 0;
+        border-bottom: 1px solid #5bcbe3;
+        padding:0;
+      }
+
+      a {
+        line-height: 28px;
+      }
+
+      form {
+        input[type='submit'] {
+          margin-bottom: 20px;
+        }
+      }
+    }
+
+    .button-link {
+      background-color: $white;
+      color: #313131;
+      border: 0;
+      border-bottom: 1px solid #5bcbe3;
+      padding:0;
+    }
+
+    label {
+      font-weight: normal;
+    }
+
+    .qrcode {
+      p {
+        margin-bottom: 30px;
+      }
+
+      img {
+        height: 125px;
+        margin-bottom: 30px;
+      }
+    }
+
+    .callout {
+      background-color: $white;
+      box-shadow: none;
+      padding: 0;
+      margin: 0;
+
+      h3 {
+        margin-top: 0;
+      }
+    }
+
+    .sign-in-footer-links {
+      ul{
+        margin-top: 30px;
+        list-style-type: none;
+        text-align: left;
+        padding-left:0;
+
+        li {
+          margin-bottom: 29px;
+        }
+      }
+    }
+  }
+}
+
+.login__main {
+  h1 {
+    @media(min-width: $screen-sm){
+      font-size: 1.625rem;
+      font-weight: 700;
+      margin-bottom: 2.1125rem;
+      line-height: 2.275rem;
+
+      &:first-of-type {
+        margin-top: 2.3125rem;
+      }
+    }
+  }
+
+  input[type='submit'] {
+    padding: 13px 20px;
+    font-weight:700;
+    margin-bottom: 26px;
+  }
+
+  .verify {
+    margin-top: 22px;
+    line-height: 18px;
+  }
+}
+
+.sign-in-form {
+  .form-options {
+    p {
+      input[type="submit"] {
+        margin-top: 22px;
+        // line-height: 25px;
+      }
+    }
+  }
+
+  form.button_to {
+    display:inline-block;
+
+    .button-link {
+      padding: 0;
+    }
+  }
+
+  .inline {
+    display:inline-block;
+  }
+
+  .form-footer-actions {
+    input {
+      line-height: 25px;
+    }
+  }
+}
+
+.login-form {
+  .form-footer-actions {
+    input[type="submit"] {
+      margin-top: 22px;
+    }
+  }
+}

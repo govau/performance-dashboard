@@ -1,0 +1,95 @@
+
+/**
+ *
+ *  KPI sparkline groups used on dashboard#index and dashboard#show
+ *
+ */
+.D1_kpi-group {
+
+  // mobile
+
+  .metric-data {
+    letter-spacing: 0.5px;
+    color: $charcoal-grey;
+  }
+  .sparkline__inner .value {  // override
+    font-weight: 600;
+  }
+
+  &.has-data {
+    //border:1px solid green !important;
+  }
+  &.has-no-data {
+    //border: 1px solid red !important;
+    .metric-data .value {
+      white-space: nowrap;
+    }
+    .decorator,
+    .sparkline,
+    .metric-meta {
+      display: none !important;
+    }
+  }
+
+  .value,
+  .decorator {
+    line-height: 1;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .decorator {
+    padding-left: 2px;
+  }
+
+  @media (min-width: $screen-sm-minor) {
+    .metric-data {
+      .value {
+        font-weight: 700;
+      }
+    }
+  }
+
+  // tablet
+  @media (min-width: $screen-sm) {
+    .metric-data .value {
+      font-size: 36px;
+      letter-spacing: 0;
+      font-weight: 300;
+    }
+  }
+
+  // desktop
+  @media (min-width: $screen-md) {
+    .metric-data .value {
+      //font-size: 54px;
+      font-size: 36px;
+    }
+  }
+
+  // xl desktop
+  @media (min-width: $screen-lg) {
+    .metric-data .value {
+      font-size: 60px;
+    }
+
+    &.has-no-data {
+      .metric-data .value {
+        font-size: 46px;
+      }
+      .sparkline__inner {
+        padding-top: 10px;
+      }
+    }
+  }
+
+}
+
+
+.dashboards_index {
+  .D1_kpi-group {
+    .widget__title h4 {
+      margin-top: 0;
+    }
+  }
+}

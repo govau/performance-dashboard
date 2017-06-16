@@ -1,0 +1,85 @@
+
+.page--dashboard-show {
+  color: $primary-text-colour;
+
+  .tuck-it-on-in {
+    @media (min-width: $screen-sm) {
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+  }
+}
+
+.dashboard-show__title {
+  position: relative;
+}
+
+.dashboard-show__org-badge {
+  @media (min-width: $screen-sm) {
+    position: absolute;
+    top: 15px;
+    right: 0;
+  }
+  .badge {
+    float:right;
+  }
+}
+
+.dashboard-show__kpis {
+  margin-bottom: 0;
+
+  @media (min-width: $screen-sm) {
+    margin-bottom: 1em;
+  }
+
+  .h3-light {
+    margin-top: 0;
+  }
+}
+
+.dashboard-show__hero {
+  .hero-last-updated-date {
+    font-size: 12px;
+    color: #596371;
+    display: block;
+    margin-bottom: 20px;
+  }
+
+  .h3-light {
+    margin-bottom: 0;
+  }
+}
+
+.page__sky-blue-banner,
+.page__white-banner,
+.page__grey-banner {
+  padding: 24px 0;
+
+  .h3-light {
+    font-size: 26px;
+    font-weight: 400;
+    @media (max-width: $screen-sm) {
+      margin-top: 0;
+    }
+  }
+
+  &.bottom-shadow-line {
+    border-bottom: 2px solid #ddd;
+  }
+}
+
+.page__sky-blue-banner {
+  background: #ebf4fa;
+}
+
+.page__white-banner {
+  background: white;
+
+  .kpi-widgets {
+    padding: 1.4em 0;
+  }
+}
+
+.page__grey-banner {
+  background: #f0f3f5;
+}

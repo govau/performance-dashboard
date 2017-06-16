@@ -1,0 +1,43 @@
+<%
+  #
+  # client/src/editor/scripts/components/footer/footer.js:4
+  #
+
+  is_public_site = local_assigns.has_key?(:is_public_site) ? is_public_site : false
+
+%>
+<div class="govau-footer">
+  <div class="container">
+    <div class="govau-footer__container">
+
+      <div class="govau-footer__container__logo">
+        <img src="<%= getPublicImageSrc('coat-of-arms.png') %>" width="185" height="135" alt="Commonwealth of Australia Coat of Arms Logo" />
+      </div>
+
+      <div class="govau-footer__container__utils">
+
+        <div class="line-1">
+          <% if is_public_site %>
+            <ul class="list-unstyled govau-footer__links-list">
+              <li><a href="/editor" class="UIK-link">Editor sign in</a></li>
+              <li><a href="https://www.dto.gov.au/standard/" rel="external" class="UIK-link" target="_blank">Digital Service Standard</a></li>
+              <li><a href="https://www.dto.gov.au/standard/11-measure-performance/" rel="external" class="UIK-link" target="_blank">About Performance Measurement</a></li>
+              <li><a href="/api" class="UIK-link">Dashboard API</a></li>
+              <li><a href="/copyright" class="UIK-link">Copyright</a></li>
+              <li><a href="https://www.dto.gov.au/blog/" rel="external" class="UIK-link" target="_blank">DTA Blog</a></li>
+              <li><a href="/feedback" class="UIK-link">Please give feedback</a></li>
+            </ul>
+          <% else %>
+            <a href="mailto:<%= ApplicationConstants::CONTACT_EMAIL %>" rel="external" class="UIK-button btn btn-secondary report-an-issue">Report an issue</a>
+          <% end %>
+        </div>
+
+        <div class="line-2">
+          <small>© Commonwealth of Australia</small>
+          <p class="small">This work is licensed under a Creative Commons Attribution 3.0 International <a href="https://creativecommons.org/licenses/by/3.0/au/deed.en" class="UIK-link " rel="external">License</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

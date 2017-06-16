@@ -1,0 +1,94 @@
+{
+  "name":     "Import Permit Validation Service",
+  "agency":   "DIBP",
+  "url":      "",
+  "description":  "This service simplifies the permit validation process for importers and brokers. It enables the digital validation of permits directly with the Permit Issuing Authority.",
+  "target_users": "Importers and brokers",
+  "notes": [
+    { "title":  "What is the Import Permit Validation Service?",
+      "body":   "This service simplifies the permit validation process for importers and brokers. It enables the digital validation of permits directly with the Permit Issuing Authority." },
+    { "title":  "User satisfaction",
+      "body":   "Pre-Clearance Intervention Officers were surveyed in August/September 2016 regarding satisfaction levels together with other feedback on the service." },
+    { "title":  "Cost per transaction",
+      "body":   "This data is not available." },
+    { "title":  "Digital take-up",
+      "body":   "Digital take-up measures the percentage of import declaration lines where a permit number was provided electronically." },
+    { "title":  "Completion rate",
+      "body":   "This data is not available." }
+  ],
+  "widgets":  [
+    {
+      "id":   "kpis",
+      "updated_at": "2016-11-7T01:01:01.111Z",
+      "name": "Kpis",
+      "type": "full",
+      "size": "extra-large",
+      "units": "n",
+      "is_hero": true,
+      "datasets": ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"]
+    },
+    {
+      "id":   "user-satisfaction",
+      "updated_at": "2016-11-7T01:01:01.111Z",
+      "name": "User satisfaction",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "definition": "Overall satisfaction score includes all ratings weighted from 100% for very satisfied, to 0% for very dissatisfied",
+      "datasets": ["user-satisfaction"]
+    },
+    {
+      "id":   "cost-per-transaction",
+      "updated_at": "2016-11-7T01:01:01.111Z",
+      "name": "Cost per transaction",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "$",
+      "datasets": ["cost-per-transaction"]
+    },
+    {
+      "id":   "digital-take-up",
+      "updated_at": "2016-11-7T01:01:01.111Z",
+      "name": "Digital take-up",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "datasets": ["digital-take-up"]
+    },
+    {
+      "id":   "completion-rate",
+      "updated_at": "2016-11-7T01:01:01.111Z",
+      "name": "Completion rate",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "definition": "Percentage of transactions made using the digital service.",
+      "datasets": ["completion-rate"]
+    },
+    {
+      "id":   "clearing-time",
+      "updated_at": "2016-12-7T01:01:01.111Z",
+      "name": "Time taken to clear permits",
+      "type": "bar",
+      "size": "medium",
+      "units": "s",
+      "displayRoundedData" : true,
+      "definition": "Time to clear measures the time between when a good requiring an import permit was held for assessment until the time it was cleared.",
+      "datasets": ["clearing-time"]
+    },
+    {
+      "id":   "fact-1",
+      "updated_at": "2016-11-7T01:01:01.111Z",
+      "name": "Fact",
+      "type": "fact",
+      "size": "medium",
+      "units": "n",
+      "description": "Australia has experienced a significant upturn in cargo volume with incoming air cargo of 33.6 million consignments, incoming sea cargo of 3.0 million in 2014-2015."
+    }
+  ],
+  "layout":   [
+    ["kpis"],
+    ["user-satisfaction", "cost-per-transaction", "digital-take-up", "completion-rate"],
+    ["fact-1", "clearing-time"]
+  ]
+}

@@ -1,0 +1,8 @@
+.debug-mode {
+  background: $debug-colour;
+  margin-left: 10px;
+
+  svg:not(:root) {
+    background: $debug-svg-colour;
+  }
+}

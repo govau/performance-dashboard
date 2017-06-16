@@ -1,0 +1,27 @@
+// Grid breakpoints
+//
+// Define the minimum and maximum dimensions at which your layout will change,
+// adapting to different screen sizes, for use in media queries.
+
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 544px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 992px,
+  // Extra large screen / wide desktop
+  xl: 1200px
+) !default;
+
+
+
+$spacer: 1.4em !default;      // todo - deprecate and use $spacer-y instead client/src/_common/styles/_vendor/bootstrap/_bootstrap-spacing.scss
+
+$screen-sm-min: get(SCREEN_MIN);
+$screen-sm-minor: map-get($grid-breakpoints, 'sm'); //544
+$screen-sm: map-get($grid-breakpoints, 'md'); //768
+$screen-md: map-get($grid-breakpoints, 'lg'); //992
+$screen-lg: map-get($grid-breakpoints, 'xl'); //1200

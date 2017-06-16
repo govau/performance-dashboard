@@ -1,0 +1,591 @@
+swagger: '2.0'
+
+info:
+  version: "0.0.0"
+  title: Dashboard API
+schemes:
+  - https
+securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+    description: |
+      API Key should be passed as an authorization Header.
+
+      The value for the Authorization header is expected to have the prefix "Token" or "Bearer".
+
+      Samples using curl
+      ```
+        curl --header "Authorization: Token token=09e9e1cff7e4" http://dashboard.gov.au/api/v1/datasets
+        curl --header "Authorization: Bearer 09e9e1cff7e4" http://dashboard.gov.au/api/v1/datasets
+      ```
+paths:
+  /features:
+    get:
+      summary: |
+        Get active features
+      description: |
+        Get all feature flags that are currently active for the given session
+      consumes: 
+        - application/json
+      produces: 
+        - application/json
+      responses:
+        "200":
+          description: Success
+          schema:
+            type: object
+            properties:
+              features:
+                type: array
+                items:
+                  type: string
+  /dashboards/{id}:
+    put:
+      summary: |
+        Updates an existing `Dashboard`
+      description: |
+
+        Sample curl requests
+        ```
+        ```
+      security:
+       - api_key: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: |
+            Dashboard object fields to be updated.
+          required: true
+          schema:
+            $ref: "#/definitions/Dashboard"
+        - in: path
+          name: id
+          description: ID of Datapoint
+          required: true
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Dashboard not found
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/DashboardEntity"
+        "400":
+          description: Input or Validation Error
+          schema:
+            $ref: "#/definitions/Error"
+  /widgets/{widget_id}/slices/{period}/{period_start}:
+    get:
+      summary: |
+        Gets a `Slice` of data for a given time period and `Widget`
+      description: |
+        Sample curl requests
+        ```
+        curl --header "Authorization: Token token=09e9e1cff7e4" http://dashboard.gov.au/api/v1/widgets/1/slices/month/2017-02-01
+        ```
+      security:
+        - api_key: []
+      consumes: 
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: widget_id
+          description: ID of Widget
+          required: true
+          type: integer
+          format: int64
+        - in: path
+          name: period
+          description: How long a period of time to get data for
+          required: true
+          type: string
+          enum: ["week", "month", "year", "century"]
+        - in: path
+          name: period_start
+          description: The time at which the period to get data for begins
+          required: true
+          type: string
+          format: date-time
+      responses:
+        "404":
+          description: Widget not found, or no data for the specified period
+          schema:
+            $ref: "#/definitions/Error"
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/Slice"
+    post:
+      summary: |
+        Create a `Slice` of data for a given time period and `Widget`
+      description: |
+
+        Sample curl requests
+        ```
+        curl -X POST --header "Authorization: Token token=09e9e1cff7e4" --data "{'groups': [ {'dataset_id': 1, 'value': '52.7'}, {'value': '25.1'} ] }" http://dashboard.gov.au/api/v1/widgets/1/slices/2017-02-01
+        ```
+      security:
+        - api_key: []
+      consumes: 
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: widget_id
+          description: ID of Widget
+          required: true
+          type: integer
+          format: int64
+        - in: path
+          name: period
+          description: Period of time for which slice is being pushed
+          required: true
+          type: string
+          enum: ["week", "month", "year", "century"]
+        - in: path
+          name: period_start
+          description: Timestamp of the slice being pushed
+          required: true
+          type: string
+          format: date-time
+        - in: body
+          name: groups
+          description: |
+            Per-dataset values to populate this slice's data
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Group"
+      responses:
+        "404":
+          description: Widget not found
+          schema:
+            $ref: "#/definitions/Error"
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SliceResponse"
+    patch:
+      summary: |
+        Update a `Slice` of data for a given time period and `Widget`
+      description: |
+        Sample curl requests
+        ```
+        curl  -X PATCH --header "Authorization: Token token=09e9e1cff7e4" --data "{'groups': [ {'dataset_id': 1, 'value': '52.7'}, {'value': '25.1'} ] }" http://dashboard.gov.au/api/v1/widgets/1/slices/2017-02-01
+        ```
+      security:
+        - api_key: []
+      consumes: 
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: path
+          name: widget_id
+          description: ID of Widget
+          required: true
+          type: integer
+          format: int64
+        - in: path
+          name: period
+          description: Period of time for which slice is being updated
+          required: true
+          type: string
+          enum: ["week", "month", "year", "century"]
+        - in: path
+          name: period_start
+          description: Timestamp of the slice being pushed
+          required: true
+          type: string
+          format: date-time
+        - in: body
+          name: groups
+          description: |
+            Per-dataset values to update this slice's data
+          required: true
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Group"
+      responses:
+        "404":
+          description: Widget not found
+          schema:
+            $ref: "#/definitions/Error"
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/SliceResponse"
+  /dashboards/{dashboard_id}/widgets/{id}:
+    put:
+      summary: |
+        Updates an existing `Widget` in the idenitfied `Dashboard`
+      description: |
+
+        Sample curl requests
+        ```
+        ```
+      security:
+        - api_key: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: |
+            Widget object fields to be updated.
+          required: true
+          schema:
+            $ref: "#/definitions/Widget"
+        - in: path
+          name: dashboard_id
+          description: ID of Dashboard
+          required: true
+          type: integer
+          format: int64
+        - in: path
+          name: id
+          description: ID of Widget
+          required: true
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Dashboard or Widget not found
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/WidgetEntity"
+        "400":
+          description: Input or Validation Error
+          schema:
+            $ref: "#/definitions/Error"
+  /datasets/{id}:
+    put:
+      summary: |
+        Updates an existing `Dataset`
+      description: |
+
+        Sample curl requests
+        ```
+        ```
+      security:
+       - api_key: []
+      consumes:
+        - application/json
+      produces:
+        - application/json
+      parameters:
+        - in: body
+          name: body
+          description: |
+            Dataset object fields to be updated.
+          required: true
+          schema:
+            $ref: "#/definitions/Dataset"
+        - in: path
+          name: id
+          description: ID of Dataset
+          required: true
+          type: integer
+          format: int64
+      responses:
+        "404":
+          description: Dataset not found
+        "200":
+          description: Success
+          schema:
+            $ref: "#/definitions/DatasetEntity"
+        "400":
+          description: Input or Validation Error
+          schema:
+            $ref: "#/definitions/Error"
+definitions:
+  DashboardEntity:
+    description: |
+      Dashboard Entity as recorded in the database
+    type: object
+    required:
+      - name
+      - description
+      - target_users
+    properties:
+      id:
+        type: number
+        format: int64
+      name:
+        type: string
+      description:
+        type: string
+      target_users:
+        type: string
+      notes:
+        type: string
+      url:
+        type: string
+      display_hero:
+        type: boolean
+      display_kpis:
+        type: boolean
+      published_at:
+        type: string
+        format: date-time
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time
+  Dashboard:
+    description: Dashboard fields for Create or Update
+    type: object
+    required:
+      - name
+      - description
+      - target_users
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      target_users:
+        type: string
+      notes:
+        type: string
+      url:
+        type: string
+      published_at:
+        type: string
+        format: date-time
+  WidgetEntity:
+    description: |
+      Widget Entity as recorded in the database
+    type: object
+    required:
+      - name
+      - units
+      - last_updated_at
+    properties:
+      id:
+        type: number
+        format: int64
+      dashboard_id:
+        type: number
+        format: int64
+      row:
+        type: number
+        format: int32
+      pos:
+        type: number
+        format: int32
+      name:
+        type: string
+      description:
+        type: string
+      options:
+        type: object
+        description: |
+          Options are stored as Key/Value records in the database
+      size:
+        type: string
+      units:
+        type: string
+      type:
+        type: string
+      is_hero:
+        type: boolean
+      last_updated_at:
+        type: string
+        format: date-time
+        description: |
+          Time to be used to display when the Chart was last updated.
+          Not to be confused with updated_at, which stores when the Widget Entity itself was last updated.
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time
+  Widget:
+    description: |
+      Widget fields for Create or Update
+    type: object
+    required:
+      - name
+      - description
+      - units
+      - last_updated_at
+    properties:
+      name:
+        type: string
+      description:
+        type: string
+      units:
+        type: string
+      last_updated_at:
+        type: string
+        format: date-time
+  DatasetEntity:
+    description: |
+      Dataset Entity as recorded in the database
+    type: object
+    required:
+      - name
+      - units
+    properties:
+      id:
+        type: number
+        format: int64
+      name:
+        type: string
+      units:
+        type: string
+        enum: ["%", "$", "n", "s", "i", "f"]
+      notes:
+        type: string
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time
+  Dataset:
+    description: |
+      Dataset fields for Create or Update
+    type: object
+    required:
+      - name
+      - label
+      - units
+    properties:
+      name:
+        type: string
+      label:
+        type: string
+      units:
+        type: string
+        enum: ["%", "$", "n", "s", "i", "f"]
+      notes:
+        type: string
+  DatapointEntity:
+    description: |
+      Datapoint Entity as recorded in the database
+    type: object
+    required:
+      - id
+      - ts
+      - created_at
+      - updated_at
+    properties:
+      id:
+        type: number
+        format: int64
+      ts:
+        type: string
+        format: date-time
+      value:
+        type: number
+        format: double
+        description: |
+          Values are numeric, and encoded as strings to avoid precision errors.
+      created_at:
+        type: string
+        format: date-time
+      updated_at:
+        type: string
+        format: date-time
+  Datapoint:
+    type: object
+    required:
+      - ts
+      - value
+    properties:
+      ts:
+        type: string
+        format: date-time
+      value:
+        type: string
+        format: double
+        description: |
+          Values are numeric, and encoded as strings to avoid precision errors.
+  Error:
+    type: object
+    required:
+      - code
+      - message
+    properties:
+      code:
+        type: string
+      message:
+        type: string
+  Period:    
+    type: string
+    enum: ["week", "month", "year", "century"]
+  Group:
+    type: object
+    required:
+      - dataset_id 
+      - value
+    properties: 
+      dataset_id: 
+        type: number
+        format: int64
+      value:
+        type: number
+        format: double
+  SliceResponse:
+    type: object
+    required: 
+      - slice
+      - widget
+      - datasets
+    properties:
+      slice:
+        $ref: "#/definitions/Slice"
+      widget:
+        $ref: "#/definitions/Widget"
+      datasets:
+        type: array
+        items: 
+          $ref: "#/definitions/Dataset"
+  Slice:
+    type: object
+    required: 
+      - widget_id
+      - dashboard_id
+      - period
+      - period_start
+      - period_end
+      - groups
+    properties:
+      widget_id:
+        type: number
+        format: int64
+      dashboard_id:
+        type: number
+        format: int64
+      period:
+        $ref: "#/definitions/Period"
+      period_start:
+        type: string
+        format: date-time
+      period_end:
+        type: string
+        format: date-time
+      groups:
+        type: array
+        items: 
+          $ref: "#/definitions/Group"

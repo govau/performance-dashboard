@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sign in - Performance Dashboards</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <%= render :partial => "partials/rollbar", :locals => { :token => ENV['ROLLBAR_ACCESS_TOKEN_PUBLIC_CLIENT'] } %>
+  <%
+    #
+    # Production mode or not required for webpack-dev-server mode
+    #
+    if !development_server? %>
+      <%= getPublicStylesheet('app_shell.css') %>
+      <%= getPublicStylesheet('login.css') %>
+    <% end %>
+</head>
+<body class="login <%= body_class(yield(:body_class_names)) %>">
+
+  <%= render :partial => "partials/icon-loader" %>
+
+  <div>
+    <section>
+      <%= render :partial => "partials/phase-banner", :locals => { :message => "This is a working alpha and has limited functionality" } %>
+    </section>
+
+    <header class="main__header">
+      <%= render :partial => "partials/header" %>
+    </header>
+  </div>
+
+  <main role="main" class="login__main">
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-md-6 offset-md-3">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <footer class="main__footer">
+    <%= render :partial => "partials/footer" %>
+  </footer>
+
+  <%
+    #
+    # Production mode or webpack-dev-server mode
+    #
+    if !development_server? %>
+    <%= getPublicJavascript('app_shell.js') %>
+    <%= getPublicJavascript('login.js') %>
+  <% else %>
+    <script src="http://localhost:8080/javascripts/app_shell.js"></script>
+    <script src="http://localhost:8080/javascripts/login.js"></script>
+  <% end %>
+</body>
+</html>

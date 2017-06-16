@@ -1,0 +1,182 @@
+// todo - scope dashboard pages with parent scopes
+
+.aus-width-one-whole {
+  @include span-columns(12);
+  @include add-gutter;
+}
+
+.aus-width-one-half  {
+  @include span-columns(6);
+
+  @media (max-width: 768px) {
+    @include span-columns(12);
+  }
+}
+
+.aus-width-one-third {
+  @include span-columns(4);
+
+  @include media($screen-sm) {
+    @include span-columns(6);
+  }
+
+  @media (max-width: $screen-md) {
+    @include span-columns(12);
+    &:nth-child(even) {
+      margin-right: 0;
+    }
+  }
+
+  @include media($screen-md) {
+    @include span-columns(4);
+  }
+}
+
+.aus-width-two-thirds {
+  @include span-columns(12);
+
+  @include media($screen-sm) {
+    @include span-columns(6);
+  }
+
+  @include media($screen-md) {
+    @include span-columns(8);
+  }
+}
+
+.aus-width-one-fourth {
+  @include span-columns(3);
+
+  @media (max-width: 768px) {
+    @include span-columns(12);
+  }
+}
+
+.aus-width-seven-twelfths {
+  @include span-columns(7);
+  @include add-gutter;
+
+  @media (max-width: 768px) {
+    @include span-columns(12);
+  }
+}
+
+.aus-width-five-twelfths {
+  @include span-columns(5);
+  @include omega;
+  @include add-gutter;
+
+  @media (max-width: 768px) {
+    @include span-columns(12);
+  }
+}
+
+.aus-width-three-fourths {
+  @include span-columns(9);
+}
+
+.aus-width-five-sixths {
+  @include span-columns(10);
+}
+
+.aus-width-one-twelfth {
+  @include span-columns(1);
+}
+
+.aus-end-row {
+  @include omega;
+}
+
+
+@mixin row-from-neat($display: default, $direction: $default-layout-direction) {
+  @if $direction != $default-layout-direction {
+    @include -neat-warn("The $direction argument will be deprecated in future versions in favor of the direction(){...} mixin.");
+  }
+
+  $layout-direction: $direction !global;
+
+  @if $display != default {
+    @include -neat-warn("The $display argument will be deprecated in future versions in favor of the display(){...} mixin.");
+  }
+
+  @if $display == table {
+    display: table;
+    @include fill-parent;
+    table-layout: fixed;
+    $container-display-table: true !global;
+  } @else {
+    @include clearfix;
+    display: block;
+    $container-display-table: false !global;
+  }
+}
+.row-deprecated-dont-add-this-anywhere-else {
+  @include row-from-neat;
+}
+
+main {
+  min-height: calc(100vh - 260px);
+  background: $white;
+}
+
+.list-unstyled {
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.m0 {
+  margin: 0;
+}
+
+.p0 {
+  padding: 0;
+}
+
+.p1 {
+  padding-left: $spacing-unit / 2;
+  padding-right: $spacing-unit / 2;
+}
+
+.block {
+  display: block;
+}
+
+
+
+svg {
+  display: block;
+}
+
+section {
+  @include row-from-neat;
+}
+
+p {
+  margin: 0 0 10px;
+}
+
+
+
+a {
+  color: $brand-primary-colour;
+  text-decoration: none;
+}
+
+dd {
+  margin-left: 0;
+}
+
+.fa {
+  display: inline-block;
+  font: normal normal normal 14px/1 FontAwesome;
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.text-right {
+  text-align: right;
+}
+

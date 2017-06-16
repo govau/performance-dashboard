@@ -1,0 +1,25 @@
+Hi there,
+
+You’ve been invited to add and edit data for
+<%= @resource.organisation.try(:name) %> on the Performance Dashboard.
+
+This means you’ll be able to edit the
+<%= @resource.dashboards.collect(&:name).to_sentence(last_word_connector: ' and ') %>
+dashboard<%= 's' if @resource.dashboards.count > 1 %>.
+
+You can accept the invitation by clicking on the link below.
+
+<%= link_to 'Accept invitation', accept_invitation_url(@resource, invitation_token: @token) %>
+
+Your account will be set up as soon as you’ve clicked on the link and set your password.
+
+<% if @resource.invitation_due_at %>
+Please note that this invitation will expire on
+<%= l(@resource.invitation_due_at, format: :'devise.mailer.invitation_instructions.accept_until_format') %>.
+<% end %>
+
+If you don’t want to accept the invitation, please ignore this email.
+
+Thank you,
+
+The Performance Dashboard team.

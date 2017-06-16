@@ -1,0 +1,39 @@
+.page {
+  &__header {
+    background: $DB-color-heading-bg;
+
+    padding: ($spacer-y / 2) 0 $spacer-y;
+
+    h1 {
+      @media (min-width:$screen-md) {
+        padding: ($spacer-y) 0 10px;
+      }
+    }
+
+    .title-description {
+      color: $DB-color-body-text-grey;
+      line-height: 1.6;
+      margin-top: 1em;
+    }
+  }
+
+  &__title {
+    @media (min-width:$screen-sm) {
+      display: table;
+      width: 100%;
+      &__left,
+      &__right {
+        display: table-cell;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  &__body {
+    padding: $spacer-y 0;
+    @media (min-width:$screen-sm) {
+      padding: $spacer-y*2 0;
+    }
+    margin-bottom: 2em;
+  }
+}

@@ -1,0 +1,33 @@
+.UIK-button {
+  &.btn-error {
+    @include button-variant($btn-danger-color, $btn-danger-bg, $btn-danger-border);
+  }
+
+  &.disabled,
+  &[disabled] {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      cursor: $cursor-disabled;
+      opacity: .65;
+      @include box-shadow(none);
+      @include button-variant(inherit, $UIKIT_180_button-bg-colour--disabled, $UIKIT_180_button-bg-colour--disabled);
+      background-color: $UIKIT_180_button-bg-colour--disabled !important;
+    }
+  }
+
+  &.btn-link {
+    &.disabled,
+    &[disabled] {
+      font-weight: $DB-font-weight-semi-bold;
+      backround-color: transparent;
+      color: rgba($DB-color-body-text, .65);
+    }
+  }
+
+  &.sign-out {
+    @include button-variant(white, #224a61, #224a61);
+    font-weight: $DB-font-weight-regular;
+  }
+}

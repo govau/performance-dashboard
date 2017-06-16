@@ -1,0 +1,84 @@
+// todo - update govau once they add prefixed variables
+$govau-base-leading: 1.6;
+$govau-base-heading-leading: 1.4;
+$govau-small-leading: 1.2;
+$govau-double-leading: 2;
+$govau-base-line-height: 1.625;
+$govau-base-spacing: $govau-base-line-height * 1em;
+$govau-base-spacing: $govau-base-leading * 1em;
+$govau-large-spacing: $govau-base-spacing * 2;
+$govau-medium-spacing: $govau-base-spacing * 0.75;
+$govau-small-spacing: $govau-base-spacing / 2;
+$govau-tiny-spacing: $govau-base-spacing / 4;
+
+$govau-transition-timing: .2s;
+$govau-transition-timing-fast: $govau-transition-timing / 2;
+$govau-transition-easing: ease-in-out;
+
+
+$govau-non-white:     #f0f3f5;
+$govau-non-black:     #313131;
+$govau-aqua:    #18788d;
+$govau-light-aqua:    lighten($govau-aqua, 30%);
+
+
+// A base extend that provides the styling for icons at the end of a link.
+%base-link-icon--after {
+  content: '';
+  position: absolute;
+  display: block;
+  top: 0;
+  right: -($govau-medium-spacing);
+  width: $govau-medium-spacing;
+  height: $govau-medium-spacing;
+  background-repeat: no-repeat;
+  background-position: right $govau-tiny-spacing;
+  border-bottom: 1px solid transparent;
+}
+
+
+@mixin external-link($text-colour: $govau-non-black, $hover-bg-colour: $govau-light-aqua, $hover-text-colour: $govau-non-black) {
+  $link-disabled-colour: transparentize($text-colour, 0.4);
+  color: $text-colour;
+
+  text-decoration: none;
+  outline: none;
+  border-bottom: solid 1px $hover-bg-colour;
+  transition-timing-function: $govau-transition-easing;
+  transition-duration: $govau-transition-timing-fast;
+  transition-property: background-color, border-color, color;
+
+  &:hover,
+  &:focus {
+    background-color: $hover-bg-colour;
+    color: $hover-text-colour;
+  }
+
+  //[rel~='external'] {
+    display: inline-block;
+    position: relative;
+    margin-right: $govau-base-spacing;
+
+    &:hover {
+      border-color: transparent;
+    }
+
+    &::after {
+      background-image: url('~gov-au-ui-kit/assets/img/icons/external-link--aqua.svg'); // todo - should be alt color
+      @extend %base-link-icon--after;
+      background-size: (0.75 * $govau-medium-spacing) auto;
+    }
+  //}
+}
+
+
+/**
+  <a href="https://www.dto.gov.au" rel="external" class="link--external">This link points to an external resource.</a>
+ */
+.link--external {
+  @include external-link;
+}
+
+.link--external-alt {
+  @include external-link($govau-non-white, $govau-aqua, $govau-non-white);
+}

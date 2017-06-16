@@ -1,0 +1,50 @@
+exports[`(Components) Footer - footer  should match Snapshot 1`] = `
+<footer
+  className="main__footer">
+  <div
+    className="govau-footer">
+    <div
+      className="container">
+      <div
+        className="govau-footer__container">
+        <div
+          className="govau-footer__container__logo">
+          <img
+            alt="Commonwealth of Australia Coat of Arms Logo"
+            height="135"
+            src="test-file-stub"
+            width="185" />
+        </div>
+        <div
+          className="govau-footer__container__utils">
+          <div
+            className="line-1">
+            <a
+              className="UIK-button btn btn-secondary report-an-issue"
+              href="mailto:performance-dashboard@digital.gov.au"
+              rel="external">
+              Report an issue
+            </a>
+          </div>
+          <div
+            className="line-2">
+            <small>
+              © Commonwealth of Australia
+            </small>
+            <p
+              className="small">
+              This work is licensed under a Creative Commons Attribution 3.0 International 
+              <a
+                className="UIK-link "
+                href="https://creativecommons.org/licenses/by/3.0/au/deed.en"
+                rel="external">
+                License
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+`;

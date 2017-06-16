@@ -1,0 +1,80 @@
+<%
+  # content_for :body_class_names
+  content_for :title, dashboard.name
+  content_for :description, dashboard.name
+%>
+<script>
+  window.__STATE__ = <%== render(template: "/dashboards/show.json.jbuilder") %>;
+</script>
+
+<div>
+
+  <div id="dashboard-show-app">
+    <div class="hero-region">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="D-loading-panel">
+              <span>Loading...</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="below-the-line-bg">
+
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+
+          <div class="D_widget-card widget dashboard-information">
+            <div class="row">
+
+              <div class="col-xs-12 col-lg-7">
+                <div class=" widget-text">
+                  <div class="widget-text__inner">
+                    <div class="widget__title">
+                      <h4>Dashboard Information</h4>
+                    </div>
+                    <div id="dashboard-notes" class="widget__body">
+                      <% if dashboard.show_notes? %>
+                          <%= render partial: 'notes', locals: { dashboard: dashboard } %>
+                      <% else %>
+                          <p>No information available.</p>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-xs-12 col-lg-5">
+                <div class="widget-text__footer">
+                  <ul>
+                    <li>
+                      <% if dashboard.show_url? %>
+                          <a href="<%= dashboard.url %>" target="_blank" class="link--external-alt"> Visit <%= dashboard.url %></a>
+                      <% end %>
+                    </li>
+                    <li>
+                      <%= link_to export_dashboard_path(dashboard, :format => 'csv'), class: "link--external-alt" do %>
+                          Download dashboard data as CSV
+                      <% end %>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

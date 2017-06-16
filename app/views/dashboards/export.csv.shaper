@@ -1,0 +1,16 @@
+csv.headers :dataset_name, :units, :time_stamp, :label, :value
+
+@dashboard.data_tables.each do |data_table|
+  data_table.datasets.by_created.each do |dataset|
+    data_table.data_rows.by_time.each do |row|
+      csv.row do |csv|
+        pd = row.decorate.pseudo_datapoint(dataset)
+        csv.cell :dataset_name, dataset.name
+        csv.cell :units, dataset.units
+        csv.cell :time_stamp, row.row_date.to_formatted_s(:day_month_year)
+        csv.cell :label, pd.label
+        csv.cell :value, pd.value.to_s
+      end
+    end
+  end
+end

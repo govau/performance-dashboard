@@ -1,0 +1,35 @@
+common: &common
+  host:     <%= ENV['DB_HOST'] || '127.0.0.1' %>
+  username: <%= ENV['DB_USER_NAME'] %>
+  password: <%= ENV['DB_PWD'] || '' %>
+  adapter:  postgresql
+  encoding: unicode
+  pool:     <%= ENV['DB_CONCURRENCY'] || 10 %>
+  timeout:  5000
+
+development:
+  <<: *common
+  database: <%= ENV['DB_NAME'] || 'dashboard_development' %>
+
+# https://circleci.com/docs/environment#databases
+# Both postgresql and mysql are set up to use the ubuntu user, have a database called circle_test available, and don't require any password.
+test:
+  <<: *common
+  database: <%= ENV['DB_NAME_TEST'] || 'dashboard_test' %><%= ENV['TEST_ENV_NUMBER'] %>
+  pool: 5
+
+staging:
+  <<: *common
+  url: <%= ENV['DATABASE_URL'] %>
+
+cloudfoundry:
+  <<: *common
+  url: <%= ENV['DATABASE_URL'] %>
+
+production:
+  database: <%= ENV['DB_NAME'] %>
+  url: <%= ENV['DATABASE_URL'] %>
+  adapter:  postgresql
+  encoding: unicode
+  pool:     <%= ENV['DB_CONCURRENCY'] || 20 %>
+  timeout:  5000

@@ -1,0 +1,52 @@
+a.UIK-link {
+  color: currentColor;
+  display: inline-block;
+  outline: none;
+  border-bottom: solid 1px $UIKIT_180_light-aqua;
+  transition-timing-function: $UIKIT_180_transition-easing;
+  transition-duration: $UIKIT_180_transition-timing-fast;
+  transition-property: background-color, border-color, color;
+
+  &:hover,
+  &:focus {
+    background-color: $UIKIT_180_light-aqua;
+  }
+
+  &[disabled] {
+    color: transparentize($UIKIT_180_non-black, 0.3);
+    border-bottom: none;
+    cursor: not-allowed;
+    background-color: transparent !important;
+
+    &:hover {
+      cursor: not-allowed;
+    }
+  }
+
+  &[rel~='external'] {
+    display: inline;
+    position: relative;
+    margin-right: 1em;
+
+    &:hover {
+      border-color: transparent;
+    }
+
+    &::after {
+      background-image: url('~gov-au-ui-kit/assets/img/icons/external-link--aqua.svg');
+
+      content: '';
+      position: absolute;
+      display: block;
+      top: 0;
+      right: -($UIKIT_180_medium-spacing);
+      width: $UIKIT_180_medium-spacing;
+      height: $UIKIT_180_medium-spacing;
+      background-repeat: no-repeat;
+      background-position: right $UIKIT_180_tiny-spacing;
+      border-bottom: 1px solid transparent;
+
+      background-size: (0.75 * $UIKIT_180_medium-spacing) auto;
+    }
+  }
+}

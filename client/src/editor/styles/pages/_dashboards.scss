@@ -1,0 +1,30 @@
+.page-dashboards {
+  .dashboard-list__item {
+
+    padding: $spacer-y 0;
+    @media (min-width:$screen-sm) {
+      padding: $spacer-y*1.8 0 $spacer-y*2;
+    }
+
+    .link-wrap {
+      display: block;
+      margin-bottom: 1em;
+      @media (min-width:$screen-sm) {
+        display: inline-block;
+        margin-bottom: 0;
+      }
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $DB-color-grey-border;
+    }
+
+    h1 {
+      margin-bottom: 1em;
+    }
+
+    .btn {
+      margin-right: $spacer-x * 2;
+    }
+  }
+}

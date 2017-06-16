@@ -1,0 +1,65 @@
+$assets-image-url: '/images';
+
+// Media queries breakpoints
+$screen-min:                        320px;
+$screen-sm-minor:                   map-get($grid-breakpoints, 'sm'); //544
+$screen-sm:                         map-get($grid-breakpoints, 'md'); //768
+$screen-md:                         map-get($grid-breakpoints, 'lg'); //992
+$screen-lg:                         map-get($grid-breakpoints, 'xl'); //1200
+
+// colours
+$brand-colour:                      #0074c4;
+$gov-au-brand-colour:               #224A61;
+$charcoal-grey:                     #2e343b;
+$cerulean:                          #0579c7 !default;
+$pale-grey:                         #ebf4fa;
+$white:                             #fff;
+$black:                             #000;
+$light-grey:                        #f0f3f5;
+$primary-text-colour:               $charcoal-grey;
+$prototype-colour:                  #c72572;
+$secondary-text-colour:             #6c7783;
+$brand-primary-colour:              #025a96;
+$link-colour:                       $brand-primary-colour;
+$link-hover-colour:                 darken($link-colour, 15%);
+$missing-data-colour:               #dc271b;
+$back-link-colour:                  #5c6976;
+$card-grey-colour:                  #f9fafb;
+$logo-bg-colour:                    #232d35;
+$table-odd-row-bg-colour:           #f9f9f9;
+$axis-stroke-colour:                #c7ccd2;
+$debug-colour:                      #ff0;
+$debug-svg-colour:                  rgba($debug-colour, 0.1);
+$user-satisfaction-colour:          $color-user-satisfaction; // todo - deprecate alias
+$cost-per-transaction-colour:       $color-cost-per-transaction;  // todo - deprecate alias
+$digital-take-up-colour:            $color-digital-take-up;  // todo - deprecate alias
+$completion-rate-colour:            $color-completion-rate;  // todo - deprecate alias
+
+$widget-box-shadow:                 0 1px 4px 0 rgba(0, 0, 0, 0.04);
+$widget-note-box-shadow:            0 2px 4px 0 rgba(0, 0, 0, 0.3);
+$widget-border:                     solid 1px rgba(0, 0, 0, 0.09);
+$card-box-shadow:                   0 2px 8px 0 rgba(0, 0, 0, 0.2);
+
+$table-border:                      1px solid #ddd;
+
+// Units
+$note-width:                        150px;
+$default-padding:                   40px;
+$spacing-unit:                      30px;
+$gutter:                            10px; // todo - probably should set as $grid-gutter-width
+
+// Typography:
+$fallback:                          16px;
+$biggie:                            4.7rem;
+$biggie-fallback:                   4.7 * $fallback;
+$base-font-size:                    1rem;
+$base-line-height:                  1.5;
+$line-height-base:                  1.428571429; // 20/14
+$small-font-size:                   0.75em;
+
+$metrics: (
+  user-satisfaction: $user-satisfaction-colour,
+  cost-per-transaction: $cost-per-transaction-colour,
+  digital-take-up: $digital-take-up-colour,
+  completion-rate: $completion-rate-colour
+);

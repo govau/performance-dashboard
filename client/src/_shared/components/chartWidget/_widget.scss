@@ -1,0 +1,67 @@
+.D_widget {
+
+  .widget__title {
+    h3 {
+      font-weight: 600;
+      font-size: 18px;
+    }
+  }
+  .widget__definition {
+    margin-bottom: 1em !important;
+    margin-left: -2px;
+  }
+
+  .meta-group:first-of-type {
+    padding-right: 1em;
+  }
+
+  .meta-group {
+    margin-bottom: 8px;
+  }
+
+  //.legend .date {
+  //  margin-bottom: 4px;
+  //}
+
+  .chart {
+    margin-bottom: 1em;
+  }
+
+  .fact {
+    p {
+      margin-top: 4px;
+      color: #146577;
+      font-size: 20px;  // h3
+      font-weight: 300;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  &.sparkline {
+    .value {
+      font-size: 75.2px;
+      font-size: 4.7rem;
+      line-height: 1;
+    }
+
+    .metric-data,
+    .metric-meta {
+      width: 100%;
+      text-align: center;
+    }
+
+    .metric-data,
+    .sparkline {
+      margin-bottom: 1em;
+    }
+
+    .value,
+    .decorator {
+      display: inline-block;
+      vertical-align: bottom;
+    }
+  }
+
+}

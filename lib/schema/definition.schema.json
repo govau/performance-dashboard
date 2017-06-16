@@ -1,0 +1,125 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "description": "Draft Format for describing definitions for dashboards",
+  "name": "Dashboard Definition",
+  "definitions": {
+    "note": {
+      "type": "object",
+      "description": "An explanatory note to provide context for a dashboard",
+      "properties": {
+        "title": { "type": "string" },
+        "body": { "type": "string" },
+        "list": {
+          "type": "array",
+          "name": "list",
+          "description": "An unordered list to be appended to a note.",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time",
+      "name": "recorded_at",
+      "description": "The datetime the measurement was recorded. JSON datetime format (YY-MM-DDTHH:MM:SS.sssZ)."
+    },
+    "tags": {
+      "type": "array",
+      "name": "tags",
+      "description": "An array of arbitrary tags.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "widget": {
+      "type": "object",
+      "name": "A widget/chart for display on the dashboard",
+      "properties": {
+        "id":           {
+          "type":     "string",
+          "pattern": "^(\\w|-)+$"
+        },
+        "type":         {
+          "type": "string",
+          "enum": ["bar", "line", "fact", "sparkle", "pie", "full", "sparkline", "kpi-sparkline"]
+        },
+        "name":         { "type": "string" },
+        "description":  { "type": "string" },
+        "notes":        { "type": "string" },
+        "datasets":         {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "units": {
+          "type": "string",
+          "enum": ["%", "$", "n", "f", "s"]
+        },
+        "size": {
+          "type": "string",
+          "enum": ["small", "medium", "large", "extra-large", "extra-small"]
+        },
+        "colours":         {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "required": ["id", "type", "units"]
+    },
+    "row": {
+      "type": "array",
+      "description": "A nested array of widget ids.",
+      "items": { "type": "string" }
+    }
+  },
+  "properties": {
+    "version": {
+      "type": "string",
+      "description": "The version of the dashboard schema to be used",
+      "enum": ["1"]
+    },
+    "updated_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The datetime the document was updated. JSON datetime format (YY-MM-DDTHH:MM:SS.sssZ).",
+      "name": "updated_at"
+    },
+    "agency": {
+      "type": "string",
+      "description": "The name of the agency who owns the data.",
+      "name": "agency"
+    },
+    "service": {
+      "type": "string",
+      "description": "The name of the service",
+      "name": "Service"
+    },
+    "description": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "array",
+      "description": "An array of notes",
+      "items": { "$ref": "#/definitions/note" }
+    },
+    "widgets": {
+      "type": "array",
+      "description": "An array of widgets.",
+      "items": { "$ref": "#/definitions/widget" }
+    },
+    "layout": {
+      "type": "array",
+      "description": "An array of rows",
+      "items": { "$ref": "#/definitions/row" }
+    }
+  },
+  "required": [
+    "name",
+    "url",
+    "agency",
+    "description",
+    "widgets",
+    "layout"
+  ]
+}

@@ -1,0 +1,11 @@
+.phase-banner {
+  min-width: 320px; //$screen-sm-min;
+  background-color: black; //#224a61;
+  color: #fff;
+  padding: 8px 0 10px;
+  line-height: 1.2;
+
+  span {
+    font-size: .9em;
+  }
+}

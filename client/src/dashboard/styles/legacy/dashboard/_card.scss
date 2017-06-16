@@ -1,0 +1,225 @@
+.card__link {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  display: block;
+}
+
+.card {
+  border-left: 6px solid $charcoal-grey;
+  box-shadow: $card-box-shadow;
+  background-image: linear-gradient(to bottom, $card-grey-colour, $light-grey);
+  margin: 0 0 $spacing-unit 0;
+  display: block;
+  position: relative;
+  padding: 10px 10px 10px 10px;
+  color: $black;
+
+  @media screen and (min-width: $screen-sm) {
+    min-height: 140px;
+    padding: $gutter $gutter 10px 25px;
+  }
+
+  h3 {
+    line-height: 1.2;
+    margin: $gutter 0;
+
+    @media screen and (min-width: 768px) {
+      font-size: 30px;
+      font-size: 1.875rem;
+    }
+  }
+
+  @media screen and (max-width: $screen-sm -1) {
+    display: flex;
+  }
+
+  a {
+    &.card__link__visible {
+      font-weight: 600;
+      text-decoration: underline;
+      display: inline;
+      width: 127px;
+      position: relative;
+      top: 8px;
+
+      @media(min-width: $screen-md + 1) {
+        position: relative;
+        top: -15px;
+      }
+
+      &:visited {
+        color: $brand-primary-colour;
+      }
+
+      &:hover {
+        background-color: $govau-aqua;
+        color: $white;
+      }
+    }
+  }
+
+  .updated-at {
+    color: $secondary-text-colour;
+    clear: both;
+
+    @media (min-width: $screen-md){
+      padding-bottom: 30px;
+    }
+  }
+
+  .main-kpi {
+    padding-bottom: 0;
+  }
+}
+
+.card__left {
+  @media screen and (min-width: $screen-sm) { //TODO fix clash of media queries
+    width: 30%;
+    float: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @media only screen and (min-width: $screen-sm ) and (max-width: $screen-md) {
+    @include span-columns(12);
+  }
+}
+
+.card__right {
+
+  @media screen and (max-width: $screen-sm) {
+    padding-top: 20px;
+    border-top: 1px $axis-stroke-colour solid;
+    margin-top: 20px;
+  }
+
+  @media (max-width: 768px) {
+    .aus-width-one-fourth:last-child {
+      .widget {
+        margin-bottom: -25px;
+      }
+    }
+  }
+
+  &.dashboard__kpis {
+    .aus-width-one-fourth {
+      @media screen and (min-width: $screen-sm) and (max-width: $screen-md) {
+        @include span-columns(3);
+      }
+    }
+  }
+
+  .metric-trend,
+  .summary-text {
+    font-size: 12px;
+  }
+
+  &.dashboard__kpis {
+    background: transparent;
+  }
+
+  @media screen and (min-width: $screen-md + 1) {
+    width: 70%;
+    float: left;
+
+    .widget__inner {
+      .sparkline__inner {
+        .chart {
+          margin: 5px 10px;
+        }
+      }
+    }
+
+    &.dashboard__kpis {
+      .widget__title {
+        height: 35px;
+      }
+    }
+
+    .widget {
+      padding: 0;
+      margin: 0;
+    }
+  }
+
+
+  @media screen and (max-width: $screen-sm) {
+    width: 100%;
+    float: left;
+
+    .widget__inner {
+      .sparkline__inner {
+        .chart {
+          margin: 5px 10px;
+        }
+      }
+    }
+
+    &.dashboard__kpis {
+      .widget__title {
+        height: 35px;
+      }
+    }
+
+    .widget {
+      padding: 0;
+      margin: 0;
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: $screen-md - 1 ) { //includes 767//
+  .card {
+    .aus-width-one-fourth {
+      @include span-columns(3);
+    }
+    .dashboard__kpis {
+      .widget {
+        border: 0;
+        box-shadow: none;
+        padding: 0;
+        margin: 0;
+        min-height: 0;
+        height: auto;
+        display: block;
+
+        .widget__inner {
+          position: relative;
+          padding:0;
+          width: 100%;
+
+          .sparkline {
+            max-width: 100%;
+            display:block;
+          }
+        }
+
+        .sparkline__inner {
+          float: none;
+
+          .chart {
+            display: block;
+          }
+        }
+
+        .metric-meta {
+          display: block;
+
+          .metric-trend {
+            margin-right: 5px;
+            display: inline-block;
+          }
+        }
+        .summary-text {
+          display: inline-block;
+        }
+      }
+
+    }
+
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "version":      "1",
+  "updated_at":   "2016-12-07T01:01:01.111Z",
+  "name":         "Permit Verification Service",
+  "url":          "imports.url",
+  "agency":       "DIBP",
+  "service":      "dto.gov.au",
+  "description":  "Permit Verification Service Dashboard",
+  "notes":        "",
+  "datasets": [
+    {
+        "id":           "user-satisfaction",
+        "recorded_at":  "2016-09-07T01:01:01.111Z",
+        "units":        "%",
+        "name":         "User satisfaction",
+        "note":         "We do not have this data at the moment because we are....",
+        "data": [
+          { "label": "2016-05", "value": null },
+          { "label": "2016-06", "value": null },
+          { "label": "2016-07", "value": null },
+          { "label": "2016-08", "value": null },
+          { "label": "2016-09", "value": null },
+          { "label": "2016-10", "value": 76},
+          { "label": "2016-11", "value": null }
+        ]
+    },
+    {
+        "id":           "cost-per-transaction",
+        "recorded_at":  "2016-09-07T01:01:01.111Z",
+        "units":        "$",
+        "name":         "Cost per transaction",
+        "note":         "We do not have this data at the moment because we are....",
+        "data":         [
+          { "label": "2016-05", "value": null },
+          { "label": "2016-06", "value": null },
+          { "label": "2016-07", "value": null },
+          { "label": "2016-08", "value": null },
+          { "label": "2016-09", "value": null },
+          { "label": "2016-10", "value": null },
+          { "label": "2016-11", "value": null }
+        ]
+    },
+    {
+        "id":           "completion-rate",
+        "recorded_at":  "2016-09-07T01:01:01.111Z",
+        "units":        "%",
+        "name":         "Completion rate",
+        "note":         "We do not have this data at the moment because we are...",
+        "data":         [
+          { "label": "2016-05", "value": null },
+          { "label": "2016-06", "value": null },
+          { "label": "2016-07", "value": null },
+          { "label": "2016-08", "value": null },
+          { "label": "2016-09", "value": null },
+          { "label": "2016-10", "value": null },
+          { "label": "2016-11", "value": null }
+        ]
+    },
+    {
+        "id":           "digital-take-up",
+        "recorded_at":  "2016-09-07T01:01:01.111Z",
+        "units":        "%",
+        "name":         "Digital take-up",
+        "note":         "Digital take-up measures the percentage of import permits that are available in the Permit Verification Service.",
+        "data": [
+          { "label": "2016-05", "value": 77},
+          { "label": "2016-06", "value": 89},
+          { "label": "2016-07", "value": 90},
+          { "label": "2016-08", "value": 93},
+          { "label": "2016-09", "value": 91},
+          { "label": "2016-10", "value": 91},
+          { "label": "2016-11", "value": 92}
+        ]
+    },
+    {
+        "id":           "clearing-time",
+        "recorded_at":  "2016-09-07T01:01:01.111Z",
+        "units":        "i",
+        "name":         "Time to clear",
+        "note":         "This shows the average time taken to clear a permit using the Permit Verifcation Service.",
+        "data": [
+          { "label": "2016-05", "value": 84807},
+          { "label": "2016-06", "value": 48317},
+          { "label": "2016-07", "value": 51420},
+          { "label": "2016-08", "value": 62400},
+          { "label": "2016-09", "value": 48060},
+          { "label": "2016-10", "value": 37560},
+          { "label": "2016-11", "value": 39300}
+      ]
+    }
+  ]
+}

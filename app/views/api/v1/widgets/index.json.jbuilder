@@ -1,0 +1,1 @@
+json.array! @widgets, partial: '/widget', as: :widget

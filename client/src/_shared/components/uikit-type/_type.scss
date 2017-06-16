@@ -1,0 +1,6 @@
+@import './../../styles/_vendor/bootstrap/mixins/strong';
+
+strong,
+.strong {
+  @include strong;
+}

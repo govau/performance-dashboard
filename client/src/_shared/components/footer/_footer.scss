@@ -1,0 +1,68 @@
+.govau-footer {
+
+  background-color: $UIKIT_180_non-white;
+  border-top: 6px solid #224a61;
+
+  &__container {
+    padding: $spacer-y 0;
+
+    @media (min-width:$screen-sm) {
+      display:table;
+      width: 100%;
+      padding: $spacer-y*1.4 0;
+    }
+
+    .report-an-issue {
+      margin-bottom: 16px;
+    }
+
+    &__logo,
+    &__utils {
+      margin-bottom: $spacer-y;
+
+      @media (min-width:$screen-sm) {
+        display:table-cell;
+        vertical-align: top;
+      }
+    }
+
+    &__logo {
+      margin-bottom: $spacer-y*1.4;
+      @media (min-width:$screen-sm) {
+        margin-bottom: $spacer-y;
+      }
+    }
+
+    &__utils {
+      @media (min-width:$screen-sm) {
+        padding-left: $spacer-x*1.4;
+
+        a {
+          margin-top: 8px;
+        }
+      }
+
+      .line-1,
+      .line-2 {
+        display: block;
+      }
+
+      small,
+      .small {
+        font-size: 14px;
+        display: block;
+      }
+    }
+  }
+
+  &__links-list {
+    margin-bottom: $spacer-y;
+    li {
+      display: block;
+      margin-bottom: 6px;
+    }
+    a {
+      display: inline;
+    }
+  }
+}

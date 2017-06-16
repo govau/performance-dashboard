@@ -1,0 +1,23 @@
+json.(widget,
+  :id,
+  :dashboard_id,
+  :name,
+  :type,
+  :size,
+  :units,
+  :description,
+  :updated_at,
+  :data_updated_at,
+  :last_updated_at,
+  :options,
+  :is_hero,
+  :row,
+  :pos, 
+  :prefix,
+  :suffix,
+  :created_at,
+  :updated_at,
+  :series_start,
+  :series_end)
+
+json.datasets widget.dataset_widgets.collect {|dw| dw.dataset_id }
