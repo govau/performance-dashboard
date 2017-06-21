@@ -2,15 +2,13 @@
 <html class="no-js" lang="en">
 <head>
   <meta charset="utf-8">
-  <title><%= yield(:title) %></title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title><%= yield(:title) %></title>
   <meta name="description" content="<%= yield(:description) %>">
-
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<%= render :partial => "partials/head-meta", :locals => { :description => yield(:description) } %>
 
   <%= render :partial => "partials/no-js-snippet" %>
-
-	<%= render :partial => "partials/head-meta" %>
 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"/>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
