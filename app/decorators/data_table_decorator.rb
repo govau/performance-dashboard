@@ -13,6 +13,29 @@ class DataTableDecorator < Draper::Decorator
     end
   end
 
+  #TODO find a way of DRYing this up, copy-pasted just to use 
+  def slices(widget, limit: 0)
+    arr = []
+
+    if period_start = series_end&.beginning_of_month
+      while (0 == limit || arr.size < limit) &&
+          period_start >= series_start&.beginning_of_month
+        if s = slice_data(widget, 'month', period_start)
+          arr << s          
+        end
+
+        period_start = period_start << 1
+      end
+    end
+
+    arr.reverse
+  end
+
+  def slice_data(widget, period, period_start)
+    object.slice_data(widget, period, period_start) ||
+      fake_slice(widget, period, period_start)
+  end
+
   def latest
     data_rows.by_time_desc.first
   end
@@ -53,5 +76,21 @@ class DataTableDecorator < Draper::Decorator
 
   def row_first_value(row)
     row.values&.first&.second&.to_f || 0
+  end
+
+  def fake_slice(widget, period, period_start)
+    period_end = calculate_period_end period, period_start
+
+    row = DataRow.new do |dr|
+      dr.data_table = object
+      dr.row_date = period_start
+      dr.values = {}
+    end
+
+    rows = [row.decorate(context: {widget: widget})]
+
+    groups = generate_groups rows
+
+    Slice.new widget, period, period_start, period_end, groups, rows
   end
 end

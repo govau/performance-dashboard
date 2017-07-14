@@ -49,8 +49,11 @@ class DataTable < ApplicationRecord
 
     if period_start = series_end&.beginning_of_month
       while (0 == limit || arr.size < limit) &&
-          s = slice_data(widget, 'month', period_start)
-        arr << s
+          period_start >= series_start&.beginning_of_month
+        if s = slice_data(widget, 'month', period_start)
+          arr << s          
+        end
+
         period_start = period_start << 1
       end
     end
@@ -58,8 +61,8 @@ class DataTable < ApplicationRecord
     arr.reverse
   end
 
-  def slice_data(widget, period, period_start)
-    period_end = case period
+  def calculate_period_end(period, period_start)
+    case period
     when 'week'
       period_start.advance(weeks: 1, days: -1)
     when 'month'
@@ -71,11 +74,22 @@ class DataTable < ApplicationRecord
     else
       raise "Unknown period: #{period}"
     end
+  end
 
-    values_by_set = {}
+  def slice_data(widget, period, period_start)
+    period_end = calculate_period_end period, period_start
     rows = data_rows.within_interval(period_start, period_end).decorate(
-      context: { widget: widget })
+      context: { widget: widget })    
+    groups = generate_groups(rows)
 
+    if groups.any? 
+      Slice.new widget, period, period_start, period_end, groups, rows
+    end
+  end
+
+  def generate_groups(rows)
+    values_by_set = {}
+    
     rows.each do |row|
       row.values.each do |dataset_id, value| 
         (values_by_set[dataset_id] ||= []) << value
@@ -85,10 +99,6 @@ class DataTable < ApplicationRecord
     groups = values_by_set.collect {|dataset_id, values|
       [dataset_id, aggregate_slice_values(values)]
     }.to_h
-
-    if groups.any? 
-      Slice.new widget, period, period_start, period_end, groups, rows
-    end
   end
 
   def aggregate_slice_values(values)

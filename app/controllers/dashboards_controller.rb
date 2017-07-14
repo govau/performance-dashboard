@@ -16,7 +16,7 @@ class DashboardsController < ApplicationController
     @slices = @dashboard.widgets.select {|widget|
       widget.has_data?
     }.collect {|widget|
-      widget.data_table.slices(widget, limit: 13)
+      widget.data_table.decorate.slices(widget, limit: 13)
     }.flatten
   end
 
