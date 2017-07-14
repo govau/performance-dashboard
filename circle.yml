@@ -39,7 +39,7 @@ test:
 deployment:
   development:
     branch: master
-    owner: AusDTO
+    owner: govau
     commands:
       - cf api $CF_API_DEV &> /dev/null
       - cf auth $CF_USER_DEV $CF_PASSWORD_DEV &> /dev/null
@@ -49,7 +49,7 @@ deployment:
 
   staging:
     branch: staging
-    owner: AusDTO
+    owner: govau
     commands:
       - cf api $CF_API_DEV &> /dev/null
       - cf auth $CF_USER_DEV $CF_PASSWORD_DEV &> /dev/null
@@ -60,7 +60,7 @@ deployment:
 
   production:
     tag: /release-.*/
-    owner: AusDTO
+    owner: govau
     commands:
       - cf api $CF_API_PROD &> /dev/null
       - cf auth $CF_USER_PROD $CF_PASSWORD_PROD &> /dev/null
