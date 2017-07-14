@@ -49,8 +49,11 @@ class DataTable < ApplicationRecord
 
     if period_start = series_end&.beginning_of_month
       while (0 == limit || arr.size < limit) &&
-          s = slice_data(widget, 'month', period_start)
-        arr << s
+          period_start >= series_start&.beginning_of_month
+        if s = slice_data(widget, 'month', period_start)
+          arr << s          
+        end
+
         period_start = period_start << 1
       end
     end

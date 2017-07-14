@@ -13,15 +13,17 @@ class DataTableDecorator < Draper::Decorator
     end
   end
 
-  # Use period start rather than first blank period to get slices
+  #TODO find a way of DRYing this up, copy-pasted just to use 
   def slices(widget, limit: 0)
     arr = []
 
     if period_start = series_end&.beginning_of_month
       while (0 == limit || arr.size < limit) &&
-          period_start >= series_start&.beginning_of_month &&   
-          s = slice_data(widget, 'month', period_start)
-        arr << s
+          period_start >= series_start&.beginning_of_month
+        if s = slice_data(widget, 'month', period_start)
+          arr << s          
+        end
+
         period_start = period_start << 1
       end
     end
