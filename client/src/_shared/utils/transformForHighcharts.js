@@ -88,7 +88,12 @@ const transformDataForPolar = (config, slices) => {
       _singleSection: false,
     });
   } else {
-    throw new Error('Invalid slice state for polar data type transformation.');
+
+    if (__DEV__) {
+      throw new Error('Invalid slice state for polar data type transformation.');
+    } else {
+      console.warn('Invalid slice state for polar data type transformation.');
+    }
   }
 
 };
@@ -128,7 +133,12 @@ const transformDataForCartesian = (config, slices) => {
       });
 
     } else {
-      throw new Error(`No groups provided. You shouldn't be able to reach here.`);
+
+      if (__DEV__) {
+        throw new Error(`No groups provided. You shouldn't be able to reach here.`);
+      } else {
+        console.warn(`No groups provided. You shouldn't be able to reach here.`);
+      }
     }
 
   } else {  // multiple category
@@ -152,7 +162,12 @@ const transformDataForCartesian = (config, slices) => {
       });
 
     } else {
-      throw new Error(`No groups provided. You shouldn't be able to reach here.`);
+
+      if (__DEV__) {
+        throw new Error(`No groups provided. You shouldn't be able to reach here.`);
+      } else {
+        console.warn(`No groups provided. You shouldn't be able to reach here.`);
+      }
     }
 
   }
@@ -232,7 +247,9 @@ const polarSingleCategoryMultipleSections = (config, slices) => {
 
 const cartesianSingleCategorySingleSection = (config, slices) => {
 
-  throw new Error('SLICE TYPE NOT YET SUPPORTED.');
+  // todo
+  console.warn('SLICE TYPE NOT YET SUPPORTED - EXPERIMENTAL .');
+  // throw new Error('SLICE TYPE NOT YET SUPPORTED.');
 
 
   const position = slices[0].widget.pos;
@@ -291,7 +308,9 @@ const cartesianSingleCategorySingleSection = (config, slices) => {
 
 const cartesianSingleCategoryMultipleSections = (config, slices) => {
 
-  throw new Error('SLICE TYPE NOT YET SUPPORTED.');
+  // todo
+  // throw new Error('SLICE TYPE NOT YET SUPPORTED.');
+  console.warn('EXPERIMENTAL - SLICE TYPE NOT YET SUPPORTED.');
 
   const slice = slices[0];
   const position = slice.widget.pos;
