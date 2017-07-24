@@ -141,7 +141,8 @@ ActiveAdmin.register Dashboard do
            { title: 'Another note',
              body: 'Use this structure to add more notes...'}]) }
       else
-        f.input :notes, input_html: { value: JSON.pretty_generate(resource.notes || {}) }
+        notes = JSON.pretty_generate(object.notes || {}) rescue object.notes
+        f.input :notes, input_html: { value: notes }
       end
 
       f.input :published_at
