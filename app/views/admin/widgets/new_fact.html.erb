@@ -1,0 +1,13 @@
+<%= semantic_form_for [:admin, Widget.new], builder: ActiveAdmin::FormBuilder do |f| %>
+  <%= f.inputs 'Widget' do %>
+    <%= f.input :dashboard %>
+    <%= f.input :name, as: :string %>
+    <%= f.input :description %>
+    <%= f.input :pos, as: :number %>
+    <%= f.input :size, as: :select, collection: Widget::SIZES %>
+    <%= f.input :row, as: :hidden, input_html: { value: 0 } %>
+    <%= f.input :type, as: :hidden, input_html: { value: 'fact' } %>
+    <%= f.input :units, as: :hidden, input_html: { value: 'n' } %>
+  <% end %>
+<%= f.actions %>
+<% end %>
