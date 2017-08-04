@@ -28,6 +28,8 @@ class Widget < ApplicationRecord
   delegate :data_updated_at, :series_end, :series_start, to: :data_table,
     allow_nil: true
 
+  before_create :set_defaults
+
   def self.last_updated
     by_last_updated.last
   end

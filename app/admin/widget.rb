@@ -20,6 +20,16 @@ ActiveAdmin.register Widget do
   filter :name
   filter :dashboard
 
+  action_item :new_fact, only: :index do
+    link_to 'New fact', new_fact_admin_widgets_path
+  end
+
+  collection_action :new_fact, method: :get do 
+    @dashboards = Dashboard.all
+  end
+
+  
+
   form do |f|
     f.inputs 'Widget' do
       f.semantic_errors *f.object.errors.keys
