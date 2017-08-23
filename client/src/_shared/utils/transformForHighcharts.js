@@ -124,7 +124,7 @@ const transformDataForCartesian = (config, slices) => {
         _coordinatesType: 'cartesian',
       });
 
-    } else if (slice.groups[0].length === 1) {  // single section (column)
+    } else if (slice.groups.length === 1) {  // single section (column)
 
       return merge(cartesianSingleCategorySingleSection(config, slices), { // todo - think we can delete this
         _singleCategory: true,
