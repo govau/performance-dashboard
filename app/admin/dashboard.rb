@@ -86,10 +86,10 @@ ActiveAdmin.register Dashboard do
           pos: 0,
           row: 0,
           units: 'n',
-          last_updated_at: DateTime.now,
+          last_updated_at: (DateTime.now << 1),
           data_table: data_table
 
-        row = data_table.data_rows.build row_date: DateTime.now.beginning_of_month
+        row = data_table.data_rows.build(row_date: (DateTime.now << 1).beginning_of_month)
 
         datasets = Widget::KPIS.each do |kpi|
           units = if 'Cost per transaction' == kpi 
@@ -111,7 +111,7 @@ ActiveAdmin.register Dashboard do
             pos: 0,
             row: 0,
             units: units,
-            last_updated_at: DateTime.now,
+            last_updated_at: (DateTime.now << 1),
             data_table: data_table
           
           data_table.datasets << dataset
