@@ -11,7 +11,7 @@
   "license": "MIT",
   "homepage": "https://dashboard.gov.au",
   "dependencies": {
-    "@gov.au/datavizkit": "^1.0.20-development",
+    "@gov.au/datavizkit": "^1.0.32-development",
     "autoprefixer": "^6.4.1",
     "autotrack": "^1.0.0",
     "ava": "^0.15.2",
