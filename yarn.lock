@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@gov.au/datavizkit@^1.0.20-development":
-  version "1.0.20-development"
-  resolved "https://registry.yarnpkg.com/@gov.au/datavizkit/-/datavizkit-1.0.20-development.tgz#cfae0c38d46cc398867e240acaedeba638d88bf8"
+"@gov.au/datavizkit@^1.0.32-development":
+  version "1.0.32-development"
+  resolved "https://registry.yarnpkg.com/@gov.au/datavizkit/-/datavizkit-1.0.32-development.tgz#4b1da4f5230a5e028feb31a0db944abd72c7b1ee"
   dependencies:
     highcharts "^5.0.9"
     jsx-to-string "1.0.2"
