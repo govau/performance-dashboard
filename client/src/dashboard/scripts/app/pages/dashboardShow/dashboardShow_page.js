@@ -46,7 +46,7 @@ const DashboardShowPage = (props) => {
       <div className="dashboard-show__hero">
         <div className="page__white-banner">
 
-          {heroWidget && dashboard.show_hero && <div className="container">
+          {heroWidget && dashboard.display_hero && <div className="container">
             <div className="row">
               <div className="col-xs-12">
                 <div className="col-xs-12">
