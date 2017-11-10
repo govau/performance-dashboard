@@ -42,6 +42,7 @@ gem 'activerecord-session_store'
 gem 'storext', '~> 2.2'
 gem 'rollbar', '~> 2.14'
 gem 'semantic', '~> 1.6.0'
+gem 'rinku', '~> 2.0'
 
 group :production do
   gem 'rails_12factor'
