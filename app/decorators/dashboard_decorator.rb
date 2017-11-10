@@ -29,7 +29,7 @@ class DashboardDecorator < Draper::Decorator
   end
 
   def notes_to_html
-    h.sanitize(markdown.render(notes))
+    h.sanitize(markdown.render(object.notes))
   end
 
   def name
