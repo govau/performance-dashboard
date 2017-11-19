@@ -81,6 +81,7 @@ group :test do
   gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
   gem 'selenium-webdriver', '~> 2.53.4'
+  gem 'rubyzip', '~> 1.2.1'
   gem 'shoulda-matchers', '~> 3.1'
   gem 'codecov', require: false
 end
