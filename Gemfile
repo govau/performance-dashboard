@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.3.4'
+ruby '2.3.5'
 
 # https://github.com/bundler/bundler/blob/master/lib/bundler/dsl.rb#L263
 git_source(:github) do |repo_name|
