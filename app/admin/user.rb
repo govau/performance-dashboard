@@ -22,6 +22,7 @@ ActiveAdmin.register User do
 
   member_action :unlock, method: :patch do
     resource.otp_secret_key = nil
+    resource.second_factor_attempts_count = 0
     resource.save
     flash[:notice] = 'User unlocked'
     redirect_to admin_user_path resource
