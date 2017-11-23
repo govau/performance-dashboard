@@ -17,13 +17,14 @@ ActiveAdmin.register User do
   end
 
   action_item :clear_2fa, only: :show do
-    link_to 'Clear 2FA', unlock_admin_user_path(user), method: :patch    
+    link_to 'Unlock user', unlock_admin_user_path(user), method: :patch    
   end
 
   member_action :unlock, method: :patch do
-    resource.otp_secret_key = nil
+    resource.otp_secret_key = nil    
     resource.second_factor_attempts_count = 0
-    resource.save
+    resource.unlock_access!
+    resource.save!
     flash[:notice] = 'User unlocked'
     redirect_to admin_user_path resource
   end
