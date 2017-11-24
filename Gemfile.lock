@@ -259,7 +259,7 @@ GEM
       thor (>= 0.14, < 2.0)
     jquery-ui-rails (5.0.5)
       railties (>= 3.2.16)
-    json (1.8.3)
+    json (1.8.6)
     json-schema (2.7.0)
       addressable (>= 2.4)
     jsonapi (0.1.1.beta2)
@@ -533,7 +533,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 2.3.5p376
+   ruby 2.4.2p198
 
 BUNDLED WITH
    1.16.0

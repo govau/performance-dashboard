@@ -1,18 +1,6 @@
 ---
-applications:
-  - buildpack: https://github.com/cloudfoundry/ruby-buildpack.git
-    memory: 512M
-    instances: 2
-    command: bin/cf-start.sh
-qafire:
-  buildpack: https://github.com/cloudfoundry-incubator/multi-buildpack
-  command: npm install -g yarn && yarn install && yarn build && bundle exec rake assets:precompile && bin/cf-bootstrap-start.sh
-  memory: 2G
-  disk_quota: 2048MB
-  health_check_type: none
-  instances: 1
-  env:
-    DISABLE_DATABASE_ENVIRONMENT_CHECK: 1
-  services:
-  - plan: shared-pgsql
-    type: dto-shared-pgsql
+inherit: manifest-base.yml
+
+memory: 512M
+instances: 3
+command: bin/cf-start.sh

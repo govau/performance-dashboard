@@ -1,0 +1,10 @@
+---
+inherit: manifest-base.yml
+
+memory: 256M
+disk_quota: 256M
+instances: 1
+command: bin/cf-bootstrap-start.sh
+
+applications:
+  - name: dashboard-staging
