@@ -1,5 +1,5 @@
 ---
-inherit: manifest-base.yml
+# inherit: manifest-base.yml
 
 memory: 512M
 instances: 3

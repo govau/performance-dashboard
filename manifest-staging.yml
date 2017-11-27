@@ -1,5 +1,5 @@
 ---
-inherit: manifest-base.yml
+# inherit: manifest-base.yml
 
 memory: 256M
 disk_quota: 256M
