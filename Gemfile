@@ -7,7 +7,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails', '~> 5.0.0.1'
+gem 'rails', '~> 5.0.6'
 gem 'pg'
 gem 'puma', '~> 3.0'
 
@@ -25,7 +25,7 @@ gem 'sass-rails',               '~> 5.0'
 gem 'turbolinks',               '~> 5'
 gem 'uglifier',                 '>= 1.3.0'
 gem 'jbuilder',                 '~> 2.6.1'
-gem 'two_factor_authentication', git: 'https://github.com/Houdini/two_factor_authentication.git'
+gem 'two_factor_authentication', github: 'Houdini/two_factor_authentication'
 gem 'rqrcode-rails3', github: 'micapam/rqrcode-rails3'
 gem 'mini_magick'
 gem 'devise_invitable'
@@ -35,7 +35,7 @@ gem 'flipper-ui', github: 'jnunemaker/flipper'
 gem 'flipper-api', github: 'jnunemaker/flipper'
 gem 'csv_shaper',               '~> 1.3.0'
 gem 'actionpack-page_caching', github: 'rails/actionpack-page_caching', ref: '0ab22eab6d81ec8e38e5e1ed16319770d0001ea9'
-gem 'json-schema'
+gem 'json-schema', '~> 2.8'
 gem 'audited', '~> 4.3'
 gem 'rails-observers', github: 'rails/rails-observers'
 gem 'activerecord-session_store'
