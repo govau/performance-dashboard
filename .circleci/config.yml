@@ -81,7 +81,7 @@ jobs:
       - run: curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version=6.32.0&source=github-rel'
       - run: sudo dpkg -i cf-cli_amd64.deb
       - run: cf install-plugin https://github.com/govau/autopilot/releases/download/0.0.5-venapp/autopilot-linux -f
-      - run: cf login -a $CF_STAGING_API -u $CF_STAGING_USER -p $CF_STAGING_PASSWORD -o $CF_STAGING_ORG -s $CF_STAGING_SPACE
+      - run: cf login -a $CF_PRODUCTION_API -u $CF_PRODUCTION_USER -p $CF_PRODUCTION_PASSWORD -o $CF_PRODUCTION_ORG -s $CF_PRODUCTION_SPACE
       - run: cf zero-downtime-push dashboard -f manifest-production.yml -p build
 workflows: 
   version: 2
@@ -94,9 +94,9 @@ workflows:
       - deploy_staging: 
           requires: 
             - build
-          filters: 
-            branches: 
-              only: /^master$/
+          # filters: 
+          #   branches: 
+          #     only: /^master$/
       - deploy_production:
           requires: 
             - build
