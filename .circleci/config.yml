@@ -39,6 +39,7 @@ jobs:
         paths:
           - ~/.yarn-cache
       - run: yarn run test:react:coverage
+      - run: yarn run build 
       - run: bundle exec rspec
   deploy_staging: 
     docker: 
