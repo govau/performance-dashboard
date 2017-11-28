@@ -1,5 +1,9 @@
+require 'env_injection'
+
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+
+  EnvInjection.inject! 'dashboard-ups'
 
   # Code is not reloaded between requests.
   config.cache_classes = true

@@ -1,9 +1,9 @@
 ---
+
 memory: 256M
 disk_quota: 256M
 instances: 1
 timeout: 120
-buildpack: ruby
 command: bin/cf-start.sh
 
 applications:

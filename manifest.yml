@@ -1,5 +1,0 @@
----
-
-memory: 512M
-instances: 3
-command: bin/cf-start.sh
