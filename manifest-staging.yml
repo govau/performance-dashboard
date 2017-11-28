@@ -1,11 +1,10 @@
 ---
-# inherit: manifest-base.yml
-
 memory: 256M
 disk_quota: 256M
 instances: 1
-timeout: 80
-command: bin/cf-bootstrap-start.sh
+timeout: 120
+# command: bin/cf-bootstrap-start.sh
+command: bin/cf-start.sh
 
 applications:
   - name: dashboard-staging
