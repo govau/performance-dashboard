@@ -3,7 +3,7 @@ memory: 256M
 disk_quota: 256M
 instances: 1
 timeout: 120
-# command: bin/cf-bootstrap-start.sh
+buildpack: ruby
 command: bin/cf-start.sh
 
 applications:
@@ -15,4 +15,3 @@ env:
 services:
  - dashboard-staging-db
  - dashboard-staging-ups
- 

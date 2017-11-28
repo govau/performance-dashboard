@@ -94,9 +94,9 @@ workflows:
       - deploy_staging: 
           requires: 
             - build
-          # filters: 
-          #   branches: 
-          #     only: /^master$/
+          filters: 
+            branches: 
+              only: /^master$/
       - deploy_production:
           requires: 
             - build
