@@ -1,7 +1,10 @@
 require 'non_api_basic_auth'
+require 'env_injection'
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+
+  EnvInjection.inject! 'dashboard-staging-ups'
 
   # Code is not reloaded between requests.
   config.cache_classes = true
