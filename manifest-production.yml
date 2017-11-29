@@ -7,6 +7,10 @@ timeout: 120
 
 applications:
   - name: dashboard
+  
+routes:
+- route: dashboard.apps.b.cld.gov.au
+- route: dashboard.gov.au
 
 env:
   RAILS_ENV: production
