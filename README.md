@@ -433,57 +433,37 @@ Merge conflicts need to be carefully resolved as part of the rebase process. A t
 
 
 ## Environments
-- [Development](http://dashboard-dev.apps.staging.digital.gov.au/)
-- [Testing](https://dashboard-testing.apps.staging.digital.gov.au/)
-- [Staging](https://dashboard.apps.staging.digital.gov.au/)
+- [Staging](https://dashboard-staging.apps.y.cld.gov.au/)
 - [Production](https://dashboard.gov.au/)
-- [Cool](https://dashboard.cool/)
 - [Style Guide](http://performance-dashboard-ui.surge.sh/)
 
 
 ## Deployment
 
-Circle CI will deploy automatically once tests have passed
+Circle CI will deploy automatically once tests have passed:
 
-  - Development tracks the `master` branch
-  - Staging tracks the `staging` branch
+  - Staging tracks the `master` branch
   - Production tracks tags in the form `rel-{timestamp}`
 
-Any branch can be deployed to the Testing environment for review and testing.
-
-Note: there is a bunch of JSON data (see `lib/data/*.json`) that is used
-to populate the dashboards on every deployment. This used to populate the
-dashboards even on production; now, however, it only happens on non-production
-servers. On production, use the editor to add new data to dashboards, or 
+Note: for non-production servers, there is a bunch of JSON data
+(see `lib/data/*.json`) that is used to populate the dashboards on every
+deployment. On production, use the editor to add new data to dashboards, or 
 use the import function in the admin section to create new dashboards via JSON.
 
-### Staging
+## CloudFoundry
 
-To rebase and deploy the staging branch
+The environment variables for our CloudFoundry instances are managed using a
+User Provided Service. If you want to add, remove or change an environment
+variable, use the `cf update-service` command. For production, you will want to
+manage the `dashboard-ups` service; for non-prod servers, use the
+`dashboard-staging` service. See the CloudFoundry CLI documentation for more
+details: http://docs.cloudfoundry.org/cf-cli/
 
-```
-git checkout staging
-git rebase master
-git push -f
-```
-
-or push from another branch
-
- ```
- git push -f origin feature/dashboard-dashboard:staging
- ```
-
- which is:
- ```
- git push -f <remote> <local_branch_name>:<remote_branch_name>
- ```
-
-### Other non-production servers
-
-When doing manual deploys via the CF API, the `staging-manifest.yml` manifest must be specified, e.g.:
+Note that if you want to deploy your own instances manually, you will need to
+specify the `manifest-staging.yml` manifest, e.g.:
 
 ```
-cf push dashboard-testing -f staging-manifest.yml
+cf push dashboard-ad-hoc -f manifest-staging.yml
 ```
 
 ### Production

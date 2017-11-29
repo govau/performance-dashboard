@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe 'authentication feature toggles', type: :feature, js: true do
+RSpec.describe 'authentication feature toggles', type: :feature do
   after(:all) do
     $flipper[:two_factor].disable
   end

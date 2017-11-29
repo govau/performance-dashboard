@@ -1,0 +1,16 @@
+---
+
+memory: 512M
+instances: 3
+command: bin/cf-start.sh
+timeout: 120
+
+applications:
+  - name: dashboard
+
+env:
+  RAILS_ENV: production
+
+services:
+ - dashboard-db
+ - dashboard-ups
