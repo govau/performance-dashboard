@@ -4,7 +4,7 @@ require 'env_injection'
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
-  EnvInjection.inject! 'dashboard-staging-ups'
+  EnvInjection.inject! 'dashboard-staging-ups', 'dashboard-sandbox-ups'
 
   # Code is not reloaded between requests.
   config.cache_classes = true
