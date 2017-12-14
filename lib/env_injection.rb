@@ -4,7 +4,7 @@ class EnvInjection
 
   # Inject ENV vars from the first found named CloudFoundry UPS (User Provided Service)
   def self.inject!(*upss)
-    upps.each do |ups|
+    upss.each do |ups|
       credentials = CF::App::Credentials.find_by_service_name(ups)
 
       if credentials.present?
