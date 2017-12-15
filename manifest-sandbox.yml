@@ -14,4 +14,4 @@ env:
 
 services:
  - dashboard-sandbox-db
- - dashboard-staging-ups
+ - dashboard-sandbox-ups
