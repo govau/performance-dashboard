@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>TODO: title</title>
+  <meta name="description" content="<%= yield(:description) %>">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><link rel="shortcut icon" href="/favicon.ico">
+  <!--
+    https://realfavicongenerator.net/social/result?file_id=p1bj68e27p19tq1spc128n2ae18pn3#.WUrkAhOGOHo
+    https://tomitm.github.io/appmanifest/
+  -->
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+  <meta name="apple-mobile-web-app-title" content="Australian Government Performance Dashboard">
+  <meta name="application-name" content="Australian Government Performance Dashboard">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="msapplication-navbutton-color" content="#0579c7">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="msapplication-starturl" content="/">
+  <!--
+    https://realfavicongenerator.net/social/result?file_id=p1bj68e27p19tq1spc128n2ae18pn3#.WUrkAhOGOHo
+  -->
+  <meta property="og:image" content="/og-image.jpg">
+  <meta property="og:image:width" content="260">
+  <meta property="og:image:height" content="260">
+  <meta property="og:title" content="Australian Government Performance Dashboard">
+  <meta property="og:description" content="<%= description %>">
+  <meta property="og:url" content="https://dashboard.gov.au">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+  <!--TODO: rollbar and analytics -->
+</head>
+
+<body class="dashboard dashboards_show " data-route="dashboards_show">
+  <a href="#skiptocontent" tabindex="1" class="skip">Skip to content</a>
+
+  <div class="dashboard__top-bar">
+    <section>
+      <div class="phase-banner">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <span>This is a beta. Help us make it better for you - please <a href="/feedback" class="UIK-link">give feedback</a>.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <header class="main__header" role="banner">
+      <div class="govau-header ">
+        <div class="container">
+          <div class="govau-header__container">
+            <div class="govau-header__container__logo">
+              <a href="/">
+                <img src="/images/performance-dashboard-logo.svg?87b2f2845055654510e3c36ef2cf8a9e" width="394" height="29" alt="Performance Dashboards">
+              </a>
+            </div>
+
+            <div class="govau-header__container__utils">
+              <div class="toggle-switch">
+                <label class="switch-light switch-material" onclick="">
+                  <strong class="switch-text">High contrast mode</strong>
+                  <input type="checkbox" id="high-contrast-switch">
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+
+  <main role="main" id="skiptocontent">
+    <div>
+      <div id="dashboard-show-app">
+        <div class="hero-region">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="D-loading-panel">
+                  <span>Loading...</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="below-the-line-bg">
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="D_widget-card widget dashboard-information">
+                <div class="row">
+                  <div class="col-xs-12 col-lg-7">
+                    <div class=" widget-text">
+                      <div class="widget-text__inner">
+                        <div class="widget__title">
+                          <h4>Dashboard Information</h4>
+                        </div>
+
+                        <div id="dashboard-notes" class="widget__body">
+                          <dl>
+                            <dt>Where is this information from?</dt>
+                            <dd>Department of Immigration and Border Protection.</dd>
+                            <dt>What is Australian Citizenship Appointment Booking Service?</dt>
+                            <dd>The Australian Citizenship Appointment Booking Service makes it quicker, easier and more convenient for users to reschedule a citizenship test appointment. Prior to the introduction of the online service, users were only able to change their appointment by calling the Department. The public beta release of the service is currently available in Melbourne, Victoria.</dd>
+                            <dt>User satisfaction</dt>
+                            <dd>User satisfaction measures the percentage of users who responded "satisfied" and "very satisfied" with the appointment booking service using the feedback kiosks located in the Department’s citizenship areas.</dd>
+                            <dt>Cost per transaction</dt>
+                            <dd>This data is not available.</dd>
+                            <dt>Digital take-up</dt>
+                            <dd>Digital take-up measures the number of users who had an appointment booked using the new service as a percentage of all appointments that have been made Australia-wide.</dd>
+                            <dt>Completion rate</dt>
+                            <dd>Completion rate measures the number of users who were able to use the digital service without having to contact the Department for assistance when rescheduling their appointment.</dd>
+                          </dl>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="col-xs-12 col-lg-5">
+                    <div class="widget-text__footer">
+                      <ul>
+                        <li>
+                          <a href="https://www.border.gov.au/" target="_blank" class="link--external-alt"> Visit https://www.border.gov.au/</a>
+                        </li>
+
+                        <li>
+                          <a class="link--external-alt" href="/dashboards/2-australian-citizenship-appointment-booking-service/export.csv">
+                            Download dashboard data as CSV
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer role="contentinfo">
+    <div class="govau-footer">
+      <div class="container">
+        <div class="govau-footer__container">
+          <div class="govau-footer__container__logo">
+            <img src="/images/coat-of-arms.png?c4be90534c4a1531dc37d580dcbb6074" width="185" height="135" alt="Commonwealth of Australia Coat of Arms Logo">
+          </div>
+
+          <div class="govau-footer__container__utils">
+            <div class="line-1">
+              <ul class="list-unstyled govau-footer__links-list">
+                <li><a href="/editor" class="UIK-link">Editor sign in</a></li>
+                <li><a href="https://www.dto.gov.au/standard/" rel="external" class="UIK-link" target="_blank">Digital Service Standard</a></li>
+                <li><a href="https://www.dto.gov.au/standard/11-measure-performance/" rel="external" class="UIK-link" target="_blank">About Performance Measurement</a></li>
+                <li><a href="/api" class="UIK-link">Dashboard API</a></li>
+                <li><a href="/copyright" class="UIK-link">Copyright</a></li>
+                <li><a href="https://www.dto.gov.au/blog/" rel="external" class="UIK-link" target="_blank">DTA Blog</a></li>
+                <li><a href="/feedback" class="UIK-link">Please give feedback</a></li>
+              </ul>
+            </div>
+
+            <div class="line-2">
+              <small>© Commonwealth of Australia</small>
+              <p class="small">This work is licensed under a Creative Commons Attribution 3.0 International <a href="https://creativecommons.org/licenses/by/3.0/au/deed.en" class="UIK-link " rel="external">License</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="http://localhost:8080/javascripts/dashboard.js"></script>
+</body>
+</html>

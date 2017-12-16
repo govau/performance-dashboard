@@ -3,22 +3,28 @@ import Page from './page';
 import {getViewport} from './runOnResize';
 import {getIsHighContrastMode} from './runHighContrastSwitch';
 
+const dashboardIdMatch = window.location.pathname.match(/^\/dashboards\/(\d+)/);
 
-const location = window.location.pathname;
-const pageRoute = location.split('?')[0];
+if (dashboardIdMatch) {
+  const urlBase = process.env.NODE_ENV === 'production'
+    ? 'api/v1'
+    : 'public/__mocks__';
 
-if (pageRoute.match(/^\/dashboards\/.+(\/|)$/)) {
-
-  // console.log('running dashboard#show');
+  const dashboardId = dashboardIdMatch[1];
 
   const uiState = {
     viewport: getViewport(),
     isHighContrastMode: getIsHighContrastMode(),
   };
 
-  new Page({data: {...window.__STATE__, ui:uiState}});
-
-  if (!__DEV__) {
-    delete window.__STATE__;
-  }
+  fetch(`/${urlBase}/${dashboardId}.json`)
+    .then(response => response.json())
+    .then(data => {
+      new Page({data: {...data, ui:uiState}});
+    })
+    .catch(err => {
+      console.error(`Error fetching dashboard data. ${err}`);
+    });
+} else {
+  console.warn(`We don't handle the URL ${window.location.pathname}`);
 }

@@ -1,0 +1,1898 @@
+{
+  "dashboards": [
+    {
+      "id": 2,
+      "name": "Australian Citizenship Appointment Booking Service",
+      "description": "Description",
+      "notes": [
+        {
+          "title": "Where is this information from?",
+          "body": "Department of Immigration and Border Protection."
+        },
+        {
+          "title": "What is Australian Citizenship Appointment Booking Service?",
+          "body": "The Australian Citizenship Appointment Booking Service makes it quicker, easier and more convenient for users to reschedule a citizenship test appointment. Prior to the introduction of the online service, users were only able to change their appointment by calling the Department. The public beta release of the service is currently available in Melbourne, Victoria."
+        },
+        {
+          "title": "User satisfaction",
+          "body": "User satisfaction measures the percentage of users who responded \"satisfied\" and \"very satisfied\" with the appointment booking service using the feedback kiosks located in the Department’s citizenship areas."
+        },
+        {
+          "title": "Cost per transaction",
+          "body": "This data is not available."
+        },
+        {
+          "title": "Digital take-up",
+          "body": "Digital take-up measures the number of users who had an appointment booked using the new service as a percentage of all appointments that have been made Australia-wide."
+        },
+        {
+          "title": "Completion rate",
+          "body": "Completion rate measures the number of users who were able to use the digital service without having to contact the Department for assistance when rescheduling their appointment."
+        }
+      ],
+      "url": "https://www.border.gov.au/",
+      "target_users": "Users",
+      "display_hero": true,
+      "display_kpis": true,
+      "published_at": "2017-01-16T01:57:58.764Z",
+      "organisation_name": "DIBP"
+    }
+  ],
+  "widgets": [
+    {
+      "id": 23,
+      "dashboard_id": 2,
+      "name": "Browsers used by users",
+      "type": "bar",
+      "size": "medium",
+      "units": "%",
+      "description": "This shows the types of browsers used by users to access the appointment booking service.",
+      "updated_at": "2017-04-03T05:09:54.629Z",
+      "data_updated_at": "2017-04-03T05:09:54.626Z",
+      "last_updated_at": "2017-03-23T00:44:39.839Z",
+      "options": {
+        "displayRoundedData": true,
+        "stacking": "percentage"
+      },
+      "is_hero": false,
+      "row": 3,
+      "pos": 2,
+      "prefix": "",
+      "suffix": "%",
+      "created_at": "2017-01-16T01:58:00.235Z",
+      "series_start": "2016-03-01",
+      "series_end": "2017-02-01",
+      "datasets": [
+        48,
+        49,
+        50,
+        51,
+        52
+      ]
+    },
+    {
+      "id": 26,
+      "dashboard_id": 2,
+      "name": "Kpis",
+      "type": "full",
+      "size": "extra-large",
+      "units": "n",
+      "description": null,
+      "updated_at": "2017-04-03T05:09:54.843Z",
+      "data_updated_at": "2017-04-03T05:09:54.840Z",
+      "last_updated_at": "2017-03-23T00:46:58.201Z",
+      "options": {},
+      "is_hero": true,
+      "row": 0,
+      "pos": 0,
+      "prefix": "",
+      "suffix": "",
+      "created_at": "2017-01-16T01:58:00.329Z",
+      "series_start": "2016-03-01",
+      "series_end": "2017-02-01",
+      "datasets": [
+        41,
+        42,
+        44,
+        43
+      ]
+    },
+    {
+      "id": 22,
+      "dashboard_id": 2,
+      "name": "Devices used by users",
+      "type": "bar",
+      "size": "medium",
+      "units": "%",
+      "description": "This shows the types of devices used by users to access the appointment booking service.",
+      "updated_at": "2017-04-03T05:09:55.538Z",
+      "data_updated_at": "2017-04-03T05:09:55.535Z",
+      "last_updated_at": "2017-03-23T00:43:26.230Z",
+      "options": {
+        "displayRoundedData": true,
+        "stacking": "percentage"
+      },
+      "is_hero": false,
+      "row": 2,
+      "pos": 0,
+      "prefix": "",
+      "suffix": "%",
+      "created_at": "2017-01-16T01:58:00.192Z",
+      "series_start": "2016-03-01",
+      "series_end": "2017-02-01",
+      "datasets": [
+        45,
+        46,
+        47
+      ]
+    },
+    {
+      "id": 18,
+      "dashboard_id": 2,
+      "name": "User satisfaction",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "description": "Overall satisfaction score includes all ratings weighted from 100% for very satisfied to 0% for very dissatisfied",
+      "updated_at": "2017-04-03T05:09:56.089Z",
+      "data_updated_at": "2017-04-03T05:09:54.840Z",
+      "last_updated_at": "2016-11-09T01:01:01.111Z",
+      "options": {},
+      "is_hero": false,
+      "row": 1,
+      "pos": 0,
+      "prefix": "",
+      "suffix": "%",
+      "created_at": "2017-01-16T01:58:00.076Z",
+      "series_start": "2016-03-01",
+      "series_end": "2017-02-01",
+      "datasets": [
+        41
+      ]
+    },
+    {
+      "id": 19,
+      "dashboard_id": 2,
+      "name": "Cost per transaction",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "$",
+      "description": null,
+      "updated_at": "2017-04-03T05:09:56.097Z",
+      "data_updated_at": "2017-04-03T05:09:54.840Z",
+      "last_updated_at": "2016-11-09T01:01:01.111Z",
+      "options": {},
+      "is_hero": false,
+      "row": 1,
+      "pos": 1,
+      "prefix": "$",
+      "suffix": "",
+      "created_at": "2017-01-16T01:58:00.100Z",
+      "series_start": "2016-03-01",
+      "series_end": "2017-02-01",
+      "datasets": [
+        42
+      ]
+    },
+    {
+      "id": 20,
+      "dashboard_id": 2,
+      "name": "Digital take-up",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "description": null,
+      "updated_at": "2017-04-03T05:09:56.105Z",
+      "data_updated_at": "2017-04-03T05:09:54.840Z",
+      "last_updated_at": "2016-11-09T01:01:01.111Z",
+      "options": {},
+      "is_hero": false,
+      "row": 1,
+      "pos": 2,
+      "prefix": "",
+      "suffix": "%",
+      "created_at": "2017-01-16T01:58:00.124Z",
+      "series_start": "2016-03-01",
+      "series_end": "2017-02-01",
+      "datasets": [
+        44
+      ]
+    },
+    {
+      "id": 21,
+      "dashboard_id": 2,
+      "name": "Completion rate",
+      "type": "kpi-sparkline",
+      "size": "extra-small",
+      "units": "%",
+      "description": "Percentage of transactions made using the digital service.",
+      "updated_at": "2017-04-03T05:09:56.113Z",
+      "data_updated_at": "2017-04-03T05:09:54.840Z",
+      "last_updated_at": "2016-11-09T01:01:01.111Z",
+      "options": {},
+      "is_hero": false,
+      "row": 1,
+      "pos": 3,
+      "prefix": "",
+      "suffix": "%",
+      "created_at": "2017-01-16T01:58:00.162Z",
+      "series_start": "2016-03-01",
+      "series_end": "2017-02-01",
+      "datasets": [
+        43
+      ]
+    },
+    {
+      "id": 25,
+      "dashboard_id": 2,
+      "name": "Fact",
+      "type": "fact",
+      "size": "medium",
+      "units": "n",
+      "description": "The Australian Citizenship Appointment Booking Service makes it quicker, easier and more convenient for users to reschedule a citizenship test appointment. The public beta release of the service is currently available in Melbourne, Victoria.",
+      "updated_at": "2017-03-23T00:59:03.907Z",
+      "data_updated_at": null,
+      "last_updated_at": "2016-11-09T01:01:01.111Z",
+      "options": {},
+      "is_hero": false,
+      "row": 2,
+      "pos": 1,
+      "prefix": "",
+      "suffix": "",
+      "created_at": "2017-01-16T01:58:00.321Z",
+      "series_start": null,
+      "series_end": null,
+      "datasets": []
+    },
+    {
+      "id": 24,
+      "dashboard_id": 2,
+      "name": "Fact",
+      "type": "fact",
+      "size": "medium",
+      "units": "n",
+      "description": "Prior to the digital transformation clients could only reschedule a citizenship test appointment to a more suitable time by calling the Department.",
+      "updated_at": "2017-03-22T01:53:28.999Z",
+      "data_updated_at": null,
+      "last_updated_at": "2016-11-09T01:01:01.111Z",
+      "options": {},
+      "is_hero": false,
+      "row": 3,
+      "pos": 3,
+      "prefix": "",
+      "suffix": "",
+      "created_at": "2017-01-16T01:58:00.312Z",
+      "series_start": null,
+      "series_end": null,
+      "datasets": []
+    }
+  ],
+  "datasets": [
+    {
+      "id": 48,
+      "name": "Chrome",
+      "label": "Chrome",
+      "units": "%",
+      "notes": "note for this dataset",
+      "created_at": "2017-01-16T01:57:59.503Z"
+    },
+    {
+      "id": 49,
+      "name": "Browser Usage - Safari",
+      "label": "Safari",
+      "units": "%",
+      "notes": "note for this dataset",
+      "created_at": "2017-01-16T01:57:59.600Z"
+    },
+    {
+      "id": 50,
+      "name": "Browser Usage - Firefox",
+      "label": "Firefox",
+      "units": "%",
+      "notes": "note for this dataset",
+      "created_at": "2017-01-16T01:57:59.713Z"
+    },
+    {
+      "id": 51,
+      "name": "Browser Usage - Internet Explorer",
+      "label": "Internet Explorer",
+      "units": "%",
+      "notes": "note for this dataset",
+      "created_at": "2017-01-16T01:57:59.817Z"
+    },
+    {
+      "id": 52,
+      "name": "Browser Usage - Other",
+      "label": "Other",
+      "units": "%",
+      "notes": "note for this dataset",
+      "created_at": "2017-01-16T01:57:59.914Z"
+    },
+    {
+      "id": 41,
+      "name": "User satisfaction",
+      "label": "User satisfaction",
+      "units": "%",
+      "notes": "",
+      "created_at": "2017-01-16T01:57:58.776Z",
+      "color": "#F2B038"
+    },
+    {
+      "id": 42,
+      "name": "Cost per transaction",
+      "label": "Cost per transaction",
+      "units": "$",
+      "notes": "",
+      "created_at": "2017-01-16T01:57:58.884Z",
+      "color": "#75A370"
+    },
+    {
+      "id": 43,
+      "name": "Completion rate",
+      "label": "Completion rate",
+      "units": "%",
+      "notes": "",
+      "created_at": "2017-01-16T01:57:58.893Z",
+      "color": "#7066A5"
+    },
+    {
+      "id": 44,
+      "name": "Digital take-up",
+      "label": "Digital take-up",
+      "units": "%",
+      "notes": "",
+      "created_at": "2017-01-16T01:57:59.006Z",
+      "color": "#4892C0"
+    },
+    {
+      "id": 45,
+      "name": "Device Usage - Mobile",
+      "label": "Mobile",
+      "units": "%",
+      "notes": "note for this dataset",
+      "created_at": "2017-01-16T01:57:59.134Z"
+    },
+    {
+      "id": 46,
+      "name": "Device Usage - Tablet",
+      "label": "Tablet",
+      "units": "%",
+      "notes": "note for this dataset",
+      "created_at": "2017-01-16T01:57:59.247Z"
+    },
+    {
+      "id": 47,
+      "name": "Device Usage - Desktop",
+      "label": "Desktop",
+      "units": "%",
+      "notes": "note for this dataset",
+      "created_at": "2017-01-16T01:57:59.372Z"
+    }
+  ],
+  "slices": [
+    {
+      "widget_id": 23,
+      "dashboard_id": 2,
+      "period_start": "2016-03-01T00:00:00Z",
+      "period_end": "2016-03-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 48,
+          "value": 16
+        },
+        {
+          "dataset_id": 49,
+          "value": 34
+        },
+        {
+          "dataset_id": 50,
+          "value": 23
+        },
+        {
+          "dataset_id": 51,
+          "value": 16
+        },
+        {
+          "dataset_id": 52,
+          "value": 11
+        }
+      ]
+    },
+    {
+      "widget_id": 23,
+      "dashboard_id": 2,
+      "period_start": "2016-04-01T00:00:00Z",
+      "period_end": "2016-04-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 48,
+          "value": 15
+        },
+        {
+          "dataset_id": 49,
+          "value": 41
+        },
+        {
+          "dataset_id": 50,
+          "value": 28
+        },
+        {
+          "dataset_id": 51,
+          "value": 6
+        },
+        {
+          "dataset_id": 52,
+          "value": 10
+        }
+      ]
+    },
+    {
+      "widget_id": 23,
+      "dashboard_id": 2,
+      "period_start": "2016-05-01T00:00:00Z",
+      "period_end": "2016-05-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 48,
+          "value": 17
+        },
+        {
+          "dataset_id": 49,
+          "value": 38
+        },
+        {
+          "dataset_id": 50,
+          "value": 28
+        },
+        {
+          "dataset_id": 51,
+          "value": 6
+        },
+        {
+          "dataset_id": 52,
+          "value": 11
+        }
+      ]
+    },
+    {
+      "widget_id": 23,
+      "dashboard_id": 2,
+      "period_start": "2016-06-01T00:00:00Z",
+      "period_end": "2016-06-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 48,
+          "value": 16
+        },
+        {
+          "dataset_id": 49,
+          "value": 37
+        },
+        {
+          "dataset_id": 50,
+          "value": 30
+        },
+        {
+          "dataset_id": 51,
+          "value": 6
+        },
+        {
+          "dataset_id": 52,
+          "value": 11
+        }
+      ]
+    },
+    {
+      "widget_id": 23,
+      "dashboard_id": 2,
+      "period_start": "2016-07-01T00:00:00Z",
+      "period_end": "2016-07-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 48,
+          "value": 17
+        },
+        {
+          "dataset_id": 49,
+          "value": 37
+        },
+        {
+          "dataset_id": 50,
+          "value": 29
+        },
+        {
+          "dataset_id": 51,
+          "value": 6
+        },
+        {
+          "dataset_id": 52,
+          "value": 11
+        }
+      ]
+    },
+    {
+      "widget_id": 23,
+      "dashboard_id": 2,
+      "period_start": "2016-08-01T00:00:00Z",
+      "period_end": "2016-08-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 48,
+          "value": 18
+        },
+        {
+          "dataset_id": 49,
+          "value": 47
+        },
+        {
+          "dataset_id": 50,
+          "value": 26
+        },
+        {
+          "dataset_id": 51,
+          "value": 5
+        },
+        {
+          "dataset_id": 52,
+          "value": 4
+        }
+      ]
+    },
+    {
+      "widget_id": 23,
+      "dashboard_id": 2,
+      "period_start": "2016-09-01T00:00:00Z",
+      "period_end": "2016-09-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 48,
+          "value": 20
+        },
+        {
+          "dataset_id": 49,
+          "value": 50
+        },
+        {
+          "dataset_id": 50,
+          "value": 22
+        },
+        {
+          "dataset_id": 51,
+          "value": 5
+        },
+        {
+          "dataset_id": 52,
+          "value": 3
+        }
+      ]
+    },
+    {
+      "widget_id": 23,
+      "dashboard_id": 2,
+      "period_start": "2016-10-01T00:00:00Z",
+      "period_end": "2016-10-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 48,
+          "value": 17
+        },
+        {
+          "dataset_id": 49,
+          "value": 52
+        },
+        {
+          "dataset_id": 50,
+          "value": 22
+        },
+        {
+          "dataset_id": 51,
+          "value": 5
+        },
+        {
+          "dataset_id": 52,
+          "value": 4
+        }
+      ]
+    },
+    {
+      "widget_id": 23,
+      "dashboard_id": 2,
+      "period_start": "2016-11-01T00:00:00Z",
+      "period_end": "2016-11-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 48,
+          "value": 19
+        },
+        {
+          "dataset_id": 49,
+          "value": 50
+        },
+        {
+          "dataset_id": 50,
+          "value": 22
+        },
+        {
+          "dataset_id": 51,
+          "value": 5
+        },
+        {
+          "dataset_id": 52,
+          "value": 4
+        }
+      ]
+    },
+    {
+      "widget_id": 23,
+      "dashboard_id": 2,
+      "period_start": "2016-12-01T00:00:00Z",
+      "period_end": "2016-12-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 48,
+          "value": 17
+        },
+        {
+          "dataset_id": 49,
+          "value": 51
+        },
+        {
+          "dataset_id": 50,
+          "value": 23
+        },
+        {
+          "dataset_id": 51,
+          "value": 4
+        },
+        {
+          "dataset_id": 52,
+          "value": 5
+        }
+      ]
+    },
+    {
+      "widget_id": 23,
+      "dashboard_id": 2,
+      "period_start": "2017-01-01T00:00:00Z",
+      "period_end": "2017-01-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 48,
+          "value": 15
+        },
+        {
+          "dataset_id": 49,
+          "value": 47
+        },
+        {
+          "dataset_id": 50,
+          "value": 26
+        },
+        {
+          "dataset_id": 51,
+          "value": 7
+        },
+        {
+          "dataset_id": 52,
+          "value": 5
+        }
+      ]
+    },
+    {
+      "widget_id": 23,
+      "dashboard_id": 2,
+      "period_start": "2017-02-01T00:00:00Z",
+      "period_end": "2017-02-28T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 48,
+          "value": 14
+        },
+        {
+          "dataset_id": 49,
+          "value": 48
+        },
+        {
+          "dataset_id": 50,
+          "value": 26
+        },
+        {
+          "dataset_id": 51,
+          "value": 7
+        },
+        {
+          "dataset_id": 52,
+          "value": 5
+        }
+      ]
+    },
+    {
+      "widget_id": 26,
+      "dashboard_id": 2,
+      "period_start": "2016-03-01T00:00:00Z",
+      "period_end": "2016-03-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 99
+        },
+        {
+          "dataset_id": 42,
+          "value": null
+        },
+        {
+          "dataset_id": 44,
+          "value": 1.9
+        },
+        {
+          "dataset_id": 43,
+          "value": 94
+        }
+      ]
+    },
+    {
+      "widget_id": 26,
+      "dashboard_id": 2,
+      "period_start": "2016-04-01T00:00:00Z",
+      "period_end": "2016-04-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 95
+        },
+        {
+          "dataset_id": 42,
+          "value": null
+        },
+        {
+          "dataset_id": 44,
+          "value": 15
+        },
+        {
+          "dataset_id": 43,
+          "value": 92
+        }
+      ]
+    },
+    {
+      "widget_id": 26,
+      "dashboard_id": 2,
+      "period_start": "2016-05-01T00:00:00Z",
+      "period_end": "2016-05-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 90
+        },
+        {
+          "dataset_id": 42,
+          "value": null
+        },
+        {
+          "dataset_id": 44,
+          "value": 14
+        },
+        {
+          "dataset_id": 43,
+          "value": 97
+        }
+      ]
+    },
+    {
+      "widget_id": 26,
+      "dashboard_id": 2,
+      "period_start": "2016-06-01T00:00:00Z",
+      "period_end": "2016-06-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 97
+        },
+        {
+          "dataset_id": 42,
+          "value": null
+        },
+        {
+          "dataset_id": 44,
+          "value": 23
+        },
+        {
+          "dataset_id": 43,
+          "value": 98
+        }
+      ]
+    },
+    {
+      "widget_id": 26,
+      "dashboard_id": 2,
+      "period_start": "2016-07-01T00:00:00Z",
+      "period_end": "2016-07-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 96
+        },
+        {
+          "dataset_id": 42,
+          "value": null
+        },
+        {
+          "dataset_id": 44,
+          "value": 21.93
+        },
+        {
+          "dataset_id": 43,
+          "value": 99
+        }
+      ]
+    },
+    {
+      "widget_id": 26,
+      "dashboard_id": 2,
+      "period_start": "2016-08-01T00:00:00Z",
+      "period_end": "2016-08-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 97
+        },
+        {
+          "dataset_id": 42,
+          "value": null
+        },
+        {
+          "dataset_id": 44,
+          "value": 25
+        },
+        {
+          "dataset_id": 43,
+          "value": 99
+        }
+      ]
+    },
+    {
+      "widget_id": 26,
+      "dashboard_id": 2,
+      "period_start": "2016-09-01T00:00:00Z",
+      "period_end": "2016-09-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 94
+        },
+        {
+          "dataset_id": 42,
+          "value": null
+        },
+        {
+          "dataset_id": 44,
+          "value": 22
+        },
+        {
+          "dataset_id": 43,
+          "value": 100
+        }
+      ]
+    },
+    {
+      "widget_id": 26,
+      "dashboard_id": 2,
+      "period_start": "2016-10-01T00:00:00Z",
+      "period_end": "2016-10-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 97
+        },
+        {
+          "dataset_id": 42,
+          "value": null
+        },
+        {
+          "dataset_id": 44,
+          "value": 30
+        },
+        {
+          "dataset_id": 43,
+          "value": 100
+        }
+      ]
+    },
+    {
+      "widget_id": 26,
+      "dashboard_id": 2,
+      "period_start": "2016-11-01T00:00:00Z",
+      "period_end": "2016-11-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 99
+        },
+        {
+          "dataset_id": 42,
+          "value": null
+        },
+        {
+          "dataset_id": 44,
+          "value": 23
+        },
+        {
+          "dataset_id": 43,
+          "value": 99
+        }
+      ]
+    },
+    {
+      "widget_id": 26,
+      "dashboard_id": 2,
+      "period_start": "2016-12-01T00:00:00Z",
+      "period_end": "2016-12-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 98
+        },
+        {
+          "dataset_id": 42,
+          "value": null
+        },
+        {
+          "dataset_id": 44,
+          "value": 31
+        },
+        {
+          "dataset_id": 43,
+          "value": 100
+        }
+      ]
+    },
+    {
+      "widget_id": 26,
+      "dashboard_id": 2,
+      "period_start": "2017-01-01T00:00:00Z",
+      "period_end": "2017-01-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 100
+        },
+        {
+          "dataset_id": 42,
+          "value": null
+        },
+        {
+          "dataset_id": 44,
+          "value": 26
+        },
+        {
+          "dataset_id": 43,
+          "value": 100
+        }
+      ]
+    },
+    {
+      "widget_id": 26,
+      "dashboard_id": 2,
+      "period_start": "2017-02-01T00:00:00Z",
+      "period_end": "2017-02-28T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 100
+        },
+        {
+          "dataset_id": 42,
+          "value": null
+        },
+        {
+          "dataset_id": 44,
+          "value": 33
+        },
+        {
+          "dataset_id": 43,
+          "value": 100
+        }
+      ]
+    },
+    {
+      "widget_id": 22,
+      "dashboard_id": 2,
+      "period_start": "2016-03-01T00:00:00Z",
+      "period_end": "2016-03-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 45,
+          "value": 43
+        },
+        {
+          "dataset_id": 46,
+          "value": 6
+        },
+        {
+          "dataset_id": 47,
+          "value": 51
+        }
+      ]
+    },
+    {
+      "widget_id": 22,
+      "dashboard_id": 2,
+      "period_start": "2016-04-01T00:00:00Z",
+      "period_end": "2016-04-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 45,
+          "value": 48
+        },
+        {
+          "dataset_id": 46,
+          "value": 6
+        },
+        {
+          "dataset_id": 47,
+          "value": 46
+        }
+      ]
+    },
+    {
+      "widget_id": 22,
+      "dashboard_id": 2,
+      "period_start": "2016-05-01T00:00:00Z",
+      "period_end": "2016-05-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 45,
+          "value": 47
+        },
+        {
+          "dataset_id": 46,
+          "value": 6
+        },
+        {
+          "dataset_id": 47,
+          "value": 47
+        }
+      ]
+    },
+    {
+      "widget_id": 22,
+      "dashboard_id": 2,
+      "period_start": "2016-06-01T00:00:00Z",
+      "period_end": "2016-06-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 45,
+          "value": 49
+        },
+        {
+          "dataset_id": 46,
+          "value": 2
+        },
+        {
+          "dataset_id": 47,
+          "value": 49
+        }
+      ]
+    },
+    {
+      "widget_id": 22,
+      "dashboard_id": 2,
+      "period_start": "2016-07-01T00:00:00Z",
+      "period_end": "2016-07-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 45,
+          "value": 50
+        },
+        {
+          "dataset_id": 46,
+          "value": 3
+        },
+        {
+          "dataset_id": 47,
+          "value": 47
+        }
+      ]
+    },
+    {
+      "widget_id": 22,
+      "dashboard_id": 2,
+      "period_start": "2016-08-01T00:00:00Z",
+      "period_end": "2016-08-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 45,
+          "value": 51
+        },
+        {
+          "dataset_id": 46,
+          "value": 5
+        },
+        {
+          "dataset_id": 47,
+          "value": 44
+        }
+      ]
+    },
+    {
+      "widget_id": 22,
+      "dashboard_id": 2,
+      "period_start": "2016-09-01T00:00:00Z",
+      "period_end": "2016-09-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 45,
+          "value": 54
+        },
+        {
+          "dataset_id": 46,
+          "value": 5
+        },
+        {
+          "dataset_id": 47,
+          "value": 41
+        }
+      ]
+    },
+    {
+      "widget_id": 22,
+      "dashboard_id": 2,
+      "period_start": "2016-10-01T00:00:00Z",
+      "period_end": "2016-10-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 45,
+          "value": 55
+        },
+        {
+          "dataset_id": 46,
+          "value": 5
+        },
+        {
+          "dataset_id": 47,
+          "value": 40
+        }
+      ]
+    },
+    {
+      "widget_id": 22,
+      "dashboard_id": 2,
+      "period_start": "2016-11-01T00:00:00Z",
+      "period_end": "2016-11-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 45,
+          "value": 54
+        },
+        {
+          "dataset_id": 46,
+          "value": 5
+        },
+        {
+          "dataset_id": 47,
+          "value": 41
+        }
+      ]
+    },
+    {
+      "widget_id": 22,
+      "dashboard_id": 2,
+      "period_start": "2016-12-01T00:00:00Z",
+      "period_end": "2016-12-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 45,
+          "value": 57
+        },
+        {
+          "dataset_id": 46,
+          "value": 3
+        },
+        {
+          "dataset_id": 47,
+          "value": 40
+        }
+      ]
+    },
+    {
+      "widget_id": 22,
+      "dashboard_id": 2,
+      "period_start": "2017-01-01T00:00:00Z",
+      "period_end": "2017-01-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 45,
+          "value": 53
+        },
+        {
+          "dataset_id": 46,
+          "value": 3
+        },
+        {
+          "dataset_id": 47,
+          "value": 44
+        }
+      ]
+    },
+    {
+      "widget_id": 22,
+      "dashboard_id": 2,
+      "period_start": "2017-02-01T00:00:00Z",
+      "period_end": "2017-02-28T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 45,
+          "value": 54
+        },
+        {
+          "dataset_id": 46,
+          "value": 2
+        },
+        {
+          "dataset_id": 47,
+          "value": 44
+        }
+      ]
+    },
+    {
+      "widget_id": 18,
+      "dashboard_id": 2,
+      "period_start": "2016-03-01T00:00:00Z",
+      "period_end": "2016-03-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 99
+        }
+      ]
+    },
+    {
+      "widget_id": 18,
+      "dashboard_id": 2,
+      "period_start": "2016-04-01T00:00:00Z",
+      "period_end": "2016-04-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 95
+        }
+      ]
+    },
+    {
+      "widget_id": 18,
+      "dashboard_id": 2,
+      "period_start": "2016-05-01T00:00:00Z",
+      "period_end": "2016-05-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 90
+        }
+      ]
+    },
+    {
+      "widget_id": 18,
+      "dashboard_id": 2,
+      "period_start": "2016-06-01T00:00:00Z",
+      "period_end": "2016-06-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 97
+        }
+      ]
+    },
+    {
+      "widget_id": 18,
+      "dashboard_id": 2,
+      "period_start": "2016-07-01T00:00:00Z",
+      "period_end": "2016-07-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 96
+        }
+      ]
+    },
+    {
+      "widget_id": 18,
+      "dashboard_id": 2,
+      "period_start": "2016-08-01T00:00:00Z",
+      "period_end": "2016-08-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 97
+        }
+      ]
+    },
+    {
+      "widget_id": 18,
+      "dashboard_id": 2,
+      "period_start": "2016-09-01T00:00:00Z",
+      "period_end": "2016-09-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 94
+        }
+      ]
+    },
+    {
+      "widget_id": 18,
+      "dashboard_id": 2,
+      "period_start": "2016-10-01T00:00:00Z",
+      "period_end": "2016-10-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 97
+        }
+      ]
+    },
+    {
+      "widget_id": 18,
+      "dashboard_id": 2,
+      "period_start": "2016-11-01T00:00:00Z",
+      "period_end": "2016-11-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 99
+        }
+      ]
+    },
+    {
+      "widget_id": 18,
+      "dashboard_id": 2,
+      "period_start": "2016-12-01T00:00:00Z",
+      "period_end": "2016-12-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 98
+        }
+      ]
+    },
+    {
+      "widget_id": 18,
+      "dashboard_id": 2,
+      "period_start": "2017-01-01T00:00:00Z",
+      "period_end": "2017-01-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 100
+        }
+      ]
+    },
+    {
+      "widget_id": 18,
+      "dashboard_id": 2,
+      "period_start": "2017-02-01T00:00:00Z",
+      "period_end": "2017-02-28T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 41,
+          "value": 100
+        }
+      ]
+    },
+    {
+      "widget_id": 19,
+      "dashboard_id": 2,
+      "period_start": "2016-03-01T00:00:00Z",
+      "period_end": "2016-03-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 42,
+          "value": null
+        }
+      ]
+    },
+    {
+      "widget_id": 19,
+      "dashboard_id": 2,
+      "period_start": "2016-04-01T00:00:00Z",
+      "period_end": "2016-04-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 42,
+          "value": null
+        }
+      ]
+    },
+    {
+      "widget_id": 19,
+      "dashboard_id": 2,
+      "period_start": "2016-05-01T00:00:00Z",
+      "period_end": "2016-05-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 42,
+          "value": null
+        }
+      ]
+    },
+    {
+      "widget_id": 19,
+      "dashboard_id": 2,
+      "period_start": "2016-06-01T00:00:00Z",
+      "period_end": "2016-06-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 42,
+          "value": null
+        }
+      ]
+    },
+    {
+      "widget_id": 19,
+      "dashboard_id": 2,
+      "period_start": "2016-07-01T00:00:00Z",
+      "period_end": "2016-07-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 42,
+          "value": null
+        }
+      ]
+    },
+    {
+      "widget_id": 19,
+      "dashboard_id": 2,
+      "period_start": "2016-08-01T00:00:00Z",
+      "period_end": "2016-08-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 42,
+          "value": null
+        }
+      ]
+    },
+    {
+      "widget_id": 19,
+      "dashboard_id": 2,
+      "period_start": "2016-09-01T00:00:00Z",
+      "period_end": "2016-09-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 42,
+          "value": null
+        }
+      ]
+    },
+    {
+      "widget_id": 19,
+      "dashboard_id": 2,
+      "period_start": "2016-10-01T00:00:00Z",
+      "period_end": "2016-10-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 42,
+          "value": null
+        }
+      ]
+    },
+    {
+      "widget_id": 19,
+      "dashboard_id": 2,
+      "period_start": "2016-11-01T00:00:00Z",
+      "period_end": "2016-11-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 42,
+          "value": null
+        }
+      ]
+    },
+    {
+      "widget_id": 19,
+      "dashboard_id": 2,
+      "period_start": "2016-12-01T00:00:00Z",
+      "period_end": "2016-12-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 42,
+          "value": null
+        }
+      ]
+    },
+    {
+      "widget_id": 19,
+      "dashboard_id": 2,
+      "period_start": "2017-01-01T00:00:00Z",
+      "period_end": "2017-01-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 42,
+          "value": null
+        }
+      ]
+    },
+    {
+      "widget_id": 19,
+      "dashboard_id": 2,
+      "period_start": "2017-02-01T00:00:00Z",
+      "period_end": "2017-02-28T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 42,
+          "value": null
+        }
+      ]
+    },
+    {
+      "widget_id": 20,
+      "dashboard_id": 2,
+      "period_start": "2016-03-01T00:00:00Z",
+      "period_end": "2016-03-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 44,
+          "value": 1.9
+        }
+      ]
+    },
+    {
+      "widget_id": 20,
+      "dashboard_id": 2,
+      "period_start": "2016-04-01T00:00:00Z",
+      "period_end": "2016-04-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 44,
+          "value": 15
+        }
+      ]
+    },
+    {
+      "widget_id": 20,
+      "dashboard_id": 2,
+      "period_start": "2016-05-01T00:00:00Z",
+      "period_end": "2016-05-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 44,
+          "value": 14
+        }
+      ]
+    },
+    {
+      "widget_id": 20,
+      "dashboard_id": 2,
+      "period_start": "2016-06-01T00:00:00Z",
+      "period_end": "2016-06-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 44,
+          "value": 23
+        }
+      ]
+    },
+    {
+      "widget_id": 20,
+      "dashboard_id": 2,
+      "period_start": "2016-07-01T00:00:00Z",
+      "period_end": "2016-07-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 44,
+          "value": 21.93
+        }
+      ]
+    },
+    {
+      "widget_id": 20,
+      "dashboard_id": 2,
+      "period_start": "2016-08-01T00:00:00Z",
+      "period_end": "2016-08-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 44,
+          "value": 25
+        }
+      ]
+    },
+    {
+      "widget_id": 20,
+      "dashboard_id": 2,
+      "period_start": "2016-09-01T00:00:00Z",
+      "period_end": "2016-09-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 44,
+          "value": 22
+        }
+      ]
+    },
+    {
+      "widget_id": 20,
+      "dashboard_id": 2,
+      "period_start": "2016-10-01T00:00:00Z",
+      "period_end": "2016-10-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 44,
+          "value": 30
+        }
+      ]
+    },
+    {
+      "widget_id": 20,
+      "dashboard_id": 2,
+      "period_start": "2016-11-01T00:00:00Z",
+      "period_end": "2016-11-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 44,
+          "value": 23
+        }
+      ]
+    },
+    {
+      "widget_id": 20,
+      "dashboard_id": 2,
+      "period_start": "2016-12-01T00:00:00Z",
+      "period_end": "2016-12-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 44,
+          "value": 31
+        }
+      ]
+    },
+    {
+      "widget_id": 20,
+      "dashboard_id": 2,
+      "period_start": "2017-01-01T00:00:00Z",
+      "period_end": "2017-01-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 44,
+          "value": 26
+        }
+      ]
+    },
+    {
+      "widget_id": 20,
+      "dashboard_id": 2,
+      "period_start": "2017-02-01T00:00:00Z",
+      "period_end": "2017-02-28T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 44,
+          "value": 33
+        }
+      ]
+    },
+    {
+      "widget_id": 21,
+      "dashboard_id": 2,
+      "period_start": "2016-03-01T00:00:00Z",
+      "period_end": "2016-03-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 43,
+          "value": 94
+        }
+      ]
+    },
+    {
+      "widget_id": 21,
+      "dashboard_id": 2,
+      "period_start": "2016-04-01T00:00:00Z",
+      "period_end": "2016-04-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 43,
+          "value": 92
+        }
+      ]
+    },
+    {
+      "widget_id": 21,
+      "dashboard_id": 2,
+      "period_start": "2016-05-01T00:00:00Z",
+      "period_end": "2016-05-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 43,
+          "value": 97
+        }
+      ]
+    },
+    {
+      "widget_id": 21,
+      "dashboard_id": 2,
+      "period_start": "2016-06-01T00:00:00Z",
+      "period_end": "2016-06-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 43,
+          "value": 98
+        }
+      ]
+    },
+    {
+      "widget_id": 21,
+      "dashboard_id": 2,
+      "period_start": "2016-07-01T00:00:00Z",
+      "period_end": "2016-07-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 43,
+          "value": 99
+        }
+      ]
+    },
+    {
+      "widget_id": 21,
+      "dashboard_id": 2,
+      "period_start": "2016-08-01T00:00:00Z",
+      "period_end": "2016-08-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 43,
+          "value": 99
+        }
+      ]
+    },
+    {
+      "widget_id": 21,
+      "dashboard_id": 2,
+      "period_start": "2016-09-01T00:00:00Z",
+      "period_end": "2016-09-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 43,
+          "value": 100
+        }
+      ]
+    },
+    {
+      "widget_id": 21,
+      "dashboard_id": 2,
+      "period_start": "2016-10-01T00:00:00Z",
+      "period_end": "2016-10-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 43,
+          "value": 100
+        }
+      ]
+    },
+    {
+      "widget_id": 21,
+      "dashboard_id": 2,
+      "period_start": "2016-11-01T00:00:00Z",
+      "period_end": "2016-11-30T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 43,
+          "value": 99
+        }
+      ]
+    },
+    {
+      "widget_id": 21,
+      "dashboard_id": 2,
+      "period_start": "2016-12-01T00:00:00Z",
+      "period_end": "2016-12-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 43,
+          "value": 100
+        }
+      ]
+    },
+    {
+      "widget_id": 21,
+      "dashboard_id": 2,
+      "period_start": "2017-01-01T00:00:00Z",
+      "period_end": "2017-01-31T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 43,
+          "value": 100
+        }
+      ]
+    },
+    {
+      "widget_id": 21,
+      "dashboard_id": 2,
+      "period_start": "2017-02-01T00:00:00Z",
+      "period_end": "2017-02-28T00:00:00Z",
+      "period": "month",
+      "groups": [
+        {
+          "dataset_id": 43,
+          "value": 100
+        }
+      ]
+    }
+  ]
+}
