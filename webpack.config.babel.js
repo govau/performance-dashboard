@@ -142,6 +142,9 @@ let webpackConfig = {
   },
   // Add functionality typically related to bundles in webpack
   plugins: [
+    // TODO (davidg): use https://www.npmjs.com/package/html-webpack-plugin
+    // to put the script names right into index.html
+    // and https://github.com/GoogleChrome/preload-webpack-plugin
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(NODE_ENV)
