@@ -20,7 +20,7 @@ class DashboardShow { // this *is not* React
     this.runHighContrastSwitch();
   }
   initBtlApp() {
-    const el = document.getElementById('dashboard-show-app');
+    const el = document.getElementById('react-root');
     if (el) {
       new App({
         el,

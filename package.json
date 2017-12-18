@@ -98,6 +98,7 @@
     "path-exists": "2.1.0",
     "postcss-loader": "^0.10.1",
     "promise": "^7.1.1",
+    "prop-types": "^15.6.0",
     "react": "^15.5.4",
     "react-addons-test-utils": "^15.4.1",
     "react-dom": "^15.5.4",
@@ -209,6 +210,7 @@
     "cz-conventional-changelog": "^1.2.0",
     "enzyme": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^3.0.2",
+    "husky": "^0.12.0",
     "react-addons-test-utils": "^15.4.1",
     "react-dev-utils": "^0.4.2",
     "react-test-renderer": "^15.4.1",
@@ -216,8 +218,7 @@
     "strip-json-comments": "^2.0.1",
     "surge": "^0.18.0",
     "validate-commit-msg": "^2.8.2",
-    "webpack-bundle-analyzer": "^2.3.0",
-    "husky": "^0.12.0"
+    "webpack-bundle-analyzer": "^2.3.0"
   },
   "config": {
     "commitizen": {
