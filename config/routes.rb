@@ -48,6 +48,10 @@ Rails.application.routes.draw do
         post 'slices/:period/:period_start', to: 'slices#create'
         patch 'slices/:period/:period_start', to: 'slices#update'
       end
+
+      namespace :public do 
+        resources :dashboards, only: [:index, :show]
+      end
     end
   end
 
