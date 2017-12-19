@@ -8,7 +8,7 @@ import {getIsHighContrastMode} from './runHighContrastSwitch';
 const pathName = window.location.pathname;
 const dashboardIdMatch = pathName.match(/^\/dashboards\/(\d+)/);
 const urlBase = process.env.NODE_ENV === 'production'
-  ? 'api/v1'
+  ? 'api/v1/public'
   : 'public/__mocks__';
 
 if (pathName === '/') {
@@ -33,7 +33,7 @@ if (pathName === '/') {
     isHighContrastMode: getIsHighContrastMode(),
   };
 
-  fetch(`/${urlBase}/${dashboardId}.json`)
+  fetch(`/${urlBase}/dashboards/${dashboardId}.json`)
     .then(response => response.json())
     .then(data => {
       new Page({data: {...data, ui:uiState}});

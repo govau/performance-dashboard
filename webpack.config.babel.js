@@ -5,8 +5,10 @@
 // https://github.com/motdotla/dotenv
 require('dotenv').config({silent: true});
 
+const path = require('path');
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import BellOnBundlerErrorPlugin from 'bell-on-bundler-error-plugin';
 import autoprefixer from 'autoprefixer';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
@@ -142,14 +144,29 @@ let webpackConfig = {
   },
   // Add functionality typically related to bundles in webpack
   plugins: [
-    // TODO (davidg): use https://www.npmjs.com/package/html-webpack-plugin
-    // to put the script names right into index.html
-    // and https://github.com/GoogleChrome/preload-webpack-plugin
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(NODE_ENV)
       },
       __DEV__: DEBUG,
+    }),
+    // unlike CRA, this uses /public as an OUTPUT directory
+    // so we have index.html in the client directory
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: CONFIG.APP_HTML,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
     }),
     new BellOnBundlerErrorPlugin(),
     ExtractSass,

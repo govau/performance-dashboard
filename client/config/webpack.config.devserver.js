@@ -5,6 +5,7 @@
 require('dotenv').config({silent: true});
 
 import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import BellOnBundlerErrorPlugin from 'bell-on-bundler-error-plugin';
 import autoprefixer from 'autoprefixer';
 
@@ -91,6 +92,11 @@ let webpackConfig = {
       },
       __DEV__: DEBUG,
 		}),
+    // Generates an `index.html` file with the <script> injected.
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: CONFIG.APP_HTML,
+    }),
 		new BellOnBundlerErrorPlugin()
 	],
 	resolve: {

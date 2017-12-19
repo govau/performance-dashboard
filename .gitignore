@@ -55,6 +55,7 @@ migrations/.migrate
 public/images/*
 public/stylesheets/*
 public/javascripts/*
+public/index.html
 .tmp
 
 

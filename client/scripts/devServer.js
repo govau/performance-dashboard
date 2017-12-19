@@ -152,7 +152,7 @@ let devServer = new WebpackDevServer(compiler, {
   // This is handy if you are using a html5 router.
   historyApiFallback: {
     // routes are ignored, all requests are served from public path
-    index: '/public/index.html'
+    index: '/client/index.html'
   },
   noInfo: false,
   quiet: true,
