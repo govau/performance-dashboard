@@ -8,6 +8,11 @@ class ApplicationController < ActionController::Base
   before_action :store_current_location, :unless => :devise_controller?
   before_action :check_auth_flag, if: :devise_controller?
 
+  def not_found
+    Rails.logger.info "Not found: #{request.fullpath}"
+    head :not_found
+  end
+
   private
 
   def store_current_location

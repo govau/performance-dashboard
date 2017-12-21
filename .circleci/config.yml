@@ -31,7 +31,6 @@ jobs:
       - type: cache-restore
         name: Restore yarn cache
         key: rails-demo-yarn-{{ checksum "yarn.lock" }}
-      - run: ./bin/install-yarn.sh
       - run: yarn install
       - type: cache-save
         name: Store yarn cache
@@ -54,7 +53,6 @@ jobs:
       - type: cache-restore
         name: Restore yarn cache
         key: rails-demo-yarn-{{ checksum "yarn.lock" }}
-      - run: ./bin/install-yarn.sh
       - run: yarn install 
       - run: yarn run build
       - run: curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version=6.32.0&source=github-rel'
@@ -75,7 +73,6 @@ jobs:
       - type: cache-restore
         name: Restore yarn cache
         key: rails-demo-yarn-{{ checksum "yarn.lock" }}
-      - run: ./bin/install-yarn.sh
       - run: yarn install 
       - run: yarn run build
       - run: curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version=6.32.0&source=github-rel'

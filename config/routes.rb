@@ -68,4 +68,6 @@ Rails.application.routes.draw do
   get '/copyright', :to => 'about#copyright'
   get '/api', :to => 'about#api'
 
+  get '*unmatched_route', to: 'application#not_found'
+
 end
