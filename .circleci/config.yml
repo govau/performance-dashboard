@@ -28,9 +28,9 @@ jobs:
         key: perfdash-ruby-deps-{{ checksum "Gemfile.lock" }}
         paths:
           - vendor/bundle
-      - type: cache-restore
-        name: Restore yarn cache
-        key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+      # - type: cache-restore
+      #   name: Restore yarn cache
+      #   key: rails-demo-yarn-{{ checksum "yarn.lock" }}
       # - run: ./bin/install-yarn.sh
       - run: yarn install
       - type: cache-save
