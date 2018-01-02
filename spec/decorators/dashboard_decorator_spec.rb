@@ -75,7 +75,7 @@ RSpec.describe DashboardDecorator, type: :decorator do
 
   describe 'last_updated_at' do
     subject { decorator.last_updated_at }
-    it { is_expected.to include Time.zone.now.year.to_s }
+    it { is_expected.to include Time.now.year.to_s }
   end
 
 end
