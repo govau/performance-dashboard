@@ -42,7 +42,7 @@ jobs:
       - run: bundle exec rspec
   deploy_staging: 
     docker: 
-      - image: circleci/ruby:2.4-node
+      - image: circleci/ruby:2.4.2-node
     working_directory: ~/repo
     steps:
       - checkout
@@ -62,7 +62,7 @@ jobs:
       - run: cf zero-downtime-push dashboard-staging -f manifest-staging.yml -p .
   deploy_production: 
     docker: 
-      - image: circleci/ruby:2.4-node
+      - image: circleci/ruby:2.4.2-node
     working_directory: ~/repo
     steps:
       - checkout
