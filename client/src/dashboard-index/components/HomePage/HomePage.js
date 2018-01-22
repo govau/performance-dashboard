@@ -10,7 +10,6 @@ class HomePage extends PureComponent {
 
   render() {
     const { props } = this;
-    console.log('HomePage props:', props);
 
     return (
       <div className="dashboards_index container">

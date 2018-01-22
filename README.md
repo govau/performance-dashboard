@@ -488,3 +488,13 @@ git tag `date "+release-%Y%m%d%H%M%S"` && git push --tags
 ```
 
 The checkout will create a new branch from the tag, which can be useful for diagnosing regression errors.  
+
+
+# Frontend Notes
+
+These are the entry points for webpack. They're in `/client/src`.
+* *dashboard* - 
+* *dashboard-index* - 
+* *app_shell* - 
+* *editor* - 
+* *login* - 

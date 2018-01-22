@@ -52,7 +52,7 @@ const ShowPageWrapper = (props) => {
                         id="high-contrast-switch"
                         onChange={(e) => setHighContrastMode(e.target.value)}
                       />
-                      {/*The below empty elements are needed for the toggle switch*/}
+                      {/*The below empty elements are needed for the toggle switch CSS*/}
                       <span>
                         <span />
                         <span />

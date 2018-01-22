@@ -1,4 +1,4 @@
 require('babel-register');
-require('babel-polyfill');
+// require('babel-polyfill');
 
 module.exports = require('./devServer');

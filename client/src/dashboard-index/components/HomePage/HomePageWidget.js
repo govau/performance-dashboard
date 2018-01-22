@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import classnames from 'classnames';
 
 const HomePageWidget = props => {
-  console.log('HomePageWidget props:', props);
   const wrapperClassName = classnames(
     'D1_kpi-group',
     {
