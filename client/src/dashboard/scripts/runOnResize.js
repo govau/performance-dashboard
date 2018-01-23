@@ -26,14 +26,13 @@ export const getViewport = () => {
 
 let attached = false;
 
-const runOnResize = ({emitter}) => {
-
+const runOnResize = (cb) => {
   let _v;
 
   const handleChange = () => {
     const viewport = getViewport();
     if (_v !== viewport) {
-      emitter.emit('set-viewport-changed', viewport);
+      cb(viewport);
     }
   };
 

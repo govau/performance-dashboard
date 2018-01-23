@@ -1,3 +1,4 @@
+import { setIsHighContrastMode } from '../../../../../_shared/utils/storage';
 
 const UI_ONRESIZE = 'ui/onResize';
 const UI_ONTOGGLE_HIGH_CONTRAST = 'ui/onToggleHighContrast';
@@ -20,7 +21,10 @@ export const onResize = (viewport) => {
   }
 };
 
+// TODO (davidg): this is "set" highContrast, not toggle
 export const onToggleHighContrast = (isOn) => {
+  setIsHighContrastMode(isOn);
+
   return {
     type: UI_ONTOGGLE_HIGH_CONTRAST,
     payload: {toggle: isOn},
