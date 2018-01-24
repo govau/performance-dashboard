@@ -143,7 +143,7 @@
     "commitmsg": "validate-commit-msg",
     "build:stats": "webpack --profile --json > webpackstats.json",
     "build": "node -r babel-register client/scripts/build.js",
-    "start": "node client/scripts/start.js",
+    "start": "node -r babel-register client/scripts/start.js",
     "test": "npm run test-browser && npm run test-browser:legacy && npm run test:react",
     "test:lint": "eslint client/src/editor",
     "test:react": "NODE_ENV=test jest --env=jsdom",

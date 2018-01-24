@@ -1,3 +1,6 @@
+import 'babel-polyfill';
+import 'autotrack/lib/plugins/event-tracker';
+import 'autotrack/lib/plugins/outbound-link-tracker';
 import './styles/main.scss';
 
 import './images/coatofarms.png';

@@ -1,9 +1,7 @@
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import HomePageWidget from './HomePageWidget';
-import Header from '../../../dashboard/scripts/app/components/Header/Header';
-import Footer from '../../../dashboard/scripts/app/components/Footer/Footer';
-import BetaBanner from '../../../dashboard/scripts/app/components/BetaBanner/BetaBanner';
+import ShowPageWrapper from '../PageWrapper/PageWrapper';
 import runLegacy from 'dashboard-legacy/run';
 
 class HomePage extends PureComponent {
@@ -15,11 +13,7 @@ class HomePage extends PureComponent {
     const { props } = this;
 
     return (
-      <div>
-        <BetaBanner />
-
-        <Header />
-
+      <ShowPageWrapper>
         <div className="dashboards_index container">
           <section className="row" aria-labelledby="dashboardsoverview">
             <div className="col-md-12">
@@ -140,9 +134,7 @@ class HomePage extends PureComponent {
             </ul>
           </section>
         </div>
-
-        <Footer />
-      </div>
+      </ShowPageWrapper>
     );
   }
 }

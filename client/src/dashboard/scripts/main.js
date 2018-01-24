@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
-import HomePage from '../../dashboard-index/components/HomePage/HomePage';
+import HomePage from './app/components/HomePage/HomePage';
 import {getViewport} from './runOnResize';
 import { getIsHighContrastMode } from '../../_shared/utils/storage';
 import configureStore from './app/redux/configureStore';
 import initialState from './app/redux/initialState';
 import merge from 'lodash/merge';
-import DashboardShowPageContainer from './app/pages/dashboardShow/dashboardShow_container';
+import DashboardShowPageContainer from './app/pages/DashboardShowPage/DashboardShowPageContainer';
 
 const pathName = window.location.pathname;
 const dashboardIdMatch = pathName.match(/^\/dashboards\/(\d+)/);

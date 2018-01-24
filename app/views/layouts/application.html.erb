@@ -45,10 +45,8 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
   <% if development_server? %>
-      <script src="http://localhost:8080/javascripts/dashboard-index.js"></script>
       <script src="http://localhost:8080/javascripts/dashboard.js"></script>
   <% else %>
-    <%= getPublicJavascript('dashboard-index.js') %>
     <%= getPublicJavascript('dashboard.js') %>
   <% end %>
 </body>

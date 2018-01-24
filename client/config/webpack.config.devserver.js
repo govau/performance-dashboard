@@ -23,9 +23,7 @@ let webpackConfig = {
   devtool: 'eval', //inline-source-map', //'cheap-module-source-map',
 	context: CONFIG.DIR_SRC,
     entry: {
-      polyfills: [require.resolve('./polyfills')],
       ['dashboard']: [`./dashboard`],
-      ['dashboard-index']: [`./dashboard-index`],
       ['app_shell']: [`./app_shell`],
       ['editor']: [`./editor`],
       ['login']: [`./login`],

@@ -1,11 +1,10 @@
 
 
 import React from 'react';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import { connect } from 'react-redux';
 import runOnResize from '../../../runOnResize';
 
-import DashboardShowPage from './dashboardShow_page';
+import DashboardShowPage from './DashboardShowPage';
 import {
   onToggleHighContrast,
   onResize,
@@ -38,17 +37,13 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => {
-  // const {emitter} = ownProps;
-
-  // RITMO move this into the onMount of a componentn
+const mapDispatchToProps = (dispatch) => {
+  // TODO move this into the onMount of <DashboardShowPage>?
+  // and when that's gone { onToggleHighContrast } can replace mapDispatchToProps
+  // then uninstall tiny-emitter?
   runOnResize(viewport => {
     dispatch(onResize(viewport));
   });
-  // TODO (davidg): shouldn't need an emitter to do this
-  // emitter.on('set-viewport-changed', (viewport) => {
-  //   dispatch(onResize(viewport));
-  // });
   return {
     onToggleHighContrast: isOn => dispatch(onToggleHighContrast(isOn)),
   }

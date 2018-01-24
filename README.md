@@ -494,7 +494,6 @@ The checkout will create a new branch from the tag, which can be useful for diag
 
 These are the entry points for webpack. They're in `/client/src`.
 * *dashboard* - 
-* *dashboard-index* - 
 * *app_shell* - 
 * *editor* - 
 * *login* - 
