@@ -26,9 +26,9 @@ let webpackConfig = {
       polyfills: [require.resolve('./polyfills')],
       ['dashboard']: [`./dashboard`],
       ['dashboard-index']: [`./dashboard-index`],
-      // ['app_shell']: [`./app_shell`],
-      // ['editor']: [`./editor`],
-      // ['login']: [`./login`],
+      ['app_shell']: [`./app_shell`],
+      ['editor']: [`./editor`],
+      ['login']: [`./login`],
     },
 	output: {
 	  path: CONFIG.DIR_DIST,
@@ -97,6 +97,7 @@ let webpackConfig = {
     new HtmlWebpackPlugin({
       inject: true,
       template: CONFIG.APP_HTML,
+      chunks: ['dashboard']
     }),
 		new BellOnBundlerErrorPlugin()
 	],

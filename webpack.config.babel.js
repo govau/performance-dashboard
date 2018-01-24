@@ -5,10 +5,8 @@
 // https://github.com/motdotla/dotenv
 require('dotenv').config({silent: true});
 
-const path = require('path');
 import webpack from 'webpack';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
 import BellOnBundlerErrorPlugin from 'bell-on-bundler-error-plugin';
 import autoprefixer from 'autoprefixer';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
@@ -64,11 +62,11 @@ let webpackConfig = {
   target: 'web',
   context: CONFIG.DIR_SRC,
   entry: {
-    ['dashboard']: [`./dashboard`],
-    ['dashboard-index']: [`./dashboard-index`],
-    ['app_shell']: [`./app_shell`],
-    ['editor']: [`./editor`],
-    ['login']: [`./login`],
+    ['dashboard']: [`./dashboard`], // used in app/views/layouts/application.html.erb
+    ['dashboard-index']: [`./dashboard-index`], // used in app/views/layouts/application.html.erb
+    ['app_shell']: [`./app_shell`], // used in app/views/layouts/editor.html.erb and app/views/layouts/devise.html.erb
+    ['editor']: [`./editor`], // used in app/views/layouts/editor.html.erb
+    ['login']: [`./login`], // used in app/views/layouts/devise.html.erb
   },
   output: {
     filename: 'javascripts/[name].js',
@@ -150,29 +148,11 @@ let webpackConfig = {
       },
       __DEV__: DEBUG,
     }),
-    // unlike CRA, this uses /public as an OUTPUT directory
-    // so we have index.html in the client directory
-    new HtmlWebpackPlugin({
-      inject: true,
-      template: CONFIG.APP_HTML,
-      minify: {
-        removeComments: true,
-        collapseWhitespace: true,
-        removeRedundantAttributes: true,
-        useShortDoctype: true,
-        removeEmptyAttributes: true,
-        removeStyleLinkTypeAttributes: true,
-        keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
-        minifyURLs: true,
-      },
-    }),
     new BellOnBundlerErrorPlugin(),
     ExtractSass,
     ExtractMcss,
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'editor-vendor',
+      name: 'editor-vendor', // used in app/views/layouts/editor.html.erb
       chunks: ["editor"],
       minChunks(module, count) {
         var context = module.context;
