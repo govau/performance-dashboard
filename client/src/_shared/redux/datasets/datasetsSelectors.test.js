@@ -1,7 +1,7 @@
 
 /* global describe, it */
 import expect from 'expect';
-import {isArray} from 'lodash';
+import isArray from 'lodash/isArray';
 
 import {
   selectDataset,

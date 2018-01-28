@@ -4,7 +4,7 @@ import d3 from 'd3';
 import formatData from './../Helpers/formatData';
 import getDate from './../Helpers/getDate';
 import defined from './../Helpers/defined';
-import _ from 'lodash';
+import reverse from 'lodash/reverse';
 
 const iconSize = 12;
 
@@ -26,11 +26,11 @@ class Legend {
     // which has been transformed for display in chart
     if (this.legendData) {
       this.data = this.chart.type === 'bar' ?
-          _.reverse(this.chart.legendData) :
+          reverse(this.chart.legendData) :
           this.chart.transformedData;
     } else {
       this.data = this.chart.type === 'bar' ?
-          _.reverse(this.chart.transformedData) :
+          reverse(this.chart.transformedData) :
           this.chart.transformedData;
     }
 

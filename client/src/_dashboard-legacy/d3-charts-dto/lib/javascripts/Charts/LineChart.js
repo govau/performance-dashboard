@@ -1,5 +1,5 @@
 import d3 from 'd3';
-import { isDate } from 'lodash';
+import isDate from 'lodash/isDate';
 import Chart from './Chart';
 
 /**

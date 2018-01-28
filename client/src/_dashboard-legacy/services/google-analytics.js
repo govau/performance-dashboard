@@ -1,5 +1,5 @@
 let ga = window.ga || (window.ga = {});
-import { isArray } from 'lodash';
+import isArray from 'lodash/isArray';
 
 
 /**
