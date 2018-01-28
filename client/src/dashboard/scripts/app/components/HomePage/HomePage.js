@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import HomePageWidget from './HomePageWidget';
 import ShowPageWrapper from '../PageWrapper/PageWrapper';
+import DocumentTitle from '../../../../../_shared/components/DocumentTitle/DocumentTitle';
 import runLegacy from 'dashboard-legacy/run';
 
 class HomePage extends PureComponent {
@@ -14,6 +15,8 @@ class HomePage extends PureComponent {
 
     return (
       <ShowPageWrapper>
+        <DocumentTitle title="Performance Dashboard" />
+
         <div className="dashboards_index container">
           <section className="row" aria-labelledby="dashboardsoverview">
             <div className="col-md-12">
