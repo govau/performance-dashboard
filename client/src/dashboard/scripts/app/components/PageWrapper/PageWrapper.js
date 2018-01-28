@@ -27,9 +27,9 @@ PageWrapper.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.array,
     PropTypes.element,
-  ]),
-  isHighContrastMode: PropTypes.bool.isRequired,
-  onToggleHighContrast: PropTypes.func.isRequired,
+  ]).isRequired,
+  isHighContrastMode: PropTypes.bool,
+  onToggleHighContrast: PropTypes.func,
 };
 
 export default PageWrapper;
