@@ -95,7 +95,8 @@ let webpackConfig = {
     new HtmlWebpackPlugin({
       inject: true,
       template: CONFIG.APP_HTML,
-      chunks: ['dashboard']
+      chunks: ['dashboard'],
+      hash: true,
     }),
 		new BellOnBundlerErrorPlugin()
 	],
