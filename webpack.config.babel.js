@@ -6,6 +6,7 @@
 require('dotenv').config({silent: true});
 
 import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import BellOnBundlerErrorPlugin from 'bell-on-bundler-error-plugin';
 import autoprefixer from 'autoprefixer';
@@ -146,6 +147,25 @@ let webpackConfig = {
         NODE_ENV: JSON.stringify(NODE_ENV)
       },
       __DEV__: DEBUG,
+    }),
+    // Generates an `index.html` file with the <script> injected.
+    new HtmlWebpackPlugin({
+      inject: true,
+      template: CONFIG.APP_HTML,
+      chunks: ['dashboard'],
+      hash: true,
+      minify: {
+        removeComments: true,
+        collapseWhitespace: false, // makes almost no difference to gzipped size
+        removeRedundantAttributes: true,
+        useShortDoctype: true,
+        removeEmptyAttributes: true,
+        removeStyleLinkTypeAttributes: true,
+        keepClosingSlash: true,
+        minifyJS: true,
+        minifyCSS: true,
+        minifyURLs: true,
+      },
     }),
     new BellOnBundlerErrorPlugin(),
     ExtractSass,
