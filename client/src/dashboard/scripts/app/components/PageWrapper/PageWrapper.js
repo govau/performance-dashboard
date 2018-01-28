@@ -12,7 +12,7 @@ const PageWrapper = props => (
 
     <Header
       isHighContrastMode={props.isHighContrastMode}
-      onToggleHighContrast={props.onToggleHighContrast}
+      setHighContrastMode={props.setHighContrastMode}
     />
 
     <main role="main" id="skiptocontent">
@@ -29,7 +29,7 @@ PageWrapper.propTypes = {
     PropTypes.element,
   ]).isRequired,
   isHighContrastMode: PropTypes.bool,
-  onToggleHighContrast: PropTypes.func,
+  setHighContrastMode: PropTypes.func,
 };
 
 export default PageWrapper;

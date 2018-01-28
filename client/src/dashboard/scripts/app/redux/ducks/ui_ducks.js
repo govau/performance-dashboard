@@ -1,7 +1,7 @@
 import { setIsHighContrastMode } from '../../../../../_shared/utils/storage';
 
 const UI_ONRESIZE = 'ui/onResize';
-const UI_ONTOGGLE_HIGH_CONTRAST = 'ui/onToggleHighContrast';
+const UI_ONTOGGLE_HIGH_CONTRAST = 'ui/setHighContrastMode';
 
 export const uiReducer = (state, {type, payload}) => {
   switch (type) {
@@ -22,7 +22,7 @@ export const onResize = (viewport) => {
 };
 
 // TODO (davidg): this is "set" highContrast, not toggle
-export const onToggleHighContrast = (isOn) => {
+export const setHighContrastMode = (isOn) => {
   setIsHighContrastMode(isOn);
 
   return {

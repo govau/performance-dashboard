@@ -17,7 +17,7 @@ const Header = (props) => (
             </a>
           </div>
 
-          {!!props.onToggleHighContrast && (
+          {!!props.setHighContrastMode && (
             <div className="govau-header__container__utils">
               <div className="toggle-switch">
                 <label className="switch-light switch-material">
@@ -27,7 +27,7 @@ const Header = (props) => (
                     id="high-contrast-switch"
                     checked={props.isHighContrastMode}
                     onChange={(e) => {
-                      props.onToggleHighContrast(e.target.checked);
+                      props.setHighContrastMode(e.target.checked);
                     }}
                   />
                   {/*The below empty elements are needed for the toggle switch CSS*/}
@@ -48,7 +48,7 @@ const Header = (props) => (
 
 Header.propTypes = {
   isHighContrastMode: PropTypes.bool,
-  onToggleHighContrast: PropTypes.func,
+  setHighContrastMode: PropTypes.func,
 };
 
 export default Header;
