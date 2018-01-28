@@ -63,7 +63,7 @@ let webpackConfig = {
   target: 'web',
   context: CONFIG.DIR_SRC,
   entry: {
-    ['dashboard']: [`./dashboard`], // used in app/views/layouts/application.html.erb
+    ['dashboard']: [`./dashboard`], // used in client/index.html
     ['app_shell']: [`./app_shell`], // used in app/views/layouts/editor.html.erb and app/views/layouts/devise.html.erb
     ['editor']: [`./editor`], // used in app/views/layouts/editor.html.erb
     ['login']: [`./login`], // used in app/views/layouts/devise.html.erb
