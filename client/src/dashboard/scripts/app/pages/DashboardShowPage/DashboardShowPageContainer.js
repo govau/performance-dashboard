@@ -1,18 +1,13 @@
-
-
 import React from 'react';
 import { connect } from 'react-redux';
-import runOnResize from '../../../runOnResize';
-
 import DashboardShowPage from './DashboardShowPage';
 import {
-  onToggleHighContrast,
+  setHighContrastMode,
   onResize,
 } from './../../redux/ducks/ui_ducks';
 
 
-const mapStateToProps = (state, ownProps) => {
-
+const mapStateToProps = (state) => {
   const dashboard = state.dashboards[0];
   const dashboardWidgets = state.widgets;
 
@@ -37,21 +32,12 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  // TODO move this into the onMount of <DashboardShowPage>?
-  // and when that's gone { onToggleHighContrast } can replace mapDispatchToProps
-  // then uninstall tiny-emitter?
-  runOnResize(viewport => {
-    dispatch(onResize(viewport));
-  });
-  return {
-    onToggleHighContrast: isOn => dispatch(onToggleHighContrast(isOn)),
-  }
-};
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  {
+    setHighContrastMode,
+    onResize,
+  }
 )(DashboardShowPage);
 
 
