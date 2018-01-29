@@ -42,7 +42,30 @@ const HomePageWidget = props => {
           data-data={JSON.stringify(props)}
           aria-hidden="true"
         />
-        {/*// TODO (davidg): data table thing*/}
+        <div className="widget__data sr-only--and-no-js">
+          {!!props.datasets.length && props.datasets.map(dataset => (
+            <table key={dataset.id} className="data-table table">
+              <caption>
+                {`${props.name || props.id} ${props.units_to_s}`}
+              </caption>
+
+              <tbody>
+                <tr>
+                  <th scope="col">Date</th>
+                  <th scope="col">Value</th>
+                </tr>
+
+                {!!dataset.data.length && dataset.data.map(data => (
+                  <tr key={data.id}>
+                    <td scope="row">{data.label}</td>
+                    <td scope="row">{`${props.prefix}${data.value || ''}${props.suffix}`}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          ))}
+        </div>
+
       </div>
     </div>
   );
@@ -53,6 +76,15 @@ HomePageWidget.propTypes = {
   name: PropTypes.string,
   has_current_data: PropTypes.bool,
   name_slug: PropTypes.string,
+  units_to_s: PropTypes.string,
+  prefix: PropTypes.string,
+  suffix: PropTypes.string,
+  datasets: PropTypes.arrayOf(PropTypes.shape({
+    data: PropTypes.arrayOf(PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      value: PropTypes.number,
+    })),
+  })),
 };
 
 export default HomePageWidget;
