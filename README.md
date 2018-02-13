@@ -1,23 +1,12 @@
 # Dashboard
 
+[![CircleCI](https://circleci.com/gh/govau/performance-dashboard/tree/master.svg?style=svg)](https://circleci.com/gh/govau/performance-dashboard/tree/master) [![Code Climate](https://codeclimate.com/github/govau/performance-dashboard/badges/gpa.svg)](https://codeclimate.com/github/govau/performance-dashboard) [![Issue Count](https://codeclimate.com/github/govau/performance-dashboard/badges/issue_count.svg)](https://codeclimate.com/github/govau/performance-dashboard) [![Test Coverage](https://codeclimate.com/github/govau/performance-dashboard/badges/coverage.svg)](https://codeclimate.com/github/govau/performance-dashboard/coverage)  [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
-[![CircleCI](https://circleci.com/gh/govau/performance-dashboard/tree/master.svg?style=svg)](https://circleci.com/gh/govau/performance-dashboard/tree/master)
+A data visualisation application to show performance of government services over time.
 
-[![Code Climate](https://codeclimate.com/github/govau/performance-dashboard/badges/gpa.svg)](https://codeclimate.com/github/govau/performance-dashboard)
+## Getting Started
 
-[![Issue Count](https://codeclimate.com/github/govau/performance-dashboard/badges/issue_count.svg)](https://codeclimate.com/github/govau/performance-dashboard)
-
-[![Test Coverage](https://codeclimate.com/github/govau/performance-dashboard/badges/coverage.svg)](https://codeclimate.com/github/govau/performance-dashboard/coverage)
-
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
-
-
-Version 3.0 of the Performance Dashboard.
-
-Currently WIP.
-
-
-## Requirements
+### Requirements
 
  - ruby-2.3.1
  - Postgres 9.4
@@ -25,14 +14,20 @@ Currently WIP.
  - Yarn ^0.16.1
  - ImageMagick
 
-## Getting Started
+### Installing
 
-### Database
+```
+gem install bundler # if you don't already have Bundler installed
+bundle install # install gems
+yarn install # install JavaScript modules
+```
+
+### Database setup
 
 The default database config assumes you have installed Postgres via Homebrew.
 You should need no further config.
 
-Otherwise, create a `.env` file in the Rails directory and populate with the relevant credentials.
+Otherwise, create a `.env` file in the Rails directory and populate with the relevant credentials, e.g.:
 
 ```
 DB_HOST = '127.0.0.1'
@@ -41,44 +36,22 @@ DB_PWD = 'password'
 GA_UA_CODE = 'UA-61222473-3'
 ```
 
-If you don't have Bundler installed
-```
-gem install bundler
-```
-
-Install project gems, run
-```
-bundle install
-```
-
-
-To create the database and load the schema
-```
-rake db:setup
-```
-
-Migrate the database
+To create the database and load the schema:
 
 ```
-rake db:migrate
+bundle exec rake db:create db:schema:load
 ```
 
-Import the dashboard data
+To import some sample dashboards, charts and data:
 
 ```
-rake import:data
+bundle exec rake import:data
 ```
 
-(Optional) If you need to hard reset the database
+To set up a sample admin user: 
 
 ```
-rake db:drop db:create db:migrate import:data
-```
-
-Create seed data for accessing the portal
-
-```
-rails db:seed
+bundle exec rake db:seed
 ```
 
 You will now be able to login to the portal in the development environment with
@@ -90,18 +63,23 @@ You will now be able to login to the portal in the development environment with
 
 ### Run the App
 
-To run on the default port (3000)
-```
-rails server
-```
+Before running for the first time, first generate the front end assets:
 
 ```
-bin/start.sh
+yarn run build
 ```
 
-The site can now be viewed at `http://localhost:3000/`
+Now start the Rails server:
 
-Administration is available at `http://localhost:3000/admin`
+```
+bundle exec rails server
+```
+
+The site can now be viewed at [http://localhost:3000/]
+
+The editor can be accessed at [http://localhost:3000/admin]
+
+Administration is available at [http://localhost:3000/admin]
 
 ### Mail
 
