@@ -154,7 +154,8 @@
     "test-browser:legacy": "NODE_ENV=test karma start",
     "storybook": "start-storybook -p 6006 -c client/.storybook",
     "build-storybook": "build-storybook -c client/.storybook -o client/.out",
-    "deploy-storybook": "npm run build-storybook && surge -p client/.out -d performance-dashboard-ui.surge.sh"
+    "deploy-storybook": "npm run build-storybook && surge -p client/.out -d performance-dashboard-ui.surge.sh",
+    "yarn": "yarn --ignore-engines"
   },
   "engines": {
     "node": "8.9.3"
