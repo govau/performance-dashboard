@@ -19,9 +19,9 @@ Currently WIP.
 
 ## Requirements
 
- - ruby-2.3.1
+ - Ruby: see `.ruby-version`
  - Postgres 9.4
- - Node 6.3.0
+ - Node: see `package.json` > `engines.node`
  - Yarn ^0.16.1
  - ImageMagick
 
@@ -50,7 +50,6 @@ Install project gems, run
 ```
 bundle install
 ```
-
 
 To create the database and load the schema
 ```
@@ -90,18 +89,18 @@ You will now be able to login to the portal in the development environment with
 
 ### Run the App
 
+Before running for the first time, run `yarn build` to generate the front end assets
+
 To run on the default port (3000)
 ```
 rails server
 ```
 
-```
-bin/start.sh
-```
-
 The site can now be viewed at `http://localhost:3000/`
 
 Administration is available at `http://localhost:3000/admin`
+
+The editor is available at `http://localhost:3000/editor`
 
 ### Mail
 
@@ -113,10 +112,10 @@ Once installed, mail can be viewed at
 
 ### Commiting to Git
 
-Before hand: 
+Before hand:
 
 Commit messages follow commitizen standards: http://commitizen.github.io/cz-cli/
-Although this is optional, normal committing will still work. 
+Although this is optional, normal committing will still work.
 
 ```
 yarn run commit
@@ -181,26 +180,26 @@ https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopl
 yarn run test
 ```
 
-or singular like: 
+or singular like:
 
 ```
 yarn run test:react -- datapointsReducer
 ```
 
-set a debugger in test 
+set a debugger in test
 
 ```
 NODE_ENV=test node --debug-brk --inspect ./node_modules/.bin/jest -i --runInBand --verbose --env=jsdom --watch
 ```
 
 
-#### Run Style Guide? 
+#### Run Style Guide?
 
 ```
 yarn run storybook
 ```
 
-#### Deploy Style Guide? 
+#### Deploy Style Guide?
 
 ```
 yarn run deploy-storybook
@@ -216,7 +215,7 @@ http://performance-dashboard-ui.surge.sh/
 ```
 rm -rf node_modules
 npm cache clean
-yarn install 
+yarn install
 ```
 
 #### Point an npm module to a local directory like datavizkit
@@ -238,14 +237,14 @@ Sites
 
 3. Navigate back to root of this project
 `$ cd performance-dashboard`
- 
+
 3. Use linklocal to create sym links to the local directory
 `linklocal --named -r @gov.au/datavizkit datavizkit ../`
 
 4. Prove that it worked:
 `$ ls -al node_modules/@gov.au`
 
-should see: 
+should see:
 `datavizkit -> ../../../datavizkit`
 
 4. Unlink at any time
@@ -256,7 +255,7 @@ should see:
 
 `@gov.au/datavizkit/package.json`
 
-change: 
+change:
 
 ```
 "main": "lib/Datavizkit.js"
@@ -447,7 +446,7 @@ Circle CI will deploy automatically once tests have passed:
 
 Note: for non-production servers, there is a bunch of JSON data
 (see `lib/data/*.json`) that is used to populate the dashboards on every
-deployment. On production, use the editor to add new data to dashboards, or 
+deployment. On production, use the editor to add new data to dashboards, or
 use the import function in the admin section to create new dashboards via JSON.
 
 ## CloudFoundry
@@ -487,4 +486,4 @@ git checkout -b release-20160101
 git tag `date "+release-%Y%m%d%H%M%S"` && git push --tags
 ```
 
-The checkout will create a new branch from the tag, which can be useful for diagnosing regression errors.  
+The checkout will create a new branch from the tag, which can be useful for diagnosing regression errors.
