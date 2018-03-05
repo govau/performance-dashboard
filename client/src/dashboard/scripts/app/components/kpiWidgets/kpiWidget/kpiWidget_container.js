@@ -1,11 +1,8 @@
-
 import React from 'react';
 import {connect} from 'react-redux';
 import {CountWithTrendWidget} from '@gov.au/datavizkit';
-
 import {getDenormalizedSlices} from 'shared/redux/slices/slicesSelectors';
 import transformForHighcharts from 'shared/utils/transformForHighcharts';
-
 
 const mapStateToProps = (state, ownProps) => {
 
@@ -44,5 +41,3 @@ export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(CountWithTrendWidget);
-
-

@@ -1,12 +1,12 @@
-
 import React from 'react';
-
 import KpiWidget from './kpiWidget';
-
 
 const KpiWidgets = ({
   widgets,
 }) => {
+
+  // console.log(widgets);
+
   return (
     <div className="kpi-widgets">
       <div className="row">
