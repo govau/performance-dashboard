@@ -157,7 +157,7 @@
     "deploy-storybook": "npm run build-storybook && surge -p client/.out -d performance-dashboard-ui.surge.sh"
   },
   "engines": {
-    "node": "8.9.1"
+    "node": "8.9.3"
   },
   "jest": {
     "scriptPreprocessor": "<rootDir>/client/config/jest/preprocessor.js",
