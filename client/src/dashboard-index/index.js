@@ -6,8 +6,6 @@ import Page from './page';
 const location = window.location.pathname;
 const pageRoute = location.split('?')[0];
 
-console.log('Running dashbord index');
-
 if (pageRoute === '/') {
   new Page({ data: window.__STATE__ });
 

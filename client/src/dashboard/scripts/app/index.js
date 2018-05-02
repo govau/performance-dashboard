@@ -9,8 +9,6 @@ import App from './app';
 const AppBtl = ({ el, data, emitter }) => {
   // Todo: include ui stuffs in boot data
 
-  console.log('Running index component');
-
   const bootState = merge(initialState, data);
   const store = configureStore(bootState);
 

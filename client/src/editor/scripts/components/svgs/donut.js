@@ -1,11 +1,8 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
 const Donut = ({strokeColor, innerColor, radius = 11, strokeWidth = 4}) => {
-
-  const dimension = radius*2;
+  const dimension = radius * 2;
   const fauxRadius = radius - strokeWidth;  // because strokes the outside of path
 
   return (
