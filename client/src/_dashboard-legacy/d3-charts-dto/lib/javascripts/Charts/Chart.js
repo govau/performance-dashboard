@@ -223,7 +223,7 @@ class Chart {
 
     numberOfInstance ++;
 
-    d3.select(window).on('resize.' + 'chart' + numberOfInstance, this.render);
+    d3.select(window).on('resize.chart' + numberOfInstance, this.render);
 
     return this;
   }
@@ -234,9 +234,9 @@ class Chart {
  */
   destroy() {
     this.wrapper.remove();
-    d3.select(window).on('resize.' + 'chart' + numberOfInstance, null);
+    d3.select(window).on('resize.chart' + numberOfInstance, null);
   }
 }
 
-export default Chart;
 module.exports = Chart;
+export default Chart;

@@ -24,11 +24,9 @@ ActiveAdmin.register Widget do
     link_to 'New fact', new_fact_admin_widgets_path
   end
 
-  collection_action :new_fact, method: :get do 
+  collection_action :new_fact, method: :get do
     @dashboards = Dashboard.all
   end
-
-  
 
   form do |f|
     f.inputs 'Widget' do
@@ -46,6 +44,7 @@ ActiveAdmin.register Widget do
       f.input :datasets, as: :select, collection: Dataset.order(:id),
         member_label: ->(d) { "#{d.id} #{d.name}" }
     end
+
     f.actions
   end
 
@@ -67,5 +66,4 @@ ActiveAdmin.register Widget do
       super
     end
   end
-
 end

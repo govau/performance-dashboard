@@ -38,7 +38,7 @@
         "recorded_at": "2016-11-09T01:01:01.111Z",
         "units": "%",
         "name": "Completion rate",
-        "note": "The percentage of visitors to the business.gov.au \'A business or a hobby?\' page who go on to use the tool. This is calculated by dividing the total number of ..... by the total number of .......",
+        "note": "The percentage of visitors to the business.gov.au 'A business or a hobby?' page who go on to use the tool. This is calculated by dividing the total number of ..... by the total number of .......",
         "data": [
           { "label": "2016-06", "value": 58},
           { "label": "2016-07", "value": 56.1},
