@@ -10,12 +10,9 @@ ActiveAdmin.register Widget do
 
   index do
     selectable_column
-    # column :id
     column :dashboard
     column :name
     column :type
-    # column :row
-    # column :pos
     actions
   end
 
