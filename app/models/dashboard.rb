@@ -26,6 +26,14 @@ class Dashboard < ApplicationRecord
     published_at.present? && published_at <= Time.now
   end
 
+  def self.available(password_param)
+    where("password = \'\' OR password = \'#{password_param}\'")
+  end
+
+  def available?(password_param)
+    password = '' || password == password_param
+  end
+
   def hero
     widgets.hero.first
   end

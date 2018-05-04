@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170522052200) do
+ActiveRecord::Schema.define(version: 20180504042455) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,17 +52,18 @@ ActiveRecord::Schema.define(version: 20170522052200) do
   end
 
   create_table "dashboards", force: :cascade do |t|
-    t.integer  "organisation_id",                null: false
-    t.text     "name",                           null: false
-    t.text     "description",                    null: false
-    t.text     "target_users",                   null: false
+    t.integer  "organisation_id",                           null: false
+    t.text     "name",                                      null: false
+    t.text     "description",                               null: false
+    t.text     "target_users",                              null: false
     t.text     "notes"
     t.text     "url"
-    t.boolean  "display_hero",    default: true, null: false
-    t.boolean  "display_kpis",    default: true, null: false
+    t.boolean  "display_hero",               default: true, null: false
+    t.boolean  "display_kpis",               default: true, null: false
     t.datetime "published_at"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                                null: false
+    t.datetime "updated_at",                                null: false
+    t.string   "password",        limit: 10, default: ""
     t.index ["name"], name: "index_dashboards_on_name", unique: true, using: :btree
     t.index ["organisation_id"], name: "index_dashboards_on_organisation_id", using: :btree
     t.index ["published_at"], name: "index_dashboards_on_published_at", using: :btree
