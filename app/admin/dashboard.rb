@@ -1,5 +1,5 @@
 ActiveAdmin.register Dashboard do
-  permit_params :name, :url, :notes, :display_hero, :display_kpis,
+  permit_params :name, :url, :password, :notes, :display_hero, :display_kpis,
     :published_at, :description, :target_users, :organisation_id,
     :generate_hero, widgets_attributes: [ :id, :pos ], :notes => []
 
@@ -133,6 +133,7 @@ ActiveAdmin.register Dashboard do
       f.input :url, as: :string
       f.input :description, as: :string, label: 'What is the service?'
       f.input :target_users, as: :string, label: 'Who is the user group?'
+      f.input :password, as: :string, label: 'Password (blank for none)'
 
       if f.object.new_record? 
         f.input :notes, input_html: { value: JSON.pretty_generate(

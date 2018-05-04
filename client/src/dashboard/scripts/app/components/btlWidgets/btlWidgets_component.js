@@ -1,9 +1,6 @@
-
 import React from 'react';
 import classnames from 'classnames';
-
 import BtlWidget from './btlWidget';
-
 
 const sortWidgetsByPosition = (widgets) => {
   if (widgets && widgets.length) {
@@ -16,6 +13,7 @@ const sortWidgetsByPosition = (widgets) => {
 
 const groupWidgetsToColumns = (widgets, viewport) => {
   let colsNum;
+
   if (viewport === 'sm') {
     colsNum = 1;
   } else if (viewport === 'md') {
@@ -56,15 +54,12 @@ const groupWidgetsToColumns = (widgets, viewport) => {
   return res;
 };
 
-
 const BtlWidgets = ({
   dashboard,
   widgets,
   ui,
 }) => {
-
   const {viewport} = ui;
-
   const sortedWidgets = sortWidgetsByPosition(widgets);
   const columnsOfWidgets = groupWidgetsToColumns(sortedWidgets, viewport);
 
@@ -72,19 +67,22 @@ const BtlWidgets = ({
     <div className="row no-gutters">
       {Object.keys(columnsOfWidgets).map((cIdx, idx1) => {
         return (
-          <div key={idx1} className={classnames({
-            'col-xs-12': viewport === 'sm',
-            'col-xs-12 col-md-6': viewport === 'md',
-            'col-xs-12 col-md-6 col-lg-4': viewport === 'lg' || typeof viewport === 'undefined',
-          })}>
+          <div
+            key={idx1}
+            className={classnames({
+              'col-xs-12': viewport === 'sm',
+              'col-xs-12 col-md-6': viewport === 'md',
+              'col-xs-12 col-md-6 col-lg-4': viewport === 'lg' || typeof viewport === 'undefined',
+            })}
+          >
             {columnsOfWidgets[cIdx].map((w, idx2) => {
               return <BtlWidget key={idx2} widget={w} dashboard={dashboard} />
             })}
           </div>
-        )
+        );
       })}
     </div>
-  )
+  );
 };
 
 export default BtlWidgets;

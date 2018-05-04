@@ -5,11 +5,11 @@ class DashboardsController < ApplicationController
   helper_method :dashboards, :dashboard
 
   def index
-    @dashboards = Dashboard.published.by_name.all.decorate
+    @dashboards = Dashboard.available(params[:password]).published.by_name.all.decorate
   end
 
   def show
-    @dashboard = Dashboard.published.find(params[:id]).decorate
+    @dashboard = Dashboard.available(params[:password]).published.find(params[:id]).decorate
     @title = @dashboard.name
     @description = @dashboard.name
 
