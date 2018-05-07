@@ -22,16 +22,16 @@ class Dashboard < ApplicationRecord
     where('published_at <= NOW()')
   end
 
-  def published? 
+  def published?
     published_at.present? && published_at <= Time.now
   end
 
   def self.available(password_param)
-    where("password = \'\' OR password = \'#{password_param}\'")
-  end
+    if password_param && password_param.length <= 10 && password_param.match(/\A[a-zA-Z0-9]*\z/)
+      return where("password = \'\' OR password = \'#{password_param}\'")
+    end
 
-  def available?(password_param)
-    password = '' || password == password_param
+    return where("password = \'\'")
   end
 
   def hero
