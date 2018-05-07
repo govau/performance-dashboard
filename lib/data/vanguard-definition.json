@@ -1,0 +1,33 @@
+{
+  "name": "VANguard",
+  "agency": "DIIS",
+  "description": "VANguard is a whole of government program that delivers cost-effective and reliable authentication services to secure business to government (B2G) and government to government (G2G) online transactions.",
+  "target_users": "Business and government",
+  "displayHero": false,
+  "displayKPIs": false,
+  "url":    "http://www.vanguard.business.gov.au/Pages/default.aspx",
+  "widgets":  [
+    {
+      "id":   "transactions-by-service",
+      "updated_at":  "2018-05-07T01:01:01.111Z",
+      "name": "Transactions by service (financial year)",
+      "type": "bar",
+      "size": "medium",
+      "units": "n",
+      "stacking": "normal",
+      "displayRoundedData" : false,
+      "definition": "This shows the number of transactions by service for each financial year.",
+      "datasets": [
+        "transactions-by-service-01",
+        "transactions-by-service-02",
+        "transactions-by-service-03",
+        "transactions-by-service-04"
+      ]
+    }
+  ],
+  "notes": [
+  ],
+  "layout":   [
+    ["transactions-by-service"]
+  ]
+}

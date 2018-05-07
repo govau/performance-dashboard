@@ -1,0 +1,76 @@
+{
+  "version":      "1",
+  "updated_at":   "2018-05-07T01:01:01.111Z",
+  "name":         "VANguard",
+  "url":          "http://www.vanguard.business.gov.au/Pages/default.aspx",
+  "agency":       "DIIS",
+  "service":      "",
+  "description":  "VANguard is a whole of government program that delivers cost-effective and reliable authentication services to secure business to government (B2G) and government to government (G2G) online transactions.",
+  "notes":        "",
+  "datasets": [
+    {
+      "id": "transactions-by-service-01",
+      "label": "STS",
+      "name": "Transactions by service - STS",
+      "recorded_at": "2018-05-07T01:01:01.111Z",
+      "units": "n",
+      "note": "",
+      "color": "#f39841",
+      "data": [
+        { "label": "2013-01", "value": 753657 },
+        { "label": "2014-01", "value": 10786366 },
+        { "label": "2015-01", "value": 50540331 },
+        { "label": "2016-01", "value": 80959561 },
+        { "label": "2017-01", "value": 57323765 }
+      ]
+    },
+    {
+      "id": "transactions-by-service-02",
+      "label": "UAS",
+      "name": "Transactions by service - UAS",
+      "recorded_at": "2018-05-07T01:01:01.111Z",
+      "units": "n",
+      "note": "",
+      "color": "#fcb639",
+      "data": [
+        { "label": "2013-01", "value": 43736773 },
+        { "label": "2014-01", "value": 52444911 },
+        { "label": "2015-01", "value": 60688747 },
+        { "label": "2016-01", "value": 62797211 },
+        { "label": "2017-01", "value": 40084359 }
+      ]
+    },
+    {
+      "id": "transactions-by-service-03",
+      "label": "FAS",
+      "name": "Transactions by service - FAS",
+      "recorded_at": "2018-05-07T01:01:01.111Z",
+      "units": "n",
+      "note": "",
+      "color": "#32b0b4",
+      "data": [
+        { "label": "2013-01", "value": 247361 },
+        { "label": "2014-01", "value": 713134 },
+        { "label": "2015-01", "value": 1967270 },
+        { "label": "2016-01", "value": 3044042 },
+        { "label": "2017-01", "value": 2499952 }
+      ]
+    },
+    {
+      "id": "transactions-by-service-04",
+      "label": "Other",
+      "name": "Transactions by service - Other",
+      "recorded_at": "2018-05-07T01:01:01.111Z",
+      "units": "n",
+      "note": "",
+      "color": "#79be73",
+      "data": [
+        { "label": "2013-01", "value": 302619 },
+        { "label": "2014-01", "value": 451719 },
+        { "label": "2015-01", "value": 420093 },
+        { "label": "2016-01", "value": 430804 },
+        { "label": "2017-01", "value": 400649 }
+      ]
+    }
+  ]
+}
