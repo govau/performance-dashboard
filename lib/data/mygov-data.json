@@ -584,11 +584,11 @@
         ]
     },
     {
-        "id":           "sign-ins-per-account",
+        "id": "sign-ins-per-account",
         "label": "Sign in per account",
         "name": "Sign in per account",
-        "recorded_at":  "2016-09-06T01:01:01.111Z",
-        "units":        "n",
+        "recorded_at": "2016-09-06T01:01:01.111Z",
+        "units": "n",
         "note": "note for this dataset",
         "data": [
           { "label": "2015-03", "value": 0.41 },

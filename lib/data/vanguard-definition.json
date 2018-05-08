@@ -8,9 +8,34 @@
   "url":    "http://www.vanguard.business.gov.au/Pages/default.aspx",
   "widgets":  [
     {
+      "id": "transactions-per-service",
+      "updated_at": "2018-05-07T01:01:01.111Z",
+      "name": "Transactions per service 2017/2018",
+      "type": "pie",
+      "size": "small",
+      "units": "%",
+      "displayRoundedData": false,
+      "definition": "This shows the proportion of transactions per service",
+      "datasets": [
+        "transactions-per-service-1"
+      ]
+    },
+    {
+      "id": "total-transactions",
+      "updated_at": "2018-05-07T01:01:01.111Z",
+      "name": "Total transactions",
+      "type": "line",
+      "size": "medium",
+      "units": "n",
+      "definition": "This shows the total transactions by 6 month period since 2013.",
+      "datasets": [
+        "total-transactions-1"
+      ]
+    },
+    {
       "id":   "transactions-by-service",
       "updated_at":  "2018-05-07T01:01:01.111Z",
-      "name": "Transactions by service (financial year)",
+      "name": "Transactions by service (FY)",
       "type": "bar",
       "size": "medium",
       "units": "n",
@@ -18,16 +43,16 @@
       "displayRoundedData" : false,
       "definition": "This shows the number of transactions by service for each financial year.",
       "datasets": [
-        "transactions-by-service-01",
-        "transactions-by-service-02",
-        "transactions-by-service-03",
-        "transactions-by-service-04"
+        "transactions-by-service-1",
+        "transactions-by-service-2",
+        "transactions-by-service-3",
+        "transactions-by-service-4"
       ]
     }
   ],
   "notes": [
   ],
   "layout":   [
-    ["transactions-by-service"]
+    ["total-transactions", "transactions-by-service"]
   ]
 }
