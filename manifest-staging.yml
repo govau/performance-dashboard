@@ -1,6 +1,7 @@
 ---
 applications:
 - name: dashboard-staging
+  buildpack: ruby_buildpack
   memory: 256M
   disk_quota: 512M
   instances: 1

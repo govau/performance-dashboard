@@ -1,6 +1,7 @@
 ---
 applications:
 - name: dashboard
+  buildpack: ruby_buildpack
   memory: 512M
   instances: 3
   command: bin/cf-start.sh
