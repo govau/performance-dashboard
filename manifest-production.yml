@@ -1,20 +1,18 @@
 ---
-
-memory: 512M
-instances: 3
-command: bin/cf-start.sh
-timeout: 120
-
 applications:
-  - name: dashboard
-  
-routes:
-- route: dashboard.apps.b.cld.gov.au
-- route: dashboard.gov.au
+- name: dashboard
+  memory: 512M
+  instances: 3
+  command: bin/cf-start.sh
+  timeout: 120
 
-env:
-  RAILS_ENV: production
+  routes:
+  - route: dashboard.apps.b.cld.gov.au
+  - route: dashboard.gov.au
 
-services:
- - dashboard-db
- - dashboard-ups
+  env:
+    RAILS_ENV: production
+
+  services:
+  - dashboard-db
+  - dashboard-ups

@@ -1,17 +1,15 @@
 ---
-
-memory: 256M
-disk_quota: 512M
-instances: 1
-timeout: 120
-command: bin/cf-start.sh
-
 applications:
-  - name: dashboard-sandbox
+- name: dashboard-sandbox
+  memory: 256M
+  disk_quota: 512M
+  instances: 1
+  timeout: 120
+  command: bin/cf-start.sh
 
-env:
-  RAILS_ENV: cloudfoundry
+  env:
+    RAILS_ENV: cloudfoundry
 
-services:
- - dashboard-sandbox-db
- - dashboard-sandbox-ups
+  services:
+  - dashboard-sandbox-db
+  - dashboard-sandbox-ups

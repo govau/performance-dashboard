@@ -1,17 +1,15 @@
 ---
-
-memory: 256M
-disk_quota: 512M
-instances: 1
-timeout: 120
-command: bin/cf-start.sh
-
 applications:
-  - name: dashboard-staging
+- name: dashboard-staging
+  memory: 256M
+  disk_quota: 512M
+  instances: 1
+  timeout: 120
+  command: bin/cf-start.sh
 
-env:
-  RAILS_ENV: cloudfoundry
+  env:
+    RAILS_ENV: cloudfoundry
 
-services:
- - dashboard-staging-db
- - dashboard-staging-ups
+  services:
+   - dashboard-staging-db
+   - dashboard-staging-ups
