@@ -1,0 +1,28 @@
+{
+  "name": "Smartforms",
+  "agency": "DIIS",
+  "description": "SmartForms is an online form development and hosting service that government agencies can use to make developing, completing and processing forms easier, faster and more convenient.",
+  "target_users": "Government",
+  "displayHero": false,
+  "displayKPIs": false,
+  "url": "https://www.business.gov.au/for-government/smart-forms",
+  "widgets":  [
+    {
+      "id": "monthly-transactions",
+      "updated_at": "2018-05-07T01:01:01.111Z",
+      "name": "Monthly transactions",
+      "type": "line",
+      "size": "medium",
+      "units": "n",
+      "definition": "This shows the number of transactions per month.",
+      "datasets": [
+        "monthly-transactions-1"
+      ]
+    }
+  ],
+  "notes": [
+  ],
+  "layout":   [
+     ["monthly-transactions"]
+  ]
+}

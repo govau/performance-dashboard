@@ -10,14 +10,17 @@
     {
       "id": "transactions-per-service",
       "updated_at": "2018-05-07T01:01:01.111Z",
-      "name": "Transactions per service 2017/2018",
+      "name": "Transactions per service (2017-18)",
       "type": "pie",
       "size": "small",
       "units": "%",
       "displayRoundedData": false,
       "definition": "This shows the proportion of transactions per service",
       "datasets": [
-        "transactions-per-service-1"
+        "transactions-per-service-1",
+        "transactions-per-service-2",
+        "transactions-per-service-3",
+        "transactions-per-service-4"
       ]
     },
     {
@@ -31,28 +34,11 @@
       "datasets": [
         "total-transactions-1"
       ]
-    },
-    {
-      "id":   "transactions-by-service",
-      "updated_at":  "2018-05-07T01:01:01.111Z",
-      "name": "Transactions by service (FY)",
-      "type": "bar",
-      "size": "medium",
-      "units": "n",
-      "stacking": "normal",
-      "displayRoundedData" : false,
-      "definition": "This shows the number of transactions by service for each financial year.",
-      "datasets": [
-        "transactions-by-service-1",
-        "transactions-by-service-2",
-        "transactions-by-service-3",
-        "transactions-by-service-4"
-      ]
     }
   ],
   "notes": [
   ],
   "layout":   [
-    ["total-transactions", "transactions-by-service"]
+     ["transactions-per-service", "total-transactions"]
   ]
 }
