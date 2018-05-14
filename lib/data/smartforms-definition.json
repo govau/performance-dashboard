@@ -1,5 +1,5 @@
 {
-  "name": "Smartforms",
+  "name": "SmartForms",
   "agency": "DIIS",
   "description": "SmartForms is an online form development and hosting service that government agencies can use to make developing, completing and processing forms easier, faster and more convenient.",
   "target_users": "Government",
@@ -18,11 +18,39 @@
       "datasets": [
         "monthly-transactions-1"
       ]
+    },
+    {
+      "id": "form-client-changes",
+      "updated_at": "2018-05-07T01:01:01.111Z",
+      "name": "Form and client changes",
+      "type": "line",
+      "size": "medium",
+      "units": "n",
+      "definition": "This shows the number of form changes requested by agency.",
+      "datasets": [
+        "form-client-changes-1",
+        "form-client-changes-2"
+      ]
+    },
+    {
+      "id": "smartforms-clients",
+      "updated_at": "2018-05-07T01:01:01.111Z",
+      "name": "SmartForms clients",
+      "type": "pie",
+      "size": "small",
+      "units": "n",
+      "displayRoundedData": false,
+      "definition": "This shows the number of SmartForms clients by level of government.",
+      "datasets": [
+        "smartforms-clients-1",
+        "smartforms-clients-2",
+        "smartforms-clients-3"
+      ]
     }
   ],
   "notes": [
   ],
   "layout":   [
-     ["monthly-transactions"]
+     ["monthly-transactions", "form-client-changes", "smartforms-clients"]
   ]
 }

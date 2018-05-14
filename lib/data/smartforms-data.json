@@ -9,6 +9,48 @@
   "notes": "",
   "datasets": [
     {
+      "id": "smartforms-clients-1",
+      "recorded_at": "2018-05-07T01:01:01.111Z",
+      "units": "n",
+      "definition": "",
+      "name": "Federal",
+      "note": "",
+      "data": [
+        {
+          "label": "2018-05",
+          "value": 19
+        }
+      ]
+    },
+    {
+      "id": "smartforms-clients-2",
+      "recorded_at": "2018-05-07T01:01:01.111Z",
+      "units": "n",
+      "definition": "",
+      "name": "State",
+      "note": "",
+      "data": [
+        {
+          "label": "2018-05",
+          "value": 37
+        }
+      ]
+    },
+    {
+      "id": "smartforms-clients-3",
+      "recorded_at": "2018-05-07T01:01:01.111Z",
+      "units": "n",
+      "definition": "",
+      "name": "Local",
+      "note": "",
+      "data": [
+        {
+          "label": "2018-05",
+          "value": 8
+        }
+      ]
+    },
+    {
       "id": "monthly-transactions-1",
       "label": "Transactions",
       "name": "Transactions",
@@ -67,6 +109,122 @@
         {
           "label": "2018-01",
           "value": 70779
+        }
+      ]
+    },
+    {
+      "id": "form-client-changes-1",
+      "label": "Active forms",
+      "name": "Active forms",
+      "recorded_at": "2018-05-07T01:01:01.111Z",
+      "units": "n",
+      "note": "",
+      "data": [
+        {
+          "label": "2017-01",
+          "value": 606
+        },
+        {
+          "label": "2017-02",
+          "value": 616
+        },
+        {
+          "label": "2017-03",
+          "value": 636
+        },
+        {
+          "label": "2017-04",
+          "value": 640
+        },
+        {
+          "label": "2017-05",
+          "value": 645
+        },
+        {
+          "label": "2017-06",
+          "value": 676
+        },
+        {
+          "label": "2017-07",
+          "value": 695
+        },
+        {
+          "label": "2017-08",
+          "value": 719
+        },
+        {
+          "label": "2017-09",
+          "value": 726
+        },
+        {
+          "label": "2017-10",
+          "value": 738
+        },
+        {
+          "label": "2017-11",
+          "value": 728
+        },
+        {
+          "label": "2017-12",
+          "value": 731
+        }
+      ]
+    },
+    {
+      "id": "form-client-changes-2",
+      "label": "Agencies",
+      "name": "Agencies",
+      "recorded_at": "2018-05-07T01:01:01.111Z",
+      "units": "n",
+      "note": "",
+      "data": [
+        {
+          "label": "2017-01",
+          "value": 89
+        },
+        {
+          "label": "2017-02",
+          "value": 90
+        },
+        {
+          "label": "2017-03",
+          "value": 92
+        },
+        {
+          "label": "2017-04",
+          "value": 92
+        },
+        {
+          "label": "2017-05",
+          "value": 93
+        },
+        {
+          "label": "2017-06",
+          "value": 92
+        },
+        {
+          "label": "2017-07",
+          "value": 93
+        },
+        {
+          "label": "2017-08",
+          "value": 80
+        },
+        {
+          "label": "2017-09",
+          "value": 80
+        },
+        {
+          "label": "2017-10",
+          "value": 80
+        },
+        {
+          "label": "2017-11",
+          "value": 80
+        },
+        {
+          "label": "2017-12",
+          "value": 81
         }
       ]
     }
