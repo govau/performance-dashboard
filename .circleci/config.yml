@@ -6,7 +6,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.2-node
+      - image: circleci/ruby:2.4.4-node
         environment:
           PGHOST: 127.0.0.1
           PGUSER: dashboard_test_user
@@ -38,11 +38,11 @@ jobs:
         paths:
           - ~/.yarn-cache
       - run: yarn run test:react:coverage
-      - run: yarn run build 
+      - run: yarn run build
       - run: bundle exec rspec
-  deploy_staging: 
-    docker: 
-      - image: circleci/ruby:2.4.2-node
+  deploy_staging:
+    docker:
+      - image: circleci/ruby:2.4.4-node
     working_directory: ~/repo
     steps:
       - checkout
@@ -53,16 +53,16 @@ jobs:
       - type: cache-restore
         name: Restore yarn cache
         key: rails-demo-yarn-{{ checksum "yarn.lock" }}
-      - run: yarn install 
+      - run: yarn install
       - run: yarn run build
       - run: curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version=6.32.0&source=github-rel'
       - run: sudo dpkg -i cf-cli_amd64.deb
       - run: cf install-plugin https://github.com/govau/autopilot/releases/download/0.0.5-venapp/autopilot-linux -f
       - run: cf login -a $CF_STAGING_API -u $CF_STAGING_USER -p $CF_STAGING_PASSWORD -o $CF_STAGING_ORG -s $CF_STAGING_SPACE
       - run: cf zero-downtime-push dashboard-staging -f manifest-staging.yml -p .
-  deploy_production: 
-    docker: 
-      - image: circleci/ruby:2.4.2-node
+  deploy_production:
+    docker:
+      - image: circleci/ruby:2.4.4-node
     working_directory: ~/repo
     steps:
       - checkout
@@ -73,33 +73,33 @@ jobs:
       - type: cache-restore
         name: Restore yarn cache
         key: rails-demo-yarn-{{ checksum "yarn.lock" }}
-      - run: yarn install 
+      - run: yarn install
       - run: yarn run build
       - run: curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version=6.32.0&source=github-rel'
       - run: sudo dpkg -i cf-cli_amd64.deb
       - run: cf install-plugin https://github.com/govau/autopilot/releases/download/0.0.5-venapp/autopilot-linux -f
       - run: cf login -a $CF_PRODUCTION_API -u $CF_PRODUCTION_USER -p $CF_PRODUCTION_PASSWORD -o $CF_PRODUCTION_ORG -s $CF_PRODUCTION_SPACE
       - run: cf zero-downtime-push dashboard -f manifest-production.yml -p .
-workflows: 
+workflows:
   version: 2
   build_test_deploy:
-    jobs: 
+    jobs:
       - build:
           filters:
             tags:
               only: /.*/ # i.e. always build for all tags & branches
-      - deploy_staging: 
-          requires: 
+      - deploy_staging:
+          requires:
             - build
-          filters: 
-            branches: 
+          filters:
+            branches:
               only: /^master$/
       - deploy_production:
-          requires: 
+          requires:
             - build
-          filters: 
-            branches: 
-              ignore: 
+          filters:
+            branches:
+              ignore:
                 /.*/
-            tags: 
+            tags:
               only: /release-.*/
