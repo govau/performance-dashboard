@@ -14,10 +14,8 @@ import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
 import * as CONFIG from './client/config/_config';
 const projectName = require('./package').name;
 
-
 const NODE_ENV = String(process.env.NODE_ENV ? process.env.NODE_ENV : 'production');
 const DEBUG = NODE_ENV === 'development';
-
 
 const showVisualisation = false;
 
@@ -25,10 +23,10 @@ if (!DEBUG) {
   console.log();
   console.log('PREPARING FOR PRODUCTION');
 }
+
 console.log('Settings:');
 console.log(`NODE_ENV: ${NODE_ENV}`);
 console.log(`DEBUG: ${DEBUG}`);
-
 
 // var shouldUseRelativeAssetPaths = './';
 // // Note: defined here because it will be used more than once.
@@ -58,7 +56,7 @@ let webpackConfig = {
   // don't attempt to continue if there are errors
   bail: true,
   debug: DEBUG,
-  devtool: DEBUG ? 'source-map' : 'none',
+  devtool: 'source-map',
   target: 'web',
   context: CONFIG.DIR_SRC,
   entry: {

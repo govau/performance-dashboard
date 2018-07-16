@@ -1,21 +1,11 @@
-
 let win = typeof global === 'undefined' ? window : global;
 
-
-export const getIsHighContrastMode = () => {
-  if (typeof win.localStorage === 'undefined') {
-    return false;
-  }
-  return win.localStorage.getItem('high_contrast_mode') === 'true'; // coerce to bool
-};
-
+export const getIsHighContrastMode = () =>
+  win && win.localStorage && win.localStorage.getItem('high_contrast_mode') === 'true';
 
 const runHighContrastSwitch = ({emitter}) => {
-
   const hcSwitch = document.getElementById('high-contrast-switch');
-
   let toggled = getIsHighContrastMode();
-
 
   // trigger once before binding click
   if (toggled) {
@@ -37,8 +27,6 @@ const runHighContrastSwitch = ({emitter}) => {
   };
 
   hcSwitch.addEventListener('click', toggle);
-
 };
 
 export default runHighContrastSwitch;
-
