@@ -1,4 +1,4 @@
-import cropData from './../../src/dashboard/legacy/Helpers/cropData.js';
+import cropData from './../../src/_dashboard-legacy/Helpers/cropData.js';
 
 
 module.exports = function() {

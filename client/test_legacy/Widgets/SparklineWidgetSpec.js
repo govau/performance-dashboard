@@ -1,5 +1,5 @@
 import d3 from 'd3';
-import SparklineWidget from './../../src/dashboard/legacy/Widgets/SparklineWidget';
+import SparklineWidget from './../../src/_dashboard-legacy/Widgets/SparklineWidget';
 
 
 module.exports = function() {

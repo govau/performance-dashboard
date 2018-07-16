@@ -9,7 +9,7 @@ const strokeDashes = [
   '6,2',
 
   // note: repeat in case they run out, currently we only have 7 colors
-  // referenced at client/src/dashboard/legacy/Helpers/getColors.js
+  // referenced at client/src/_dashboard-legacy/Helpers/getColors.js
   '2,6',
   '2,2',
   '8,6',

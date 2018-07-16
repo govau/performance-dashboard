@@ -51,7 +51,7 @@ test.beforeEach(t => {
   window.patterns = PATTERNS;
   window.patternsDark = PATTERNSDARK;
 
-  let convertDataForPie = require('./../../src/dashboard/legacy/Helpers/convertDataForPie');
+  let convertDataForPie = require('./../../src/_dashboard-legacy/Helpers/convertDataForPie');
 
   let data = convertDataForPie(inputData.datasets);
 

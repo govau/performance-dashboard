@@ -1,4 +1,4 @@
-//import HeroWidget from './../../src/dashboard/legacy/Widgets/HeroWidget';
+//import HeroWidget from './../../src/_dashboard-legacy/Widgets/HeroWidget';
 //import d3 from 'd3';
 
 module.exports = function() {

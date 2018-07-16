@@ -125,7 +125,7 @@ test.beforeEach(t => {
   window.patterns = PATTERNS;
   window.patternsDark = PATTERNSDARK;
 
-  let convertDataForHero = require('./../../src/dashboard/legacy/Helpers/convertData');
+  let convertDataForHero = require('./../../src/_dashboard-legacy/Helpers/convertData');
 
   let data = convertDataForHero(inputData);
   let datums = data[0];

@@ -8,7 +8,7 @@ const KPI_COLOR_PALETTE = [ // copied from src/configure.js:4
 ];
 
 // note: additions to this file should comparitatively update
-// referenced at client/src/dashboard/legacy/Helpers/strokeDashes.js
+// referenced at client/src/_dashboard-legacy/Helpers/strokeDashes.js
 function getColors() {
   return KPI_COLOR_PALETTE;
 }

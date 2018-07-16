@@ -1,5 +1,5 @@
 import d3 from 'd3';
-import normalize from './../../src/dashboard/legacy/Helpers/normalize';
+import normalize from './../../src/_dashboard-legacy/Helpers/normalize';
 
 
 module.exports = function() {

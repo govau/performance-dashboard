@@ -1,20 +1,20 @@
-import addHasNegativeValueSpec from './../src/dashboard/legacy/d3-charts-dto/spec/javascripts/Helpers/hasNegativeValueSpec.js';
+import addHasNegativeValueSpec from './../src/_dashboard-legacy/d3-charts-dto/spec/javascripts/Helpers/hasNegativeValueSpec.js';
 import addCropDataSpec from './helpers/cropDataSpec.js';
 import addNormalizeSpec from './helpers/normalizeSpec.js';
-import addGetDateSpec from './../src/dashboard/legacy/d3-charts-dto/spec/javascripts/Helpers/getDateSpec.js';
-import addFormatSecondsSpec from './../src/dashboard/legacy/d3-charts-dto/spec/javascripts/Helpers/formatSecondsSpec.js';
+import addGetDateSpec from './../src/_dashboard-legacy/d3-charts-dto/spec/javascripts/Helpers/getDateSpec.js';
+import addFormatSecondsSpec from './../src/_dashboard-legacy/d3-charts-dto/spec/javascripts/Helpers/formatSecondsSpec.js';
 
-import addChartSpec from './../src/dashboard/legacy/d3-charts-dto/spec/javascripts/Charts/ChartSpec.js';
-import addLineChartSpec from './../src/dashboard/legacy/d3-charts-dto/spec/javascripts/Charts/LineChartSpec.js';
-import addBarChartSpec from './../src/dashboard/legacy/d3-charts-dto/spec/javascripts/Charts/BarChartSpec.js';
-import addStackBarChartSpec from './../src/dashboard/legacy/d3-charts-dto/spec/javascripts/Charts/StackBarChartSpec.js';
-import addStackBarChartNegativeSpec from './../src/dashboard/legacy/d3-charts-dto/spec/javascripts/Charts/StackBarChartNegativeSpec.js';
-import addPieChartSpec from './../src/dashboard/legacy/d3-charts-dto/spec/javascripts/Charts/PieChartSpec.js';
+import addChartSpec from './../src/_dashboard-legacy/d3-charts-dto/spec/javascripts/Charts/ChartSpec.js';
+import addLineChartSpec from './../src/_dashboard-legacy/d3-charts-dto/spec/javascripts/Charts/LineChartSpec.js';
+import addBarChartSpec from './../src/_dashboard-legacy/d3-charts-dto/spec/javascripts/Charts/BarChartSpec.js';
+import addStackBarChartSpec from './../src/_dashboard-legacy/d3-charts-dto/spec/javascripts/Charts/StackBarChartSpec.js';
+import addStackBarChartNegativeSpec from './../src/_dashboard-legacy/d3-charts-dto/spec/javascripts/Charts/StackBarChartNegativeSpec.js';
+import addPieChartSpec from './../src/_dashboard-legacy/d3-charts-dto/spec/javascripts/Charts/PieChartSpec.js';
 
-import addAxisSpec from './../src/dashboard/legacy/d3-charts-dto/spec/javascripts/Charts/AxisSpec.js';
-// import addXAxisSpec from './../src/dashboard/legacy/d3-charts-dto/spec/javascripts/Charts/XAxisSpec.js';
-import addLayerSpec from './../src/dashboard/legacy/d3-charts-dto/spec/javascripts/Charts/LayerSpec.js';
-import addOverlayLayerSpec from './../src/dashboard/legacy/d3-charts-dto/spec/javascripts/Charts/OverlayLayerSpec.js';
+import addAxisSpec from './../src/_dashboard-legacy/d3-charts-dto/spec/javascripts/Charts/AxisSpec.js';
+// import addXAxisSpec from './../src/_dashboard-legacy/d3-charts-dto/spec/javascripts/Charts/XAxisSpec.js';
+import addLayerSpec from './../src/_dashboard-legacy/d3-charts-dto/spec/javascripts/Charts/LayerSpec.js';
+import addOverlayLayerSpec from './../src/_dashboard-legacy/d3-charts-dto/spec/javascripts/Charts/OverlayLayerSpec.js';
 
 import addSparklineWidgetSpec from './Widgets/SparklineWidgetSpec.js';
 import addHeroWidgetSpec from './Widgets/HeroWidgetSpec.js';
