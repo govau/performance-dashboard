@@ -316,7 +316,7 @@ GEM
       method_source (~> 0.8.1)
       slop (~> 3.4)
     public_suffix (3.0.1)
-    puma (3.6.2)
+    puma (3.12.0)
     rack (2.0.3)
     rack-protection (1.5.3)
       rack
@@ -512,7 +512,7 @@ DEPENDENCIES
   mini_magick
   pg
   poltergeist
-  puma (~> 3.0)
+  puma (~> 3.8)
   rails (~> 5.0.6)
   rails-controller-testing
   rails-observers!

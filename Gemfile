@@ -9,7 +9,7 @@ end
 
 gem 'rails', '~> 5.0.6'
 gem 'pg'
-gem 'puma', '~> 3.0'
+gem 'puma', '~> 3.8'
 
 # gem 'jquery-rails'
 gem 'activeadmin', github: 'activeadmin'
