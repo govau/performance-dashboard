@@ -1,6 +1,8 @@
-
 import {formatRoutingDatagroupKeyHash} from 'shared/utils/formatDates';
 
+export const getDashboardCreateUrl = () => {
+  return `/dashboards/create`;
+};
 
 export const getDashboardUrl = dashboardId => {
   if (typeof dashboardId === 'undefined') {

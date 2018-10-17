@@ -1,14 +1,7 @@
-
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
-
 import Form from './slice_form';
 import withPreview from './../preview/withPreview';
-
-const EnhancedForm = withPreview(Form);
-
-
-
 import {CAN_CREATE_SLICE} from './../../../config';
 import {createSlice} from 'shared/redux/slices/slicesActions';
 import {
@@ -17,6 +10,7 @@ import {
 } from './../../../redux/ui/uiActions';
 import {getHumanisedMonth} from 'shared/utils/formatDates';
 
+const EnhancedForm = withPreview(Form);
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -27,7 +21,6 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-
     handleSubmit: (payload) => {
       return dispatch(createSlice(payload));
     },

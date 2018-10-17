@@ -1,14 +1,10 @@
-
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
 import SchemaForm from 'react-jsonschema-form';
 import isArray from 'lodash/isArray';
-
-
 import CustomFieldTemplate from './../../jsonschemaFields/customFieldTemplate'
 import InputBasicWidget from './../../jsonschemaFields/customTextWidget';
 import * as helpers from './baseForm_helpers';
-
 
 const widgets = {
   customText: InputBasicWidget

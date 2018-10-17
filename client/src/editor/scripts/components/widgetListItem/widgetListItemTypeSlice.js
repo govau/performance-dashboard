@@ -1,8 +1,6 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router';
-
 import {CAN_UPDATE_SLICE, CAN_UPDATE_WIDGET_DESCRIPTIONS} from './../../config';
 import Preview from './../datagroupPreview';
 import TrafficLight from './../widgetTrafficLight';

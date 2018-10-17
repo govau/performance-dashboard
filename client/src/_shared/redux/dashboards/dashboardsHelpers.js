@@ -1,6 +1,4 @@
-
 import isTypeOfState from './../../utils/isTypeOfState';
-
 
 /**
  * Check if is of state type

@@ -1,5 +1,4 @@
 class TokensController < ApplicationController
-
   before_action :authenticate_user!
 
   def create
@@ -7,5 +6,4 @@ class TokensController < ApplicationController
     flash[:api_token] = current_user.api_token.to_s
     redirect_to user_url
   end
-
 end

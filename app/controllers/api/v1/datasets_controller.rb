@@ -1,7 +1,5 @@
 class Api::V1::DatasetsController < Api::V1::ApiController
-
   before_action :find_dataset, :only => [:show, :update]
-
   attr_reader :dataset
 
   def index
@@ -24,7 +22,7 @@ class Api::V1::DatasetsController < Api::V1::ApiController
 
   def find_dataset
     @dataset = current_user.datasets.find {|ds| ds.id == params[:id].to_i }
-    head :not_found unless @dataset.present? 
+    head :not_found unless @dataset.present?
   end
 
   def data

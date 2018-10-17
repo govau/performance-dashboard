@@ -1,11 +1,9 @@
-
 import {formatDate} from './../../utils/formatDates';
 
 export const types = {
   HYDRATE__SLICE_UPDATED: 'update/slice/success',
   HYDRATE__SLICE_CREATED: 'create/slice/success',
 };
-
 
 export const createSlice = ({
   widget_id,
