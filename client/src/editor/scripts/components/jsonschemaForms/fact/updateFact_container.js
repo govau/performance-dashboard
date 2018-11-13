@@ -1,12 +1,9 @@
-
 import {connect} from 'react-redux';
 import {push} from 'react-router-redux';
-
 import Form from './fact_form';
 import {updateWidget} from 'shared/redux/widgets/widgetsActions';
 import {CAN_UPDATE_FACT} from './../../../config';
 import {setLastWidgetImpression} from './../../../redux/ui/uiActions';
-
 
 const mapStateToProps = (state, ownProps) => {
   return {

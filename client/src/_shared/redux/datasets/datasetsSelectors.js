@@ -1,6 +1,4 @@
-
 import {selectWidget} from './../widgets/widgetsSelectors';
-
 
 export const selectDataset = (state, {datasetId}) => {
   return state.datasets.find(d => d.id === datasetId);

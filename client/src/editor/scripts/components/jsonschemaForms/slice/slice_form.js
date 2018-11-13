@@ -1,13 +1,9 @@
-
 import PropTypes from 'prop-types';
-
 import BaseForm from './../baseForm';
 import {MESSAGE_ERROR_NUMERIC, MESSAGE_ERROR_PERCENTILE} from './../../../constants/messages';
 import {getHumanisedUnits} from 'shared/redux/datasets/datasetsHelper';
 
-
 class SliceForm extends BaseForm {
-
   constructor(props) {
     super(props);
     // store formData not on state so we dont trigger re-rendering onChange
@@ -178,4 +174,3 @@ if (__DEV__) {
 }
 
 export default SliceForm;
-

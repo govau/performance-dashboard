@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   devise_for :users,
     controllers: {
       sessions: "users/sessions",
@@ -12,7 +11,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     %w(dashboard datapoint dataset widget).each do |model|
-      resources model.to_sym do 
+      resources model.to_sym do
         resources :audits
       end
     end
@@ -38,12 +37,15 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
+      post 'initialise-dashboard', to: 'dashboards#create_full'
       resources :dashboards do
+        post 'initialise-widget', to: 'widgets#create_full'
         resources :widgets
       end
-      resources :datasets 
+      resources :datasets
+      resources :organisations, only: [:index]
       resources :features, only: [:index]
-      resources :widgets, only: [] do 
+      resources :widgets, only: [:create] do
         get 'slices/:period/:period_start', to: 'slices#show'
         post 'slices/:period/:period_start', to: 'slices#create'
         patch 'slices/:period/:period_start', to: 'slices#update'
@@ -69,5 +71,4 @@ Rails.application.routes.draw do
   get '/api', :to => 'about#api'
 
   get '*unmatched_route', to: 'application#not_found'
-
 end

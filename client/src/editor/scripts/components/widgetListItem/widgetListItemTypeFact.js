@@ -1,13 +1,10 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router';
-
 import {CAN_UPDATE_FACT} from './../../config';
 import {humanisedShortDate} from 'shared/utils/formatDates';
 import {getDashboardWidgetFactUrl, getServiceDashboardUrl} from './../../utils/formatUrl';
 import UikitAlert from 'shared/components/uikit-alert';
-
 
 const WidgetTypeFact = (props) => {
   const {
@@ -24,10 +21,13 @@ const WidgetTypeFact = (props) => {
 
   return (
     <article className="widget-list__item">
-
-      {alertProps && alertProps.description && <UikitAlert type={alertProps.type}
-                                                           text={alertProps.description}
-                                                           className="animated fadeIn" />}
+      {alertProps && alertProps.description && (
+        <UikitAlert
+          type={alertProps.type}
+          text={alertProps.description}
+          className="animated fadeIn"
+        />
+      )}
 
       <header>
         <div className="title">

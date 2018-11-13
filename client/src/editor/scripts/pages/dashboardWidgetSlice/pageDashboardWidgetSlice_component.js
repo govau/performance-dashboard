@@ -1,7 +1,5 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import PageLayout from './../pageLayout';
 import Pagination from './../../components/widgetPagePagination';
 import {getHumanisedVeryShortDate} from 'shared/utils/formatDates';
@@ -23,7 +21,6 @@ const HeaderComponent = ({title, dateSeriesEnd, datePublished, description}) => 
 );
 
 const DashboardWidgetDatagroupTimeSeriesPage = (props) => {
-
   const {slice} = props;
   const {widget, dashboard} = slice;
 
@@ -32,6 +29,7 @@ const DashboardWidgetDatagroupTimeSeriesPage = (props) => {
     widget_help: null,
     widget_form_help: null
   };
+
   if (widget.type && widget.units) {
     if (metadatas[widget.type] && metadatas[widget.type][widget.units]) {
       metadata = metadatas[widget.type][widget.units];

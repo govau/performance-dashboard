@@ -10,5 +10,6 @@ export default {
   slices: [],
   dashboards: [],
   widgets: [],
-  datasets: []
+  datasets: [],
+  organisations: [],
 };

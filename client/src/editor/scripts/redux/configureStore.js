@@ -3,10 +3,8 @@ let win = typeof global === 'undefined' ? window : global;
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { routerMiddleware } from 'react-router-redux';
-
 import api from './api';
 import rootReducer from './rootReducer';
-
 
 export default function configureStore(bootState, history, debug = __DEV__) {
   const middlewares = [

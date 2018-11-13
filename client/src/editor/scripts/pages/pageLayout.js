@@ -1,9 +1,6 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import Breadcrumbs from 'shared/components/uikit-breadcrumbs';
-
 
 const PageLayout = ({pageKey, HeaderComponent, BodyComponent = null, breadcrumbPaths = null, children = null}) => {
   return (
@@ -13,6 +10,7 @@ const PageLayout = ({pageKey, HeaderComponent, BodyComponent = null, breadcrumbP
           <div className="row">
             <div className="col-xs-12 col-lg-8">
               {breadcrumbPaths && <Breadcrumbs paths={breadcrumbPaths} />}
+
               <HeaderComponent />
             </div>
           </div>

@@ -1,6 +1,4 @@
-
-import {types} from './widgetsActions';
-
+import { types } from './widgetsActions';
 
 /**
  * @param state
@@ -18,10 +16,15 @@ const widgetsReducer = (state, {type, payload}) => {
         return widget;
       });
 
+    case types.HYDRATE__WIDGET_CREATED:
+      return [
+        ...state,
+        payload.widget
+      ];
+
     default:
       return state;
   }
 };
 
 export default widgetsReducer;
-

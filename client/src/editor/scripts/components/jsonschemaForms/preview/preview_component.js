@@ -1,10 +1,6 @@
-
 import React from 'react';
-
 import ChartWidget from 'shared/components/chartWidget/chartWidget_container';
-
 import './preview.css';
-
 
 const handleClick = (showPreview, handleShowPreview, triggerUpdatePreview) => {
   if (showPreview === false) {

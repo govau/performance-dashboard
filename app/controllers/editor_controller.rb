@@ -1,10 +1,10 @@
 class EditorController < ApplicationController
-
   before_action :authenticate_user!
   before_action :generate_session_token!
   helper_method :session_token
 
   def index
+    @organisations = Organisation.all
     @slices = current_user.widgets.select {|widget|
       widget.has_data?
     }.collect {|widget|

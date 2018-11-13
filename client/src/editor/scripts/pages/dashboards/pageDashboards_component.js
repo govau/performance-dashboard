@@ -1,14 +1,12 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router';
-
+import { Link } from 'react-router';
 import PageLayout from './../pageLayout';
 import {
   getServiceDashboardUrl,
-  getDashboardWidgetsUrl
+  getDashboardWidgetsUrl,
+  getDashboardCreateUrl,
 } from './../../utils/formatUrl';
-
 
 const DashboardItems = ({dashboards}) => {
   return (
@@ -27,7 +25,9 @@ export const DashboardItem = ({dashboard}) => {
   return (
     <article className="dashboard-list__item">
       <h1 className="h5">{dashboard.name}</h1>
+
       <span className="link-wrap"><Link to={getDashboardWidgetsUrl(dashboard.id)} className="btn btn-primary">Edit Dashboard</Link></span>
+
       <span className="link-wrap"><a href={getServiceDashboardUrl(dashboard.id, dashboard.name)} className="UIK-link" target="blank" rel="external">View service dashboard</a></span>
     </article>
   )
@@ -37,6 +37,15 @@ export const DashboardItem = ({dashboard}) => {
 const HeaderComponent = () => (
   <div>
     <h1 className="h3">Manage Dashboards</h1>
+
+    <span className="link-wrap">
+      <Link
+        to={getDashboardCreateUrl()}
+        className="btn btn-primary"
+      >
+        Create dashboard
+      </Link>
+    </span>
   </div>
 );
 

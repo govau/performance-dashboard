@@ -1,13 +1,10 @@
-
 import PropTypes from 'prop-types';
-
 import BaseForm from './../baseForm';
 
-
 class FactForm extends BaseForm {
-
   constructor(props) {
     super(props);
+
     this.formData = this.makeFormDataFromProps(props);
   }
 
@@ -19,7 +16,6 @@ class FactForm extends BaseForm {
   onSubmit(formState) {
     const self = this;
     const {formData} = formState;
-
     const payload = this.normalizePayload(formData);
 
     self.onBeforeSubmit();
@@ -47,6 +43,7 @@ class FactForm extends BaseForm {
 
   makeFormDataFromProps(props) {
     const {formModel} = props;
+
     return {
       description: formModel.widget.description
     };
@@ -88,6 +85,7 @@ class FactForm extends BaseForm {
 
   normalizePayload(formData) {
     const {formModel} = this.props;
+
     return {
       dashboard_id: formModel.dashboard.id,
       widget_id: formModel.widget.id,
