@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Breadcrumbs from 'shared/components/uikit-breadcrumbs';
 import { initialiseDashboard, createDashboard } from 'shared/redux/dashboards/dashboardsActions';
 import { createWidget } from 'shared/redux/widgets/widgetsActions';
+import KpiForm from './KpiForm';
 import style from './CreateDashboard.scss';
 
 class CreateDashboard extends Component {
@@ -66,16 +67,9 @@ class CreateDashboard extends Component {
     });
   };
 
-  getYears = (startYear) => {
-    const currentYear = new Date().getFullYear(), years = [];
-    startYear = startYear || 1980;
+  kpiFormValue = field => this.state[field];
 
-    while (startYear <= currentYear) {
-      years.push(startYear++);
-    }
-
-    return years;
-  };
+  kpiFormHandler = field => this.handleInput(field);
 
   handleFormSubmission = (event) => {
     event.preventDefault();
@@ -217,108 +211,10 @@ class CreateDashboard extends Component {
 
                   <br />
 
-                  <strong>KPI DATA</strong>
-
-                  <br />
-
-                  <br />
-
-                  <div className="form-group">
-                    <label>Collection month</label>
-
-                    <div className="row">
-                      <div className="col-xs-12 col-lg-6">
-                        <select
-                          className="form-control"
-                          value={this.state.periodMonth}
-                          onChange={this.handleInput('periodMonth')}
-                          required
-                        >
-                          <option value="01">January</option>
-                          <option value="02">February</option>
-                          <option value="03">March</option>
-                          <option value="04">April</option>
-                          <option value="05">May</option>
-                          <option value="06">June</option>
-                          <option value="07">July</option>
-                          <option value="08">August</option>
-                          <option value="09">September</option>
-                          <option value="10">October</option>
-                          <option value="11">November</option>
-                          <option value="12">December</option>
-                        </select>
-                      </div>
-
-                      <div className="col-xs-12 col-lg-6">
-                        <select
-                          className="form-control"
-                          value={this.state.periodYear}
-                          onChange={this.handleInput('periodYear')}
-                          required
-                        >
-                          {this.getYears('1950').map(year => (
-                            <option
-                              key={year}
-                              value={year}
-                            >
-                              {year}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="form-group">
-                    <label>User satisfaction (%)</label>
-
-                    <input
-                      className="form-control"
-                      value={this.state.userSatisfaction}
-                      onChange={this.handleInput('userSatisfaction')}
-                      type="number"
-                      min="0"
-                      max="100"
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label>Cost per transaction ($)</label>
-
-                    <input
-                      className="form-control"
-                      value={this.state.costPerTransaction}
-                      onChange={this.handleInput('costPerTransaction')}
-                      type="number"
-                      min="0"
-                      max="1000000000"
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label>Digital take-up (%)</label>
-
-                    <input
-                      className="form-control"
-                      value={this.state.digitalTakeup}
-                      onChange={this.handleInput('digitalTakeup')}
-                      type="number"
-                      min="0"
-                      max="100"
-                    />
-                  </div>
-
-                  <div className="form-group">
-                    <label>Completion rate (%)</label>
-
-                    <input
-                      className="form-control"
-                      value={this.state.completionRate}
-                      onChange={this.handleInput('completionRate')}
-                      min="0"
-                      max="100"
-                    />
-                  </div>
+                  <KpiForm
+                    getValue={this.kpiFormValue}
+                    getHandler={this.kpiFormHandler}
+                  />
 
                   <br />
 

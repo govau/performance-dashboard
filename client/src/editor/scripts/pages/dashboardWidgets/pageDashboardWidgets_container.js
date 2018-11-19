@@ -1,7 +1,5 @@
-
 import {bindActionCreators} from 'redux';
 import {connect} from 'react-redux';
-
 import {selectDashboard} from 'shared/redux/dashboards/dashboardsSelectors';
 import {selectWidgetsByDashboard} from 'shared/redux/widgets/widgetsSelectors';
 import {selectUi} from './../../redux/ui/uiSelectors';
@@ -13,7 +11,6 @@ import {
 import {setLastWidgetImpression} from './../../redux/ui/uiActions';
 import Page from './pageDashboardWidgets_component';
 import {makeFact} from 'shared/redux/facts/factSelectors';
-
 
 const mapStateToProps = (state, ownProps) => {
   const dashboard = selectDashboard(state, {dashboardId: ownProps.params.dashboard_id});
@@ -41,7 +38,8 @@ const mapStateToProps = (state, ownProps) => {
     ui,
     heroSlice: heroLatestSlice,
     btlSlices: btlLatestSlices,
-    facts: denormalizedFacts
+    facts: denormalizedFacts,
+    isAdmin: state.currentUser.admin,
   };
 };
 

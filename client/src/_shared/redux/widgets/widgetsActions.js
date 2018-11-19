@@ -57,20 +57,11 @@ export const initialiseWidget = (dashboardId, formData) => {
   };
 };
 
-// export const initialiseDashboard = ({
-//   formData,
-// }) => {
-//   return (dispatch, getState, api) => {
-//     return api('initialise-dashboard', getState().currentUser.token, {
-//       method: 'POST',
-//       body: JSON.stringify(formData),
-//     }).then(response => {
-//       dispatch({
-//         type: types.HYDRATE__DASHBOARD_CREATED,
-//         payload: response
-//       });
-
-//       return response;
-//     });
-//   };
-// };
+export const initialiseKpis = (dashboardId, formData) => {
+  return (dispatch, getState, api) => {
+    return api(`dashboards/${dashboardId}/initialise-kpis`, getState().currentUser.token, {
+      method: 'POST',
+      body: JSON.stringify(formData)
+    });
+  };
+};

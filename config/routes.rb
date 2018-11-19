@@ -40,6 +40,7 @@ Rails.application.routes.draw do
       post 'initialise-dashboard', to: 'dashboards#create_full'
       resources :dashboards do
         post 'initialise-widget', to: 'widgets#create_full'
+        post 'initialise-kpis', to: 'widgets#create_kpis'
         resources :widgets
       end
       resources :datasets

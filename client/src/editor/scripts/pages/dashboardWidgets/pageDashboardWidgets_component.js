@@ -6,20 +6,27 @@ import { connect } from 'react-redux';
 import jump from 'jump.js';
 import Breadcrumbs from 'shared/components/uikit-breadcrumbs';
 import CreateChart from './CreateChart';
+import CreateKpis from './CreateKpis';
 import UikitAlert from 'shared/components/uikit-alert';
 import {
   getDashboardUrl,
+  getServiceDashboardUrl,
   getDashboardWidgetFactUrl,
   getServiceDashboardUrlAnchor,
 } from './../../utils/formatUrl';
 import { onNextFrame } from './../../utils/DOM';
 import { WidgetTypeSlice, WidgetTypeFact } from './../../components/widgetListItem';
 import { sanitizeBtlWidgetByType } from 'shared/redux/widgets/widgetsHelpers';
-import { createWidget, initialiseWidget } from 'shared/redux/widgets/widgetsActions';
+import {
+  createWidget,
+  initialiseWidget,
+  initialiseKpis,
+} from 'shared/redux/widgets/widgetsActions';
 
 class PageDashboardWidgets extends Component {
   state = {
     creatingChart: false,
+    creatingKpis: false,
   };
 
   static get contextTypes() {
@@ -50,7 +57,7 @@ class PageDashboardWidgets extends Component {
     if (node !== 'undefined') {
       onNextFrame(() => {
         jump(node, {
-          duration:-100 // appear to not transition,
+          duration: -100 // appear to not transition,
         });
       });
     }
@@ -87,13 +94,33 @@ class PageDashboardWidgets extends Component {
     });
   };
 
+  toggleKpiForm = (event) => {
+    if (event) {
+      event.preventDefault();
+    }
+
+    this.setState({
+      creatingKpis: !this.state.creatingKpis,
+    });
+  };
+
   handleAddNewChart = (formData) => {
     this.toggleChartForm();
     const { dashboard } = this.props;
 
     this.props.initialiseWidget(dashboard.id, formData).then((widget) => {
       console.log(`Chart widget created (${widget.id})`);
-      window.location = getServiceDashboardUrlAnchor(dashboard.id, dashboard.name, widget.name)
+      window.location = getServiceDashboardUrlAnchor(dashboard.id, dashboard.name, widget.name);
+    });
+  }
+
+  handleAddKpis = (formData) => {
+    this.toggleKpiForm();
+    const { dashboard } = this.props;
+
+    this.props.initialiseKpis(dashboard.id, formData).then((dashboard) => {
+      console.log(`Default KPIs added to dashboard (${dashboard.id})`);
+      window.location = getServiceDashboardUrl(dashboard.id, dashboard.name);
     });
   }
 
@@ -105,7 +132,8 @@ class PageDashboardWidgets extends Component {
       heroSlice,
       btlSlices,
       facts,
-      actions
+      actions,
+      isAdmin,
     } = this.props;
 
     const breadcrumbPaths = [
@@ -133,25 +161,37 @@ class PageDashboardWidgets extends Component {
                 </div>
               </div>
 
-              <div>
-                <Link
-                  to=""
-                  className="UIK-button btn btn-primary pr-1"
-                  onClick={this.toggleChartForm}
-                >
-                  Add new chart
-                </Link>
+              {isAdmin && (
+                <div>
+                  <Link
+                    to=""
+                    className="UIK-button btn btn-primary pr-1"
+                    onClick={this.toggleKpiForm}
+                  >
+                    Add KPIs
+                  </Link>
 
-                &nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp;
 
-                <Link
-                  to=""
-                  className="UIK-button btn btn-primary"
-                  onClick={this.handleAddNewFact}
-                >
-                  Add new fact
-                </Link>
-              </div>
+                  <Link
+                    to=""
+                    className="UIK-button btn btn-primary pr-1"
+                    onClick={this.toggleChartForm}
+                  >
+                    Add new chart
+                  </Link>
+
+                  &nbsp;&nbsp;&nbsp;
+
+                  <Link
+                    to=""
+                    className="UIK-button btn btn-primary"
+                    onClick={this.handleAddNewFact}
+                  >
+                    Add new fact
+                  </Link>
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -163,6 +203,18 @@ class PageDashboardWidgets extends Component {
             <div className="container">
               <CreateChart
                 onSubmit={this.handleAddNewChart}
+              />
+            </div>
+          </div>
+        )}
+
+        {this.state.creatingKpis && (
+          <div style={{
+            backgroundColor: '#f8f8f8',
+          }}>
+            <div className="container">
+              <CreateKpis
+                onSubmit={this.handleAddKpis}
               />
             </div>
           </div>
@@ -221,31 +273,27 @@ class PageDashboardWidgets extends Component {
   }
 }
 
-if (__DEV__) {
-  PageDashboardWidgets.propTypes = {
-    dashboard: PropTypes.object.isRequired,
-    heroSlice: PropTypes.object,
-    btlSlices: PropTypes.array,
-    facts: PropTypes.array,
-    ui: PropTypes.object.isRequired,
-    actions: PropTypes.object.isRequired
-  };
-}
+PageDashboardWidgets.propTypes = {
+  dashboard: PropTypes.object.isRequired,
+  heroSlice: PropTypes.object,
+  btlSlices: PropTypes.array,
+  facts: PropTypes.array,
+  ui: PropTypes.object.isRequired,
+  actions: PropTypes.object.isRequired,
+  isAdmin: PropTypes.bool,
+};
 
 PageDashboardWidgets.propTypes = {
   createWidget: PropTypes.func.isRequired,
 };
 
 export default connect(
-  null,
+  state => ({
+    isAdmin: state.currentUser.admin,
+  }),
   dispatch => ({
-    createWidget: (dashboardId, payload) => {
-      return dispatch(createWidget(dashboardId, payload));
-    },
-    initialiseWidget: (dashboardId, payload) => {
-      return dispatch(initialiseWidget(dashboardId, payload));
-    },
+    createWidget: (dashboardId, payload) => dispatch(createWidget(dashboardId, payload)),
+    initialiseWidget: (dashboardId, payload) => dispatch(initialiseWidget(dashboardId, payload)),
+    initialiseKpis: (dashboardId, payload) => dispatch(initialiseKpis(dashboardId, payload)),
   }),
 )(PageDashboardWidgets);
-
-// export default PageDashboardWidgets;
