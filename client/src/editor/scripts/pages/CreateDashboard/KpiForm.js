@@ -76,6 +76,7 @@ const KpiForm = props => (
         type="number"
         min="0"
         max="100"
+        step=".01"
       />
     </div>
 
@@ -89,6 +90,7 @@ const KpiForm = props => (
         type="number"
         min="0"
         max="1000000000"
+        step=".01"
       />
     </div>
 
@@ -102,6 +104,7 @@ const KpiForm = props => (
         type="number"
         min="0"
         max="100"
+        step=".01"
       />
     </div>
 
@@ -114,6 +117,7 @@ const KpiForm = props => (
         onChange={props.getHandler('completionRate')}
         min="0"
         max="100"
+        step=".01"
       />
     </div>
   </div>
