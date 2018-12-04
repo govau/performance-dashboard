@@ -226,7 +226,7 @@ GEM
       railties (>= 3.0.0)
     faker (1.6.6)
       i18n (~> 0.5)
-    ffi (1.9.14)
+    ffi (1.9.25)
     formatador (0.2.5)
     formtastic (3.1.4)
       actionpack (>= 3.2.13)
@@ -298,7 +298,7 @@ GEM
     multi_json (1.12.1)
     nenv (0.3.0)
     nio4r (2.1.0)
-    nokogiri (1.8.1)
+    nokogiri (1.8.5)
       mini_portile2 (~> 2.3.0)
     notiffany (0.1.1)
       nenv (~> 0.1)
@@ -405,7 +405,7 @@ GEM
     rspec_junit_formatter (0.2.3)
       builder (< 4)
       rspec-core (>= 2, < 4, != 2.12.0)
-    rubyzip (1.2.1)
+    rubyzip (1.2.2)
     sass (3.4.22)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -525,7 +525,7 @@ DEPENDENCIES
   rspec-its
   rspec-rails
   rspec_junit_formatter
-  rubyzip (~> 1.2.1)
+  rubyzip (>= 1.2.2)
   sass-rails (~> 5.0)
   selenium-webdriver (~> 2.53.4)
   semantic (~> 1.6.0)
