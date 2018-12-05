@@ -1,5 +1,6 @@
 common: &common
   auth: true
+  two_factor: false
 
 cloudfoundry:
   <<: *common
