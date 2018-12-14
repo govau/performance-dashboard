@@ -17,7 +17,12 @@
     <%= getPublicStylesheet('dashboard.css') %>
   <% end %>
 
-  <%= render :partial => "partials/rollbar", :locals => { :token => ENV['ROLLBAR_ACCESS_TOKEN_PUBLIC_CLIENT'] } %>
+  <%=
+    render :partial => "partials/rollbar", :locals => {
+      :token => ENV['ROLLBAR_ACCESS_TOKEN_PUBLIC_CLIENT'],
+      :version => File.read("#{Rails.public_path}/VERSION")
+    }
+  %>
   <%= render :partial => "partials/analytics" %>
 </head>
 
