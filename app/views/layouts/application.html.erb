@@ -20,7 +20,7 @@
   <%=
     render :partial => "partials/rollbar", :locals => {
       :token => ENV['ROLLBAR_ACCESS_TOKEN_PUBLIC_CLIENT'],
-      :version => File.read("#{Rails.public_path}/VERSION")
+      :version => File.read("#{Rails.public_path}/COMMITHASH")
     }
   %>
   <%= render :partial => "partials/analytics" %>
