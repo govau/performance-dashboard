@@ -32,6 +32,7 @@ console.log('Settings:');
 console.log(`NODE_ENV: ${NODE_ENV}`);
 console.log(`DEBUG: ${DEBUG}`);
 console.log(`VERSION: ${versionNumber}`);
+console.log(`DIR DIST: ${CONFIG.DIR_DIST}`);
 
 // var shouldUseRelativeAssetPaths = './';
 // // Note: defined here because it will be used more than once.
