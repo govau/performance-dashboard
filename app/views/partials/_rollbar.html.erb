@@ -1,4 +1,4 @@
-<% if defined?(token) && (token != '') %>
+<% if defined?(token) && (token != '') && defined?(version) && (version != '') %>
     <script>
       var _rollbarConfig = {
         accessToken: "<%= token %>",
