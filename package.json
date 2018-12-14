@@ -210,6 +210,7 @@
     "codecov": "^1.0.1",
     "commitizen": "^2.9.1",
     "cz-conventional-changelog": "^1.2.0",
+    "git-revision-webpack-plugin": "^2.5.1",
     "husky": "^0.12.0",
     "react-dev-utils": "^0.4.2",
     "strip-json-comments": "^2.0.1",

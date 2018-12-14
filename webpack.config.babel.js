@@ -9,6 +9,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import BellOnBundlerErrorPlugin from 'bell-on-bundler-error-plugin';
 import autoprefixer from 'autoprefixer';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
+var GitRevisionPlugin = require('git-revision-webpack-plugin')
 
 import * as CONFIG from './client/config/_config';
 const projectName = require('./package').name;
@@ -139,6 +140,7 @@ let webpackConfig = {
   },
   // Add functionality typically related to bundles in webpack
   plugins: [
+    new GitRevisionPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify(NODE_ENV)
