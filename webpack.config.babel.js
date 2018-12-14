@@ -9,7 +9,8 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import BellOnBundlerErrorPlugin from 'bell-on-bundler-error-plugin';
 import autoprefixer from 'autoprefixer';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
-var GitRevisionPlugin = require('git-revision-webpack-plugin')
+const GitRevisionPlugin = require('git-revision-webpack-plugin')
+const RollbarSourceMapPlugin = require('rollbar-sourcemap-webpack-plugin')
 
 import * as CONFIG from './client/config/_config';
 const projectName = require('./package').name;
@@ -19,6 +20,9 @@ const DEBUG = NODE_ENV === 'development';
 
 const showVisualisation = false;
 
+const fs = require('fs');
+const versionNumber = fs.readFileSync(CONFIG.DIR_DIST + '/COMMITHASH' , 'utf8');
+
 if (!DEBUG) {
   console.log();
   console.log('PREPARING FOR PRODUCTION');
@@ -27,6 +31,7 @@ if (!DEBUG) {
 console.log('Settings:');
 console.log(`NODE_ENV: ${NODE_ENV}`);
 console.log(`DEBUG: ${DEBUG}`);
+console.log(`VERSION: ${versionNumber}`);
 
 // var shouldUseRelativeAssetPaths = './';
 // // Note: defined here because it will be used more than once.
@@ -140,6 +145,11 @@ let webpackConfig = {
   },
   // Add functionality typically related to bundles in webpack
   plugins: [
+    new RollbarSourceMapPlugin({
+      accessToken: 'b4c869fecb53494088be01de570a1de1',
+      version: versionNumber,
+      publicPath: CONFIG.DIR_DIST
+    }),
     new GitRevisionPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
