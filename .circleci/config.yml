@@ -80,6 +80,16 @@ jobs:
       - run: cf install-plugin https://github.com/govau/autopilot/releases/download/0.0.5-venapp/autopilot-linux -f
       - run: cf login -a $CF_PRODUCTION_API -u $CF_PRODUCTION_USER -p $CF_PRODUCTION_PASSWORD -o $CF_PRODUCTION_ORG -s $CF_PRODUCTION_SPACE
       - run: cf zero-downtime-push dashboard -f manifest-production.yml -p .
+      - run:
+          name: Deployment notification to Rollbar
+          command: |
+          curl https://api.rollbar.com/api/1/deploy/ \
+          -F access_token=b4c869fecb53494088be01de570a1de1 \
+          -F environment=production \
+          -F revision=$CIRCLE_SHA1 \
+          -F rollbar_username=jonalport \
+          -F local_username=$CIRCLE_USERNAME \
+          -F comment='Deployed by Circle'
 workflows:
   version: 2
   build_test_deploy:
