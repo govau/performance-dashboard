@@ -4,6 +4,10 @@ Rollbar.configure do |config|
 
   config.access_token = ENV['ROLLBAR_ACCESS_TOKEN_SERVER']
 
+  config.branch = 'master'
+
+  config.code_version = File.read("#{Rails.public_path}/VERSION")
+
   # Here we'll disable in 'test':
   if Rails.env.test? || Rails.env.development?
     config.enabled = false
