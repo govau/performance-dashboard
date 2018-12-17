@@ -263,3 +263,6 @@ $RECYCLE.BIN/
 public/page_cache_*/**/*.html
 .vscode
 settings.json
+
+public/COMMITHASH
+public/VERSION
