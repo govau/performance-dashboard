@@ -19,7 +19,7 @@ const DEBUG = NODE_ENV === 'development';
 const showVisualisation = false;
 const assetsBaseUrl = 'https://dashboard.gov.au';
 const fs = require('fs');
-const versionNumber = fs.readFileSync(CONFIG.DIR_DIST + '/COMMITHASH' , 'utf8');
+const revision = require('child_process').execSync('git rev-parse HEAD').toString().trim();
 
 if (!DEBUG) {
   console.log();
@@ -30,7 +30,7 @@ console.log('Settings');
 console.log('========');
 console.log(`NODE_ENV: ${NODE_ENV}`);
 console.log(`DEBUG: ${DEBUG}`);
-console.log(`VERSION: ${versionNumber}`);
+console.log(`VERSION: ${revision}`);
 console.log(`DIR DIST: ${CONFIG.DIR_DIST}`);
 console.log(`ASSETS BASE URL: ${assetsBaseUrl}`);
 
@@ -148,7 +148,7 @@ let webpackConfig = {
   plugins: [
     new RollbarSourceMapPlugin({
       accessToken: process.env.ROLLBAR_ACCESS_TOKEN_SERVER,
-      version: versionNumber,
+      version: revision,
       publicPath: assetsBaseUrl
     }),
     new GitRevisionPlugin(),
