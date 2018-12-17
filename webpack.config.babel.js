@@ -9,17 +9,15 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import BellOnBundlerErrorPlugin from 'bell-on-bundler-error-plugin';
 import autoprefixer from 'autoprefixer';
 import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
+import * as CONFIG from './client/config/_config';
+
 const GitRevisionPlugin = require('git-revision-webpack-plugin')
 const RollbarSourceMapPlugin = require('rollbar-sourcemap-webpack-plugin')
-
-import * as CONFIG from './client/config/_config';
 const projectName = require('./package').name;
-
 const NODE_ENV = String(process.env.NODE_ENV ? process.env.NODE_ENV : 'production');
 const DEBUG = NODE_ENV === 'development';
-
 const showVisualisation = false;
-
+const assetsBaseUrl = 'https://dashboard.gov.au';
 const fs = require('fs');
 const versionNumber = fs.readFileSync(CONFIG.DIR_DIST + '/COMMITHASH' , 'utf8');
 
@@ -28,11 +26,13 @@ if (!DEBUG) {
   console.log('PREPARING FOR PRODUCTION');
 }
 
-console.log('Settings:');
+console.log('Settings');
+console.log('========');
 console.log(`NODE_ENV: ${NODE_ENV}`);
 console.log(`DEBUG: ${DEBUG}`);
 console.log(`VERSION: ${versionNumber}`);
 console.log(`DIR DIST: ${CONFIG.DIR_DIST}`);
+console.log(`ASSETS BASE URL: ${assetsBaseUrl}`);
 
 // var shouldUseRelativeAssetPaths = './';
 // // Note: defined here because it will be used more than once.
@@ -149,7 +149,7 @@ let webpackConfig = {
     new RollbarSourceMapPlugin({
       accessToken: process.env.ROLLBAR_ACCESS_TOKEN_SERVER,
       version: versionNumber,
-      publicPath: CONFIG.DIR_DIST
+      publicPath: assetsBaseUrl
     }),
     new GitRevisionPlugin(),
     new webpack.DefinePlugin({
