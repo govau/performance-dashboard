@@ -147,7 +147,7 @@ let webpackConfig = {
   // Add functionality typically related to bundles in webpack
   plugins: [
     new RollbarSourceMapPlugin({
-      accessToken: 'b4c869fecb53494088be01de570a1de1',
+      accessToken: process.env.ROLLBAR_ACCESS_TOKEN_SERVER,
       version: versionNumber,
       publicPath: CONFIG.DIR_DIST
     }),
