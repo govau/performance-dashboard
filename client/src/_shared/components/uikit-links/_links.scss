@@ -34,7 +34,7 @@ a.UIK-link {
 
     &::after {
       background-image: url('~gov-au-ui-kit/assets/img/icons/external-link--aqua.svg');
-
+      background-size: (0.75 * $UIKIT_180_medium-spacing) auto;
       content: '';
       position: absolute;
       display: block;
@@ -45,8 +45,6 @@ a.UIK-link {
       background-repeat: no-repeat;
       background-position: right $UIKIT_180_tiny-spacing;
       border-bottom: 1px solid transparent;
-
-      background-size: (0.75 * $UIKIT_180_medium-spacing) auto;
     }
   }
 }
