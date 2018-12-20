@@ -18,10 +18,12 @@
   <% end %>
 
   <%=
-    render :partial => "partials/rollbar", :locals => {
-      :token => ENV['ROLLBAR_ACCESS_TOKEN_PUBLIC_CLIENT'],
-      :version => File.read("#{Rails.public_path}/COMMITHASH")
-    }
+    if File.exist?("#{Rails.public_path}/COMMITHASH")
+      render :partial => "partials/rollbar", :locals => {
+        :token => ENV['ROLLBAR_ACCESS_TOKEN_PUBLIC_CLIENT'],
+        :version => File.read("#{Rails.public_path}/COMMITHASH")
+      }
+    end
   %>
   <%= render :partial => "partials/analytics" %>
 </head>

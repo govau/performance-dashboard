@@ -15,7 +15,16 @@
       <%= getPublicStylesheet('editor-mcss.css') %>
       <%= getPublicStylesheet('editor.css') %>
   <% end %>
-  <%= render :partial => "partials/rollbar", :locals => { :token => ENV['ROLLBAR_ACCESS_TOKEN_EDITOR_CLIENT'] } %>
+
+  <%=
+    if File.exist?("#{Rails.public_path}/COMMITHASH")
+      render :partial => "partials/rollbar", :locals => {
+        :token => ENV['ROLLBAR_ACCESS_TOKEN_EDITOR_CLIENT'],
+        :version => File.read("#{Rails.public_path}/COMMITHASH")
+      }
+    end
+  %>
+
 </head>
 <body class="editor <%= body_class(yield(:body_class_names)) %>">
 
