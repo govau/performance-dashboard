@@ -6,7 +6,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
-  <%= render :partial => "partials/rollbar", :locals => { :token => ENV['ROLLBAR_ACCESS_TOKEN_PUBLIC_CLIENT'] } %>
+
+  <%=
+    if File.exist?("#{Rails.public_path}/COMMITHASH")
+      render :partial => "partials/rollbar", :locals => {
+        :token => ENV['ROLLBAR_ACCESS_TOKEN_PUBLIC_CLIENT'],
+        :version => File.read("#{Rails.public_path}/COMMITHASH")
+      }
+    end
+  %>
+
   <%
     #
     # Production mode or not required for webpack-dev-server mode

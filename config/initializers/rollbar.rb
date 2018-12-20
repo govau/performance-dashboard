@@ -6,7 +6,9 @@ Rollbar.configure do |config|
 
   config.branch = 'master'
 
-  config.code_version = File.read("#{Rails.public_path}/VERSION")
+  if File.exist?("#{Rails.public_path}/COMMITHASH")
+    config.code_version = File.read("#{Rails.public_path}/COMMITHASH")
+  end
 
   # Here we'll disable in 'test':
   if Rails.env.test? || Rails.env.development?
