@@ -1,5 +1,5 @@
-@charset "utf-8";
-
+// @import './../../_shared/styles/variables';
+// @import './_vendor/gov-au-ui-kit/utils/colours';
 
 $color-brand-primary: #0579c7 !default;
 $color-brand-supp: #00a1bb !default;
@@ -9,37 +9,24 @@ $color-user-satisfaction: #cf7e33;
 $color-cost-per-transaction: #7e985c;
 $color-digital-take-up: #007cc3;
 $color-completion-rate: #6e63a7;
-
 $color-is-success: #51a351;
 $color-is-error: #bd362f;
 $color-is-info: #f9edbe;
 $color-is-warning: #f89406;
 
-
-/**
- *
- * Ui-kit and overrides
- *
- */
+//  Ui-kit and overrides
 
 @import '~bourbon/core/bourbon';
 @import '~bourbon-neat/app/assets/stylesheets/neat';
 @import './legacy/_vendor/gov-au-ui-kit/fake-external-links';
-
 @import './../../_common/styles/_vendor/bootstrap/bootstrap-grid';
 @import './../../_common/styles/_vendor/bootstrap/responsive-utilities';
 
-
-/**
- *
- * Dashboard
- *
- */
+//  Dashboard
 
 // vendor
 
 @import '~bootstrap/scss/mixins/lists';
-
 
 // components
 // layout
@@ -56,6 +43,7 @@ $spacer: 1rem !default;
 $media-margin-top:            15px !default;
 $media-heading-margin-bottom:  5px !default;
 $media-alignment-padding-x:   10px !default;
+
 @import '~bootstrap/scss/media';
 @import './legacy/components/toggle-switch';
 
@@ -68,19 +56,11 @@ $media-alignment-padding-x:   10px !default;
 @import './legacy/feedback/feedback';
 @import './legacy/widgets/widget';
 @import './legacy/widgets/sparkline';
-
-
-
-
-
 @import './legacy/pages/dashboards-index';
-
-
-
 
 // NEW
 
-@import './../../_shared/styles/variables';
+// @import './../../_shared/styles/variables';
 
 @import './../../_shared/components/uikit-links/links';
 @import "~bootstrap/scss/mixins"; // required for uikit-buttons
@@ -92,21 +72,13 @@ $media-alignment-padding-x:   10px !default;
 @import './../../_shared/components/header/header';
 @import './../../_shared/components/footer/footer';
 
-
-
-
-
 // start again
 
 @import 'pages/dashboardShow';
-
-
 @import "layouts/btlContainer";
-
 @import "components/skipLinks";
 @import "components/loadingPanel";
 @import "components/dashboardKpis";
 @import "../../_shared/components/chartWidget/widgetCard";
 @import "../../_shared/components/chartWidget/widget";
 @import '../../_shared/components/badges/badges';
-

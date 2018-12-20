@@ -1,15 +1,7 @@
-@charset "utf-8";
-
-
 @import '../../_shared/styles/variables';
 @import 'variables';
 
-
-/**
- *
- * Vendor, inc Bootstrap and its ui-kit themed bootstrap components
- *
- */
+//  Vendor, inc Bootstrap and its ui-kit themed bootstrap components
 
 @import './../../_shared/styles/_vendor/bootstrap/bootstrap';
 @import './../../_shared/components/uikit-type/type';
@@ -20,20 +12,10 @@
 @import './../../_shared/components/phase-banner/phase-banner';
 @import './../../_shared/components/uikit-alert/alert';
 
-
-/**
- *
- * App Shell
- *
- */
+// App Shell
 
 @import 'layouts/app-shell-layout';
 
-
-/**
- *
- * Components
- *
- */
+//  Components
 
 @import 'components/progress-line';

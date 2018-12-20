@@ -1,14 +1,7 @@
-@charset "utf-8";
-
-
 @import '../../_shared/styles/variables';
 @import '../../app_shell/styles/variables';
 
-/**
- *
- * Vendor, inc Bootstrap and its ui-kit themed bootstrap components
- *
- */
+//  Vendor, inc Bootstrap and its ui-kit themed bootstrap components
 
 @import './../../_shared/styles/_vendor/bootstrap/bootstrap';
 @import './../../_shared/components/uikit-type/type';
@@ -23,17 +16,10 @@
 @import './../../_shared/components/uikit-form-validation-summary/form-validation-summary';
 @import './../../_shared/components/uikit-field-validation/field-validation';
 @import './../../_shared/styles/_vendor/bootstrap/uikit-components/form-groups';
-
 @import './../../_shared/styles/_vendor/animate';
 @import './../../_shared/styles/_vendor/ceaser-easings';
 
-
-
-/**
- *
- * Editor
- *
- */
+//  Editor
 
 // layout
 @import 'layouts/app-layout';
