@@ -31,7 +31,7 @@ class PageDashboardWidgets extends Component {
 
   static get contextTypes() {
     return {
-      router: React.PropTypes.object.isRequired,
+      router: PropTypes.object.isRequired,
     };
   }
 

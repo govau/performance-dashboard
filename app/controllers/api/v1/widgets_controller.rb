@@ -228,10 +228,15 @@ class Api::V1::WidgetsController < Api::V1::ApiController
     data_table = DataTable.create({
       :dashboard_id => @dashboard.id,
       :options => {
-        :period => 'month',
+        :period => params[:interval], # year, week, customn
         :slice_aggregation => 'mean'
       }
     })
+
+    puts 'Interval'
+    puts params[:interval]
+    puts 'data table id'
+    puts data_table.id
 
     widget = Widget.create({
       :dashboard_id => @dashboard.id,
@@ -243,7 +248,7 @@ class Api::V1::WidgetsController < Api::V1::ApiController
       :pos => 0,
       :type => params[:type],
       :size => 'medium',
-      :units => 'n',
+      :units => params[:units],
     })
 
     values = {}
@@ -252,9 +257,9 @@ class Api::V1::WidgetsController < Api::V1::ApiController
       dataset = Dataset.create({
         :name => d['name'],
         :label => d['label'],
-        :units => d['units'],
+        :units => params[:units],
         :notes => d['notes'],
-        :period => 'month',
+        :period => params[:interval],
         :options => {}
       })
 
@@ -275,6 +280,7 @@ class Api::V1::WidgetsController < Api::V1::ApiController
     DataRow.create({
       :data_table_id => data_table.id,
       :row_date => params[:period],
+      :row_label => params[:label],
       :data => {
         :values => values
       }

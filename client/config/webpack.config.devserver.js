@@ -56,7 +56,7 @@ let webpackConfig = {
       {
         test: /\.css$/,
         use: [
-          // 'style-loader',
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
@@ -74,9 +74,8 @@ let webpackConfig = {
           {
             loader: 'resolve-url-loader',
             options: {
-              attempts: 1,
               debug: true,
-              sourceMap: false,
+              sourceMap: true
             }
           }
         ]
@@ -84,14 +83,14 @@ let webpackConfig = {
       {
         test: /\.scss$/,
         use: [
-          // 'style-loader',
+          'style-loader',
           {
             loader: 'css-loader',
             options: {
               sourceMap: true,
               importLoaders: 1,
               url: false,
-              minimize: true
+              minimize: false
               // modules: true
             },
           },
@@ -102,9 +101,8 @@ let webpackConfig = {
           {
             loader: 'resolve-url-loader',
             options: {
-              attempts: 1,
               debug: true,
-              sourceMap: false,
+              sourceMap: true
             },
           },
           {
