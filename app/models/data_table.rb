@@ -3,7 +3,7 @@ class DataTable < ApplicationRecord
   audited
   has_associated_audits
 
-  PERIODS = %w(free month week day)
+  PERIODS = %w(custom free month week day)
   SLICE_AGGREGATIONS = %w(mean sum)
 
   store_attributes :options do 
@@ -44,13 +44,22 @@ class DataTable < ApplicationRecord
     data_rows.by_time_desc.first&.row_date
   end
 
-  def slices(widget, limit: 0)
+  def slices(widget, limit: 0) # Jon todo: Cater for custom slices
+    # puts 'def slices'
+    # puts widget
+    # puts options['period']
+    # puts '---'
+
     arr = []
 
     if period_start = series_end&.beginning_of_month
-      while (0 == limit || arr.size < limit) &&
-          period_start >= series_start&.beginning_of_month
-        if s = slice_data(widget, 'month', period_start)
+      while (0 == limit || arr.size < limit) && period_start >= series_start&.beginning_of_month
+
+        # puts 'rl'
+        # puts row_label
+    
+        # if s = slice_data(widget, 'month', period_start)
+        if s = slice_data(widget, options['period'], period_start)
           arr << s          
         end
 
@@ -63,24 +72,30 @@ class DataTable < ApplicationRecord
 
   def calculate_period_end(period, period_start)
     case period
-    when 'week'
-      period_start.advance(weeks: 1, days: -1)
-    when 'month'
-      period_start.advance(months: 1, days: -1)
-    when 'year'
-      period_start.advance(years: 1, days: -1)
-    when 'century'
-      period_start.advance(years: 100, days: -1)
-    else
-      raise "Unknown period: #{period}"
+      when 'week'
+        period_start.advance(weeks: 1, days: -1)
+      when 'month'
+        period_start.advance(months: 1, days: -1)
+      when 'year'
+        period_start.advance(years: 1, days: -1)
+      when 'century'
+        period_start.advance(years: 100, days: -1)
+      when 'custom'
+        period_start.advance(months: 1, days: -1)
+      else
+        raise "Unknown period: #{period}"
     end
   end
 
   def slice_data(widget, period, period_start)
     period_end = calculate_period_end period, period_start
+  
     rows = data_rows.within_interval(period_start, period_end).decorate(
-      context: { widget: widget })    
+      context: { widget: widget }
+    )
+    
     groups = generate_groups(rows)
+    # row_label = 'Row label...'
 
     if groups.any? 
       Slice.new widget, period, period_start, period_end, groups, rows
@@ -96,9 +111,20 @@ class DataTable < ApplicationRecord
       end
     end
 
+    # puts values_by_set.first.to_yaml
+    # puts '---'
+
     groups = values_by_set.collect {|dataset_id, values|
       [dataset_id, aggregate_slice_values(values)]
     }.to_h
+
+    # puts groups.first.class
+    # puts groups.first.size
+    # puts groups.first
+    # puts '+++'
+    # puts ''
+
+    groups
   end
 
   def aggregate_slice_values(values)
@@ -106,12 +132,12 @@ class DataTable < ApplicationRecord
     return nil unless values.present? 
 
     case slice_aggregation
-    when 'sum'
-      values.sum
-    when 'mean' 
-      values.sum / values.size       
-    else 
-      raise "Unknown aggregation method: #{slice_aggregation}"
+      when 'sum'
+        values.sum
+      when 'mean' 
+        values.sum / values.size       
+      else 
+        raise "Unknown aggregation method: #{slice_aggregation}"
     end
   end
 end

@@ -79,7 +79,7 @@ class PageDashboardWidgets extends Component {
         units: 'n',
       },
     }).then((widget) => {
-      console.log(`Fact widget created (${widget.id})`);
+      // console.log(`Fact widget created (${widget.id})`);
       this.context.router.push(getDashboardWidgetFactUrl(dashboardId, widget.id));
     });
   }
@@ -239,10 +239,13 @@ class PageDashboardWidgets extends Component {
               </div>}
 
               {btlSlices.map((slice, idx) => {
+                // console.log('widget', slice);
+
                 // check that we recognise the widget item, before continuing
                 if (slice === null || sanitizeBtlWidgetByType(slice.widget.type) === null) {
                   return null;
                 }
+                
                 return (
                   <div key={idx} ref={String(slice.widget.id)}>
                     <WidgetTypeSlice

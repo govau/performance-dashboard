@@ -73,7 +73,7 @@ export default class CreateChart extends Component {
     }
 
     if (
-      interval === 'free'
+      interval === 'custom'
       && firstLabel === ''
     ) {
       alert('Please enter First category label');
@@ -96,7 +96,7 @@ export default class CreateChart extends Component {
     let year = periodYear;
     let month = periodMonth;
 
-    if (interval === 'free') {
+    if (interval === 'custom') {
       year = '1970';
       month = '01';
     }
@@ -149,6 +149,28 @@ export default class CreateChart extends Component {
       datasets: this.state.datasets.filter(dataset => dataset.time !== time),
     });
   };
+
+  getFirstValueLabel = () => {
+    const { state } = this;
+
+    if (!state.interval) {
+      return '';
+    }
+    
+    if (state.interval === 'custom') {
+      if (!state.firstLabel) {
+        return '';
+      }
+
+      return ` (${state.firstLabel})`;
+    }
+
+    if (state.interval === 'month') {
+      return ` (${state.periodMonth}/${state.periodYear})`;
+    }
+
+    return '';
+  }
 
   render = () => (
     <div
@@ -273,7 +295,7 @@ export default class CreateChart extends Component {
           </div>
         )}
 
-        {this.state.interval === 'free' && (
+        {this.state.interval === 'custom' && (
             <div className="form-group">
             <label>First category label</label>
 
@@ -304,7 +326,7 @@ export default class CreateChart extends Component {
 
                 {/* <th>Units</th> */}
 
-                <th>First value</th>
+                <th>First value{this.getFirstValueLabel()}</th>
 
                 <th />
               </tr>

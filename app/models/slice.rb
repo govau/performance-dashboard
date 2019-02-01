@@ -6,6 +6,7 @@ class Slice
     @period = period
     @period_start = period_start
     @period_end = period_end
+    # @row_label = row_label
     @groups = groups
     @data_rows = data_rows
   end

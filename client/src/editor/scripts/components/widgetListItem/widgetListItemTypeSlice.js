@@ -15,7 +15,6 @@ import {getNextPeriod} from 'shared/redux/slices/slicesSelectors';
 import {getWidgetType, isKpi} from 'shared/utils/proposedApiChanges'
 import {makeDeriveColor} from 'shared/utils/getColors'
 
-
 const WidgetTypeSlice = (props) => {
   const {
     slice,
@@ -28,10 +27,8 @@ const WidgetTypeSlice = (props) => {
   const addUrl = getDashboardWidgetSliceUrl(slice.dashboard.id, slice.widget.id, getNextPeriod(slice.period_start));
   const editDescriptionsUrl = getDashboardWidgetDescriptionsUrl(slice.dashboard.id, slice.widget.id);
   const title = slice.widget.name === 'Kpis' ? 'Key performance indicators' : slice.widget.name;
-
   const widgetType = getWidgetType(slice.widget);
   const deriveColor = makeDeriveColor(slice.widget.pos, isKpi(widgetType));
-
 
   return (
     <article className="widget-list__item">
@@ -45,7 +42,14 @@ const WidgetTypeSlice = (props) => {
           <h1 className="h5">{title}</h1>
         </div>
         <div className="meta-status">
-          <TrafficLight dateSeriesEnd={slice.widget.series_end} datePublished={slice.widget.last_updated_at} />
+          <TrafficLight 
+            dateSeriesEnd={slice.widget.series_end} 
+            datePublished={slice.widget.last_updated_at}
+            type={slice.widget.type}
+            units={slice.widget.units}
+            size={slice.widget.size}
+            period ={slice.period}
+          />
         </div>
       </header>
 
@@ -54,9 +58,11 @@ const WidgetTypeSlice = (props) => {
           {slice.period_start && <Preview slice={slice} getColorByRowFn={deriveColor} />}
         </div>
         <div className="col-xs-12 col-lg-6 ctas">
+
           <Link to={addUrl} className="UIK-button btn btn-primary"
                 disabled={isLatestSlice(slice)}
                 onClick={() => actions.setLastWidgetImpression({widgetId: slice.widget.id})}>Add new data</Link><br/>
+        
           <Link to={editUrl}
                 className="UIK-link"
                 disabled={CAN_UPDATE_SLICE === false}
@@ -64,6 +70,7 @@ const WidgetTypeSlice = (props) => {
                   e.preventDefault() :
                   actions.setLastWidgetImpression({widgetId: slice.widget.id})
                 }>Edit existing data</Link><br/>
+        
           <Link to={editDescriptionsUrl}
                 className="UIK-link"
                 disabled={CAN_UPDATE_WIDGET_DESCRIPTIONS === false}

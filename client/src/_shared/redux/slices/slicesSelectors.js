@@ -1,4 +1,3 @@
-
 var subMonths = require('date-fns/sub_months');
 var addMonths = require('date-fns/add_months');
 var startOfMonth = require('date-fns/start_of_month');
@@ -89,7 +88,6 @@ export const isPeriodInTheFuture = (nextPeriodDate, period = 'month') => {
 };
 
 
-
 // Helpers
 
 export const isEmptySlice = slice => {
@@ -159,17 +157,17 @@ export const compareSliceEquality = (sliceA, sliceB) => {
 export const selectWidgetSlice = (state, {widgetId, periodStart, periodEnd, period = 'month'}) => {
   if (periodStart) {
     return state.slices.find(slice => {
-        return slice.widget_id == widgetId &&
-          slice.period === period &&
-          compareDateEquality(slice.period_start, periodStart);
-      }) || null;
+      return slice.widget_id == widgetId &&
+        slice.period === period &&
+        compareDateEquality(slice.period_start, periodStart);
+    }) || null;
   }
 
   periodStart = getPeriodStart();
 
   // get all the slices with widgetId and same period
   const widgetSlices = state.slices.filter(s => {
-    return s.widget_id == widgetId && s.period == period;   // ==
+    return s.period === 'custom' || (s.widget_id == widgetId && s.period == period);
   });
 
   // if there is not slice data for a widget, return
@@ -181,6 +179,7 @@ export const selectWidgetSlice = (state, {widgetId, periodStart, periodEnd, peri
   const periodSlice = widgetSlices.find(s => {
     return compareDateEquality(s.period_start, periodStart);
   });
+  
   if (periodSlice) {
     return periodSlice;
   }
@@ -195,7 +194,7 @@ export const selectWidgetSlice = (state, {widgetId, periodStart, periodEnd, peri
     return nextLatestSlice
   }
 
-  return null
+  return null;
 };
 
 /** @returns {Object.<Slice>} - a slice without data */
@@ -253,10 +252,13 @@ export const getDenormalizedSlice = (state, {widgetId, dashboardId, periodStart}
       throw new Error('must provide widgetId and dashboardId');
     }
   }
+  
   const sliceState = selectWidgetSlice(state, {widgetId, periodStart});
+  
   if (!sliceState) {
     return null;
   }
+  
   const dashboardState = selectDashboard(state, {dashboardId});
   const widgetState = selectWidget(state, {widgetId});
   const widgetDatasetsState = selectDatasetsByWidget(state, {widgetId});

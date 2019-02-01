@@ -34,7 +34,7 @@ export const months = [
   export const intervals = [
     { value: '', label: 'Select' },
     { value: 'month', label: 'Month' },
-    { value: 'free', label: 'Custom' },
+    { value: 'custom', label: 'Custom' },
   ];
   
   export const getOptions = (list) => list.map(

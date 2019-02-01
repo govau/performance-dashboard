@@ -233,10 +233,10 @@ class Api::V1::WidgetsController < Api::V1::ApiController
       }
     })
 
-    puts 'Interval'
-    puts params[:interval]
-    puts 'data table id'
-    puts data_table.id
+    # puts 'Interval'
+    # puts params[:interval]
+    # puts 'data table id'
+    # puts data_table.id
 
     widget = Widget.create({
       :dashboard_id => @dashboard.id,

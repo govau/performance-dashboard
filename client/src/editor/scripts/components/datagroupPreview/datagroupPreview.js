@@ -39,13 +39,16 @@ const Preview = ({slice, getColorByRowFn}) => {
   return (
     <div className="preview">
       <p className="most-recent-text strong">{getHumanisedVeryShortDate(slice.period_start)}</p>
+      
       {slice.groups.map((group, idx) => {
         return (
           <div key={idx} className="preview-table">
             <span className="key">
               <LegendDot color={getColorByRowFn(idx)} />
             </span>
+
             <span className="description">{group.dataset.label}</span>
+            
             <span className="value">{formatValue(typeof group.value !== 'undefined' ? group.value : null, group.dataset.units)}</span>
           </div>
         );
