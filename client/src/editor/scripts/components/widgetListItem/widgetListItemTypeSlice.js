@@ -32,10 +32,13 @@ const WidgetTypeSlice = (props) => {
 
   return (
     <article className="widget-list__item">
-
-      {alertProps && alertProps.description && <UikitAlert type={alertProps.type}
-                                                           text={alertProps.description}
-                                                           className="animated fadeIn" />}
+      {alertProps && alertProps.description && (
+        <UikitAlert 
+          type={alertProps.type}
+          text={alertProps.description}
+          className="animated fadeIn" 
+        />
+      )}
 
       <header>
         <div className="title">
@@ -55,10 +58,12 @@ const WidgetTypeSlice = (props) => {
 
       <div className="row">
         <div className="col-xs-12 col-lg-6">
-          {slice.period_start && <Preview slice={slice} getColorByRowFn={deriveColor} />}
+          {slice.period_start && (
+            <Preview slice={slice} getColorByRowFn={deriveColor} />
+          )}
         </div>
+        
         <div className="col-xs-12 col-lg-6 ctas">
-
           <Link to={addUrl} className="UIK-button btn btn-primary"
                 disabled={isLatestSlice(slice)}
                 onClick={() => actions.setLastWidgetImpression({widgetId: slice.widget.id})}>Add new data</Link><br/>

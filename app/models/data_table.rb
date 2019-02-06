@@ -36,36 +36,85 @@ class DataTable < ApplicationRecord
     data_rows.latest_updated.first&.updated_at
   end
 
+  # Returns the FIRST collection month of all the data rows belonging to this table
+  # Change by_time_desc to order first by collection month then by created date
   def series_start
     data_rows.by_time.first&.row_date
   end
 
+  # Returns the LAST collection month of all the data rows belonging to this table
+  # Change by_time to order first by collection month then by created date
   def series_end
     data_rows.by_time_desc.first&.row_date
   end
 
-  def slices(widget, limit: 0) # Jon todo: Cater for custom slices
+  # Extract the slices from the widget data
+  # Returns an array of slices
+  # Jon todo: Cater for custom slices
+  # We should have a different slices method for custom datasets
+  def slices(widget, limit: 0) 
     # puts 'def slices'
-    # puts widget
+    # puts 'Widget'
+    # puts widget.id
     # puts options['period']
     # puts '---'
 
     arr = []
+    period_start = series_end&.beginning_of_month
 
-    if period_start = series_end&.beginning_of_month
-      while (0 == limit || arr.size < limit) && period_start >= series_start&.beginning_of_month
+    # puts '---------------------'
 
-        # puts 'rl'
-        # puts row_label
-    
-        # if s = slice_data(widget, 'month', period_start)
-        if s = slice_data(widget, options['period'], period_start)
-          arr << s          
+    # puts 'Period start'
+    # puts period_start
+
+    # puts 'period_start << 1'
+    # puts period_start << 1
+
+    # puts 'series_start&.beginning_of_month'
+    # puts series_start&.beginning_of_month
+
+    # puts 'options period'
+    # puts options['period']
+
+    # Return a slice for each data row
+    if options['period'] == 'custom'
+      data_rows.each do |row|
+        period_end = calculate_period_end options['period'], period_start
+        single_row = [row]
+        groups = generate_groups single_row
+        arr << Slice.new(widget, options['period'], period_start, period_end, groups, single_row, row.row_label)
+      end      
+    else
+      if period_start
+        while (0 == limit || arr.size < limit) && period_start >= series_start&.beginning_of_month
+          puts 'Widget'
+          puts widget.to_yaml
+
+          # puts 'rl'
+          # puts row_label
+      
+          # if s = slice_data(widget, 'month', period_start)
+
+          s = slice_data(widget, options['period'], period_start) # Returns a new slice
+
+          # puts 'considering slice---------------------'
+          # puts widget.id
+          # puts s.to_yaml
+
+          if s
+            arr << s          
+          else
+            # puts 'NOT ADDING---------------'
+            # puts s.to_yaml
+          end
+
+          period_start = period_start << 1 # Move back one month
         end
-
-        period_start = period_start << 1
       end
     end
+
+    puts arr.to_yaml
+    puts '-----------------------+++-----------------'
 
     arr.reverse
   end
@@ -94,11 +143,17 @@ class DataTable < ApplicationRecord
       context: { widget: widget }
     )
     
-    groups = generate_groups(rows)
-    # row_label = 'Row label...'
+    groups = generate_groups(rows)    
+    
+    if rows[0] && rows[0].row_label
+      puts rows[0].row_label
+      puts 'FOUND ------------------------------'
+    end
+    
+    row_label = ''
 
     if groups.any? 
-      Slice.new widget, period, period_start, period_end, groups, rows
+      Slice.new widget, period, period_start, period_end, groups, rows, row_label
     end
   end
 

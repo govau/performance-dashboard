@@ -7,14 +7,11 @@
 
 
 import React, {PureComponent} from 'react';
-
 import Preview from './preview_container';
-
 
 const withPreview = ComposedForm => {
 
   return class extends PureComponent {
-
     constructor(props) {
       super(props);
 
@@ -86,7 +83,11 @@ const withPreview = ComposedForm => {
       return (
         <div>
           <ComposedForm {...this.props} onChange={this.onChange} />
-          <Preview triggerUpdatePreview={this.triggerUpdate} currentNormalizedSlice={this.state.previewData} />
+          
+          <Preview 
+            triggerUpdatePreview={this.triggerUpdate} 
+            currentNormalizedSlice={this.state.previewData} 
+          />
         </div>
       )
     }

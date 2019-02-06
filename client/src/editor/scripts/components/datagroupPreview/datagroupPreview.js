@@ -1,13 +1,10 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
-
 import LegendDot from './../svgs/legendDot';
 import {getHumanisedUnits} from 'shared/redux/datasets/datasetsHelper';
 import {getHumanisedVeryShortDate} from 'shared/utils/formatDates';
 import {formatCurrency2dp} from './../../utils/formatCurrency';
 import {formatPercentile2dp} from './../../utils/formatPercentile';
-
 
 /**
  * Format and decorate value provided for the View
@@ -19,9 +16,11 @@ export const formatValue = (value, units) => {
   if (typeof value === 'undefined') {
     throw Error('Group has no datapoint or value is not provided. Something is very wrong.');
   }
+
   if (value === null) {
     return 'No data';
   }
+
   let formattedValue;
   let formattedUnits = getHumanisedUnits(units);
   let unitsStr = formattedUnits ? ` ${formattedUnits}` : '';
@@ -36,6 +35,9 @@ export const formatValue = (value, units) => {
 };
 
 const Preview = ({slice, getColorByRowFn}) => {
+  console.log('datagroupPreview: slice', slice);
+  // console.log(slice.groups);
+  
   return (
     <div className="preview">
       <p className="most-recent-text strong">{getHumanisedVeryShortDate(slice.period_start)}</p>
@@ -47,9 +49,13 @@ const Preview = ({slice, getColorByRowFn}) => {
               <LegendDot color={getColorByRowFn(idx)} />
             </span>
 
-            <span className="description">{group.dataset.label}</span>
-            
-            <span className="value">{formatValue(typeof group.value !== 'undefined' ? group.value : null, group.dataset.units)}</span>
+            {!!group.dataset && (
+              <span>
+                <span className="description">{group.dataset.label}</span>
+    
+                <span className="value">{formatValue(typeof group.value !== 'undefined' ? group.value : null, group.dataset.units)}</span>
+              </span>
+            )}            
           </div>
         );
       })}

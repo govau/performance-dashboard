@@ -34,17 +34,19 @@ const TrafficLight = ({
   }
 
   const numMonths = getNumMonthsBetweenLastUpdatedAndLatestPossible(dateSeriesEnd);
+  let showMonths = true;
+  let status;
 
   if (!isNumber(numMonths) || numMonths < 0) {
-    return null;
+    showMonths = false;
+  } else  {
+    status = numMonths >= 2 ? STATUSES[2] : STATUSES[numMonths];
   }
-
-  const status = numMonths >= 2 ? STATUSES[2] : STATUSES[numMonths];
 
   return (
     <div className="traffic-light">
       <span className="traffic-light__top">
-        {period !== 'custom' && (
+        {showMonths && period !== 'custom' && (
           <span className="status-key-group">
             <span className="status-key">
               <Donut innerColor="white" strokeColor={status.color} />

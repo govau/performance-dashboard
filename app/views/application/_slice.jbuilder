@@ -8,7 +8,9 @@ json.period_end slice.period_end.strftime '%Y-%m-%dT%H:%H:%SZ'
 
 json.period slice.period
 
-# json.row_label slice.row_label
+json.row_label slice.row_label
+
+json.rows slice.data_rows
 
 json.groups slice.groups do |dataset_id, aggregate_value|
   json.dataset_id dataset_id

@@ -245,6 +245,10 @@ export const filterSlicesByBtl = (slices) => {
 
 // NORMALIZED AND DENORMALIZED SLICE OPERATIONS
 
+// Jon todo: In redux state, the slices do not contain the correct data
+//   Custom slices are uniquely identified by start date, and they all have the same start date
+//   so we only have one not all. Look at the reducer.
+
 /** fulfill a slice to contain denormalized values */
 export const getDenormalizedSlice = (state, {widgetId, dashboardId, periodStart}) => {
   if (__DEV__) {
@@ -254,6 +258,8 @@ export const getDenormalizedSlice = (state, {widgetId, dashboardId, periodStart}
   }
   
   const sliceState = selectWidgetSlice(state, {widgetId, periodStart});
+
+  console.log('slice state', sliceState);
   
   if (!sliceState) {
     return null;
@@ -269,10 +275,10 @@ export const getDenormalizedSlice = (state, {widgetId, dashboardId, periodStart}
     period: sliceState.period,
     period_start: sliceState.period_start,
     period_end: sliceState.period_end,
-    groups: sliceState.groups.map(g => {
+    groups: sliceState.groups.map(g => { // An array of [ dataset, value ]
       return {
         dataset: widgetDatasetsState.find(d => {
-          return g.dataset_id == d.id;  // ==
+          return g.dataset_id == d.id;
         }),
         value: g.value
       }
