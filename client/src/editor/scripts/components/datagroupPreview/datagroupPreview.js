@@ -37,11 +37,14 @@ export const formatValue = (value, units) => {
 const Preview = ({slice, getColorByRowFn}) => {
   console.log('datagroupPreview: slice', slice);
   // console.log(slice.groups);
-  
+
   return (
     <div className="preview">
-      <p className="most-recent-text strong">{getHumanisedVeryShortDate(slice.period_start)}</p>
-      
+      <p className="most-recent-text strong">
+        {slice.period === 'custom' && slice.row_label}
+
+        {slice.period !== 'custom' && getHumanisedVeryShortDate(slice.period_start)}
+      </p>
       {slice.groups.map((group, idx) => {
         return (
           <div key={idx} className="preview-table">
@@ -50,12 +53,14 @@ const Preview = ({slice, getColorByRowFn}) => {
             </span>
 
             {!!group.dataset && (
-              <span>
-                <span className="description">{group.dataset.label}</span>
-    
-                <span className="value">{formatValue(typeof group.value !== 'undefined' ? group.value : null, group.dataset.units)}</span>
+              <span className="description">{group.dataset.label}</span>
+            )}
+
+            {!!group.dataset && (
+              <span className="value">
+                {formatValue(typeof group.value !== 'undefined' ? group.value : null, group.dataset.units)}
               </span>
-            )}            
+            )}
           </div>
         );
       })}

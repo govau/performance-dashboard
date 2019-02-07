@@ -179,7 +179,7 @@ export const selectWidgetSlice = (state, {widgetId, periodStart, periodEnd, peri
   const periodSlice = widgetSlices.find(s => {
     return compareDateEquality(s.period_start, periodStart);
   });
-  
+
   if (periodSlice) {
     return periodSlice;
   }
@@ -256,15 +256,13 @@ export const getDenormalizedSlice = (state, {widgetId, dashboardId, periodStart}
       throw new Error('must provide widgetId and dashboardId');
     }
   }
-  
+
   const sliceState = selectWidgetSlice(state, {widgetId, periodStart});
 
-  console.log('slice state', sliceState);
-  
   if (!sliceState) {
     return null;
   }
-  
+
   const dashboardState = selectDashboard(state, {dashboardId});
   const widgetState = selectWidget(state, {widgetId});
   const widgetDatasetsState = selectDatasetsByWidget(state, {widgetId});
@@ -275,6 +273,7 @@ export const getDenormalizedSlice = (state, {widgetId, dashboardId, periodStart}
     period: sliceState.period,
     period_start: sliceState.period_start,
     period_end: sliceState.period_end,
+    row_label: sliceState.row_label,
     groups: sliceState.groups.map(g => { // An array of [ dataset, value ]
       return {
         dataset: widgetDatasetsState.find(d => {

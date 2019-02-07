@@ -12,9 +12,6 @@ export const selectDatasets = (state, {datasetIds}) => {
 export const selectDatasetsByWidget = (state, {widgetId}) => {
   const widget = selectWidget(state, {widgetId});
 
-  // console.log('widget', widget);
-  // console.log('widget.datasets', widget.datasets);
-  
   return state.datasets.filter(d => {
     return widget.datasets.includes(d.id);
   });

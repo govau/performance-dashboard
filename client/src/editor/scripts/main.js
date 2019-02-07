@@ -12,7 +12,7 @@ const bootState = merge(initialState, window.__EDITOR_STATE__);
 //   delete window.__EDITOR_STATE__;
 // }
 
-console.log('Bootstate', bootState);
+// console.log('Bootstate', bootState);
 
 const store = configureStore(bootState, hashHistory);
 
