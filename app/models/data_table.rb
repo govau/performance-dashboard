@@ -6,7 +6,7 @@ class DataTable < ApplicationRecord
   PERIODS = %w(custom free month week day)
   SLICE_AGGREGATIONS = %w(mean sum)
 
-  store_attributes :options do 
+  store_attributes :options do
     slice_aggregation String, default: 'mean'
     period String, default: 'month'
   end
@@ -17,8 +17,8 @@ class DataTable < ApplicationRecord
   has_many :datasets, through: :data_table_datasets
   has_many :data_rows, dependent: :destroy
 
-  validates :period, inclusion: { in: PERIODS, allow_nil: true } 
-  validates :slice_aggregation, inclusion: { in: SLICE_AGGREGATIONS, allow_nil: true } 
+  validates :period, inclusion: { in: PERIODS, allow_nil: true }
+  validates :slice_aggregation, inclusion: { in: SLICE_AGGREGATIONS, allow_nil: true }
 
   def data_updated_at
     data_rows.latest_updated.first&.updated_at
@@ -52,7 +52,7 @@ class DataTable < ApplicationRecord
   # Returns an array of slices
   # Jon todo: Cater for custom slices
   # We should have a different slices method for custom datasets
-  def slices(widget, limit: 0) 
+  def slices(widget, limit: 0)
     # puts 'def slices'
     # puts 'Widget'
     # puts widget.id
@@ -83,7 +83,7 @@ class DataTable < ApplicationRecord
         single_row = [row]
         groups = generate_groups single_row
         arr << Slice.new(widget, options['period'], period_start, period_end, groups, single_row, row.row_label)
-      end      
+      end
     else
       if period_start
         while (0 == limit || arr.size < limit) && period_start >= series_start&.beginning_of_month
@@ -92,7 +92,7 @@ class DataTable < ApplicationRecord
 
           # puts 'rl'
           # puts row_label
-      
+
           # if s = slice_data(widget, 'month', period_start)
 
           s = slice_data(widget, options['period'], period_start) # Returns a new slice
@@ -102,7 +102,7 @@ class DataTable < ApplicationRecord
           # puts s.to_yaml
 
           if s
-            arr << s          
+            arr << s
           else
             # puts 'NOT ADDING---------------'
             # puts s.to_yaml
@@ -138,30 +138,30 @@ class DataTable < ApplicationRecord
 
   def slice_data(widget, period, period_start)
     period_end = calculate_period_end period, period_start
-  
+
     rows = data_rows.within_interval(period_start, period_end).decorate(
       context: { widget: widget }
     )
-    
-    groups = generate_groups(rows)    
-    
-    if rows[0] && rows[0].row_label
-      puts rows[0].row_label
-      puts 'FOUND ------------------------------'
-    end
-    
+
+    groups = generate_groups(rows)
+
+    # if rows[0] && rows[0].row_label
+    #   puts rows[0].row_label
+    #   puts 'FOUND ------------------------------'
+    # end
+
     row_label = ''
 
-    if groups.any? 
+    if groups.any?
       Slice.new widget, period, period_start, period_end, groups, rows, row_label
     end
   end
 
   def generate_groups(rows)
     values_by_set = {}
-    
+
     rows.each do |row|
-      row.values.each do |dataset_id, value| 
+      row.values.each do |dataset_id, value|
         (values_by_set[dataset_id] ||= []) << value
       end
     end
@@ -184,14 +184,14 @@ class DataTable < ApplicationRecord
 
   def aggregate_slice_values(values)
     values.reject! &:blank?
-    return nil unless values.present? 
+    return nil unless values.present?
 
     case slice_aggregation
       when 'sum'
         values.sum
-      when 'mean' 
-        values.sum / values.size       
-      else 
+      when 'mean'
+        values.sum / values.size
+      else
         raise "Unknown aggregation method: #{slice_aggregation}"
     end
   end

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import {
   HeroWidget,
@@ -8,9 +7,7 @@ import {
   StackedColumnWidget,
   SparklineWidget,
 } from '@gov.au/datavizkit';
-
 import FactWidget from 'shared/components/factWidget';
-
 
 const WIDGET_TYPES = {
   hero: {component: HeroWidget},
@@ -23,7 +20,6 @@ const WIDGET_TYPES = {
 };
 
 const BtlWidget = (props) => {
-
   const {_type} = props;
 
   if (  // whitelist

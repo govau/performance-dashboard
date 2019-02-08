@@ -9,7 +9,6 @@ import {selectDashboard} from './../dashboards/dashboardsSelectors';
 import {selectWidget} from './../widgets/widgetsSelectors';
 import {selectDatasetsByWidget} from './../datasets/datasetsSelectors';
 
-
 export const formatDateWithoutTimezoneData = date => {
   return format(new Date(date), 'YYYY-MM-DD');
 };
@@ -259,6 +258,8 @@ export const getDenormalizedSlice = (state, {widgetId, dashboardId, periodStart}
 
   const sliceState = selectWidgetSlice(state, {widgetId, periodStart});
 
+  // console.log('slice state', sliceState);
+
   if (!sliceState) {
     return null;
   }
@@ -291,6 +292,7 @@ export const getEmptyDenormalizedSlice = (state, {widgetId, dashboardId, datagro
   const dashboardState = selectDashboard(state, {dashboardId});
   const widgetState = selectWidget(state, {widgetId});
   const widgetDatasetsState = selectDatasetsByWidget(state, {widgetId});
+
   return {
     dashboard: dashboardState,
     widget: widgetState,
@@ -306,6 +308,19 @@ export const getEmptyDenormalizedSlice = (state, {widgetId, dashboardId, datagro
   };
 };
 
+/*
+
+  // get 1 most recent denormalized slices per widget
+  const denormalizedSlices = dashboardWidgets.filter(widget => {
+    return widget.type !== 'fact';
+  }).map(widget =>
+    getDenormalizedSlice(
+      state,
+      { widgetId: widget.id, dashboardId: dashboard.id },
+    )
+  );
+
+*/
 
 // todo: consider removing this
 // gets all slices given state by a widget
@@ -313,13 +328,17 @@ export const getDenormalizedSlices = (state, {widget, dashboard}) => {
   const widgetSlices = state.slices.filter(slice => {
     return slice.widget_id === widget.id;
   });
+
   return widgetSlices.map(slice => {
+    console.log('Considering slice', slice);
+
     return {
       dashboard: dashboard,
       widget: widget,
       period: slice.period,
       period_start: slice.period_start,
       period_end: slice.period_end,
+      // row_label: '',
       groups: slice.groups.map(g => {
         return {
           dataset: state.datasets.find(d => {
