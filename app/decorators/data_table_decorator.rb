@@ -15,11 +15,15 @@ class DataTableDecorator < Draper::Decorator
 
   #TODO find a way of DRYing this up, copy-pasted just to use 
   def slices(widget, limit: 0)
+    puts 'RUNNING SLICES METHOD IN DATA TABLE DECORATOR ++++++++++++++++++++++++++++++++++'
+
+    # Jon todo: this needs to differentiate between custom and month slices, same as the data table class function
+    # For custom rows which will probably have the same month date, return a new slice with one row for each
+
     arr = []
 
     if period_start = series_end&.beginning_of_month
-      while (0 == limit || arr.size < limit) &&
-          period_start >= series_start&.beginning_of_month
+      while (0 == limit || arr.size < limit) && period_start >= series_start&.beginning_of_month
         if s = slice_data(widget, 'month', period_start)
           arr << s          
         end

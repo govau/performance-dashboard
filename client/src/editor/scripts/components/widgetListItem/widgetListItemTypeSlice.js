@@ -64,27 +64,59 @@ const WidgetTypeSlice = (props) => {
         </div>
         
         <div className="col-xs-12 col-lg-6 ctas">
-          <Link to={addUrl} className="UIK-button btn btn-primary"
+          {slice.period !== 'custom' && (
+            <span>
+              <Link 
+                to={addUrl} 
+                className="UIK-button btn btn-primary"
                 disabled={isLatestSlice(slice)}
-                onClick={() => actions.setLastWidgetImpression({widgetId: slice.widget.id})}>Add new data</Link><br/>
-        
-          <Link to={editUrl}
+                onClick={() => actions.setLastWidgetImpression({widgetId: slice.widget.id})}
+              >
+                Add new data
+              </Link>
+              
+              <br />
+            
+              <Link to={editUrl}
                 className="UIK-link"
                 disabled={CAN_UPDATE_SLICE === false}
                 onClick={(e) => CAN_UPDATE_SLICE === false ?
                   e.preventDefault() :
                   actions.setLastWidgetImpression({widgetId: slice.widget.id})
-                }>Edit existing data</Link><br/>
-        
-          <Link to={editDescriptionsUrl}
-                className="UIK-link"
-                disabled={CAN_UPDATE_WIDGET_DESCRIPTIONS === false}
-                onClick={e => CAN_UPDATE_WIDGET_DESCRIPTIONS === false ?
-                  e.preventDefault() :
-                  e.preventDefault()
-                }>Edit labels and descriptions</Link><br/>
+                }
+              >
+                Edit existing data
+              </Link>
+              
+              <br />
+            </span>
+          )}
 
-          <a href={serviceDashboardUrlAnchor} className="UIK-link" target="blank" rel="external">View on Dashboard</a>
+          {/* 
+          
+          <Link to={editDescriptionsUrl}
+            className="UIK-link"
+            disabled={CAN_UPDATE_WIDGET_DESCRIPTIONS === false}
+            onClick={e => CAN_UPDATE_WIDGET_DESCRIPTIONS === false ?
+              e.preventDefault() :
+              e.preventDefault()
+            }
+          >
+            Edit labels and descriptions
+          </Link> 
+          
+          <br/>
+          
+          */}          
+
+          <a 
+            href={serviceDashboardUrlAnchor} 
+            className="UIK-link" 
+            target="blank" 
+            rel="external"
+          >
+            View on Dashboard
+          </a>
         </div>
       </div>
 

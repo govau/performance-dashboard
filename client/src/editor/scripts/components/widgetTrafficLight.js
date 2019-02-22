@@ -45,32 +45,23 @@ const TrafficLight = ({
 
   return (
     <div className="traffic-light">
-      <span className="traffic-light__top">
-        {showMonths && period !== 'custom' && (
-          <span className="status-key-group">
-            <span className="status-key">
-              <Donut innerColor="white" strokeColor={status.color} />
-            </span>
-
-            <span className="status-label">{status.label}</span>          
+      {showMonths && period !== 'custom' && (
+        <span className="status-key-group">
+          <span className="status-key">
+            <Donut innerColor="white" strokeColor={status.color} />
           </span>
-        )}
 
-        <div>Type: {`${size} ${type} (${units})`}</div>
-        <div>Period: {period}</div>
-      </span>
-
-      <span className="traffic-light__bottom">
-        <span className="traffic-light__bottom__left">
-          Published date: <time>{humanisedShortDate(datePublished)}</time>
+          <span className="status-label">{status.label}</span>          
         </span>
+      )}
+      
+      <div>{`${size} ${type} (${units})`}, {period} period</div>
 
-        {period !== 'custom' && !!dateSeriesEnd && (
-          <span className="traffic-light__bottom__right">
-            Most recent data: <time>{getHumanisedVeryShortDate(dateSeriesEnd)}</time>
-          </span>
-        )}
-      </span>
+      <div>Published: <time>{humanisedShortDate(datePublished)}</time></div>
+
+      {period !== 'custom' && !!dateSeriesEnd && (
+        <div>Most recent data: <time>{getHumanisedVeryShortDate(dateSeriesEnd)}</time></div>
+      )}
     </div>
   )
 };

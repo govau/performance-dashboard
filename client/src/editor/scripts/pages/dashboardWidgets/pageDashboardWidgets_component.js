@@ -240,7 +240,7 @@ class PageDashboardWidgets extends Component {
               </div>}
 
               {btlSlices.map((slice, idx) => {
-                console.log('pageDashboardWidgets_component: slice', slice);
+                // console.log('pageDashboardWidgets_component: slice', slice);
 
                 // check that we recognise the widget item, before continuing
                 if (slice === null || sanitizeBtlWidgetByType(slice.widget.type) === null) {

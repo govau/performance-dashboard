@@ -1,63 +1,71 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-<head>
-  <meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title><%= yield(:title) %></title>
-  <meta name="description" content="<%= yield(:description) %>">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<%= render :partial => "partials/head-meta", :locals => { :description => yield(:description) } %>
+  <head>
+    <meta charset="utf-8">
 
-  <%= render :partial => "partials/no-js-snippet" %>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"/>
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-  <% if !development_server? %>
-    <%= getPublicStylesheet('dashboard-mcss.css') %>
-    <%= getPublicStylesheet('dashboard.css') %>
-  <% end %>
+    <title><%= yield(:title) %></title>
 
-  <%=
-    if File.exist?("#{Rails.public_path}/COMMITHASH")
-      render :partial => "partials/rollbar", :locals => {
-        :token => ENV['ROLLBAR_ACCESS_TOKEN_PUBLIC_CLIENT'],
-        :version => File.read("#{Rails.public_path}/COMMITHASH")
-      }
-    end
-  %>
+    <meta name="description" content="<%= yield(:description) %>">
 
-  <%= render :partial => "partials/analytics" %>
-</head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<body class="dashboard <%= body_class(yield(:body_class_names)) %>" data-route="<%= body_route %>">
+    <%= render :partial => "partials/head-meta", :locals => { :description => yield(:description) } %>
 
-  <a href="#skiptocontent" tabindex="1" class="skip">Skip to content</a>
+    <%= render :partial => "partials/no-js-snippet" %>
 
-  <div class="dashboard__top-bar">
-    <section>
-      <%= render :partial => "partials/phase-banner", :locals => { :message => "This is a beta. Help us make it better for you" } %>
-    </section>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"/>
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
+    
+    <% if !development_server? %>
+      <%= getPublicStylesheet('dashboard-mcss.css') %>
 
-    <header class="main__header" role="banner">
-      <%= render :partial => "partials/header", :locals => { :is_public_site => true } %>
-    </header>
-  </div>
+      <%= getPublicStylesheet('dashboard.css') %>
+    <% end %>
 
-  <main role="main" id="skiptocontent">
-    <%= yield %>
-  </main>
+    <%=
+      if File.exist?("#{Rails.public_path}/COMMITHASH")
+        render :partial => "partials/rollbar", :locals => {
+          :token => ENV['ROLLBAR_ACCESS_TOKEN_PUBLIC_CLIENT'],
+          :version => File.read("#{Rails.public_path}/COMMITHASH")
+        }
+      end
+    %>
 
-  <footer role="contentinfo">
-    <%= render :partial => "partials/footer", :locals => { :is_public_site => true } %>
-  </footer>
+    <%= render :partial => "partials/analytics" %>
+  </head>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
-  <% if development_server? %>
-      <script src="http://localhost:8080/javascripts/dashboard-index.js"></script>
-      <script src="http://localhost:8080/javascripts/dashboard.js"></script>
-  <% else %>
-    <%= getPublicJavascript('dashboard-index.js') %>
-    <%= getPublicJavascript('dashboard.js') %>
-  <% end %>
-</body>
+  <body class="dashboard <%= body_class(yield(:body_class_names)) %>" data-route="<%= body_route %>">
+
+    <a href="#skiptocontent" tabindex="1" class="skip">Skip to content</a>
+
+    <div class="dashboard__top-bar">
+      <section>
+        <%= render :partial => "partials/phase-banner", :locals => { :message => "This is a beta. Help us make it better for you" } %>
+      </section>
+
+      <header class="main__header" role="banner">
+        <%= render :partial => "partials/header", :locals => { :is_public_site => true } %>
+      </header>
+    </div>
+
+    <main role="main" id="skiptocontent">
+      <%= yield %>
+    </main>
+
+    <footer role="contentinfo">
+      <%= render :partial => "partials/footer", :locals => { :is_public_site => true } %>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.js"></script>
+    <% if development_server? %>
+        <script src="http://localhost:8080/javascripts/dashboard-index.js"></script>
+        <script src="http://localhost:8080/javascripts/dashboard.js"></script>
+    <% else %>
+      <%= getPublicJavascript('dashboard-index.js') %>
+      <%= getPublicJavascript('dashboard.js') %>
+    <% end %>
+  </body>
 </html>

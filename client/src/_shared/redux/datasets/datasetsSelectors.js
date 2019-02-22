@@ -12,6 +12,8 @@ export const selectDatasets = (state, {datasetIds}) => {
 export const selectDatasetsByWidget = (state, {widgetId}) => {
   const widget = selectWidget(state, {widgetId});
 
+  // console.log('Found widget', widget);
+
   return state.datasets.filter(d => {
     return widget.datasets.includes(d.id);
   });

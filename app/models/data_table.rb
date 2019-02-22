@@ -49,35 +49,16 @@ class DataTable < ApplicationRecord
   end
 
   # Extract the slices from the widget data
-  # Returns an array of slices
-  # Jon todo: Cater for custom slices
-  # We should have a different slices method for custom datasets
+  #   returns an array of slices
   def slices(widget, limit: 0)
-    # puts 'def slices'
-    # puts 'Widget'
-    # puts widget.id
-    # puts options['period']
-    # puts '---'
-
     arr = []
     period_start = series_end&.beginning_of_month
 
-    # puts '---------------------'
+    
+    if options['period'] == 'custom' 
+      # Return a slice for each data row
+      puts 'RUNNING SLICES METHOD IN DATA TABLE ++++++++++++++++++++++++++++++++++'
 
-    # puts 'Period start'
-    # puts period_start
-
-    # puts 'period_start << 1'
-    # puts period_start << 1
-
-    # puts 'series_start&.beginning_of_month'
-    # puts series_start&.beginning_of_month
-
-    # puts 'options period'
-    # puts options['period']
-
-    # Return a slice for each data row
-    if options['period'] == 'custom'
       data_rows.each do |row|
         period_end = calculate_period_end options['period'], period_start
         single_row = [row]
@@ -87,34 +68,16 @@ class DataTable < ApplicationRecord
     else
       if period_start
         while (0 == limit || arr.size < limit) && period_start >= series_start&.beginning_of_month
-          puts 'Widget'
-          puts widget.to_yaml
-
-          # puts 'rl'
-          # puts row_label
-
-          # if s = slice_data(widget, 'month', period_start)
-
           s = slice_data(widget, options['period'], period_start) # Returns a new slice
-
-          # puts 'considering slice---------------------'
-          # puts widget.id
-          # puts s.to_yaml
 
           if s
             arr << s
-          else
-            # puts 'NOT ADDING---------------'
-            # puts s.to_yaml
           end
 
           period_start = period_start << 1 # Move back one month
         end
       end
     end
-
-    puts arr.to_yaml
-    puts '-----------------------+++-----------------'
 
     arr.reverse
   end

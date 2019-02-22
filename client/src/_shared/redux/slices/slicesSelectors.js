@@ -154,7 +154,10 @@ export const compareSliceEquality = (sliceA, sliceB) => {
 
 /** @returns {Object.<Slice>} - a slice */
 export const selectWidgetSlice = (state, {widgetId, periodStart, periodEnd, period = 'month'}) => {
+  // If period start is supplied, return the slice with correct period_start and widget ID
   if (periodStart) {
+    console.log('selectWidgetSlice', 'Finding slice for widget', widgetId);
+
     return state.slices.find(slice => {
       return slice.widget_id == widgetId &&
         slice.period === period &&
@@ -162,30 +165,47 @@ export const selectWidgetSlice = (state, {widgetId, periodStart, periodEnd, peri
     }) || null;
   }
 
+  // console.log('selectWidgetSlice', 'period start was not specified');
+
   periodStart = getPeriodStart();
 
   // get all the slices with widgetId and same period
-  const widgetSlices = state.slices.filter(s => {
-    return s.period === 'custom' || (s.widget_id == widgetId && s.period == period);
-  });
+  const widgetSlices = state.slices.filter(s => 
+    s.widget_id == widgetId && 
+    (s.period === 'custom' || s.period == period)
+  );
 
-  // if there is not slice data for a widget, return
+  // console.log('selectWidgetSlice', 'Relevant slices are', widgetSlices);
+
   if (!widgetSlices.length) {
     return null;
   }
 
   // if I can match the requested periodStart exactly, return it
-  const periodSlice = widgetSlices.find(s => {
-    return compareDateEquality(s.period_start, periodStart);
-  });
+  if (widgetSlices[0].period !== 'custom') {
+    const periodSlice = widgetSlices.find(s => {
+      return compareDateEquality(s.period_start, periodStart);
+    });
 
-  if (periodSlice) {
-    return periodSlice;
+    if (periodSlice) {
+      return periodSlice;
+    }
+  }
+  else { // custom period
+    if(widgetSlices.length === 1) {
+      return widgetSlices[0];
+    }
+
+    const mostRecentSlice = widgetSlices.sort((a,b) => {  // sort by row last updated
+      return new Date(b.rows[0].updated_at).getTime() - new Date(a.rows[0].updated_at).getTime();
+    })[0];
+
+    return mostRecentSlice;
   }
 
   // else return the next most recent slice, instead of an empty period slice
   // order by newest then get the top one
-  const nextLatestSlice = widgetSlices.sort((a,b) => {  // sort by number
+  const nextLatestSlice = widgetSlices.sort((a,b) => { // sort by period
     return new Date(b.period_start).getTime() - new Date(a.period_start).getTime();
   })[0];
 
@@ -240,16 +260,10 @@ export const filterSlicesByBtl = (slices) => {
   });
 };
 
-
-
-// NORMALIZED AND DENORMALIZED SLICE OPERATIONS
-
-// Jon todo: In redux state, the slices do not contain the correct data
-//   Custom slices are uniquely identified by start date, and they all have the same start date
-//   so we only have one not all. Look at the reducer.
-
-/** fulfill a slice to contain denormalized values */
+// When period start is not supplied, it supplies most recent slice
 export const getDenormalizedSlice = (state, {widgetId, dashboardId, periodStart}) => {
+  console.log('get denormalized SLICE', 'Do I get called?');
+
   if (__DEV__) {
     if (!widgetId || !dashboardId) {
       throw new Error('must provide widgetId and dashboardId');
@@ -309,7 +323,6 @@ export const getEmptyDenormalizedSlice = (state, {widgetId, dashboardId, datagro
 };
 
 /*
-
   // get 1 most recent denormalized slices per widget
   const denormalizedSlices = dashboardWidgets.filter(widget => {
     return widget.type !== 'fact';
@@ -319,18 +332,21 @@ export const getEmptyDenormalizedSlice = (state, {widgetId, dashboardId, datagro
       { widgetId: widget.id, dashboardId: dashboard.id },
     )
   );
-
 */
 
 // todo: consider removing this
 // gets all slices given state by a widget
 export const getDenormalizedSlices = (state, {widget, dashboard}) => {
+  console.log('get denormalized sliceS', 'Do I get called?');
+
   const widgetSlices = state.slices.filter(slice => {
     return slice.widget_id === widget.id;
   });
 
+  // console.log('List of slices', widget, widgetSlices); // There are too many slices, where are they coming from?
+
   return widgetSlices.map(slice => {
-    console.log('Considering slice', slice);
+    // console.log('sliceSelectors', 'Considering slice', slice);
 
     return {
       dashboard: dashboard,
@@ -338,7 +354,7 @@ export const getDenormalizedSlices = (state, {widget, dashboard}) => {
       period: slice.period,
       period_start: slice.period_start,
       period_end: slice.period_end,
-      // row_label: '',
+      row_label: slice.period === 'custom' ? slice.row_label : '',
       groups: slice.groups.map(g => {
         return {
           dataset: state.datasets.find(d => {

@@ -35,7 +35,7 @@ export const formatValue = (value, units) => {
 };
 
 const Preview = ({slice, getColorByRowFn}) => {
-  console.log('datagroupPreview: slice', slice);
+  // console.log('datagroupPreview: slice', slice);
   // console.log(slice.groups);
 
   return (

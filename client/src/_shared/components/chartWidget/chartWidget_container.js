@@ -28,15 +28,15 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   if (!(slices && slices.length)) {
+    console.log('Figuring out slices');
+
     slices = getDenormalizedSlices(state, {
       widget,
       dashboard
     });
-
-    console.log('finding slices');
   }
 
-  console.log('Slices are', slices);
+  console.log('chartWidget container', 'About to transform slices for HC', slices);
 
   const transformedProps = transformForHighcharts(slices, isKpi(widgetType));
 
