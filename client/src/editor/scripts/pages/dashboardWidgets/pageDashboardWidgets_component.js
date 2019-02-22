@@ -31,7 +31,7 @@ class PageDashboardWidgets extends Component {
 
   static get contextTypes() {
     return {
-      router: React.PropTypes.object.isRequired,
+      router: PropTypes.object.isRequired,
     };
   }
 
@@ -119,13 +119,14 @@ class PageDashboardWidgets extends Component {
     const { dashboard } = this.props;
 
     this.props.initialiseKpis(dashboard.id, formData).then((dashboard) => {
-      console.log(`Default KPIs added to dashboard (${dashboard.id})`);
+      // console.log(`Default KPIs added to dashboard (${dashboard.id})`);
       window.location = getServiceDashboardUrl(dashboard.id, dashboard.name);
     });
   }
 
   render() {
     const pageKey = 'dashboardwidgets';
+
     let {
       ui,
       dashboard,
@@ -239,10 +240,13 @@ class PageDashboardWidgets extends Component {
               </div>}
 
               {btlSlices.map((slice, idx) => {
+                // console.log('pageDashboardWidgets_component: slice', slice);
+
                 // check that we recognise the widget item, before continuing
                 if (slice === null || sanitizeBtlWidgetByType(slice.widget.type) === null) {
                   return null;
                 }
+
                 return (
                   <div key={idx} ref={String(slice.widget.id)}>
                     <WidgetTypeSlice

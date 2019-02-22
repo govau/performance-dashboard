@@ -1,4 +1,3 @@
-
 /**
  * @param state
  * @param action.type

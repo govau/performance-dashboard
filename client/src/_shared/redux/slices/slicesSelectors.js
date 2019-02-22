@@ -1,4 +1,3 @@
-
 var subMonths = require('date-fns/sub_months');
 var addMonths = require('date-fns/add_months');
 var startOfMonth = require('date-fns/start_of_month');
@@ -9,7 +8,6 @@ var lastDayOfMonth = require('date-fns/last_day_of_month');
 import {selectDashboard} from './../dashboards/dashboardsSelectors';
 import {selectWidget} from './../widgets/widgetsSelectors';
 import {selectDatasetsByWidget} from './../datasets/datasetsSelectors';
-
 
 export const formatDateWithoutTimezoneData = date => {
   return format(new Date(date), 'YYYY-MM-DD');
@@ -89,7 +87,6 @@ export const isPeriodInTheFuture = (nextPeriodDate, period = 'month') => {
 };
 
 
-
 // Helpers
 
 export const isEmptySlice = slice => {
@@ -157,37 +154,58 @@ export const compareSliceEquality = (sliceA, sliceB) => {
 
 /** @returns {Object.<Slice>} - a slice */
 export const selectWidgetSlice = (state, {widgetId, periodStart, periodEnd, period = 'month'}) => {
+  // If period start is supplied, return the slice with correct period_start and widget ID
   if (periodStart) {
+    console.log('selectWidgetSlice', 'Finding slice for widget', widgetId);
+
     return state.slices.find(slice => {
-        return slice.widget_id == widgetId &&
-          slice.period === period &&
-          compareDateEquality(slice.period_start, periodStart);
-      }) || null;
+      return slice.widget_id == widgetId &&
+        slice.period === period &&
+        compareDateEquality(slice.period_start, periodStart);
+    }) || null;
   }
+
+  // console.log('selectWidgetSlice', 'period start was not specified');
 
   periodStart = getPeriodStart();
 
   // get all the slices with widgetId and same period
-  const widgetSlices = state.slices.filter(s => {
-    return s.widget_id == widgetId && s.period == period;   // ==
-  });
+  const widgetSlices = state.slices.filter(s => 
+    s.widget_id == widgetId && 
+    (s.period === 'custom' || s.period == period)
+  );
 
-  // if there is not slice data for a widget, return
+  // console.log('selectWidgetSlice', 'Relevant slices are', widgetSlices);
+
   if (!widgetSlices.length) {
     return null;
   }
 
   // if I can match the requested periodStart exactly, return it
-  const periodSlice = widgetSlices.find(s => {
-    return compareDateEquality(s.period_start, periodStart);
-  });
-  if (periodSlice) {
-    return periodSlice;
+  if (widgetSlices[0].period !== 'custom') {
+    const periodSlice = widgetSlices.find(s => {
+      return compareDateEquality(s.period_start, periodStart);
+    });
+
+    if (periodSlice) {
+      return periodSlice;
+    }
+  }
+  else { // custom period
+    if(widgetSlices.length === 1) {
+      return widgetSlices[0];
+    }
+
+    const mostRecentSlice = widgetSlices.sort((a,b) => {  // sort by row last updated
+      return new Date(b.rows[0].updated_at).getTime() - new Date(a.rows[0].updated_at).getTime();
+    })[0];
+
+    return mostRecentSlice;
   }
 
   // else return the next most recent slice, instead of an empty period slice
   // order by newest then get the top one
-  const nextLatestSlice = widgetSlices.sort((a,b) => {  // sort by number
+  const nextLatestSlice = widgetSlices.sort((a,b) => { // sort by period
     return new Date(b.period_start).getTime() - new Date(a.period_start).getTime();
   })[0];
 
@@ -195,7 +213,7 @@ export const selectWidgetSlice = (state, {widgetId, periodStart, periodEnd, peri
     return nextLatestSlice
   }
 
-  return null
+  return null;
 };
 
 /** @returns {Object.<Slice>} - a slice without data */
@@ -242,21 +260,24 @@ export const filterSlicesByBtl = (slices) => {
   });
 };
 
-
-
-// NORMALIZED AND DENORMALIZED SLICE OPERATIONS
-
-/** fulfill a slice to contain denormalized values */
+// When period start is not supplied, it supplies most recent slice
 export const getDenormalizedSlice = (state, {widgetId, dashboardId, periodStart}) => {
+  console.log('get denormalized SLICE', 'Do I get called?');
+
   if (__DEV__) {
     if (!widgetId || !dashboardId) {
       throw new Error('must provide widgetId and dashboardId');
     }
   }
+
   const sliceState = selectWidgetSlice(state, {widgetId, periodStart});
+
+  // console.log('slice state', sliceState);
+
   if (!sliceState) {
     return null;
   }
+
   const dashboardState = selectDashboard(state, {dashboardId});
   const widgetState = selectWidget(state, {widgetId});
   const widgetDatasetsState = selectDatasetsByWidget(state, {widgetId});
@@ -267,10 +288,11 @@ export const getDenormalizedSlice = (state, {widgetId, dashboardId, periodStart}
     period: sliceState.period,
     period_start: sliceState.period_start,
     period_end: sliceState.period_end,
-    groups: sliceState.groups.map(g => {
+    row_label: sliceState.row_label,
+    groups: sliceState.groups.map(g => { // An array of [ dataset, value ]
       return {
         dataset: widgetDatasetsState.find(d => {
-          return g.dataset_id == d.id;  // ==
+          return g.dataset_id == d.id;
         }),
         value: g.value
       }
@@ -284,6 +306,7 @@ export const getEmptyDenormalizedSlice = (state, {widgetId, dashboardId, datagro
   const dashboardState = selectDashboard(state, {dashboardId});
   const widgetState = selectWidget(state, {widgetId});
   const widgetDatasetsState = selectDatasetsByWidget(state, {widgetId});
+
   return {
     dashboard: dashboardState,
     widget: widgetState,
@@ -299,20 +322,39 @@ export const getEmptyDenormalizedSlice = (state, {widgetId, dashboardId, datagro
   };
 };
 
+/*
+  // get 1 most recent denormalized slices per widget
+  const denormalizedSlices = dashboardWidgets.filter(widget => {
+    return widget.type !== 'fact';
+  }).map(widget =>
+    getDenormalizedSlice(
+      state,
+      { widgetId: widget.id, dashboardId: dashboard.id },
+    )
+  );
+*/
 
 // todo: consider removing this
 // gets all slices given state by a widget
 export const getDenormalizedSlices = (state, {widget, dashboard}) => {
+  console.log('get denormalized sliceS', 'Do I get called?');
+
   const widgetSlices = state.slices.filter(slice => {
     return slice.widget_id === widget.id;
   });
+
+  // console.log('List of slices', widget, widgetSlices); // There are too many slices, where are they coming from?
+
   return widgetSlices.map(slice => {
+    // console.log('sliceSelectors', 'Considering slice', slice);
+
     return {
       dashboard: dashboard,
       widget: widget,
       period: slice.period,
       period_start: slice.period_start,
       period_end: slice.period_end,
+      row_label: slice.period === 'custom' ? slice.row_label : '',
       groups: slice.groups.map(g => {
         return {
           dataset: state.datasets.find(d => {

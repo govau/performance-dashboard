@@ -5,6 +5,7 @@ class EditorController < ApplicationController
 
   def index
     @organisations = Organisation.all
+
     @slices = current_user.widgets.select {|widget|
       widget.has_data?
     }.collect {|widget|

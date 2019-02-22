@@ -20,9 +20,12 @@ const mapStateToProps = (state, ownProps) => {
   // get 1 most recent denormalized slices per widget
   const denormalizedSlices = dashboardWidgets.filter(widget => {
     return widget.type !== 'fact';
-  }).map(widget => {
-    return getDenormalizedSlice(state, {widgetId: widget.id, dashboardId: dashboard.id});
-  });
+  }).map(widget =>
+    getDenormalizedSlice(
+      state,
+      { widgetId: widget.id, dashboardId: dashboard.id },
+    )
+  );
 
   const heroLatestSlice = filterSlicesByHero(denormalizedSlices)[0];
   const btlLatestSlices = filterSlicesByBtl(denormalizedSlices);

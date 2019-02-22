@@ -14,8 +14,10 @@ const HeaderComponent = ({title, dateSeriesEnd, datePublished, description}) => 
   <div>
     <div className="page__title">
       <h1 className="h3">{title}</h1>
+      
       <TrafficLight dateSeriesEnd={dateSeriesEnd} datePublished={datePublished} />
     </div>
+    
     {description && <p className="title-description">{description}</p>}
   </div>
 );

@@ -1,37 +1,36 @@
-
 import findIndex from 'lodash/findIndex';
 import uniq from 'lodash/uniq';
 import get from 'lodash/get';
 import merge from 'lodash/merge';
-
 import {getUnitsType} from './../utils/proposedApiChanges';
 import {dateFormats} from 'shared/utils/formatDates';
-
 import {makeGetBtlColorset, makeGetKpiColorset} from './getColors';
 import {getWidgetType, getWidgetCoordinatesType} from 'shared/utils/proposedApiChanges';
 
-
-
-
 /**
- *
  * todo - rename "section"
- *
  *
  * The Category appears in the legend, it represents a data series
  * The Section is the sequence of data within the data series
  *
  * series name are comparable groups - desktop/mobile
  * categories are slice names - dates
- *
- *
  */
 
+const getCategories = (slices) => {
+  let categories;
 
+  if (slices[0].period === 'custom') {
+    categories = slices.map(s => s.row_label);  
+  }
+  else {
+    categories = slices.map(s => dateFormats.monthYear(s.period_start));  
+  }
 
+  return categories;
+}
 
 const transformForHighcharts = (slices, isKpi = false) => {
-
   if (typeof slices === 'undefined' || slices.length === 0) {
     throw new Error('Must provide slices to transformForHighcharts.');
   }
@@ -74,9 +73,7 @@ const transformForHighcharts = (slices, isKpi = false) => {
   return mergedConfig;
 };
 
-
 const transformDataForPolar = (config, slices) => {
-
   const recentSlices = [slices[slices.length - 1]];
 
   //
@@ -99,6 +96,7 @@ const transformDataForPolar = (config, slices) => {
 };
 
 const transformDataForCartesian = (config, slices) => {
+  console.log('Transforming for cartesian ++++++++++++++++++++++', slices);
 
   // single category  - slices.length === 1
   // single section   - slices[0].groups.length === 1
@@ -257,7 +255,7 @@ const cartesianSingleCategorySingleSection = (config, slices) => {
 
   const c = {
     xAxis: {
-      categories: [dateFormats.monthYear(slices[0].period_start)],
+      categories: getCategories(slices),
     },
     series: [
       {
@@ -388,7 +386,6 @@ const cartesianSingleCategoryMultipleSections = (config, slices) => {
  * @returns {{yAxis: Array, xAxis: *[], series: Array}}
  */
 const cartesianMultipleCategorySingleSeries = (config, slices) => {
-
   const position = slices[0].widget.pos;
   const getColor = config._isKpi === true ? makeGetKpiColorset() : makeGetBtlColorset(position);
 
@@ -427,7 +424,7 @@ const cartesianMultipleCategorySingleSeries = (config, slices) => {
 
 
   // todo - date formatting should happen in datavizkit not here
-  var configXaxisCategories = slices.map(s => dateFormats.monthYear(s.period_start));
+  const configXaxisCategories = getCategories(slices);
 
   const yAxesTitles = uniq(singleSection.map(g => g.units))
     .map(u => {
@@ -596,7 +593,7 @@ const cartesianMultipleCategoryMultipleSeries = (config, slices) => {
       return a < b ? a : b;
     }, []);
 
-  const configXaxisCategories = slices.map(s => dateFormats.monthYear(s.period_start));
+  const configXaxisCategories = getCategories(slices);
 
   const configYaxis = yAxesTitles.map(title => {
     const c = {

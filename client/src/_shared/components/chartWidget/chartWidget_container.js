@@ -1,10 +1,7 @@
-
 import React from 'react';
 import {connect} from 'react-redux';
-
 import ChartWidget from './chartWidget_component';
 import {getDenormalizedSlices} from 'shared/redux/slices/slicesSelectors';
-// import {makeFact} from 'shared/redux/facts/factSelectors';
 import {
   getWidgetType,
   getWidgetOptions,
@@ -12,9 +9,7 @@ import {
 } from 'shared/utils/proposedApiChanges';
 import transformForHighcharts from 'shared/utils/transformForHighcharts';
 
-
 const mapStateToProps = (state, ownProps) => {
-
   let {widget, dashboard, slices} = ownProps;
   const {ui: {isHighContrastMode, viewport}} = state;
 
@@ -33,11 +28,15 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   if (!(slices && slices.length)) {
+    console.log('Figuring out slices');
+
     slices = getDenormalizedSlices(state, {
       widget,
       dashboard
     });
   }
+
+  console.log('chartWidget container', 'About to transform slices for HC', slices);
 
   const transformedProps = transformForHighcharts(slices, isKpi(widgetType));
 
@@ -47,9 +46,7 @@ const mapStateToProps = (state, ownProps) => {
     dashboard: null,
     slices: null,
     // end override ownProps
-
     ...transformedProps,
-
     viewport: viewport || 'sm',
     displayHighContrast: isHighContrastMode,
   };
