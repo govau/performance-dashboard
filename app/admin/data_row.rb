@@ -1,6 +1,6 @@
 ActiveAdmin.register DataRow do
   decorate_with DataRowDecorator
-  permit_params :row_date, :values, :data_table_id
+  permit_params :row_label, :row_date, :values, :data_table_id
   after_create :save_values
 
   filter :data_table_id, as: :select
@@ -10,6 +10,7 @@ ActiveAdmin.register DataRow do
     attributes_table do
       row :id
       row :dashboard
+      row :row_label
       row :data_table_id do |data_row|
         data_row.data_table_id
       end
@@ -44,6 +45,7 @@ ActiveAdmin.register DataRow do
     selectable_column
     column :id
     column :dashboard 
+    column :row_label
     column 'Widget(s)' do |data_row| 
       ul do 
         data_row.relevant_widgets.each do |w|
@@ -73,6 +75,7 @@ ActiveAdmin.register DataRow do
 
   form do |f|
     f.inputs 'Data row' do
+      f.input :row_label, as: :string
       f.input :data_table_id
       f.input :row_date
       f.input :values, input_html: { value: resource.values.to_json }
