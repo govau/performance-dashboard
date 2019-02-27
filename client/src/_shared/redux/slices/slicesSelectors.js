@@ -156,16 +156,12 @@ export const compareSliceEquality = (sliceA, sliceB) => {
 export const selectWidgetSlice = (state, {widgetId, periodStart, periodEnd, period = 'month'}) => {
   // If period start is supplied, return the slice with correct period_start and widget ID
   if (periodStart) {
-    console.log('selectWidgetSlice', 'Finding slice for widget', widgetId);
-
     return state.slices.find(slice => {
       return slice.widget_id == widgetId &&
         slice.period === period &&
         compareDateEquality(slice.period_start, periodStart);
     }) || null;
   }
-
-  // console.log('selectWidgetSlice', 'period start was not specified');
 
   periodStart = getPeriodStart();
 
@@ -174,8 +170,6 @@ export const selectWidgetSlice = (state, {widgetId, periodStart, periodEnd, peri
     s.widget_id == widgetId && 
     (s.period === 'custom' || s.period == period)
   );
-
-  // console.log('selectWidgetSlice', 'Relevant slices are', widgetSlices);
 
   if (!widgetSlices.length) {
     return null;
@@ -262,8 +256,6 @@ export const filterSlicesByBtl = (slices) => {
 
 // When period start is not supplied, it supplies most recent slice
 export const getDenormalizedSlice = (state, {widgetId, dashboardId, periodStart}) => {
-  console.log('get denormalized SLICE', 'Do I get called?');
-
   if (__DEV__) {
     if (!widgetId || !dashboardId) {
       throw new Error('must provide widgetId and dashboardId');
@@ -271,8 +263,6 @@ export const getDenormalizedSlice = (state, {widgetId, dashboardId, periodStart}
   }
 
   const sliceState = selectWidgetSlice(state, {widgetId, periodStart});
-
-  // console.log('slice state', sliceState);
 
   if (!sliceState) {
     return null;
@@ -337,17 +327,11 @@ export const getEmptyDenormalizedSlice = (state, {widgetId, dashboardId, datagro
 // todo: consider removing this
 // gets all slices given state by a widget
 export const getDenormalizedSlices = (state, {widget, dashboard}) => {
-  console.log('get denormalized sliceS', 'Do I get called?');
-
   const widgetSlices = state.slices.filter(slice => {
     return slice.widget_id === widget.id;
   });
 
-  // console.log('List of slices', widget, widgetSlices); // There are too many slices, where are they coming from?
-
   return widgetSlices.map(slice => {
-    // console.log('sliceSelectors', 'Considering slice', slice);
-
     return {
       dashboard: dashboard,
       widget: widget,

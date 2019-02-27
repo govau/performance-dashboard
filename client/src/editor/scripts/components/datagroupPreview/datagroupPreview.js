@@ -35,9 +35,6 @@ export const formatValue = (value, units) => {
 };
 
 const Preview = ({slice, getColorByRowFn}) => {
-  // console.log('datagroupPreview: slice', slice);
-  // console.log(slice.groups);
-
   return (
     <div className="preview">
       <p className="most-recent-text strong">

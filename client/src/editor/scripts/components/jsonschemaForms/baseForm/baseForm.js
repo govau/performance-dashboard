@@ -20,8 +20,6 @@ class BaseForm extends PureComponent {
   constructor(props) {
     super(props);
 
-    // console.log('BaseForm constructor');
-
     if (this.onChange) {
       this.onChange = this.onChange.bind(this);
     }
@@ -46,7 +44,6 @@ class BaseForm extends PureComponent {
   }
 
   onChange(formState) {
-    // console.log('called onChange', formState);
     this.props.onChange && this.props.onChange(formState);
   }
 
@@ -57,7 +54,6 @@ class BaseForm extends PureComponent {
 
   /** *Submitted* form data is invalid */
   onError(errors) {
-    console.log('called onError', errors);
     this.props.onError && this.props.onError(errors);
   }
 
@@ -74,12 +70,10 @@ class BaseForm extends PureComponent {
   }
 
   onSubmitSuccess() {
-    // console.log('called onSubmitSuccess');
     this.setState({pending: false});
   }
 
   onSubmitError(errors) {
-    // console.log('called onSubmitError');
     if (isArray(errors) === false) {
       errors = [errors];
     }
@@ -90,7 +84,6 @@ class BaseForm extends PureComponent {
   }
 
   validate(formData, errors) {
-    // console.log('called validate', formData, errors);
     return errors;  // must return errors
   }
 

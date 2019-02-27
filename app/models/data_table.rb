@@ -108,11 +108,6 @@ class DataTable < ApplicationRecord
 
     groups = generate_groups(rows)
 
-    # if rows[0] && rows[0].row_label
-    #   puts rows[0].row_label
-    #   puts 'FOUND ------------------------------'
-    # end
-
     row_label = ''
 
     if groups.any?
@@ -129,18 +124,9 @@ class DataTable < ApplicationRecord
       end
     end
 
-    # puts values_by_set.first.to_yaml
-    # puts '---'
-
     groups = values_by_set.collect {|dataset_id, values|
       [dataset_id, aggregate_slice_values(values)]
     }.to_h
-
-    # puts groups.first.class
-    # puts groups.first.size
-    # puts groups.first
-    # puts '+++'
-    # puts ''
 
     groups
   end

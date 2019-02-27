@@ -36,7 +36,6 @@ class FactForm extends BaseForm {
   }
 
   onCancel() {  // todo - refactor
-    // console.log('called onCancel');
     this.props.handleCancel(this.props.formModel.widget.id);
     return; // must return so the form doesn't try to submit - library bug
   }

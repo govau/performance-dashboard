@@ -119,7 +119,6 @@ class PageDashboardWidgets extends Component {
     const { dashboard } = this.props;
 
     this.props.initialiseKpis(dashboard.id, formData).then((dashboard) => {
-      // console.log(`Default KPIs added to dashboard (${dashboard.id})`);
       window.location = getServiceDashboardUrl(dashboard.id, dashboard.name);
     });
   }
@@ -240,8 +239,6 @@ class PageDashboardWidgets extends Component {
               </div>}
 
               {btlSlices.map((slice, idx) => {
-                // console.log('pageDashboardWidgets_component: slice', slice);
-
                 // check that we recognise the widget item, before continuing
                 if (slice === null || sanitizeBtlWidgetByType(slice.widget.type) === null) {
                   return null;

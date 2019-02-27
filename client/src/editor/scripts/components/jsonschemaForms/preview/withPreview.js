@@ -15,8 +15,6 @@ const withPreview = ComposedForm => {
     constructor(props) {
       super(props);
 
-      // console.log('withPreview constructor')
-
       this.onChange = this.onChange.bind(this);
       this.triggerUpdate = this.triggerUpdate.bind(this);
 
@@ -40,7 +38,6 @@ const withPreview = ComposedForm => {
     }
 
     onChange(formState) {
-      // console.log('called onChange withPreview', formState);
       // set it on instance, not on state so it trigger rerender
       this.liveFormData = formState.formData;
       // if this clobbered an onChange, run that too now

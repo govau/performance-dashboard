@@ -8,14 +8,7 @@ import initialState from './redux/initialState';
 import Root from './pages/root';
 
 const bootState = merge(initialState, window.__EDITOR_STATE__);
-// if (__DEV__ === 'production') {
-//   delete window.__EDITOR_STATE__;
-// }
-
-// console.log('Bootstate', bootState);
-
 const store = configureStore(bootState, hashHistory);
-
 const history = syncHistoryWithStore(hashHistory, store);
 
 render(

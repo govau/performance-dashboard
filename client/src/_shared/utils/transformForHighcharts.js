@@ -96,8 +96,6 @@ const transformDataForPolar = (config, slices) => {
 };
 
 const transformDataForCartesian = (config, slices) => {
-  console.log('Transforming for cartesian ++++++++++++++++++++++', slices);
-
   // single category  - slices.length === 1
   // single section   - slices[0].groups.length === 1
 
@@ -216,7 +214,6 @@ const polarSingleCategoryMultipleSections = (config, slices) => {
     }),
   };
 
-  // console.log(config._type, 'polarSingleCategoryMultipleSections', JSON.stringify(c))
   return c;
 };
 
@@ -268,7 +265,6 @@ const cartesianSingleCategorySingleSection = (config, slices) => {
     ]
   };
 
-  console.log('transformSingleCategorySingleSection', c);
   return c;
 };
 
@@ -305,9 +301,6 @@ const cartesianSingleCategorySingleSection = (config, slices) => {
  */
 
 const cartesianSingleCategoryMultipleSections = (config, slices) => {
-
-  // todo
-  // throw new Error('SLICE TYPE NOT YET SUPPORTED.');
   console.warn('EXPERIMENTAL - SLICE TYPE NOT YET SUPPORTED.');
 
   const slice = slices[0];
@@ -316,7 +309,7 @@ const cartesianSingleCategoryMultipleSections = (config, slices) => {
 
   const c = {
     xAxis: [{
-      categories: [dateFormats.monthYear(slice.period_start)],
+      categories: getCategories(slices),
     }],
     series: slice.groups.map((g, idx) => {
       return {
@@ -328,7 +321,7 @@ const cartesianSingleCategoryMultipleSections = (config, slices) => {
       }
     }),
   };
-  // console.log('cartesianSingleCategoryMultipleSections', c);
+  
   return c;
 };
 
@@ -464,7 +457,6 @@ const cartesianMultipleCategorySingleSeries = (config, slices) => {
     series: configSeries
   };
 
-  // console.log(config._type, 'cartesianMultipleCategorySingleSeries', JSON.stringify(c))
   return c;
 };
 
@@ -640,9 +632,7 @@ const cartesianMultipleCategoryMultipleSeries = (config, slices) => {
     series: configSeries
   };
 
-  // console.log(config._type, 'cartesianMultipleCategoryMultipleSeries', JSON.stringify(c));
   return c;
 };
-
 
 export default transformForHighcharts;

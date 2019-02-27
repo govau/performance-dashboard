@@ -17,11 +17,8 @@ class DashboardsController < ApplicationController
       widget.has_data?
     }.collect {|widget|
       # widget.data_table.decorate.slices(widget, limit: 13)
-      widget.data_table.slices(widget, limit: 13)
+      widget.data_table.slices(widget, limit: 13) # Jon todo: decorator necessary?
     }.flatten
-
-    # puts 'providing slices'
-    # puts @slices.to_yaml
 
     return @slices
   end
