@@ -1,13 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router';
-import {CAN_UPDATE_SLICE, CAN_UPDATE_WIDGET_DESCRIPTIONS} from './../../config';
+import {CAN_UPDATE_SLICE} from './../../config';
 import Preview from './../datagroupPreview';
 import TrafficLight from './../widgetTrafficLight';
 import UikitAlert from 'shared/components/uikit-alert';
 import {isLatestSlice} from 'shared/redux/slices/slicesSelectors';
 import {
-  getDashboardWidgetDescriptionsUrl,
   getDashboardWidgetSliceUrl,
   getServiceDashboardUrlAnchor
 } from './../../utils/formatUrl';
@@ -25,7 +24,6 @@ const WidgetTypeSlice = (props) => {
   const serviceDashboardUrlAnchor = getServiceDashboardUrlAnchor(slice.dashboard.id, slice.dashboard.name, slice.widget.name);
   const editUrl = getDashboardWidgetSliceUrl(slice.dashboard.id, slice.widget.id, slice.period_start);
   const addUrl = getDashboardWidgetSliceUrl(slice.dashboard.id, slice.widget.id, getNextPeriod(slice.period_start));
-  const editDescriptionsUrl = getDashboardWidgetDescriptionsUrl(slice.dashboard.id, slice.widget.id);
   const title = slice.widget.name === 'Kpis' ? 'Key performance indicators' : slice.widget.name;
   const widgetType = getWidgetType(slice.widget);
   const deriveColor = makeDeriveColor(slice.widget.pos, isKpi(widgetType));

@@ -192,24 +192,6 @@ set a debugger in test
 NODE_ENV=test node --debug-brk --inspect ./node_modules/.bin/jest -i --runInBand --verbose --env=jsdom --watch
 ```
 
-
-#### Run Style Guide?
-
-```
-yarn run storybook
-```
-
-#### Deploy Style Guide?
-
-```
-yarn run deploy-storybook
-```
-
-#### View Style Guide?
-
-http://performance-dashboard-ui.surge.sh/
-
-
 #### Issues with npm
 
 ```

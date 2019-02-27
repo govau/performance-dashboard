@@ -6,5 +6,4 @@ client/src/login/*
 client/src/app_shell/*
 client/src/_common/*
 client/src/_shared/*
-client/src/_storybook/*
 **/*.test.js
