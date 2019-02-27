@@ -230,5 +230,8 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "resolutions": {
+    "minimatch": "^3.0.2"
   }
 }
