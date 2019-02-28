@@ -1,3 +1,5 @@
+/*
+
 import addHasNegativeValueSpec from './../src/_dashboard-legacy/d3-charts-dto/spec/javascripts/Helpers/hasNegativeValueSpec.js';
 import addCropDataSpec from './helpers/cropDataSpec.js';
 import addNormalizeSpec from './helpers/normalizeSpec.js';
@@ -60,3 +62,4 @@ describe('Chart DOM test suite', () => {
   addHeroWidgetSpec();
 
 });
+*/
