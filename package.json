@@ -86,7 +86,7 @@
     "karma-chrome-launcher": "^2.0.0",
     "karma-jasmine": "^1.0.2",
     "karma-phantomjs-launcher": "^1.0.1",
-    "lodash": "^4.11.0",
+    "lodash": "^4.17.11",
     "moment": "^2.15.1",
     "moment-range": "^2.2.0",
     "nock": "^8.1.0",
