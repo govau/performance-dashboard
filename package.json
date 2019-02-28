@@ -81,7 +81,7 @@
     "jsdom": "^9.6.0",
     "json-loader": "^0.5.4",
     "jump.js": "^1.0.2",
-    "karma": "^1.2.0",
+    "karma": "^2.0.5",
     "karma-browserify": "^5.1.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-jasmine": "^1.0.2",
