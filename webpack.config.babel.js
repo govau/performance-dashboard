@@ -66,10 +66,10 @@ let webpackConfig = {
     ['login']: [`./login`],
   },
   output: {
-    filename: 'javascripts/[name].js',
-    chunkFilename: 'javascripts/[name].js',
+    filename: 'javascripts/[name].min.js',
+    // chunkFilename: 'javascripts/[name].js',
     path: CONFIG.DIR_DIST, // absolute - determines output dir
-    sourceMapFilename: 'javascripts/[name].js.map'
+    sourceMapFilename: 'javascripts/[name].min.js.map'
   },
   module: {
     rules: [
@@ -168,12 +168,13 @@ let webpackConfig = {
   },
   plugins: [
     new UglifyJsPlugin({
-      sourceMap: true
+      sourceMap: true,
+      comments: false
     }),
-    new webpack.SourceMapDevToolPlugin({
-      filename: '[file].map',
-      publicPath: `${assetsBaseUrl}/`,
-    }),
+    // new webpack.SourceMapDevToolPlugin({
+    //   filename: '[file].map',
+    //   publicPath: `${assetsBaseUrl}/`,
+    // }),
     // new RollbarSourceMapPlugin({
     //   accessToken: process.env.ROLLBAR_ACCESS_TOKEN_SERVER,
     //   version: revision,
