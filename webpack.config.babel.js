@@ -167,7 +167,9 @@ let webpackConfig = {
     ]
   },
   plugins: [
-    new UglifyJsPlugin(),
+    new UglifyJsPlugin({
+      sourceMap: true
+    }),
     new webpack.SourceMapDevToolPlugin({
       filename: '[file].map',
       publicPath: `${assetsBaseUrl}/`,
