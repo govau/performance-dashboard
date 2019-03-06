@@ -64,10 +64,10 @@ let webpackConfig = {
     ['login']: [`./login`],
   },
   output: {
-    filename: 'javascripts/[name].min.js',
+    filename: 'javascripts/[name].js',
     // chunkFilename: 'javascripts/[name].js',
     path: CONFIG.DIR_DIST, // absolute - determines output dir
-    sourceMapFilename: 'javascripts/[name].min.js.map'
+    sourceMapFilename: 'javascripts/[name].js.map'
   },
   module: {
     rules: [
@@ -166,7 +166,8 @@ let webpackConfig = {
   },
   plugins: [
     new UglifyJsPlugin({
-      sourceMap: true
+      sourceMap: true,
+      comments: false
     }),
     // new webpack.SourceMapDevToolPlugin({
     //   filename: '[file].map',
