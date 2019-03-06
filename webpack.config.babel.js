@@ -4,6 +4,8 @@
   that have already been set.
 
   https://github.com/motdotla/dotenv
+
+  https://blog.sentry.io/2018/10/18/4-reasons-why-your-source-maps-are-broken
 */
 
 require('dotenv').config({ silent: true });
@@ -14,6 +16,7 @@ import BellOnBundlerErrorPlugin from 'bell-on-bundler-error-plugin';
 // import autoprefixer from 'autoprefixer';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import * as CONFIG from './client/config/_config';
+import path from 'path';
 
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const GitRevisionPlugin = require('git-revision-webpack-plugin')
@@ -39,16 +42,12 @@ console.log(`ASSETS BASE URL: ${assetsBaseUrl}`);
 
 let ExtractMcss = new ExtractTextPlugin({
   filename: 'stylesheets/[name]-mcss.css',
-  // publicPath: CONFIG.DIR_DIST,
-  publicPath: assetsBaseUrl,
-  allChunks: false
+  publicPath: assetsBaseUrl
 });
 
 let ExtractSass = new ExtractTextPlugin({
   filename: 'stylesheets/[name].css',
-  // publicPath: CONFIG.DIR_DIST,
-  publicPath: assetsBaseUrl,
-  allChunks: false
+  publicPath: assetsBaseUrl
 });
 
 let webpackConfig = {
@@ -68,10 +67,10 @@ let webpackConfig = {
     publicPath: assetsBaseUrl,
     filename: 'javascripts/[name].js',
     // chunkFilename: 'javascripts/[name].js',
-    path: CONFIG.DIR_DIST, // absolute - determines output dir
-    // sourceMapFilename: 'javascripts/[name].js.map',
-    devtoolModuleFilenameTemplate: "file://[absolute-resource-path]",
-    devtoolFallbackModuleFilenameTemplate: "file://[absolute-resource-path]?[hash]"    
+    path: path.join(__dirname, 'public'),
+    sourceMapFilename: 'javascripts/[name].js.map'
+    // devtoolModuleFilenameTemplate: "file://[absolute-resource-path]",
+    // devtoolFallbackModuleFilenameTemplate: "file://[absolute-resource-path]?[hash]"    
     // publicPath: assetsBaseUrl
   },
   module: {
@@ -104,7 +103,6 @@ let webpackConfig = {
                 sourceMap: true,
                 importLoaders: 1,
                 minimize: true
-                // modules: true
               }
             },
             {
