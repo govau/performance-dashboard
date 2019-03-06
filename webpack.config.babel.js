@@ -22,7 +22,8 @@ const projectName = require('./package').name;
 const NODE_ENV = String(process.env.NODE_ENV ? process.env.NODE_ENV : 'production');
 const DEBUG = NODE_ENV === 'development';
 const showVisualisation = false;
-const assetsBaseUrl = 'https://dashboard.gov.au';
+// const assetsBaseUrl = 'https://dashboard.gov.au';
+const assetsBaseUrl = '/';
 const revision = require('child_process').execSync('git rev-parse HEAD').toString().trim();
 
 if (!DEBUG) {
@@ -64,10 +65,14 @@ let webpackConfig = {
     ['login']: [`./login`],
   },
   output: {
+    publicPath: assetsBaseUrl,
     filename: 'javascripts/[name].js',
     // chunkFilename: 'javascripts/[name].js',
     path: CONFIG.DIR_DIST, // absolute - determines output dir
-    sourceMapFilename: 'javascripts/[name].js.map'
+    // sourceMapFilename: 'javascripts/[name].js.map',
+    devtoolModuleFilenameTemplate: "file://[absolute-resource-path]",
+    devtoolFallbackModuleFilenameTemplate: "file://[absolute-resource-path]?[hash]"    
+    // publicPath: assetsBaseUrl
   },
   module: {
     rules: [
@@ -169,8 +174,8 @@ let webpackConfig = {
       sourceMap: true
     }),
     // new webpack.SourceMapDevToolPlugin({
-    //   filename: '[file].map',
-    //   publicPath: `${assetsBaseUrl}/`,
+    //   filename: '[file].map'
+    //   publicPath: assetsBaseUrl
     // }),
     // new RollbarSourceMapPlugin({
     //   accessToken: process.env.ROLLBAR_ACCESS_TOKEN_SERVER,
