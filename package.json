@@ -140,7 +140,7 @@
     "commitmsg": "validate-commit-msg",
     "prebuild": "del public/images/**/* && del public/javascripts/**/* && del public/stylesheets/**/*",
     "build:stats": "webpack --profile --json > webpackstats.json",
-    "build": "NODE_ENV=production webpack -p",
+    "build": "NODE_ENV=production webpack",
     "start": "node client/scripts/start.js",
     "test-legacy": "npm run test-browser && npm run test-browser:legacy && npm run test:react",
     "test": "npm run test-browser && npm run test:react",
@@ -207,7 +207,8 @@
     "rollbar-sourcemap-webpack-plugin": "^2.5.0",
     "strip-json-comments": "^2.0.1",
     "validate-commit-msg": "^2.8.2",
-    "webpack-bundle-analyzer": "^2.3.0"
+    "webpack-bundle-analyzer": "^2.3.0",
+    "uglifyjs-webpack-plugin": "1.1.5"
   },
   "config": {
     "commitizen": {

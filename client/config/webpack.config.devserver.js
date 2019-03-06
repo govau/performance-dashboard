@@ -16,7 +16,7 @@ const DEBUG = NODE_ENV === 'development';
 
 let webpackConfig = {
 	name: projectName,
-  devtool: 'eval', 
+  devtool: 'eval-source-map', 
 	context: CONFIG.DIR_SRC,
   entry: {
     ['dashboard']: [`./dashboard`],

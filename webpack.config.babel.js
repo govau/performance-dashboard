@@ -15,6 +15,7 @@ import BellOnBundlerErrorPlugin from 'bell-on-bundler-error-plugin';
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer'
 import * as CONFIG from './client/config/_config';
 
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const GitRevisionPlugin = require('git-revision-webpack-plugin')
 // const RollbarSourceMapPlugin = require('rollbar-sourcemap-webpack-plugin')
 const projectName = require('./package').name;
@@ -54,7 +55,7 @@ let ExtractSass = new ExtractTextPlugin({
 let webpackConfig = {
   name: projectName,
   bail: true,
-  devtool: 'hidden-source-map',
+  devtool: 'source-map',
   target: 'web',
   context: CONFIG.DIR_SRC,
   entry: {
@@ -166,6 +167,7 @@ let webpackConfig = {
     ]
   },
   plugins: [
+    new UglifyJsPlugin(),
     new webpack.SourceMapDevToolPlugin({
       filename: '[file].map',
       publicPath: `${assetsBaseUrl}/`,
