@@ -166,8 +166,7 @@ let webpackConfig = {
   },
   plugins: [
     new UglifyJsPlugin({
-      sourceMap: true,
-      comments: false
+      sourceMap: true
     }),
     // new webpack.SourceMapDevToolPlugin({
     //   filename: '[file].map',
