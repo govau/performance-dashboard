@@ -30,8 +30,6 @@ if (!DEBUG) {
   console.log('PREPARING FOR PRODUCTION');
 }
 
-console.log('Settings');
-console.log('========');
 console.log(`NODE_ENV: ${NODE_ENV}`);
 console.log(`DEBUG: ${DEBUG}`);
 console.log(`VERSION: ${revision}`);
@@ -168,8 +166,7 @@ let webpackConfig = {
   },
   plugins: [
     new UglifyJsPlugin({
-      sourceMap: true,
-      comments: false
+      sourceMap: true
     }),
     // new webpack.SourceMapDevToolPlugin({
     //   filename: '[file].map',
