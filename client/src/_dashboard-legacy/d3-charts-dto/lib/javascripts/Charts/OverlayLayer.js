@@ -2,7 +2,6 @@ import d3 from 'd3';
 import Layer from './Layer';
 import defined from './../Helpers/defined';
 
-
 /**
  * Class representing a layer to aid interaction.
  * @extends Layer
@@ -14,7 +13,7 @@ class OverlayLayer extends Layer {
    * @param {object} [options.chart] The chart object to append this legend to
    * @param {object} [options.legend] The legend object which will be updated when hover happens
    * @param {function} [options.hoverCallback] The callback function
-  */
+   */
   constructor(options) {
     super(options);
     this.legend = options.legend;
@@ -22,14 +21,14 @@ class OverlayLayer extends Layer {
     this.init();
   }
 
-/**
- * initialise hover layer
- * This function does the following things:
- * 1. update legend and chart to show the latest data point as action
- * 2. listen to touchmove event on mobile to update active data point for legend and chart
- * 3. listen to mousemove event to update active data point for legend and chart
- * @return {undefined}
- */
+  /**
+   * initialise hover layer
+   * This function does the following things:
+   * 1. update legend and chart to show the latest data point as action
+   * 2. listen to touchmove event on mobile to update active data point for legend and chart
+   * 3. listen to mousemove event to update active data point for legend and chart
+   * @return {undefined}
+   */
   init() {
     super.init();
     let that = this;
@@ -50,7 +49,9 @@ class OverlayLayer extends Layer {
           index = indexTemp;
         }
       } else {
-        let bisectDate = d3.bisector(function(d) { return d.x; }).left;
+        let bisectDate = d3.bisector(function(d) {
+          return d.x;
+        }).left;
         let x0 = that.chart.xScale.invert(x);
 
         let i = bisectDate(data, x0, 1);
@@ -63,13 +64,14 @@ class OverlayLayer extends Layer {
       that.hover(index);
     }
 
-    this.layer.selectAll('rect')
-        .attr('fill', '#FFFFFF')
-        .attr('fill-opacity', 0)
-        .on('mouseover', (d, i)=>{
-          that.hover(i);
-        })
-        .on('touchmove', handleTouchMove);
+    this.layer
+      .selectAll('rect')
+      .attr('fill', '#FFFFFF')
+      .attr('fill-opacity', 0)
+      .on('mouseover', (d, i) => {
+        that.hover(i);
+      })
+      .on('touchmove', handleTouchMove);
   }
 
   /**
@@ -90,4 +92,3 @@ class OverlayLayer extends Layer {
   }
 }
 module.exports = OverlayLayer;
-

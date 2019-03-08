@@ -1,2 +1,1 @@
-
-export {default} from './chartWidget_component';
+export { default } from './chartWidget_component';

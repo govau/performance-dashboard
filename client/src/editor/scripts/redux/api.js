@@ -1,7 +1,5 @@
-
 import deepMerge from 'deepmerge';
-import {API_BASE_URL_V1 as rootUrl} from './../config';
-
+import { API_BASE_URL_V1 as rootUrl } from './../config';
 
 export const checkStatus = response => {
   if (!response.ok) {
@@ -10,7 +8,8 @@ export const checkStatus = response => {
     error.response = response;
     return response.json().then(serverResponse => {
       // save server error
-      error.message = serverResponse.message || serverResponse.error || 'Request failed';
+      error.message =
+        serverResponse.message || serverResponse.error || 'Request failed';
       // explicitly reject the promise chain, next call will be catch()
       throw error;
     });
@@ -32,21 +31,29 @@ export const parseBody = response => {
  * @param options - options to pass to Fetch
  * @return {Promise}
  */
-const api = (route, token, options={}) => {
+const api = (route, token, options = {}) => {
   // this will only ever happen if token fails on load because it never rehydrates
   if (!token) {
-    alert(`We're logging you out now because your session expired. Please log in again.`);
+    alert(
+      `We're logging you out now because your session expired. Please log in again.`,
+    );
     window.location.hostname = '/sign-out';
     return new Promise((resolve, reject) => reject('No session token found.'));
   }
-  return fetch(`${rootUrl}${route}`, deepMerge({
-    credentials: 'same-origin',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      'Authorization': `Token ${token}`
-    }
-  }, options))
+  return fetch(
+    `${rootUrl}${route}`,
+    deepMerge(
+      {
+        credentials: 'same-origin',
+        headers: {
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+          Authorization: `Token ${token}`,
+        },
+      },
+      options,
+    ),
+  )
     .then(checkStatus)
     .then(parseBody);
 };

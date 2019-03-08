@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import LegendDot from './../svgs/legendDot';
-import {getHumanisedUnits} from 'shared/redux/datasets/datasetsHelper';
-import {getHumanisedVeryShortDate} from 'shared/utils/formatDates';
-import {formatCurrency2dp} from './../../utils/formatCurrency';
-import {formatPercentile2dp} from './../../utils/formatPercentile';
+import { getHumanisedUnits } from 'shared/redux/datasets/datasetsHelper';
+import { getHumanisedVeryShortDate } from 'shared/utils/formatDates';
+import { formatCurrency2dp } from './../../utils/formatCurrency';
+import { formatPercentile2dp } from './../../utils/formatPercentile';
 
 /**
  * Format and decorate value provided for the View
@@ -14,7 +14,9 @@ import {formatPercentile2dp} from './../../utils/formatPercentile';
  */
 export const formatValue = (value, units) => {
   if (typeof value === 'undefined') {
-    throw Error('Group has no datapoint or value is not provided. Something is very wrong.');
+    throw Error(
+      'Group has no datapoint or value is not provided. Something is very wrong.',
+    );
   }
 
   if (value === null) {
@@ -34,13 +36,14 @@ export const formatValue = (value, units) => {
   return formattedValue;
 };
 
-const Preview = ({slice, getColorByRowFn}) => {
+const Preview = ({ slice, getColorByRowFn }) => {
   return (
     <div className="preview">
       <p className="most-recent-text strong">
         {slice.period === 'custom' && slice.row_label}
 
-        {slice.period !== 'custom' && getHumanisedVeryShortDate(slice.period_start)}
+        {slice.period !== 'custom' &&
+          getHumanisedVeryShortDate(slice.period_start)}
       </p>
       {slice.groups.map((group, idx) => {
         return (
@@ -55,14 +58,17 @@ const Preview = ({slice, getColorByRowFn}) => {
 
             {!!group.dataset && (
               <span className="value">
-                {formatValue(typeof group.value !== 'undefined' ? group.value : null, group.dataset.units)}
+                {formatValue(
+                  typeof group.value !== 'undefined' ? group.value : null,
+                  group.dataset.units,
+                )}
               </span>
             )}
           </div>
         );
       })}
     </div>
-  )
+  );
 };
 
 Preview.propTypes = {

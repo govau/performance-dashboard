@@ -1,26 +1,27 @@
-
 /* global describe, it */
 import expect from 'expect';
-import {isArray} from 'lodash';
+import { isArray } from 'lodash';
 
 import {
   selectDataset,
   selectDatasets,
-  selectDatasetsByWidget
+  selectDatasetsByWidget,
 } from './datasetsSelectors';
 import fixtureState from './../../../test/fixtures/jbuilder-cit-hobby';
 
-
 describe('(Selectors) - Datasets - datasetsSelectors', () => {
-
   const fixtureDataset = fixtureState.datasets[53];
-  if (typeof fixtureDataset === 'undefined') throw new Error('invalid fixtureDataset');
+  if (typeof fixtureDataset === 'undefined')
+    throw new Error('invalid fixtureDataset');
   const fixtureWidget = fixtureState.widgets[0];
-  if (typeof fixtureWidget === 'undefined') throw new Error('invalid fixtureWidget');
+  if (typeof fixtureWidget === 'undefined')
+    throw new Error('invalid fixtureWidget');
 
   describe('selectDataset', () => {
     it('should return a Dataset with the same id as was provided', () => {
-      expect(selectDataset(fixtureState, {datasetId: fixtureDataset.id})).toEqual(fixtureDataset);
+      expect(
+        selectDataset(fixtureState, { datasetId: fixtureDataset.id }),
+      ).toEqual(fixtureDataset);
     });
   });
 
@@ -30,16 +31,18 @@ describe('(Selectors) - Datasets - datasetsSelectors', () => {
 
   describe('selectDatasetsByWidget', () => {
     it('should return array of Datasets', () => {
-      const outcome = selectDatasetsByWidget(fixtureState, {widgetId: fixtureWidget.id});
+      const outcome = selectDatasetsByWidget(fixtureState, {
+        widgetId: fixtureWidget.id,
+      });
       expect(isArray(outcome)).toBe(true);
     });
     it('should return an array of same length as widget.datasets', () => {
-      const outcome = selectDatasetsByWidget(fixtureState, {widgetId: fixtureWidget.id});
+      const outcome = selectDatasetsByWidget(fixtureState, {
+        widgetId: fixtureWidget.id,
+      });
       expect(outcome.length).toEqual(fixtureWidget.datasets.length);
     });
   });
-
-
 
   // describe('(Selectors)', () => {
   //   describe('getDatasetById', () => {
@@ -91,5 +94,4 @@ describe('(Selectors) - Datasets - datasetsSelectors', () => {
   //     });
   //   });
   // });
-
 });

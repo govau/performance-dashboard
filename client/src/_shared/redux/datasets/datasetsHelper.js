@@ -1,12 +1,10 @@
-
 import isTypeOfState from './../../utils/isTypeOfState';
 
 /**
  * Check if is of state type
  * @return {Boolean}
  */
-export const isDataset = isTypeOfState(['name' , 'label' , 'units']);
-
+export const isDataset = isTypeOfState(['name', 'label', 'units']);
 
 export const getHumanisedUnits = units => {
   switch (units) {
@@ -35,7 +33,7 @@ export const updateDatasetInDatasets = (datasets, dataset) => {
   }
   return datasets.map(d => {
     if (d.id == dataset.id) {
-      return {...d, ...dataset};
+      return { ...d, ...dataset };
     }
     return d;
   });

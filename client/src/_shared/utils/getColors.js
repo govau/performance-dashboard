@@ -1,8 +1,6 @@
-
 import React from 'react';
 
 import getPointerInLoop from './getPointerInLoop';
-
 
 const KPI_COLOR_PALETTE = [
   '#cf7e33', // gold
@@ -54,12 +52,14 @@ const BTL_COLOR_PALETTES = [
   ],
 ];
 
-
 export const makeGetBtlColorset = (widgetPosition = 0) => {
-  const indexOfColorset = getPointerInLoop(BTL_COLOR_PALETTES.length, widgetPosition);
+  const indexOfColorset = getPointerInLoop(
+    BTL_COLOR_PALETTES.length,
+    widgetPosition,
+  );
   const colorset = BTL_COLOR_PALETTES[indexOfColorset];
 
-  return (itemIndex) => {
+  return itemIndex => {
     const colorsetIndex = getPointerInLoop(colorset.length, itemIndex);
     return colorset[colorsetIndex];
   };
@@ -68,14 +68,16 @@ export const makeGetBtlColorset = (widgetPosition = 0) => {
 export const makeGetKpiColorset = () => {
   const colorset = KPI_COLOR_PALETTE;
 
-  return (itemIndex) => {
+  return itemIndex => {
     const colorsetIndex = getPointerInLoop(colorset.length, itemIndex);
     return colorset[colorsetIndex];
-  }
+  };
 };
 
 export const makeDeriveColor = (widgetPosition, isKpi) => {
-  return isKpi === true ? makeGetKpiColorset() : makeGetBtlColorset(widgetPosition);
+  return isKpi === true
+    ? makeGetKpiColorset()
+    : makeGetBtlColorset(widgetPosition);
 };
 
 export const deriveColor = (widgetPosition, rowIndex, isKpi) => {

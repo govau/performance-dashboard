@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export const getYears = (startYear) => {
-  const currentYear = new Date().getFullYear(), years = [];
+export const getYears = startYear => {
+  const currentYear = new Date().getFullYear(),
+    years = [];
   startYear = startYear || 1980;
 
   while (startYear <= currentYear) {
@@ -54,10 +55,7 @@ const KpiForm = props => (
             required
           >
             {getYears(1950).map(year => (
-              <option
-                key={year}
-                value={year}
-              >
+              <option key={year} value={year}>
                 {year}
               </option>
             ))}
@@ -128,4 +126,4 @@ KpiForm.propTypes = {
   getHandler: PropTypes.func.isRequired,
 };
 
-export default KpiForm
+export default KpiForm;

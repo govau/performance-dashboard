@@ -13,11 +13,11 @@ describe('(Container) Dashboard Widgets Page - pageDashboardWidgets_container', 
       Container,
       {
         ...initialState,
-        ...fixtureState
+        ...fixtureState,
       },
       {
-        dashboard_id: 2
-      }
+        dashboard_id: 2,
+      },
     );
     expect(subject.instance).toExist();
   });

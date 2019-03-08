@@ -10,7 +10,7 @@ export const formatPercentile2dp = value => {
   // test for whole number or float
   if (/^\d*$|^\d*.\d*$/.test(String(value)) === false) {
     console.warn(
-      'Value provided to formatPercentile2dp is not a Number or stringified Number.'
+      'Value provided to formatPercentile2dp is not a Number or stringified Number.',
     );
     return null;
   }

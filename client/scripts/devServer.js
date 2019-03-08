@@ -27,7 +27,7 @@ for (let [key, value] of Object.entries(webpackConfig.entry)) {
   value.unshift(
     // `webpack-dev-server/client?${devServerPublicPath}`,
     // 'webpack/hot/dev-server',    // reload if HMR fails
-    require.resolve('./../scripts/webpackHotDevClient') // todo !!
+    require.resolve('./../scripts/webpackHotDevClient'), // todo !!
     // app entry point is not required here because it is carried across
     // from webpack.config, hence "unshift".
   );
@@ -91,13 +91,13 @@ compiler.plugin('done', function(stats) {
     console.log();
     console.log(
       `The app is listening at ${devServerPublicPath}, but develop on Rails server at ${chalk.cyan(
-        'http://localhost:3000'
-      )}.`
+        'http://localhost:3000',
+      )}.`,
     );
     console.log();
     console.log('Note that the development build is not optimized.');
     console.log(
-      'To create a production build, use ' + chalk.cyan('yarn run build') + '.'
+      'To create a production build, use ' + chalk.cyan('yarn run build') + '.',
     );
     console.log();
     isFirstCompile = false;
@@ -127,12 +127,12 @@ compiler.plugin('done', function(stats) {
     console.log(
       'Use ' +
         chalk.yellow('// eslint-disable-next-line') +
-        ' to ignore the next line.'
+        ' to ignore the next line.',
     );
     console.log(
       'Use ' +
         chalk.yellow('/* eslint-disable */') +
-        ' to ignore all warnings in a file.'
+        ' to ignore all warnings in a file.',
     );
   }
 });
@@ -167,12 +167,12 @@ let devServer = new WebpackDevServer(compiler, {
   noInfo: false,
   quiet: true,
   stats: {
-    colors: true
+    colors: true,
   },
   // Reportedly, this avoids CPU overload on some systems.
   watchOptions: {
-    ignored: /node_modules/
-  }
+    ignored: /node_modules/,
+  },
 });
 
 // bind the server to location and callback

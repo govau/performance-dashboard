@@ -1,5 +1,5 @@
-import {connect} from 'react-redux';
-import {selectDashboards} from 'shared/redux/dashboards/dashboardsSelectors';
+import { connect } from 'react-redux';
+import { selectDashboards } from 'shared/redux/dashboards/dashboardsSelectors';
 import Page from './pageDashboards_component';
 
 const mapStateToProps = (state, ownProps) => ({
@@ -9,5 +9,5 @@ const mapStateToProps = (state, ownProps) => ({
 
 export default connect(
   mapStateToProps,
-  null
+  null,
 )(Page);

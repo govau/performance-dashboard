@@ -24,7 +24,7 @@ const NoMatch = () => {
       pageKey="noMatch"
       breadcrumbPaths={[
         { path: '/', name: 'Manage Dashboards' },
-        { path: '', name: `Not found` }
+        { path: '', name: `Not found` },
       ]}
       HeaderComponent={HeaderComponent}
       BodyComponent={BodyComponent}

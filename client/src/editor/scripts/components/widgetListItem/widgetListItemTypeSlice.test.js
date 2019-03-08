@@ -1,22 +1,18 @@
-
 /* global describe,it,beforeAll */
 import expect from 'expect';
 import React from 'react';
-import {mount} from 'enzyme';
+import { mount } from 'enzyme';
 import sinon from 'sinon';
 
 import WidgetTypeSlice from './widgetListItemTypeSlice';
 
-
 describe('(Component) Widget Type Slice - widgetListItemTypeSlice', () => {
-
   // todo - propogate and rerun
   const props = {};
 
-  const buildSubject = (props) => {
-    return mount(<WidgetTypeSlice {...props}/>)
+  const buildSubject = props => {
+    return mount(<WidgetTypeSlice {...props} />);
   };
-
 
   // require this because we can't do PropType validation with cloneElement
   it.skip('should render a widgetItem when required props are provided', () => {
@@ -32,5 +28,4 @@ describe('(Component) Widget Type Slice - widgetListItemTypeSlice', () => {
     expect(stub.called).toBe(true);
     console.error.restore();
   });
-
 });

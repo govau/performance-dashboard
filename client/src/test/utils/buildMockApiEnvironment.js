@@ -1,11 +1,9 @@
-
 import isObject from 'lodash/isObject';
 import configureStore from 'redux-mock-store';
 import thunkMiddleware from 'redux-thunk';
 
 import api from './../../editor/scripts/redux/api';
-import {API_BASE_URL_V1 as rootUrl} from './../../editor/scripts/config';
-
+import { API_BASE_URL_V1 as rootUrl } from './../../editor/scripts/config';
 
 /**
  * Fake response object
@@ -22,9 +20,9 @@ export const mockResponse = (status, statusText, response) => {
     status: status,
     statusText: statusText,
     headers: {
-      'Content-Type': 'application/json'
-    }
-  })
+      'Content-Type': 'application/json',
+    },
+  });
 };
 
 const handleResponse = (mockedUrl, response) => {
@@ -35,7 +33,7 @@ const handleResponse = (mockedUrl, response) => {
 export const mockFetch = (mockedUrl, status = 201, responseData) => {
   handleResponse(
     rootUrl + mockedUrl,
-    Promise.resolve(mockResponse(status, null, responseData))
+    Promise.resolve(mockResponse(status, null, responseData)),
   );
 };
 
@@ -43,19 +41,16 @@ export const mockFetch = (mockedUrl, status = 201, responseData) => {
 export const mockFetchError = (mockedUrl, status, responseError = '{}') => {
   handleResponse(
     rootUrl + mockedUrl,
-    Promise.reject(mockResponse(status, 'Error', responseError))
+    Promise.reject(mockResponse(status, 'Error', responseError)),
   );
 };
 
-
 const buildMockApiEnv = () => {
-  const mockStore = configureStore([
-    thunkMiddleware.withExtraArgument(api)
-  ]);
+  const mockStore = configureStore([thunkMiddleware.withExtraArgument(api)]);
   return mockStore({
     currentUser: {
-      token: 'faketoken'
-    }
+      token: 'faketoken',
+    },
   });
 };
 

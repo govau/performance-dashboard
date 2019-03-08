@@ -17,7 +17,7 @@ const AppBtl = ({ el, data, emitter }) => {
 
 AppBtl.propTypes = {
   el: PropTypes.element.isRequired,
-  data: PropTypes.object.isRequired
+  data: PropTypes.object.isRequired,
 };
 
 export default AppBtl;

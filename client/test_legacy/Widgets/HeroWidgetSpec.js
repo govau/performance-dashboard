@@ -8,4 +8,4 @@ module.exports = function() {
     //            {'x': new Date('2016-02'), 'y': null},
     //            {'x': new Date('2016-03'), 'y': 0}]];
   });
-}
+};

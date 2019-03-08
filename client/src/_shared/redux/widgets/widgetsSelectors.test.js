@@ -1,30 +1,25 @@
-
 /* global describe, it */
 import expect from 'expect';
 
-import {
-  selectWidget,
-  selectWidgetsByDashboard
-} from './widgetsSelectors';
+import { selectWidget, selectWidgetsByDashboard } from './widgetsSelectors';
 import fixtureState from './../../../test/fixtures/jbuilder-cit-hobby';
 
-
 describe('(Selectors) - Widgets - widgetsSelectors', () => {
-
   const fixtureWidget = fixtureState.widgets[0];
-  if (typeof fixtureWidget === 'undefined') throw new Error('invalid fixtureWidget');
+  if (typeof fixtureWidget === 'undefined')
+    throw new Error('invalid fixtureWidget');
 
   describe('selectWidget', () => {
     it('should return a Widget with the same id as was provided', () => {
-      expect(selectWidget(fixtureState, {widgetId: fixtureWidget.id})).toEqual(fixtureWidget);
+      expect(
+        selectWidget(fixtureState, { widgetId: fixtureWidget.id }),
+      ).toEqual(fixtureWidget);
     });
   });
 
   describe('selectWidgetsByDashboard', () => {
     it.skip('should return Widgets with the same dashboard_id as was provided', () => {});
   });
-
-
 
   // describe('(Selectors)', () => {
   //   describe('getWidgetById', () => {
@@ -77,5 +72,4 @@ describe('(Selectors) - Widgets - widgetsSelectors', () => {
   //   });
   //
   // });
-
 });

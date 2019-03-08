@@ -1,18 +1,15 @@
-
 /* global describe,it */
 
 import expect from 'expect';
 
-import {formatValue} from './datagroupPreview';
-
+import { formatValue } from './datagroupPreview';
 
 describe('(Component) Datagroup Preview - datagroupPreview', () => {
-
   describe('formatValue', () => {
     it('should throw Error if no value provided', () => {
       expect(formatValue).toThrow();
       expect(() => {
-        formatValue(void 0)
+        formatValue(void 0);
       }).toThrow();
     });
 
@@ -20,5 +17,4 @@ describe('(Component) Datagroup Preview - datagroupPreview', () => {
       expect(/[aA-zZ]*/.test(formatValue('23.4', '%'))).toBe(true);
     });
   });
-
 });

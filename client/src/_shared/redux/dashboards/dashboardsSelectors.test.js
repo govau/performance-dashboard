@@ -1,18 +1,13 @@
-
 /* global describe, it */
 import expect from 'expect';
 
-import {
-  selectDashboards,
-  selectDashboard
-} from './dashboardsSelectors';
+import { selectDashboards, selectDashboard } from './dashboardsSelectors';
 import fixtureState from './../../../test/fixtures/jbuilder-cit-hobby';
 
-
 describe('(Selectors) - Dashboards - dashboardsSelectors', () => {
-
   const fixtureDashboard = fixtureState.dashboards[0];
-  if (typeof fixtureDashboard === 'undefined') throw new Error('invalid fixtureDashboard');
+  if (typeof fixtureDashboard === 'undefined')
+    throw new Error('invalid fixtureDashboard');
 
   describe('selectDashboards', () => {
     it('should return the same dashboard state as provided', () => {
@@ -21,7 +16,9 @@ describe('(Selectors) - Dashboards - dashboardsSelectors', () => {
   });
   describe('selectDashboard', () => {
     it('should return a Dashboard with the same id as was provided', () => {
-      expect(selectDashboard(fixtureState, {dashboardId: fixtureDashboard.id})).toEqual(fixtureDashboard);
+      expect(
+        selectDashboard(fixtureState, { dashboardId: fixtureDashboard.id }),
+      ).toEqual(fixtureDashboard);
     });
 
     // const state = [{id:1},{id:2}];
@@ -45,5 +42,4 @@ describe('(Selectors) - Dashboards - dashboardsSelectors', () => {
     //   }).toThrow();
     // });
   });
-
 });

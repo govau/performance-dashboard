@@ -7,7 +7,7 @@ const PageLayout = ({
   HeaderComponent,
   BodyComponent = null,
   breadcrumbPaths = null,
-  children = null
+  children = null,
 }) => {
   return (
     <div className={`page page-${pageKey}`}>
@@ -41,7 +41,7 @@ PageLayout.propTypes = {
   HeaderComponent: PropTypes.func,
   BodyComponent: PropTypes.func,
   children: PropTypes.element,
-  breadcrumbPaths: PropTypes.array
+  breadcrumbPaths: PropTypes.array,
 };
 
 export default PageLayout;

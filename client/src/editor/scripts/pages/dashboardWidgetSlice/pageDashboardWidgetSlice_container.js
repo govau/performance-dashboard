@@ -1,21 +1,21 @@
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { push } from 'react-router-redux';
 
-import {bindActionCreators} from 'redux';
-import {connect} from 'react-redux';
-import {push} from 'react-router-redux';
-
-import {selectDashboard} from 'shared/redux/dashboards/dashboardsSelectors';
-import {selectWidget} from 'shared/redux/widgets/widgetsSelectors';
+import { selectDashboard } from 'shared/redux/dashboards/dashboardsSelectors';
+import { selectWidget } from 'shared/redux/widgets/widgetsSelectors';
 import {
   isEmptySlice,
   getDenormalizedSlice,
-  getEmptyDenormalizedSlice
+  getEmptyDenormalizedSlice,
 } from 'shared/redux/slices/slicesSelectors';
 import Page from './pageDashboardWidgetSlice_component';
 
-
 const mapStateToProps = (state, ownProps) => {
-  const dashboard = selectDashboard(state, {dashboardId: ownProps.params.dashboard_id});
-  const widget = selectWidget(state, {widgetId: ownProps.params.widget_id});
+  const dashboard = selectDashboard(state, {
+    dashboardId: ownProps.params.dashboard_id,
+  });
+  const widget = selectWidget(state, { widgetId: ownProps.params.widget_id });
 
   let widgetSlice = getDenormalizedSlice(state, {
     widgetId: widget.id,
@@ -30,14 +30,14 @@ const mapStateToProps = (state, ownProps) => {
     });
   }
   return {
-    slice: widgetSlice
-  }
+    slice: widgetSlice,
+  };
 };
 const mapDispatchToProps = dispatch => ({
-  push: bindActionCreators(push, dispatch)
+  push: bindActionCreators(push, dispatch),
 });
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(Page);

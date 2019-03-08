@@ -12,6 +12,6 @@ export const makeFact = (widget, dashboard) => {
   }
   return {
     widget,
-    dashboard
+    dashboard,
   };
 };

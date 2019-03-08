@@ -1,9 +1,7 @@
-
 import React from 'react';
-import {Provider} from 'react-redux';
-import {shallow, mount} from 'enzyme'
+import { Provider } from 'react-redux';
+import { shallow, mount } from 'enzyme';
 import configureStore from 'redux-mock-store';
-
 
 /**
  * Will build a connected *shallow* or *deep* component for Enzyme testing
@@ -13,7 +11,12 @@ import configureStore from 'redux-mock-store';
  * @param deep {Boolean}
  * @returns {Enzyme}
  */
-const buildConnectedSubject =  (Component, state = {}, props = {}, deep = false) => {
+const buildConnectedSubject = (
+  Component,
+  state = {},
+  props = {},
+  deep = false,
+) => {
   const mockStore = configureStore();
 
   const ComposedComponent = () => (

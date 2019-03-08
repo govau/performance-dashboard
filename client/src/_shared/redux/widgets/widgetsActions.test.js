@@ -1,15 +1,13 @@
-
 /* global describe, it, beforeAll */
 import expect from 'expect';
 import buildMockApiEnvironment, {
   mockFetch,
-  mockFetchError
+  mockFetchError,
 } from './../../../test/utils/buildMockApiEnvironment';
 
-import {updateWidget} from './widgetsActions';
+import { updateWidget } from './widgetsActions';
 
 describe('(Actions) Slices - slicesActions', () => {
-
   let store;
   beforeAll(() => {
     store = buildMockApiEnvironment();
@@ -18,9 +16,9 @@ describe('(Actions) Slices - slicesActions', () => {
   describe('updateWidget', () => {
     it('on success (201) should return a Promise', () => {
       const fixturePayload = {
-        widget: {id:1, dashboard_id:1}
+        widget: { id: 1, dashboard_id: 1 },
       };
-      const fixtureReponse = {cat:'magoo'};
+      const fixtureReponse = { cat: 'magoo' };
       mockFetch('dashboards/1/widgets/1', 201, fixtureReponse);
       const request = store.dispatch(updateWidget(fixturePayload));
       expect(request).toBeA(Promise);
@@ -29,5 +27,4 @@ describe('(Actions) Slices - slicesActions', () => {
       });
     });
   });
-
 });

@@ -13,10 +13,10 @@ export default class CreateKpis extends Component {
     digitalTakeup: '',
     completionRate: '',
     periodMonth: `0${new Date().getMonth() + 1}`.slice(-2),
-    periodYear: (new Date()).getFullYear(),
+    periodYear: new Date().getFullYear(),
   };
 
-  handleInput = (key) => (event) => {
+  handleInput = key => event => {
     this.setState({
       [key]: event.target.value,
     });
@@ -26,7 +26,7 @@ export default class CreateKpis extends Component {
 
   kpiFormHandler = field => this.handleInput(field);
 
-  handleFormSubmission = (event) => {
+  handleFormSubmission = event => {
     event.preventDefault();
 
     const {
@@ -70,11 +70,7 @@ export default class CreateKpis extends Component {
 
         <br />
 
-        <input
-          type="submit"
-          value="Add KPIs"
-          className="btn btn-primary"
-        />
+        <input type="submit" value="Add KPIs" className="btn btn-primary" />
       </form>
     </div>
   );

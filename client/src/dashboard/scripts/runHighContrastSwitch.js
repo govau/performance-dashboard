@@ -1,9 +1,11 @@
 let win = typeof global === 'undefined' ? window : global;
 
 export const getIsHighContrastMode = () =>
-  win && win.localStorage && win.localStorage.getItem('high_contrast_mode') === 'true';
+  win &&
+  win.localStorage &&
+  win.localStorage.getItem('high_contrast_mode') === 'true';
 
-const runHighContrastSwitch = ({emitter}) => {
+const runHighContrastSwitch = ({ emitter }) => {
   const hcSwitch = document.getElementById('high-contrast-switch');
   let toggled = getIsHighContrastMode();
 
@@ -12,7 +14,7 @@ const runHighContrastSwitch = ({emitter}) => {
     hcSwitch.click();
   }
 
-  const toggle = (e) => {
+  const toggle = e => {
     toggled = !getIsHighContrastMode();
 
     if (toggled) {

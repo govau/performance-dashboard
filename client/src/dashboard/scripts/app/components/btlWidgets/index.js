@@ -1,2 +1,1 @@
-
-export {default} from './btlWidgets_component';
+export { default } from './btlWidgets_component';

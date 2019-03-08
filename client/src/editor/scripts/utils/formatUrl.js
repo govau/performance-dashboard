@@ -1,4 +1,4 @@
-import {formatRoutingDatagroupKeyHash} from 'shared/utils/formatDates';
+import { formatRoutingDatagroupKeyHash } from 'shared/utils/formatDates';
 
 export const getDashboardCreateUrl = () => {
   return `/dashboards/create`;
@@ -20,37 +20,63 @@ export const getDashboardWidgetsUrl = dashboardId => {
 
 export const getDashboardWidgetFactUrl = (dashboardId, widgetId) => {
   if (typeof dashboardId === 'undefined' || typeof widgetId === 'undefined') {
-    throw new Error(`Parameters were not correctly provided: ${dashboardId}, ${widgetId}`);
+    throw new Error(
+      `Parameters were not correctly provided: ${dashboardId}, ${widgetId}`,
+    );
   }
   return `/dashboards/${dashboardId}/widgets/${widgetId}/fact`;
 };
 
 export const getDashboardWidgetSliceUrl = (dashboardId, widgetId, date) => {
-
-  if (typeof dashboardId === 'undefined' || typeof widgetId === 'undefined' || typeof date === 'undefined') {
-    throw new Error(`Parameters were not correctly provided: ${dashboardId}, ${widgetId}, ${date}`);
+  if (
+    typeof dashboardId === 'undefined' ||
+    typeof widgetId === 'undefined' ||
+    typeof date === 'undefined'
+  ) {
+    throw new Error(
+      `Parameters were not correctly provided: ${dashboardId}, ${widgetId}, ${date}`,
+    );
   }
-  return `/dashboards/${dashboardId}/widgets/${widgetId}/slice/${formatRoutingDatagroupKeyHash(date)}`;
+  return `/dashboards/${dashboardId}/widgets/${widgetId}/slice/${formatRoutingDatagroupKeyHash(
+    date,
+  )}`;
 };
 
 export const getDashboardWidgetDescriptionsUrl = (dashboardId, widgetId) => {
   if (typeof dashboardId === 'undefined' || typeof widgetId === 'undefined') {
-    throw new Error(`Parameters were not correctly provided: ${dashboardId}, ${widgetId}`);
+    throw new Error(
+      `Parameters were not correctly provided: ${dashboardId}, ${widgetId}`,
+    );
   }
   return `/dashboards/${dashboardId}/widgets/${widgetId}/descriptions`;
 };
 
 export const getServiceDashboardUrl = (dashboardId, dashboardName) => {
-  if (typeof dashboardId === 'undefined' || typeof dashboardName === 'undefined') {
-    throw new Error(`Parameters were not correctly provided: ${dashboardId}, ${dashboardName}`);
+  if (
+    typeof dashboardId === 'undefined' ||
+    typeof dashboardName === 'undefined'
+  ) {
+    throw new Error(
+      `Parameters were not correctly provided: ${dashboardId}, ${dashboardName}`,
+    );
   }
   let name = dashboardName.toLowerCase().replace(/\s/g, '-');
   return `/dashboards/${dashboardId}-${name}`;
 };
 
-export const getServiceDashboardUrlAnchor = (dashboardId, dashboardName, widgetName) => {
-  if (typeof dashboardId === 'undefined' || typeof dashboardName === 'undefined' || typeof widgetName === 'undefined') {
-    throw new Error(`Parameters were not correctly provided: ${dashboardId}, ${dashboardName}, ${widgetName}`);
+export const getServiceDashboardUrlAnchor = (
+  dashboardId,
+  dashboardName,
+  widgetName,
+) => {
+  if (
+    typeof dashboardId === 'undefined' ||
+    typeof dashboardName === 'undefined' ||
+    typeof widgetName === 'undefined'
+  ) {
+    throw new Error(
+      `Parameters were not correctly provided: ${dashboardId}, ${dashboardName}, ${widgetName}`,
+    );
   }
   let name = dashboardName.toLowerCase().replace(/\s/g, '-');
   let anchor = widgetName.toLowerCase().replace(/\s/g, '-');
@@ -62,7 +88,7 @@ export const getServiceDashboardUrlAnchor = (dashboardId, dashboardName, widgetN
  * @param url
  * @returns {string}
  */
-export const trimLastUrlSegement = (url) => {
-  let to = url.lastIndexOf('/') +1;
-  return url.substring(0,to);
+export const trimLastUrlSegement = url => {
+  let to = url.lastIndexOf('/') + 1;
+  return url.substring(0, to);
 };

@@ -1,7 +1,5 @@
-
 import isDate from 'lodash/isDate';
 import requirablePropType from './requirablePropType';
-
 
 const validateIsDate = (props, propName, componentName) => {
   if (isDate(props[propName]) === false) {
@@ -10,5 +8,5 @@ const validateIsDate = (props, propName, componentName) => {
 };
 
 export default {
-  isDate: requirablePropType(validateIsDate)
+  isDate: requirablePropType(validateIsDate),
 };

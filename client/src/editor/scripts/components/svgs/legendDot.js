@@ -17,7 +17,7 @@ const Dot = ({ color, radius = 7 }) => {
 
 Dot.propTypes = {
   color: PropTypes.string.isRequired,
-  radius: PropTypes.number
+  radius: PropTypes.number,
 };
 
 export default Dot;

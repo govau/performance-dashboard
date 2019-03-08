@@ -1,13 +1,10 @@
-
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
 import KpiWidgets from './kpiWidgets_component';
 
-
 const mapStateToProps = (state, ownProps) => {
-
-  const {widgets} = ownProps;
+  const { widgets } = ownProps;
 
   // sort by pos order
   const sortedWidgets = widgets.sort((a, b) => {
@@ -15,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
   });
 
   return {
-    widgets: sortedWidgets
+    widgets: sortedWidgets,
   };
 };
 
@@ -23,7 +20,5 @@ const mapDispatchToProps = null;
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(KpiWidgets);
-
-

@@ -5,9 +5,9 @@ var format = require('date-fns/format');
 var differenceInMonths = require('date-fns/difference_in_months');
 var lastDayOfMonth = require('date-fns/last_day_of_month');
 
-import {selectDashboard} from './../dashboards/dashboardsSelectors';
-import {selectWidget} from './../widgets/widgetsSelectors';
-import {selectDatasetsByWidget} from './../datasets/datasetsSelectors';
+import { selectDashboard } from './../dashboards/dashboardsSelectors';
+import { selectWidget } from './../widgets/widgetsSelectors';
+import { selectDatasetsByWidget } from './../datasets/datasetsSelectors';
 
 export const formatDateWithoutTimezoneData = date => {
   return format(new Date(date), 'YYYY-MM-DD');
@@ -37,7 +37,9 @@ const getPeriodStart = (dateInPeriod = new Date(), period = 'month') => {
   if (period !== 'month') {
     throw new Error('That period is not yet handled by getPeriodStart.');
   }
-  const firstDateHashForPreviousPeriod = startOfMonth(subMonths(dateInPeriod, 1));
+  const firstDateHashForPreviousPeriod = startOfMonth(
+    subMonths(dateInPeriod, 1),
+  );
   return formatDateWithoutTimezoneData(firstDateHashForPreviousPeriod);
 };
 
@@ -49,30 +51,46 @@ const getPeriodEnd = (dateInPeriod = new Date(), period = 'month') => {
 };
 
 const compareDateEquality = (date1, date2) => {
-  return format(new Date(date1), 'YYYY-MM-DD') === format(new Date(date2), 'YYYY-MM-DD');
+  return (
+    format(new Date(date1), 'YYYY-MM-DD') ===
+    format(new Date(date2), 'YYYY-MM-DD')
+  );
 };
 
-export const getPrevPeriod = (periodStart, period = 'month', isUrlSegment = true) => {
+export const getPrevPeriod = (
+  periodStart,
+  period = 'month',
+  isUrlSegment = true,
+) => {
   if (period !== 'month') {
     throw new Error('That period is not yet handled by getPrevPeriod.');
   }
-  return isUrlSegment ?
-    formatDateWithoutTimezoneDataForSegment(subMonths(periodStart, 1)) :
-    formatDateWithoutTimezoneData(subMonths(periodStart, 1));
+  return isUrlSegment
+    ? formatDateWithoutTimezoneDataForSegment(subMonths(periodStart, 1))
+    : formatDateWithoutTimezoneData(subMonths(periodStart, 1));
 };
 
-export const getNextPeriod = (periodStart, period = 'month', isUrlSegment = true) => {
+export const getNextPeriod = (
+  periodStart,
+  period = 'month',
+  isUrlSegment = true,
+) => {
   if (period !== 'month') {
     throw new Error('That period is not yet handled by getNextPeriod.');
   }
-  return isUrlSegment ?
-    formatDateWithoutTimezoneDataForSegment(addMonths(periodStart, 1)) :
-    formatDateWithoutTimezoneData(addMonths(periodStart, 1));
+  return isUrlSegment
+    ? formatDateWithoutTimezoneDataForSegment(addMonths(periodStart, 1))
+    : formatDateWithoutTimezoneData(addMonths(periodStart, 1));
 };
 
-export const getNumMonthsBetweenLastUpdatedAndLatestPossible = (dateLastUpdated, period = 'month') => {
+export const getNumMonthsBetweenLastUpdatedAndLatestPossible = (
+  dateLastUpdated,
+  period = 'month',
+) => {
   if (period !== 'month') {
-    throw new Error('That period is not yet handled by getNumOfMonthsBetweenLatest.');
+    throw new Error(
+      'That period is not yet handled by getNumOfMonthsBetweenLatest.',
+    );
   }
   const latest = getPeriodStart();
   return differenceInMonths(new Date(latest), new Date(dateLastUpdated));
@@ -80,12 +98,13 @@ export const getNumMonthsBetweenLastUpdatedAndLatestPossible = (dateLastUpdated,
 
 export const isPeriodInTheFuture = (nextPeriodDate, period = 'month') => {
   if (period !== 'month') {
-    throw new Error('period other than month not yet handled by isPeriodInTheFuture');
+    throw new Error(
+      'period other than month not yet handled by isPeriodInTheFuture',
+    );
   }
   const max = getPeriodEnd(subMonths(new Date(), 1));
   return new Date(max).getTime() < new Date(nextPeriodDate).getTime();
 };
-
 
 // Helpers
 
@@ -101,20 +120,26 @@ export const isLatestSlice = slice => {
 };
 
 export const reachedLimitSeriesMin = (seriesStart, periodStart) => {
-  return formatDateWithoutTimezoneData(seriesStart) > formatDateWithoutTimezoneData(new Date(periodStart));
+  return (
+    formatDateWithoutTimezoneData(seriesStart) >
+    formatDateWithoutTimezoneData(new Date(periodStart))
+  );
 };
 
 export const reachedLimitSeriesMax = (seriesEnd, periodStart) => {
-  return formatDateWithoutTimezoneData(seriesEnd) < formatDateWithoutTimezoneData(new Date(periodStart));
+  return (
+    formatDateWithoutTimezoneData(seriesEnd) <
+    formatDateWithoutTimezoneData(new Date(periodStart))
+  );
 };
 
 export const compareSliceEquality = (sliceA, sliceB) => {
-  return sliceA.widget_id == sliceB.widget_id &&
-      sliceA.period == sliceB.period &&
-      compareDateEquality(sliceA.period_start, sliceB.period_start);
+  return (
+    sliceA.widget_id == sliceB.widget_id &&
+    sliceA.period == sliceB.period &&
+    compareDateEquality(sliceA.period_start, sliceB.period_start)
+  );
 };
-
-
 
 // Selectors
 
@@ -153,22 +178,29 @@ export const compareSliceEquality = (sliceA, sliceB) => {
 // SLICE OPERATIONS
 
 /** @returns {Object.<Slice>} - a slice */
-export const selectWidgetSlice = (state, {widgetId, periodStart, periodEnd, period = 'month'}) => {
+export const selectWidgetSlice = (
+  state,
+  { widgetId, periodStart, periodEnd, period = 'month' },
+) => {
   // If period start is supplied, return the slice with correct period_start and widget ID
   if (periodStart) {
-    return state.slices.find(slice => {
-      return slice.widget_id == widgetId &&
-        slice.period === period &&
-        compareDateEquality(slice.period_start, periodStart);
-    }) || null;
+    return (
+      state.slices.find(slice => {
+        return (
+          slice.widget_id == widgetId &&
+          slice.period === period &&
+          compareDateEquality(slice.period_start, periodStart)
+        );
+      }) || null
+    );
   }
 
   periodStart = getPeriodStart();
 
   // get all the slices with widgetId and same period
-  const widgetSlices = state.slices.filter(s => 
-    s.widget_id == widgetId && 
-    (s.period === 'custom' || s.period == period)
+  const widgetSlices = state.slices.filter(
+    s =>
+      s.widget_id == widgetId && (s.period === 'custom' || s.period == period),
   );
 
   if (!widgetSlices.length) {
@@ -184,14 +216,18 @@ export const selectWidgetSlice = (state, {widgetId, periodStart, periodEnd, peri
     if (periodSlice) {
       return periodSlice;
     }
-  }
-  else { // custom period
-    if(widgetSlices.length === 1) {
+  } else {
+    // custom period
+    if (widgetSlices.length === 1) {
       return widgetSlices[0];
     }
 
-    const mostRecentSlice = widgetSlices.sort((a,b) => {  // sort by row last updated
-      return new Date(b.rows[0].updated_at).getTime() - new Date(a.rows[0].updated_at).getTime();
+    const mostRecentSlice = widgetSlices.sort((a, b) => {
+      // sort by row last updated
+      return (
+        new Date(b.rows[0].updated_at).getTime() -
+        new Date(a.rows[0].updated_at).getTime()
+      );
     })[0];
 
     return mostRecentSlice;
@@ -199,78 +235,105 @@ export const selectWidgetSlice = (state, {widgetId, periodStart, periodEnd, peri
 
   // else return the next most recent slice, instead of an empty period slice
   // order by newest then get the top one
-  const nextLatestSlice = widgetSlices.sort((a,b) => { // sort by period
-    return new Date(b.period_start).getTime() - new Date(a.period_start).getTime();
+  const nextLatestSlice = widgetSlices.sort((a, b) => {
+    // sort by period
+    return (
+      new Date(b.period_start).getTime() - new Date(a.period_start).getTime()
+    );
   })[0];
 
   if (nextLatestSlice) {
-    return nextLatestSlice
+    return nextLatestSlice;
   }
 
   return null;
 };
 
 /** @returns {Object.<Slice>} - a slice without data */
-export const selectWidgetEmptySlice = (state, {widgetId, datagroupKey, period = 'month'}) => {
+export const selectWidgetEmptySlice = (
+  state,
+  { widgetId, datagroupKey, period = 'month' },
+) => {
   return {
     widgetId,
     periodStart: formatDateStartOfPeriod(datagroupKey, period),
     periodEnd: formatDateEndOfPeriod(datagroupKey, period),
-    period
-  }
+    period,
+  };
 };
 
 /** @returns {Array.<Slice>} - a collection of slice from many widgets at the same point in time */
-export const selectWidgetsSlice = (state, {widgetsIds, periodStart, periodEnd, period = 'month'}) => {
+export const selectWidgetsSlice = (
+  state,
+  { widgetsIds, periodStart, periodEnd, period = 'month' },
+) => {
   return widgetsIds.map(widgetId => {
-    return selectWidgetSlice(state, {widgetId, periodStart, periodEnd, period})
+    return selectWidgetSlice(state, {
+      widgetId,
+      periodStart,
+      periodEnd,
+      period,
+    });
   });
 };
 
 /** @returns {Array.<Slices>} - a collection of slices from a widget */
-export const selectWidgetSlices = (state, {widgetId, periodStart, periodEnd, period = 'month'}) => {
+export const selectWidgetSlices = (
+  state,
+  { widgetId, periodStart, periodEnd, period = 'month' },
+) => {
   return state.slices
     .filter(slice => {
       return slice.widget_id == widgetId; // ==
     })
     .filter(slice => {
-      return slice.period === period &&
-        (typeof periodStart !== 'undefined' ? slice.period_start <= periodStart : true) &&
-        (typeof periodEnd !== 'undefined' ? slice.period_end <= periodEnd : true);
+      return (
+        slice.period === period &&
+        (typeof periodStart !== 'undefined'
+          ? slice.period_start <= periodStart
+          : true) &&
+        (typeof periodEnd !== 'undefined'
+          ? slice.period_end <= periodEnd
+          : true)
+      );
     });
 };
 
-
-
-export const filterSlicesByHero = (slices) => {
+export const filterSlicesByHero = slices => {
   return slices.filter(slice => {
     return slice !== null && slice.widget.type === 'full';
   });
 };
 
-export const filterSlicesByBtl = (slices) => {
+export const filterSlicesByBtl = slices => {
   return slices.filter(slice => {
-    return slice !== null && (slice.widget.type !== 'full' || slice.widget.type !== 'kpi-sparkline');
+    return (
+      slice !== null &&
+      (slice.widget.type !== 'full' || slice.widget.type !== 'kpi-sparkline')
+    );
   });
 };
 
 // When period start is not supplied, it supplies most recent slice
-export const getDenormalizedSlice = (state, {widgetId, dashboardId, periodStart}) => {
+export const getDenormalizedSlice = (
+  state,
+  { widgetId, dashboardId, periodStart },
+) => {
   if (__DEV__) {
     if (!widgetId || !dashboardId) {
       throw new Error('must provide widgetId and dashboardId');
     }
   }
 
-  const sliceState = selectWidgetSlice(state, {widgetId, periodStart});
+  const sliceState = selectWidgetSlice(state, { widgetId, periodStart });
 
   if (!sliceState) {
     return null;
   }
 
-  const dashboardState = selectDashboard(state, {dashboardId});
-  const widgetState = selectWidget(state, {widgetId});
-  const widgetDatasetsState = selectDatasetsByWidget(state, {widgetId});
+  const dashboardState = selectDashboard(state, { dashboardId });
+  const widgetState = selectWidget(state, { widgetId });
+  const widgetDatasetsState = selectDatasetsByWidget(state, { widgetId });
 
   return {
     dashboard: dashboardState,
@@ -279,23 +342,27 @@ export const getDenormalizedSlice = (state, {widgetId, dashboardId, periodStart}
     period_start: sliceState.period_start,
     period_end: sliceState.period_end,
     row_label: sliceState.row_label,
-    groups: sliceState.groups.map(g => { // An array of [ dataset, value ]
+    groups: sliceState.groups.map(g => {
+      // An array of [ dataset, value ]
       return {
         dataset: widgetDatasetsState.find(d => {
           return g.dataset_id == d.id;
         }),
-        value: g.value
-      }
-    })
+        value: g.value,
+      };
+    }),
   };
 };
 
 /** fulfill an empty slice to contain denormalized values */
-export const getEmptyDenormalizedSlice = (state, {widgetId, dashboardId, datagroupKey}) => {
-  const sliceState = selectWidgetEmptySlice(state, {widgetId, datagroupKey});
-  const dashboardState = selectDashboard(state, {dashboardId});
-  const widgetState = selectWidget(state, {widgetId});
-  const widgetDatasetsState = selectDatasetsByWidget(state, {widgetId});
+export const getEmptyDenormalizedSlice = (
+  state,
+  { widgetId, dashboardId, datagroupKey },
+) => {
+  const sliceState = selectWidgetEmptySlice(state, { widgetId, datagroupKey });
+  const dashboardState = selectDashboard(state, { dashboardId });
+  const widgetState = selectWidget(state, { widgetId });
+  const widgetDatasetsState = selectDatasetsByWidget(state, { widgetId });
 
   return {
     dashboard: dashboardState,
@@ -306,9 +373,9 @@ export const getEmptyDenormalizedSlice = (state, {widgetId, dashboardId, datagro
     groups: widgetDatasetsState.map(d => {
       return {
         dataset: d,
-        value: void 0 // not null because null is a value
-      }
-    })
+        value: void 0, // not null because null is a value
+      };
+    }),
   };
 };
 
@@ -326,7 +393,7 @@ export const getEmptyDenormalizedSlice = (state, {widgetId, dashboardId, datagro
 
 // todo: consider removing this
 // gets all slices given state by a widget
-export const getDenormalizedSlices = (state, {widget, dashboard}) => {
+export const getDenormalizedSlices = (state, { widget, dashboard }) => {
   const widgetSlices = state.slices.filter(slice => {
     return slice.widget_id === widget.id;
   });
@@ -342,15 +409,14 @@ export const getDenormalizedSlices = (state, {widget, dashboard}) => {
       groups: slice.groups.map(g => {
         return {
           dataset: state.datasets.find(d => {
-            return g.dataset_id == d.id;  // ==
+            return g.dataset_id == d.id; // ==
           }),
-          value: g.value
-        }
-      })
-    }
+          value: g.value,
+        };
+      }),
+    };
   });
 };
-
 
 /** unfulfill a denormalized slice to contain normalized values */
 export const normalizeSlice = slice => {
@@ -363,8 +429,8 @@ export const normalizeSlice = slice => {
     groups: slice.groups.map(g => {
       return {
         dataset_id: g.dataset.id,
-        value: g.value
-      }
-    })
-  }
+        value: g.value,
+      };
+    }),
+  };
 };

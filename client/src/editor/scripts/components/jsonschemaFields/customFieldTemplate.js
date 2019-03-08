@@ -1,9 +1,7 @@
-
 import React from 'react';
 import PropTypes from 'prop-types';
 
-
-const Field = (props) => {
+const Field = props => {
   const {
     id,
     classNames,
@@ -33,9 +31,18 @@ const Field = (props) => {
 
   return (
     <div className={_classNames}>
-      {displayLabel ?<label htmlFor={id}>{label}{required ? "*" : null}</label> : null}
+      {displayLabel ? (
+        <label htmlFor={id}>
+          {label}
+          {required ? '*' : null}
+        </label>
+      ) : null}
       {displayLabel && description ? description : null}
-      {hasError && <div className="UIK-field-validation form-control-feedback">{errors}</div>}
+      {hasError && (
+        <div className="UIK-field-validation form-control-feedback">
+          {errors}
+        </div>
+      )}
       {children}
       {help && <small className="form-text text-muted">{help}</small>}
     </div>

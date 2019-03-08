@@ -25,21 +25,21 @@ function convertDataForPie(_data, _range) {
   let range = _range || 13;
 
   if (data && data.length) {
-    for (let i = 0; i <= data.length - 1; i ++) {
+    for (let i = 0; i <= data.length - 1; i++) {
       data[i].data = cropData(data[i].data, range);
     }
     //convert data
     data = convertData(data);
 
     //calculate data
-    let sumAll = d3.sum(data, c=> d3.sum(c, e=> e.y));
-    data = data.map(d=>({
+    let sumAll = d3.sum(data, c => d3.sum(c, e => e.y));
+    data = data.map(d => ({
       x: d[0].id,
-      y: d3.sum(d, c=> c.y) / sumAll * 100,
+      y: (d3.sum(d, c => c.y) / sumAll) * 100,
       color: d[0].color,
       altColor: d[0].altColor,
       id: d[0].id,
-      name: d[0].name
+      name: d[0].name,
     }));
     return data;
   }

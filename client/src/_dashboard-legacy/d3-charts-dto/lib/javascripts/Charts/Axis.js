@@ -36,11 +36,10 @@ class Axis {
     this.axis.call(this.Axis);
   }
 
-
-/**
- * Destroy the axis
- * @return {undefined} remove the `g` element that holds the axis
- */
+  /**
+   * Destroy the axis
+   * @return {undefined} remove the `g` element that holds the axis
+   */
   destroy() {
     this.axis.remove();
   }

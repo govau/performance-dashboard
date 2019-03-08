@@ -7,7 +7,6 @@ import formatData from './../Helpers/formatData';
  * @extends Axis
  */
 class YAxis extends Axis {
-
   /**
    * Constructor
    * @param  {Object} options - description
@@ -29,10 +28,18 @@ class YAxis extends Axis {
       tickValues = [min, 0, max];
     }
 
-    return d3.svg.axis()
+    return d3.svg
+      .axis()
       .scale(this.chart.yScale)
       .orient('right')
-      .tickFormat(d=>formatData(d, this.chart.prefix, this.chart.suffix, this.chart.displayRoundedData))
+      .tickFormat(d =>
+        formatData(
+          d,
+          this.chart.prefix,
+          this.chart.suffix,
+          this.chart.displayRoundedData,
+        ),
+      )
       .tickValues(tickValues);
   }
 
@@ -42,11 +49,12 @@ class YAxis extends Axis {
    */
   render() {
     super.render();
-    this.axis.attr('class', 'y axis')
-        .attr('transform', `translate(7, ${this.chart.margin.top})`)
-        .selectAll('text')
-        .attr('y', -6)
-        .style('text-anchor', 'start');
+    this.axis
+      .attr('class', 'y axis')
+      .attr('transform', `translate(7, ${this.chart.margin.top})`)
+      .selectAll('text')
+      .attr('y', -6)
+      .style('text-anchor', 'start');
   }
 }
 

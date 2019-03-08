@@ -2,9 +2,10 @@ import React from 'react';
 import classnames from 'classnames';
 import BtlWidget from './btlWidget';
 
-const sortWidgetsByPosition = (widgets) => {
+const sortWidgetsByPosition = widgets => {
   if (widgets && widgets.length) {
-    return widgets.sort((a, b) => { // sort numerically by the first slice
+    return widgets.sort((a, b) => {
+      // sort numerically by the first slice
       return a.pos - b.pos;
     });
   }
@@ -32,7 +33,7 @@ const groupWidgetsToColumns = (widgets, viewport) => {
       if (res[counter]) {
         // if this is the last item and uneven row in odd number of cols
         // and there is only a single item in the row
-        if (counter === 0 && idx+1 === len && size === 3) {
+        if (counter === 0 && idx + 1 === len && size === 3) {
           res[1].push(item);
         } else {
           res[counter].push(item);
@@ -54,12 +55,8 @@ const groupWidgetsToColumns = (widgets, viewport) => {
   return res;
 };
 
-const BtlWidgets = ({
-  dashboard,
-  widgets,
-  ui,
-}) => {
-  const {viewport} = ui;
+const BtlWidgets = ({ dashboard, widgets, ui }) => {
+  const { viewport } = ui;
   const sortedWidgets = sortWidgetsByPosition(widgets);
   const columnsOfWidgets = groupWidgetsToColumns(sortedWidgets, viewport);
 
@@ -72,11 +69,12 @@ const BtlWidgets = ({
             className={classnames({
               'col-xs-12': viewport === 'sm',
               'col-xs-12 col-md-6': viewport === 'md',
-              'col-xs-12 col-md-6 col-lg-4': viewport === 'lg' || typeof viewport === 'undefined',
+              'col-xs-12 col-md-6 col-lg-4':
+                viewport === 'lg' || typeof viewport === 'undefined',
             })}
           >
             {columnsOfWidgets[cIdx].map((w, idx2) => {
-              return <BtlWidget key={idx2} widget={w} dashboard={dashboard} />
+              return <BtlWidget key={idx2} widget={w} dashboard={dashboard} />;
             })}
           </div>
         );

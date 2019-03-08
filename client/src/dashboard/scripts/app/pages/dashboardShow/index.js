@@ -1,2 +1,1 @@
-
-export {default} from './dashboardShow_container';
+export { default } from './dashboardShow_container';

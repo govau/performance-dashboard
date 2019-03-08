@@ -27,11 +27,11 @@ class DashboardShow {
   }
 
   runOnResize() {
-    runOnResize({emitter: this.emitter});
+    runOnResize({ emitter: this.emitter });
   }
 
   runHighContrastSwitch() {
-    runHighContrastSwitch({emitter: this.emitter});
+    runHighContrastSwitch({ emitter: this.emitter });
   }
 }
 

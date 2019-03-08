@@ -7,13 +7,10 @@
 
 import { types } from './dashboardsActions';
 
-const dashboardsReducer = (state, {type, payload}) => {
+const dashboardsReducer = (state, { type, payload }) => {
   switch (type) {
     case types.HYDRATE__DASHBOARD_CREATED:
-      return [
-        ...state,
-        payload
-      ];
+      return [...state, payload];
 
     default:
       return state;

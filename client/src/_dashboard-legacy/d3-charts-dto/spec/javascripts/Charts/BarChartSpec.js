@@ -8,21 +8,25 @@ module.exports = function() {
     let options;
     let barChart;
 
-    beforeAll(()=>{
+    beforeAll(() => {
       data = [
-        [ {'x': new Date('2016-01'), 'y': 29.39, id: 0},
-          {'x': new Date('2016-02'), 'y': null, id: 0},
-          {'x': new Date('2016-03'), 'y': 0, id: 0}],
-        [ {'x': new Date('2016-01'), 'y': 29.39, id: 1},
-          {'x': new Date('2016-02'), 'y': null, id: 1},
-          {'x': new Date('2016-03'), 'y': 0, id: 1}]
+        [
+          { x: new Date('2016-01'), y: 29.39, id: 0 },
+          { x: new Date('2016-02'), y: null, id: 0 },
+          { x: new Date('2016-03'), y: 0, id: 0 },
+        ],
+        [
+          { x: new Date('2016-01'), y: 29.39, id: 1 },
+          { x: new Date('2016-02'), y: null, id: 1 },
+          { x: new Date('2016-03'), y: 0, id: 1 },
+        ],
       ];
 
       options = {
         height: 300,
         data: data,
         element: d3.select('#chart'),
-        margin: {top: 0, right: 0, bottom: 0, left: 0}
+        margin: { top: 0, right: 0, bottom: 0, left: 0 },
       };
 
       barChart = new BarChart(options);
@@ -30,7 +34,9 @@ module.exports = function() {
     });
     it('should create rectangles', () => {
       expect(d3.selectAll('rect').node()).not.toBe(null);
-      expect(d3.selectAll('rect')[0].length).toEqual(data[1].length + data[0].length);
+      expect(d3.selectAll('rect')[0].length).toEqual(
+        data[1].length + data[0].length,
+      );
     });
 
     it('rects should not have height or width', () => {
@@ -44,9 +50,9 @@ module.exports = function() {
       });
     });
 
-    addChartSpec(()=>({ chart: barChart, data: data}));
-    afterAll(()=>{
+    addChartSpec(() => ({ chart: barChart, data: data }));
+    afterAll(() => {
       barChart.destroy();
     });
   });
-}
+};

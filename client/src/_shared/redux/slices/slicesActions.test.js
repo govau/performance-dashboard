@@ -1,15 +1,13 @@
-
 /* global describe, it, beforeAll */
 import expect from 'expect';
 import buildMockApiEnvironment, {
   mockFetch,
-  mockFetchError
+  mockFetchError,
 } from './../../../test/utils/buildMockApiEnvironment';
 
-import {createSlice, updateSlice} from './slicesActions';
+import { createSlice, updateSlice } from './slicesActions';
 
 describe('(Actions) Slices - slicesActions', () => {
-
   let store;
   beforeAll(() => {
     store = buildMockApiEnvironment();
@@ -20,9 +18,9 @@ describe('(Actions) Slices - slicesActions', () => {
       const fixturePayload = {
         period_start: new Date('2016-01-01'),
         period: 'month',
-        widget: {id:1}
+        widget: { id: 1 },
       };
-      const fixtureReponse = {widget:{}, slice: {}, datasets: [{}]};
+      const fixtureReponse = { widget: {}, slice: {}, datasets: [{}] };
       mockFetch('widgets/1/slices/month/2016-01-01', 201, fixtureReponse);
       const request = store.dispatch(createSlice(fixturePayload));
       expect(request).toBeA(Promise);
@@ -35,9 +33,9 @@ describe('(Actions) Slices - slicesActions', () => {
       const fixturePayload = {
         period_start: new Date('2016-01-01'),
         period: 'month',
-        widget: {id:1}
+        widget: { id: 1 },
       };
-      const fixtureReponse = {widget:{}, slice: {}, datasets: [{}]};
+      const fixtureReponse = { widget: {}, slice: {}, datasets: [{}] };
       mockFetchError('widgets/1/slices/month/2016-01-01', 201, fixtureReponse);
       const request = store.dispatch(createSlice(fixturePayload));
       return request.catch(error => {
@@ -49,7 +47,4 @@ describe('(Actions) Slices - slicesActions', () => {
   describe('updateSlice', () => {
     it.skip('on success (201) should return a Promise');
   });
-
 });
-
-

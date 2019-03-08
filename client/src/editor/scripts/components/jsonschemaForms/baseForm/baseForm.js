@@ -7,7 +7,7 @@ import InputBasicWidget from './../../jsonschemaFields/customTextWidget';
 import * as helpers from './baseForm_helpers';
 
 const widgets = {
-  customText: InputBasicWidget
+  customText: InputBasicWidget,
 };
 
 /**
@@ -38,7 +38,7 @@ class BaseForm extends PureComponent {
     this.state = {
       globalErrors: [],
       // a promise is pending
-      pending: false
+      pending: false,
     };
   }
 
@@ -78,7 +78,7 @@ class BaseForm extends PureComponent {
     }
     this.setState({
       pending: false,
-      globalErrors: errors
+      globalErrors: errors,
     });
   }
 
@@ -150,7 +150,7 @@ BaseForm.propTypes = {
   onError: PropTypes.func,
   onChange: PropTypes.func,
   validate: PropTypes.func,
-  children: PropTypes.node
+  children: PropTypes.node,
 };
 
 export default BaseForm;

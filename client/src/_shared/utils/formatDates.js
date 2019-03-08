@@ -1,6 +1,4 @@
-
 const format = require('date-fns/format');
-
 
 export const dateFormats = {
   dateTime: date => new Date(date).getTime(),
@@ -9,11 +7,10 @@ export const dateFormats = {
   monthLongYear: date => format(new Date(date), `MMM YYYY`),
 };
 
-
 export const LONG_DATE = 'dddd D MMMM, YYYY';
 export const SHORT_DATE = 'DD MMM YYYY';
 export const VERY_SHORT_DATE = 'MMM YYYY';
-export const EXTREMELY_SHORT_DATE = 'MMM \'YY';
+export const EXTREMELY_SHORT_DATE = "MMM 'YY";
 export const DATE_HASH = 'YYYY-MM';
 export const MONTH_EXPANDED = 'MMMM';
 export const SHORT_MONTH = 'MMM';
@@ -21,7 +18,6 @@ export const SHORT_MONTH = 'MMM';
 // semantic
 export const DATE_HASH_LABEL = DATE_HASH;
 export const DATAGROUP_KEY_ROUTE_SEGMENT = DATE_HASH;
-
 
 export const formatDate = (date, dateFormat) => {
   return format(new Date(date), dateFormat);

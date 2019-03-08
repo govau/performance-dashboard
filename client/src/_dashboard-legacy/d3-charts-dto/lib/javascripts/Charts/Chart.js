@@ -10,8 +10,6 @@ import defined from './../Helpers/defined';
  */
 let numberOfInstance = 0;
 
-
-
 /** Abstract Class representing a chart. */
 class Chart {
   /**
@@ -34,7 +32,6 @@ class Chart {
   constructor(options) {
     this.render = this.render.bind(this);
 
-
     /**
      * Gets or sets the height of the chart,
      * @type {number}
@@ -50,7 +47,12 @@ class Chart {
      * Gets or sets the margin
      * @type {object}
      */
-    this.margin = options.margin || {top: 40, right: 40, bottom: 40, left: 40};
+    this.margin = options.margin || {
+      top: 40,
+      right: 40,
+      bottom: 40,
+      left: 40,
+    };
 
     /**
      * Gets or sets the units for data values
@@ -104,17 +106,21 @@ class Chart {
      * Gets or sets padding for data
      * @type {object}
      */
-    this.padding = options.padding || {top: 0, right: 0, bottom: 0, left: 0};
+    this.padding = options.padding || { top: 0, right: 0, bottom: 0, left: 0 };
 
     this.isHighContrastMode = options.isHighContrastMode;
   }
 
-/**
- * Gets or sets the width of the chart content
- * @return {number} [description]
- */
+  /**
+   * Gets or sets the width of the chart content
+   * @return {number} [description]
+   */
   get width() {
-    return this.wrapper.node().getBoundingClientRect().width - this.margin.left - this.margin.right;
+    return (
+      this.wrapper.node().getBoundingClientRect().width -
+      this.margin.left -
+      this.margin.right
+    );
   }
 
   /**
@@ -168,29 +174,29 @@ class Chart {
     return null;
   }
 
-/**
- * Render the chart based computed render properties
- * @return {undefined}
- */
+  /**
+   * Render the chart based computed render properties
+   * @return {undefined}
+   */
   render() {
     this.svg
-        .attr('width', this.width + this.margin.left + this.margin.right)
-        .attr('height', this.height + this.margin.top + this.margin.bottom);
+      .attr('width', this.width + this.margin.left + this.margin.right)
+      .attr('height', this.height + this.margin.top + this.margin.bottom);
     this.computeRenderProperty();
   }
-/**
- * Switch color mode
- * @return {undefined}
- */
+  /**
+   * Switch color mode
+   * @return {undefined}
+   */
   switchColorMode(isHighContrastMode) {
     throw new Error('switchColorMode must be implemented in derived classes');
   }
 
-/**
- * Highlight datapoint
- * @param  {number} j index of the dataset that should be highlighted
- * @return {undefined}
- */
+  /**
+   * Highlight datapoint
+   * @param  {number} j index of the dataset that should be highlighted
+   * @return {undefined}
+   */
   hover() {
     throw new Error('hover must be implemented in derived classes');
   }
@@ -204,34 +210,34 @@ class Chart {
     return this.data.slice();
   }
 
-/**
- * init the chart
- * @return {undefined}
- */
+  /**
+   * init the chart
+   * @return {undefined}
+   */
   init() {
     this.computeDataProperty();
 
-    if(!defined(this.transformedData) || !this.transformedData.length){
+    if (!defined(this.transformedData) || !this.transformedData.length) {
       throw new Error(`data for d3 charts is ${this.transformedData}`);
     }
 
     this.svg
-        .append('g')
-        .attr('class', 'chart__wrapper')
-        .attr('transform', `translate(${this.margin.left} , ${this.margin.top})`)
-        .datum(this.transformedData);
+      .append('g')
+      .attr('class', 'chart__wrapper')
+      .attr('transform', `translate(${this.margin.left} , ${this.margin.top})`)
+      .datum(this.transformedData);
 
-    numberOfInstance ++;
+    numberOfInstance++;
 
     d3.select(window).on('resize.chart' + numberOfInstance, this.render);
 
     return this;
   }
 
-/**
- * Destroy the chart
- * @return {undefined}
- */
+  /**
+   * Destroy the chart
+   * @return {undefined}
+   */
   destroy() {
     this.wrapper.remove();
     d3.select(window).on('resize.chart' + numberOfInstance, null);

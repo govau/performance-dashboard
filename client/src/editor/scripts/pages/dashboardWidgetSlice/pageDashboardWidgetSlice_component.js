@@ -5,7 +5,7 @@ import Pagination from './../../components/widgetPagePagination';
 import { getHumanisedVeryShortDate } from 'shared/utils/formatDates';
 import {
   CreateSliceForm,
-  UpdateSliceForm
+  UpdateSliceForm,
 } from './../../components/jsonschemaForms/slice';
 import metadatas from 'shared/redux/widgets/widgetMetadata';
 import TrafficLight from './../../components/widgetTrafficLight';
@@ -14,14 +14,14 @@ import {
   getNextPeriod,
   getPrevPeriod,
   isEmptySlice,
-  reachedLimitSeriesMin
+  reachedLimitSeriesMin,
 } from 'shared/redux/slices/slicesSelectors';
 
 const HeaderComponent = ({
   title,
   dateSeriesEnd,
   datePublished,
-  description
+  description,
 }) => () => (
   <div>
     <div className="page__title">
@@ -44,7 +44,7 @@ const DashboardWidgetDatagroupTimeSeriesPage = props => {
   let metadata = {
     label: null,
     widget_help: null,
-    widget_form_help: null
+    widget_form_help: null,
   };
 
   if (widget.type && widget.units) {
@@ -60,20 +60,20 @@ const DashboardWidgetDatagroupTimeSeriesPage = props => {
         { path: '/', name: 'Manage Dashboards' },
         {
           path: getDashboardWidgetsUrl(dashboard.id),
-          name: `${dashboard.name}`
+          name: `${dashboard.name}`,
         },
         {
           path: '',
           name: `${widget.name} - ${getHumanisedVeryShortDate(
-            slice.period_start
-          )}`
-        }
+            slice.period_start,
+          )}`,
+        },
       ]}
       HeaderComponent={HeaderComponent({
         title: metadata.label || widget.name,
         seriesEnd: slice.widget.series_end,
         datePublished: slice.widget.last_updated_at,
-        description: metadata.widget_help || null
+        description: metadata.widget_help || null,
       })}
     >
       <div>
@@ -88,7 +88,7 @@ const DashboardWidgetDatagroupTimeSeriesPage = props => {
             prevKey={getPrevPeriod(slice.period_start)}
             disablePrev={reachedLimitSeriesMin(
               slice.widget.series_start,
-              slice.period_start
+              slice.period_start,
             )}
             nextKey={getNextPeriod(slice.period_start)}
             widgetId={widget.id}
@@ -122,7 +122,7 @@ const DashboardWidgetDatagroupTimeSeriesPage = props => {
 
 DashboardWidgetDatagroupTimeSeriesPage.propTypes = {
   slice: PropTypes.object.isRequired,
-  push: PropTypes.func.isRequired
+  push: PropTypes.func.isRequired,
 };
 
 export default DashboardWidgetDatagroupTimeSeriesPage;

@@ -12,4 +12,4 @@ module.exports = function() {
       expect(getDate().short(date)).toEqual('Dec 95');
     });
   });
-}
+};

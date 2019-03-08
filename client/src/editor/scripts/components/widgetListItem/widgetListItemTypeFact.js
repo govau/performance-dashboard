@@ -5,7 +5,7 @@ import { CAN_UPDATE_FACT } from './../../config';
 import { humanisedShortDate } from 'shared/utils/formatDates';
 import {
   getDashboardWidgetFactUrl,
-  getServiceDashboardUrl
+  getServiceDashboardUrl,
 } from './../../utils/formatUrl';
 import UikitAlert from 'shared/components/uikit-alert';
 
@@ -17,7 +17,7 @@ const WidgetTypeFact = props => {
   const title = widget.name;
   const serviceDashboardUrl = getServiceDashboardUrl(
     dashboard.id,
-    dashboard.name
+    dashboard.name,
   );
   const editUrl = getDashboardWidgetFactUrl(dashboard.id, widget.id);
 
@@ -81,14 +81,14 @@ const WidgetTypeFact = props => {
 
 // todo - deprecate
 WidgetTypeFact.defaultProps = {
-  alertProps: null
+  alertProps: null,
 };
 
 WidgetTypeFact.propTypes = {
   alertProps: PropTypes.shape({
     description: PropTypes.string,
-    type: PropTypes.string
-  })
+    type: PropTypes.string,
+  }),
 };
 
 export default WidgetTypeFact;

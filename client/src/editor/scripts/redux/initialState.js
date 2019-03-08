@@ -6,7 +6,7 @@ export default {
   },
 
   // __EDITOR_STATE__
-  currentUser: {},  // todo - rename as session
+  currentUser: {}, // todo - rename as session
   slices: [],
   dashboards: [],
   widgets: [],

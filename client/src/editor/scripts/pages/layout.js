@@ -1,17 +1,14 @@
-
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import TransitionGroup from 'react/lib/ReactCSSTransitionGroup';
 import jump from 'jump.js';
 
-import {NullDataLayerPattern} from '@gov.au/datavizkit';
+import { NullDataLayerPattern } from '@gov.au/datavizkit';
 
 import IconLoader from 'shared/components/iconLoader';
 import Footer from 'shared/components/footer';
-import {trimLastUrlSegement} from './../utils/formatUrl';
-
+import { trimLastUrlSegement } from './../utils/formatUrl';
 
 class Layout extends Component {
-
   componentDidUpdate(prevProps) {
     let route = this.props.location.pathname;
     let prevRoute = prevProps.location.pathname;
@@ -26,7 +23,7 @@ class Layout extends Component {
     };
     if (shouldUpdateScrollPosition()) {
       jump(document.body, {
-        duration: -100
+        duration: -100,
       });
     }
   }
@@ -39,20 +36,21 @@ class Layout extends Component {
         <TransitionGroup
           transitionLeave={false}
           transitionName={{
-            enter:'fadeIn',
-            leave:'fadeOut'
+            enter: 'fadeIn',
+            leave: 'fadeOut',
           }}
-          transitionEnterTimeout={400}  // total time
-          transitionLeaveTimeout={200}  // total time
+          transitionEnterTimeout={400} // total time
+          transitionLeaveTimeout={200} // total time
           component="div"
-          className="app-page-parent">
-            {React.cloneElement(this.props.children, {
-              key: this.props.location.pathname
-            })}
+          className="app-page-parent"
+        >
+          {React.cloneElement(this.props.children, {
+            key: this.props.location.pathname,
+          })}
         </TransitionGroup>
         <Footer />
       </div>
-    )
+    );
   }
 }
 

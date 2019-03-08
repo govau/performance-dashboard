@@ -8,7 +8,10 @@ import d3 from 'd3';
 const normalize = function normalize(arr, item) {
   let max = d3.max(arr);
   let min = d3.min(arr);
-  let scale = d3.scale.linear().domain([min, max]).range([0, 100]);
+  let scale = d3.scale
+    .linear()
+    .domain([min, max])
+    .range([0, 100]);
   return scale(item);
 };
 

@@ -1,16 +1,19 @@
-
-import React, {PropTypes} from 'react';
+import React, { PropTypes } from 'react';
 
 import ICONS from './_iconData';
 
-
-const Icon = ({name, size = 16}) => {
+const Icon = ({ name, size = 16 }) => {
   return (
-    <svg width={size} height={size} className={`icon icon-${name}`} fill='currentColor'>
+    <svg
+      width={size}
+      height={size}
+      className={`icon icon-${name}`}
+      fill="currentColor"
+    >
       <title>${name}</title>
       <use xlinkHref={`#icon-${name}`} />
     </svg>
-  )
+  );
 };
 
 Icon.propTypes = {

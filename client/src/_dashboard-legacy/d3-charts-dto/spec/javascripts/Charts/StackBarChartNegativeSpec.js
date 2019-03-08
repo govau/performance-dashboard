@@ -8,18 +8,20 @@ module.exports = function() {
     let options;
     let barChart;
 
-    beforeAll(()=>{
+    beforeAll(() => {
       data = [
-        [ {'x': new Date('2016-01'), 'y': -20, id: 0},
-          {'x': new Date('2016-02'), 'y': 20, id: 0},
-          {'x': new Date('2016-03'), 'y': 0, id: 0}]
+        [
+          { x: new Date('2016-01'), y: -20, id: 0 },
+          { x: new Date('2016-02'), y: 20, id: 0 },
+          { x: new Date('2016-03'), y: 0, id: 0 },
+        ],
       ];
 
       options = {
         height: 300,
         data: data,
         element: d3.select('#chart'),
-        margin: {top: 0, right: 0, bottom: 0, left: 0}
+        margin: { top: 0, right: 0, bottom: 0, left: 0 },
       };
 
       barChart = new StackBarChart(options);
@@ -31,7 +33,7 @@ module.exports = function() {
     });
 
     it('should have negative and positive bars', () => {
-      let halfHeight = `${300/2}`;
+      let halfHeight = `${300 / 2}`;
       d3.selectAll('rect').each(function(d, i) {
         //first one is a negative bar, starts from middle position, goes to bottom
         if (i === 0) {
@@ -50,8 +52,8 @@ module.exports = function() {
         }
       });
     });
-    addChartSpec(()=>({ chart: barChart, data: data}));
-    afterAll(()=>{
+    addChartSpec(() => ({ chart: barChart, data: data }));
+    afterAll(() => {
       barChart.destroy();
     });
   });
@@ -61,21 +63,25 @@ module.exports = function() {
     let options;
     let barChart;
 
-    beforeAll(()=>{
+    beforeAll(() => {
       data = [
-        [ {'x': new Date('2016-01'), 'y': -20, id: 0, index: 0},
-          {'x': new Date('2016-02'), 'y': 20, id: 0, index: 0},
-          {'x': new Date('2016-03'), 'y': 0, id: 0, index: 0}],
-          [ {'x': new Date('2016-01'), 'y': -10, id: 0, index: 1},
-          {'x': new Date('2016-02'), 'y': -10, id: 0, index: 1},
-          {'x': new Date('2016-03'), 'y': 10, id: 0, index: 1}]
+        [
+          { x: new Date('2016-01'), y: -20, id: 0, index: 0 },
+          { x: new Date('2016-02'), y: 20, id: 0, index: 0 },
+          { x: new Date('2016-03'), y: 0, id: 0, index: 0 },
+        ],
+        [
+          { x: new Date('2016-01'), y: -10, id: 0, index: 1 },
+          { x: new Date('2016-02'), y: -10, id: 0, index: 1 },
+          { x: new Date('2016-03'), y: 10, id: 0, index: 1 },
+        ],
       ];
 
       options = {
         height: 300,
         data: data,
         element: d3.select('#chart'),
-        margin: {top: 0, right: 0, bottom: 0, left: 0}
+        margin: { top: 0, right: 0, bottom: 0, left: 0 },
       };
 
       barChart = new StackBarChart(options);
@@ -120,9 +126,9 @@ module.exports = function() {
       });
     });
 
-    addChartSpec(()=>({ chart: barChart, data: data}));
-    afterAll(()=>{
+    addChartSpec(() => ({ chart: barChart, data: data }));
+    afterAll(() => {
       barChart.destroy();
     });
   });
-}
+};

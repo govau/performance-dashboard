@@ -1,4 +1,3 @@
-
 import isObject from 'lodash/isObject';
 
 /**
@@ -18,7 +17,7 @@ const isTypeOfState = propertyKeys => {
     }
     let actualKeys = Object.keys(record);
     return propertyKeys.every(k => actualKeys.includes(k));
-  }
+  };
 };
 
 export default isTypeOfState;

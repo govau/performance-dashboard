@@ -1,24 +1,23 @@
-
 import React from 'react';
-import {connect} from 'react-redux';
-import {CountWithTrendWidget} from '@gov.au/datavizkit';
+import { connect } from 'react-redux';
+import { CountWithTrendWidget } from '@gov.au/datavizkit';
 
-import {getDenormalizedSlices} from 'shared/redux/slices/slicesSelectors';
+import { getDenormalizedSlices } from 'shared/redux/slices/slicesSelectors';
 import transformForHighcharts from 'shared/utils/transformForHighcharts';
 
-
 const mapStateToProps = (state, ownProps) => {
-
   const dashboard = state.dashboards[0];
-  const {widget} = ownProps;
+  const { widget } = ownProps;
 
   const slices = getDenormalizedSlices(state, {
     widget,
     dashboard,
   });
 
-  const sortedSlices = slices.sort((a,b) => {
-    return new Date(a.period_start).getTime() > new Date(b.period_start).getTime();
+  const sortedSlices = slices.sort((a, b) => {
+    return (
+      new Date(a.period_start).getTime() > new Date(b.period_start).getTime()
+    );
   });
 
   const lastTwoSlices = sortedSlices.slice(-2);
@@ -30,7 +29,7 @@ const mapStateToProps = (state, ownProps) => {
     // end nullify
 
     tooltipAnchorTo: '#dashboard-notes',
-    units: widget.units,  // todo - this is redundant, but is being used, can access this from series
+    units: widget.units, // todo - this is redundant, but is being used, can access this from series
 
     viewport: state.ui.viewport,
 
@@ -42,7 +41,5 @@ const mapDispatchToProps = null;
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(CountWithTrendWidget);
-
-

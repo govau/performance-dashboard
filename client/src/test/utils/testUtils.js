@@ -3,7 +3,6 @@ require('./../../../config/polyfills');
 
 import isObject from 'lodash/isObject';
 
-
 /**
  * Fake response object
  * @param status
@@ -19,9 +18,9 @@ export const mockResponse = (status, statusText, response) => {
     status: status,
     statusText: statusText,
     headers: {
-      'Content-Type': 'application/json'
-    }
-  })
+      'Content-Type': 'application/json',
+    },
+  });
 };
 
 const handleResponse = (mockedUrl, response) => {
@@ -30,16 +29,13 @@ const handleResponse = (mockedUrl, response) => {
 
 // stub successful fetch
 export const mockFetch = (mockedUrl, status = 201, data) => {
-  handleResponse(
-    mockedUrl,
-    Promise.resolve(mockResponse(status, null, data))
-  );
+  handleResponse(mockedUrl, Promise.resolve(mockResponse(status, null, data)));
 };
 
 // stub failing fetch
 export const mockFetchError = (mockedUrl, status, error = '{}') => {
   handleResponse(
     mockedUrl,
-    Promise.reject(mockResponse(status, 'Error', error))
+    Promise.reject(mockResponse(status, 'Error', error)),
   );
 };

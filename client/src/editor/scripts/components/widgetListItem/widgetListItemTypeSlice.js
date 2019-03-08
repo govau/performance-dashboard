@@ -8,7 +8,7 @@ import UikitAlert from 'shared/components/uikit-alert';
 import { isLatestSlice } from 'shared/redux/slices/slicesSelectors';
 import {
   getDashboardWidgetSliceUrl,
-  getServiceDashboardUrlAnchor
+  getServiceDashboardUrlAnchor,
 } from './../../utils/formatUrl';
 import { getNextPeriod } from 'shared/redux/slices/slicesSelectors';
 import { getWidgetType, isKpi } from 'shared/utils/proposedApiChanges';
@@ -20,17 +20,17 @@ const WidgetTypeSlice = props => {
   const serviceDashboardUrlAnchor = getServiceDashboardUrlAnchor(
     slice.dashboard.id,
     slice.dashboard.name,
-    slice.widget.name
+    slice.widget.name,
   );
   const editUrl = getDashboardWidgetSliceUrl(
     slice.dashboard.id,
     slice.widget.id,
-    slice.period_start
+    slice.period_start,
   );
   const addUrl = getDashboardWidgetSliceUrl(
     slice.dashboard.id,
     slice.widget.id,
-    getNextPeriod(slice.period_start)
+    getNextPeriod(slice.period_start),
   );
   const title =
     slice.widget.name === 'Kpis'
@@ -96,7 +96,7 @@ const WidgetTypeSlice = props => {
                   CAN_UPDATE_SLICE === false
                     ? e.preventDefault()
                     : actions.setLastWidgetImpression({
-                        widgetId: slice.widget.id
+                        widgetId: slice.widget.id,
                       })
                 }
               >
@@ -140,17 +140,17 @@ const WidgetTypeSlice = props => {
 
 // todo - deprecate
 WidgetTypeSlice.defaultProps = {
-  alertProps: null
+  alertProps: null,
 };
 
 WidgetTypeSlice.propTypes = {
   alertProps: PropTypes.shape({
     description: PropTypes.string,
-    type: PropTypes.string
+    type: PropTypes.string,
   }),
   actions: PropTypes.shape({
-    setLastWidgetImpression: PropTypes.func.isRequired
-  })
+    setLastWidgetImpression: PropTypes.func.isRequired,
+  }),
 };
 
 export default WidgetTypeSlice;

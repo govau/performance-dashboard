@@ -7,23 +7,25 @@ module.exports = function(callback) {
     let options;
     let chart;
 
-    beforeAll(()=>{
+    beforeAll(() => {
       if (!callback) {
-        data = [[{'x': new Date('2016-01'), 'y': 40},
-                {'x': new Date('2016-02'), 'y': null},
-                {'x': new Date('2016-03'), 'y': 0}]];
+        data = [
+          [
+            { x: new Date('2016-01'), y: 40 },
+            { x: new Date('2016-02'), y: null },
+            { x: new Date('2016-03'), y: 0 },
+          ],
+        ];
         options = {
           height: 300,
           data: data,
           element: d3.select('#chart'),
-          margin: {top: 0, right: 0, bottom: 0, left: 0}
+          margin: { top: 0, right: 0, bottom: 0, left: 0 },
         };
         chart = new Chart(options);
         chart.init();
         chart.render();
-
-      }
-       else {
+      } else {
         chart = callback().chart;
         data = callback().data;
       }
@@ -34,7 +36,9 @@ module.exports = function(callback) {
     });
 
     it('should create an svg of correct size', () => {
-      expect(d3.select('svg').style('width')).toEqual(window.testChartWidth + 'px');
+      expect(d3.select('svg').style('width')).toEqual(
+        window.testChartWidth + 'px',
+      );
       expect(d3.select('svg').style('height')).toEqual('300px');
     });
 

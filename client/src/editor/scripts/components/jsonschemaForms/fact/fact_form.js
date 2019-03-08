@@ -46,7 +46,7 @@ class FactForm extends BaseForm {
     const { formModel } = props;
 
     return {
-      description: formModel.widget.description
+      description: formModel.widget.description,
     };
   }
 
@@ -58,27 +58,27 @@ class FactForm extends BaseForm {
       properties: {
         description: {
           type: 'string',
-          title: 'Description'
-        }
+          title: 'Description',
+        },
       },
-      required: ['description']
+      required: ['description'],
     };
     let uiSchema = {
       description: {
         'ui:widget': 'textarea',
         'ui:autofocus': true,
         'ui:options': {
-          rows: 15
+          rows: 15,
         },
-        'ui:disabled': canSubmit === false
-      }
+        'ui:disabled': canSubmit === false,
+      },
     };
 
     return {
       formModel,
       canSubmit,
       schema,
-      uiSchema
+      uiSchema,
     };
   }
 
@@ -89,8 +89,8 @@ class FactForm extends BaseForm {
       dashboard_id: formModel.dashboard.id,
       widget_id: formModel.widget.id,
       formData: {
-        description: formData.description
-      }
+        description: formData.description,
+      },
     };
   }
 
@@ -107,7 +107,7 @@ FactForm.propTypes = {
   formModel: PropTypes.object.isRequired,
   completedUrl: PropTypes.string,
   handleCancel: PropTypes.func,
-  handleSaveSuccess: PropTypes.func
+  handleSaveSuccess: PropTypes.func,
 };
 
 export default FactForm;

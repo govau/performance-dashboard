@@ -1,2 +1,1 @@
-
-export {default} from './kpiWidgets_container';
+export { default } from './kpiWidgets_container';

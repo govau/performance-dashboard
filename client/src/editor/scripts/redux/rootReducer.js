@@ -1,7 +1,7 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 import reduceReducers from 'reduce-reducers';
-import {routerReducer} from 'react-router-redux'
-import {bindReducer} from 'shared/redux/reducerHelpers';
+import { routerReducer } from 'react-router-redux';
+import { bindReducer } from 'shared/redux/reducerHelpers';
 import initialState from './initialState';
 import ui from './ui/uiReducer';
 import currentUser from './currentUser/currentUserReducer';
@@ -10,10 +10,13 @@ import widgetsReducer from 'shared/redux/widgets/widgetsReducer';
 import datasetsReducer from 'shared/redux/datasets/datasetsReducer';
 import slicesReducer from 'shared/redux/slices/slicesReducer';
 import organisationsReducer from 'shared/redux/organisations/organisationsReducer';
-import {types as sliceTypes} from 'shared/redux/slices/slicesActions';
-import {updateSliceinSlices, createSliceinSlices} from 'shared/redux/slices/slicesHelpers';
-import {updateWidgetInWidgets} from 'shared/redux/widgets/widgetsHelpers';
-import {updateDatasetInDatasets} from 'shared/redux/datasets/datasetsHelper';
+import { types as sliceTypes } from 'shared/redux/slices/slicesActions';
+import {
+  updateSliceinSlices,
+  createSliceinSlices,
+} from 'shared/redux/slices/slicesHelpers';
+import { updateWidgetInWidgets } from 'shared/redux/widgets/widgetsHelpers';
+import { updateDatasetInDatasets } from 'shared/redux/datasets/datasetsHelper';
 
 const rootReducer = reduceReducers(
   combineReducers({
@@ -24,39 +27,40 @@ const rootReducer = reduceReducers(
     widgets: bindReducer(widgetsReducer, initialState.widgets),
     datasets: bindReducer(datasetsReducer, initialState.datasets),
     slices: bindReducer(slicesReducer, initialState.slices),
-    organisations: bindReducer(organisationsReducer, initialState.organisations),
+    organisations: bindReducer(
+      organisationsReducer,
+      initialState.organisations,
+    ),
   }),
 
-  (state, {type, payload}) => {
+  (state, { type, payload }) => {
     switch (type) {
-      case sliceTypes.HYDRATE__SLICE_UPDATED:
-        {
-          const {slice, widget, datasets} = payload;
-          state.slices = updateSliceinSlices(state.slices, slice);
-          state.widgets = updateWidgetInWidgets(state.widgets, widget);
+      case sliceTypes.HYDRATE__SLICE_UPDATED: {
+        const { slice, widget, datasets } = payload;
+        state.slices = updateSliceinSlices(state.slices, slice);
+        state.widgets = updateWidgetInWidgets(state.widgets, widget);
 
-          datasets.forEach(dataset => {
-            state.datasets = updateDatasetInDatasets(state.datasets, dataset);
-          });
-          return state;
-        }
+        datasets.forEach(dataset => {
+          state.datasets = updateDatasetInDatasets(state.datasets, dataset);
+        });
+        return state;
+      }
 
-      case sliceTypes.HYDRATE__SLICE_CREATED:
-        {
-          const {slice, widget, datasets} = payload;
-          state.slices = createSliceinSlices(state.slices, slice);
-          state.widgets = updateWidgetInWidgets(state.widgets, widget);
+      case sliceTypes.HYDRATE__SLICE_CREATED: {
+        const { slice, widget, datasets } = payload;
+        state.slices = createSliceinSlices(state.slices, slice);
+        state.widgets = updateWidgetInWidgets(state.widgets, widget);
 
-          datasets.forEach(dataset => {
-            state.datasets = updateDatasetInDatasets(state.datasets, dataset);
-          });
-          return state;
-        }
+        datasets.forEach(dataset => {
+          state.datasets = updateDatasetInDatasets(state.datasets, dataset);
+        });
+        return state;
+      }
 
       default:
         return state;
     }
-  }
+  },
 );
 
 export default rootReducer;

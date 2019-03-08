@@ -1,10 +1,8 @@
+import React, { PropTypes } from 'react';
+import { CONTEXTUAL_STATES } from './../meta';
+import { Icon } from './../iconLoader';
 
-import React, {PropTypes} from 'react';
-import {CONTEXTUAL_STATES} from './../meta';
-import {Icon} from './../iconLoader';
-
-
-const UikitAlert = ({type, headingText, text}) => {
+const UikitAlert = ({ type, headingText, text }) => {
   return (
     <div className={`UIK-alert alert alert-${type}`} role="alert">
       <div className="alert__icon">
@@ -15,13 +13,13 @@ const UikitAlert = ({type, headingText, text}) => {
         <p>{text}</p>
       </div>
     </div>
-  )
+  );
 };
 
 UikitAlert.propTypes = {
   type: PropTypes.oneOf(Object.keys(CONTEXTUAL_STATES)).isRequired,
   text: PropTypes.string.isRequired,
-  headingText: PropTypes.string
+  headingText: PropTypes.string,
 };
 
 export default UikitAlert;

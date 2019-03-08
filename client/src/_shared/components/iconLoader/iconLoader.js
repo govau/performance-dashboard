@@ -2,7 +2,6 @@ import React from 'react';
 
 import ICONS from './_iconData';
 
-
 /**
  * Load Icons
  *
@@ -19,19 +18,30 @@ import ICONS from './_iconData';
 
 const IconLoader = () => {
   return (
-    <svg width="0" height="0" style={{position:'absolute'}} className="invisible">
+    <svg
+      width="0"
+      height="0"
+      style={{ position: 'absolute' }}
+      className="invisible"
+    >
       <defs>
         {ICONS.map((data, idx) => {
           return (
-            <svg key={idx} id={`icon-${data.name}`} viewBox={data.viewBox} width="100%" height="100%">
+            <svg
+              key={idx}
+              id={`icon-${data.name}`}
+              viewBox={data.viewBox}
+              width="100%"
+              height="100%"
+            >
               <title>{data.name}</title>
               {data.html}
             </svg>
-          )
+          );
         })}
       </defs>
     </svg>
-  )
+  );
 };
 
 export default IconLoader;

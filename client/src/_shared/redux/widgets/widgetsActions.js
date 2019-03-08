@@ -5,14 +5,18 @@ export const types = {
 
 export const updateWidget = ({ widget_id, dashboard_id, formData }) => {
   return (dispatch, getState, api) => {
-    return api(`dashboards/${dashboard_id}/widgets/${widget_id}`, getState().currentUser.token, {
-      method: 'PATCH',
-      body: JSON.stringify(formData)
-    }).then(response => {
+    return api(
+      `dashboards/${dashboard_id}/widgets/${widget_id}`,
+      getState().currentUser.token,
+      {
+        method: 'PATCH',
+        body: JSON.stringify(formData),
+      },
+    ).then(response => {
       dispatch({
         type: types.HYDRATE__WIDGET_UPDATED,
         payload: {
-          widget: response
+          widget: response,
         },
       });
 
@@ -23,14 +27,18 @@ export const updateWidget = ({ widget_id, dashboard_id, formData }) => {
 
 export const createWidget = (dashboardId, { formData }) => {
   return (dispatch, getState, api) => {
-    return api(`dashboards/${dashboardId}/widgets`, getState().currentUser.token, {
-      method: 'POST',
-      body: JSON.stringify(formData)
-    }).then(response => {
+    return api(
+      `dashboards/${dashboardId}/widgets`,
+      getState().currentUser.token,
+      {
+        method: 'POST',
+        body: JSON.stringify(formData),
+      },
+    ).then(response => {
       dispatch({
         type: types.HYDRATE__WIDGET_CREATED,
         payload: {
-          widget: response
+          widget: response,
         },
       });
 
@@ -41,10 +49,14 @@ export const createWidget = (dashboardId, { formData }) => {
 
 export const initialiseWidget = (dashboardId, formData) => {
   return (dispatch, getState, api) => {
-    return api(`dashboards/${dashboardId}/initialise-widget`, getState().currentUser.token, {
-      method: 'POST',
-      body: JSON.stringify(formData)
-    }).then(response => {
+    return api(
+      `dashboards/${dashboardId}/initialise-widget`,
+      getState().currentUser.token,
+      {
+        method: 'POST',
+        body: JSON.stringify(formData),
+      },
+    ).then(response => {
       dispatch({
         type: types.HYDRATE__WIDGET_CREATED,
         payload: {
@@ -59,9 +71,13 @@ export const initialiseWidget = (dashboardId, formData) => {
 
 export const initialiseKpis = (dashboardId, formData) => {
   return (dispatch, getState, api) => {
-    return api(`dashboards/${dashboardId}/initialise-kpis`, getState().currentUser.token, {
-      method: 'POST',
-      body: JSON.stringify(formData)
-    });
+    return api(
+      `dashboards/${dashboardId}/initialise-kpis`,
+      getState().currentUser.token,
+      {
+        method: 'POST',
+        body: JSON.stringify(formData),
+      },
+    );
   };
 };

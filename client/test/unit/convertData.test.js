@@ -49,7 +49,6 @@ import { PATTERNS, PATTERNSDARK } from './../fixtures/patterns';
 //   ]
 // ];
 
-
 test.beforeEach(t => {
   require('./../helpers/setup-browser-env');
 
@@ -61,9 +60,8 @@ test.beforeEach(t => {
   let data = convertData(inputData.datasets);
   let datum = data[0][0];
 
-  t.context.data = {data, datum};
+  t.context.data = { data, datum };
 });
-
 
 test('data is an array with length 1', t => {
   let data = t.context.data.data;

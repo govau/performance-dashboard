@@ -42,4 +42,4 @@ module.exports = function() {
       expect(formatSeconds(s)).toEqual('25h00m00s');
     });
   });
-}
+};

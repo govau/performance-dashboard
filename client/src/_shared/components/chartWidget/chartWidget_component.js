@@ -5,7 +5,7 @@ import {
   ColumnWidget,
   DonutWidget,
   StackedColumnWidget,
-  SparklineWidget
+  SparklineWidget,
 } from '@gov.au/datavizkit';
 import FactWidget from 'shared/components/factWidget';
 
@@ -16,7 +16,7 @@ const WIDGET_TYPES = {
   stackedColumn: { component: StackedColumnWidget },
   donut: { component: DonutWidget },
   sparkline: { component: SparklineWidget },
-  fact: { component: FactWidget }
+  fact: { component: FactWidget },
 };
 
 const BtlWidget = props => {

@@ -35,7 +35,7 @@ var colors = {
   magenta: '7FACCA',
   cyan: 'C3C2EF',
   lightgrey: 'EBE7E3',
-  darkgrey: '6D7891'
+  darkgrey: '6D7891',
 };
 ansiHTML.setColors(colors);
 
@@ -143,8 +143,8 @@ var connection = new SockJS(
     hostname: window.location.hostname,
     port: 8080, //window.location.port,
     // Hardcoded in WebpackDevServer
-    pathname: '/sockjs-node'
-  })
+    pathname: '/sockjs-node',
+  }),
 );
 
 // Unlike WebpackDevServer client, we won't try to reconnect
@@ -152,7 +152,7 @@ var connection = new SockJS(
 // when developer stops the server.
 connection.onclose = function() {
   console.info(
-    'The development server has disconnected.\nRefresh the page if necessary.'
+    'The development server has disconnected.\nRefresh the page if necessary.',
   );
 };
 
@@ -222,7 +222,7 @@ function handleErrors(errors) {
   // "Massage" webpack messages.
   var formatted = formatWebpackMessages({
     errors: errors,
-    warnings: []
+    warnings: [],
   });
 
   // Only show the first error.
@@ -317,7 +317,7 @@ function tryApplyUpdates(onHotUpdateSuccess) {
       },
       function(err) {
         handleApplyUpdates(err, null);
-      }
+      },
     );
   }
 }

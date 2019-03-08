@@ -30,16 +30,16 @@ const InputBasicAddon = props => {
 // todo - deprecate this
 InputBasicAddon.defaultProps = {
   options: {
-    disabled: false
+    disabled: false,
   },
-  inputProps: {}
+  inputProps: {},
 };
 
 InputBasicAddon.propTypes = {
   options: PropTypes.shape({
-    addonText: PropTypes.string.isRequired
+    addonText: PropTypes.string.isRequired,
   }),
-  inputProps: PropTypes.object
+  inputProps: PropTypes.object,
 };
 
 export default InputBasicAddon;

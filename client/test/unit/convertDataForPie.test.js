@@ -43,8 +43,6 @@ import inputData from './../fixtures/data-dashboard-show-pie';
 //   }
 // ];
 
-
-
 test.beforeEach(t => {
   require('./../helpers/setup-browser-env');
 
@@ -55,13 +53,12 @@ test.beforeEach(t => {
 
   let data = convertDataForPie(inputData.datasets);
 
-  t.context.data = {data};
+  t.context.data = { data };
 });
-
 
 test('all y should add to 100', t => {
   let sum = 0;
-  t.context.data.data.forEach((d) => {
+  t.context.data.data.forEach(d => {
     sum += d.y;
   });
   t.true(Math.round(sum) === 100);

@@ -27,7 +27,7 @@ Donut.propTypes = {
   strokeColor: PropTypes.string.isRequired,
   innerColor: PropTypes.string,
   radius: PropTypes.number,
-  strokeWidth: PropTypes.number
+  strokeWidth: PropTypes.number,
 };
 
 export default Donut;

@@ -1,4 +1,3 @@
-
 /* global describe,it,beforeEach,afterEach */
 
 import expect from 'expect';
@@ -10,16 +9,14 @@ import {
   getDashboardWidgetSliceUrl,
   getDashboardWidgetDescriptionsUrl,
   getServiceDashboardUrl,
-  getServiceDashboardUrlAnchor
+  getServiceDashboardUrlAnchor,
 } from './formatUrl';
 
-
 describe(`(Util) Format Url - formatUrl`, () => {
-
   describe('getDashboardUrl', () => {
     it('should throw Error if incorrect params are provided', () => {
       expect(() => {
-        getDashboardUrl()
+        getDashboardUrl();
       }).toThrow();
     });
     it('should return correctly formatted url when dashboardId is provided', () => {
@@ -67,7 +64,9 @@ describe(`(Util) Format Url - formatUrl`, () => {
     });
     it('should return correctly formatted url when dashboardId and widgetId are provided', () => {
       const url = getDashboardWidgetDescriptionsUrl(324, 12);
-      expect(/\/dashboards\/324\/widgets\/12\/descriptions/.test(url)).toBe(true);
+      expect(/\/dashboards\/324\/widgets\/12\/descriptions/.test(url)).toBe(
+        true,
+      );
     });
   });
 
@@ -92,5 +91,4 @@ describe(`(Util) Format Url - formatUrl`, () => {
     });
     it.skip('test regex parsing');
   });
-
 });

@@ -8,7 +8,7 @@ import * as CONFIG from './_config';
 const projectName = require('./../../package').name;
 
 const NODE_ENV = String(
-  process.env.NODE_ENV ? process.env.NODE_ENV : 'development'
+  process.env.NODE_ENV ? process.env.NODE_ENV : 'development',
 );
 const DEBUG = NODE_ENV === 'development';
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -24,14 +24,14 @@ let webpackConfig = {
     ['dashboard-index']: [`./dashboard-index`],
     ['app_shell']: [`./app_shell`],
     ['editor']: [`./editor`],
-    ['login']: [`./login`]
+    ['login']: [`./login`],
   },
   output: {
     path: CONFIG.DIR_DIST,
     pathinfo: true,
     filename: 'javascripts/[name].js',
     publicPath: `/`,
-    sourceMapFilename: 'javascripts/[name].js.map'
+    sourceMapFilename: 'javascripts/[name].js.map',
   },
   module: {
     rules: [
@@ -39,12 +39,12 @@ let webpackConfig = {
         test: /\.js$/,
         exclude: /node_modules/,
         enforce: 'pre',
-        use: ['babel-loader', 'eslint-loader']
+        use: ['babel-loader', 'eslint-loader'],
       },
       {
         test: /\.(js)$/,
         loaders: ['babel-loader'],
-        exclude: [CONFIG.DIR_NPM, CONFIG.DIR_TEST]
+        exclude: [CONFIG.DIR_NPM, CONFIG.DIR_TEST],
       },
       {
         test: /\.(sa|sc|c)ss$/,
@@ -53,8 +53,8 @@ let webpackConfig = {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: true
-            }
+              sourceMap: true,
+            },
           },
           'postcss-loader',
           'resolve-url-loader',
@@ -62,10 +62,10 @@ let webpackConfig = {
             loader: 'sass-loader',
             options: {
               sourceMap: true,
-              sourceMapContents: false
-            }
-          }
-        ]
+              sourceMapContents: false,
+            },
+          },
+        ],
       },
       {
         test: /\.(jpe?g|gif|png|svg)$/,
@@ -74,29 +74,29 @@ let webpackConfig = {
           options: {
             name: '[name].[ext]?[hash]',
             outputPath: './images/',
-            publicPath: '/images/'
-          }
-        }
-      }
-    ]
+            publicPath: '/images/',
+          },
+        },
+      },
+    ],
   },
   plugins: [
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify(NODE_ENV)
+        NODE_ENV: JSON.stringify(NODE_ENV),
       },
-      __DEV__: DEBUG
+      __DEV__: DEBUG,
     }),
-    new BellOnBundlerErrorPlugin()
+    new BellOnBundlerErrorPlugin(),
   ],
   resolve: {
-    extensions: ['.js', '.scss']
+    extensions: ['.js', '.scss'],
   },
   node: {
     fs: 'empty',
     net: 'empty',
-    tls: 'empty'
-  }
+    tls: 'empty',
+  },
 };
 
 export default webpackConfig;

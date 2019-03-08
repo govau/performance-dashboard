@@ -1,16 +1,15 @@
-
 import React from 'react';
-import {connect} from 'react-redux';
-import {HeroWidget} from '@gov.au/datavizkit';
+import { connect } from 'react-redux';
+import { HeroWidget } from '@gov.au/datavizkit';
 
 import transformForHighcharts from 'shared/utils/transformForHighcharts';
-import {getDenormalizedSlices} from 'shared/redux/slices/slicesSelectors';
-
+import { getDenormalizedSlices } from 'shared/redux/slices/slicesSelectors';
 
 const mapStateToProps = (state, ownProps) => {
-
-  const {widget, dashboard} = ownProps;
-  const {ui: {isHighContrastMode}} = state;
+  const { widget, dashboard } = ownProps;
+  const {
+    ui: { isHighContrastMode },
+  } = state;
 
   const slices = getDenormalizedSlices(state, {
     widget,
@@ -35,7 +34,5 @@ const mapDispatchToProps = null;
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(HeroWidget);
-
-

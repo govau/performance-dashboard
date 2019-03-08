@@ -1,14 +1,13 @@
-
-export const getWidgetType = (widget) => {
-
-  const {type, options} = widget;
+export const getWidgetType = widget => {
+  const { type, options } = widget;
 
   if (type === 'fact') {
     return 'fact';
   }
 
   if (type === 'bar') {
-    if (widget.name === 'How users find the dashboard') { // todo - fix data issue
+    if (widget.name === 'How users find the dashboard') {
+      // todo - fix data issue
       return 'stackedColumn';
     }
     if (options && options.stacking) {
@@ -46,8 +45,7 @@ export const isKpi = widgetType => {
   return widgetType === 'kpi-count' || widgetType === 'hero';
 };
 
-export const getWidgetCoordinatesType = (widgetType) => {
-
+export const getWidgetCoordinatesType = widgetType => {
   if (widgetType === 'donut' || widgetType === 'pie') {
     return 'polar';
   }
@@ -55,9 +53,7 @@ export const getWidgetCoordinatesType = (widgetType) => {
   return 'cartesian';
 };
 
-
-export const getUnitsType = (units) => {
-
+export const getUnitsType = units => {
   if (units === '%') {
     return 'percentage';
   }
@@ -74,7 +70,8 @@ export const getUnitsType = (units) => {
     return 'money';
   }
 
-  if (units === 'f') {  // fact
+  if (units === 'f') {
+    // fact
     return;
   }
 
@@ -83,12 +80,10 @@ export const getUnitsType = (units) => {
   return;
 };
 
-
-export const getWidgetOptions = (widget) => {
-
+export const getWidgetOptions = widget => {
   let res = {};
 
-  const {options} = widget;
+  const { options } = widget;
 
   if (typeof options === 'undefined' || options === null) {
     return res;
@@ -99,17 +94,14 @@ export const getWidgetOptions = (widget) => {
   }
 
   if (options.stacking) {
-    if(options.stacking == 'percentage') {
+    if (options.stacking == 'percentage') {
       res.stackingType = 'percent';
-    }
-    else {
+    } else {
       res.stackingType = 'normal';
     }
   }
 
-
   // todo - displayRoundedData
 
   return res;
-
 };

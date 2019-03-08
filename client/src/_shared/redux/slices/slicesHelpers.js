@@ -1,14 +1,11 @@
-
-import {compareSliceEquality} from './slicesSelectors';
+import { compareSliceEquality } from './slicesSelectors';
 import isTypeOfState from './../../utils/isTypeOfState';
-
 
 /**
  * Check if is of state type
  * @return {Boolean}
  */
 export const isSlice = isTypeOfState(['widget_id', 'dashboard_id', 'groups']);
-
 
 /**
  * @param slices {Array} Slices state
@@ -23,7 +20,7 @@ export const updateSliceinSlices = (slices, slice) => {
   }
   return slices.map(s => {
     if (compareSliceEquality(s, slice)) {
-      return {...s, ...slice};
+      return { ...s, ...slice };
     }
     return s;
   });

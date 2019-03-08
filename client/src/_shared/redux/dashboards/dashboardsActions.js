@@ -7,9 +7,7 @@ export const types = {
   HYDRATE__DASHBOARD_CREATED: 'create/dashboard/success',
 };
 
-export const createDashboard = ({
-  formData,
-}) => {
+export const createDashboard = ({ formData }) => {
   return (dispatch, getState, api) => {
     return api('dashboards', getState().currentUser.token, {
       method: 'POST',
@@ -18,9 +16,7 @@ export const createDashboard = ({
   };
 };
 
-export const initialiseDashboard = ({
-  formData,
-}) => {
+export const initialiseDashboard = ({ formData }) => {
   return (dispatch, getState, api) => {
     return api('initialise-dashboard', getState().currentUser.token, {
       method: 'POST',
@@ -28,7 +24,7 @@ export const initialiseDashboard = ({
     }).then(response => {
       dispatch({
         type: types.HYDRATE__DASHBOARD_CREATED,
-        payload: response
+        payload: response,
       });
 
       return response;

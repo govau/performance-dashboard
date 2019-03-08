@@ -1,12 +1,8 @@
-
 import React from 'react';
 
 import KpiWidget from './kpiWidget';
 
-
-const KpiWidgets = ({
-  widgets,
-}) => {
+const KpiWidgets = ({ widgets }) => {
   return (
     <div className="kpi-widgets">
       <div className="row">
@@ -20,11 +16,11 @@ const KpiWidgets = ({
             <div key={idx} className="col-xs-12 col-lg-3">
               <KpiWidget widget={w} />
             </div>
-          )
+          );
         })}
       </div>
     </div>
-  )
+  );
 };
 
 export default KpiWidgets;

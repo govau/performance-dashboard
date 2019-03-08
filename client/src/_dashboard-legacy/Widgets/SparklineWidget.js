@@ -5,7 +5,9 @@ import defined from './../d3-charts-dto/lib/javascripts/Helpers/defined.js';
 
 class SparklineWidget {
   constructor(options) {
-    this.container = options.element.append('div').attr('class', 'sparkline__inner');
+    this.container = options.element
+      .append('div')
+      .attr('class', 'sparkline__inner');
     this.displayRoundedData = options.displayRoundedData;
     this.prefix = options.prefix;
     this.suffix = options.suffix;
@@ -20,38 +22,45 @@ class SparklineWidget {
     this.init();
   }
 
-  init(){
+  init() {
     this.metricData = this.container.append('div').attr('class', 'metric-data');
     this.metricDataValue = this.metricData.append('div').attr('class', 'value');
     this.metricDataValue.text('No data');
 
-    if(this.data && this.data.length){
+    if (this.data && this.data.length) {
       this.addChart();
     }
   }
 
-  addChart(){
-    let sparkLineContainer = this.container.append('div').attr('class', 'sparkline');
+  addChart() {
+    let sparkLineContainer = this.container
+      .append('div')
+      .attr('class', 'sparkline');
     let decorator;
     if (this.units === '$') {
       // prepend if currency
-      decorator = this.metricData.insert('div', ":first-child").attr('class', 'decorator');
+      decorator = this.metricData
+        .insert('div', ':first-child')
+        .attr('class', 'decorator');
     } else {
       decorator = this.metricData.append('div').attr('class', 'decorator');
     }
 
     this.metricDataTrend = decorator.append('div');
-    this.metricDataUnit = decorator.append('div').attr('class', 'metric-unit').text(this.units);
+    this.metricDataUnit = decorator
+      .append('div')
+      .attr('class', 'metric-unit')
+      .text(this.units);
 
-    if(this.data[0].length > 1){
+    if (this.data[0].length > 1) {
       this.sparkline = new LineChart({
         element: sparkLineContainer,
         data: this.data,
         height: 28,
-        margin: {top: 0, right: 0, bottom: 0, left: 0},
-        padding: {left: 0, right: 0, bottom: 0, top: 0},
+        margin: { top: 0, right: 0, bottom: 0, left: 0 },
+        padding: { left: 0, right: 0, bottom: 0, top: 0 },
         interpolate: 'cardinal',
-        isHighContrastMode: false
+        isHighContrastMode: false,
       });
       this.sparkline.init();
       // new NullDataLayer({chart: this.sparkline, above: false });
@@ -63,16 +72,24 @@ class SparklineWidget {
   }
 
   hover(i) {
-    if(defined(this.sparkline)){
+    if (defined(this.sparkline)) {
       this.sparkline.hover(i);
       this.summary.html(this.getSummary(i));
     }
 
     if (this.data[0][i]) {
       this.container.classed('no-data', this.data[0][i].y === null);
-      this.metricDataValue.text(formatData(this.data[0][i].y, '', '', false, defined(this.prefix) && this.prefix === '$'));
+      this.metricDataValue.text(
+        formatData(
+          this.data[0][i].y,
+          '',
+          '',
+          false,
+          defined(this.prefix) && this.prefix === '$',
+        ),
+      );
       this.metricDataTrend.attr('class', 'metric-trend');
-    } else  {
+    } else {
       this.container.classed('no-data', true);
       this.metricDataValue.text(formatData(null));
       this.metricDataTrend.attr('class', 'metric-trend');
@@ -86,24 +103,24 @@ class SparklineWidget {
     let date = getDate().long(this.data[0][this.data[0].length - 1].x);
     if (i < this.data[0].length && i > 0) {
       trend = this.getTrend(i);
-      date = getDate().long(this.data[0][i-1].x);
+      date = getDate().long(this.data[0][i - 1].x);
       volume = formatData(
-          Math.abs(this.data[0][i].y - this.data[0][ i - 1].y),
-          this.prefix,
-          this.suffix
+        Math.abs(this.data[0][i].y - this.data[0][i - 1].y),
+        this.prefix,
+        this.suffix,
       );
-      if (Math.abs(this.data[0][i].y - this.data[0][ i - 1 ].y) === 0) {
+      if (Math.abs(this.data[0][i].y - this.data[0][i - 1].y) === 0) {
         volume = ' ';
       }
     }
     return `<span class='metric-trend fa fa-arrow-${trend}'></span><span class='summary-text'>${trend} ${volume} since ${date}</span>`;
   }
 
-  getTrend(i){
+  getTrend(i) {
     if (i < this.data[0].length && i > 0) {
       if (this.data[0][i].y > this.data[0][i - 1].y) {
         return 'up';
-      } else if (this.data[0][i].y < this.data[0][i - 1].y){
+      } else if (this.data[0][i].y < this.data[0][i - 1].y) {
         return 'down';
       } else {
         return 'unchanged';
@@ -112,7 +129,7 @@ class SparklineWidget {
     return null;
   }
 
-  destroy(){
+  destroy() {
     this.container.remove();
   }
 }

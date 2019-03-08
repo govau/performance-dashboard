@@ -6,7 +6,7 @@ import { types } from './widgetsActions';
  * @param action.payload
  * @returns {Array.<Widgets>}
  */
-const widgetsReducer = (state, {type, payload}) => {
+const widgetsReducer = (state, { type, payload }) => {
   switch (type) {
     case types.HYDRATE__WIDGET_UPDATED:
       return state.map(widget => {
@@ -17,10 +17,7 @@ const widgetsReducer = (state, {type, payload}) => {
       });
 
     case types.HYDRATE__WIDGET_CREATED:
-      return [
-        ...state,
-        payload.widget
-      ];
+      return [...state, payload.widget];
 
     default:
       return state;

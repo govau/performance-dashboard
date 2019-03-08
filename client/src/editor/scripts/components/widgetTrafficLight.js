@@ -2,27 +2,30 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Donut from './svgs/donut';
 import { statusColors } from './../constants/styleVariables';
-import {humanisedShortDate, getHumanisedVeryShortDate} from 'shared/utils/formatDates';
-import {getNumMonthsBetweenLastUpdatedAndLatestPossible} from 'shared/redux/slices/slicesSelectors';
+import {
+  humanisedShortDate,
+  getHumanisedVeryShortDate,
+} from 'shared/utils/formatDates';
+import { getNumMonthsBetweenLastUpdatedAndLatestPossible } from 'shared/redux/slices/slicesSelectors';
 import isNumber from 'lodash/isNumber';
 
 const STATUSES = [
   {
     label: 'UP TO DATE',
-    color: statusColors.COLOR_SUCCESS
+    color: statusColors.COLOR_SUCCESS,
   },
   {
     label: 'TO DO',
-    color: statusColors.COLOR_WARNING
+    color: statusColors.COLOR_WARNING,
   },
   {
     label: 'OVERDUE',
-    color: statusColors.COLOR_ERROR
-  }
+    color: statusColors.COLOR_ERROR,
+  },
 ];
 
 const TrafficLight = ({
-  dateSeriesEnd, 
+  dateSeriesEnd,
   datePublished,
   type,
   units,
@@ -33,13 +36,15 @@ const TrafficLight = ({
     return null;
   }
 
-  const numMonths = getNumMonthsBetweenLastUpdatedAndLatestPossible(dateSeriesEnd);
+  const numMonths = getNumMonthsBetweenLastUpdatedAndLatestPossible(
+    dateSeriesEnd,
+  );
   let showMonths = true;
   let status;
 
   if (!isNumber(numMonths) || numMonths < 0) {
     showMonths = false;
-  } else  {
+  } else {
     status = numMonths >= 2 ? STATUSES[2] : STATUSES[numMonths];
   }
 
@@ -51,19 +56,26 @@ const TrafficLight = ({
             <Donut innerColor="white" strokeColor={status.color} />
           </span>
 
-          <span className="status-label">{status.label}</span>          
+          <span className="status-label">{status.label}</span>
         </span>
       )}
-      
-      <div>{`${size} ${type} (${units})`}, {period} period</div>
 
-      <div>Published: <time>{humanisedShortDate(datePublished)}</time></div>
+      <div>
+        {`${size} ${type} (${units})`}, {period} period
+      </div>
+
+      <div>
+        Published: <time>{humanisedShortDate(datePublished)}</time>
+      </div>
 
       {period !== 'custom' && !!dateSeriesEnd && (
-        <div>Most recent data: <time>{getHumanisedVeryShortDate(dateSeriesEnd)}</time></div>
+        <div>
+          Most recent data:{' '}
+          <time>{getHumanisedVeryShortDate(dateSeriesEnd)}</time>
+        </div>
       )}
     </div>
-  )
+  );
 };
 
 TrafficLight.propTypes = {

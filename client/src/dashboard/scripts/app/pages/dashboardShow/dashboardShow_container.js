@@ -2,10 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import DashboardShowPage from './dashboardShow_page';
-import {
-  onToggleHighContrast,
-  onResize,
-} from './../../redux/ducks/ui_ducks';
+import { onToggleHighContrast, onResize } from './../../redux/ducks/ui_ducks';
 
 const mapStateToProps = (state, ownProps) => {
   const dashboard = state.dashboards[0];
@@ -35,11 +32,11 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   const { emitter } = ownProps;
 
-  emitter.on('set-viewport-changed', (viewport) => {
+  emitter.on('set-viewport-changed', viewport => {
     dispatch(onResize(viewport));
   });
 
-  emitter.on('set-high-contrast-mode', (isOn) => {
+  emitter.on('set-high-contrast-mode', isOn => {
     dispatch(onToggleHighContrast(isOn));
   });
 

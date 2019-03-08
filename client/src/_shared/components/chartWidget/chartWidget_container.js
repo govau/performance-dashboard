@@ -1,7 +1,7 @@
 import React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import ChartWidget from './chartWidget_component';
-import {getDenormalizedSlices} from 'shared/redux/slices/slicesSelectors';
+import { getDenormalizedSlices } from 'shared/redux/slices/slicesSelectors';
 import {
   getWidgetType,
   getWidgetOptions,
@@ -10,10 +10,13 @@ import {
 import transformForHighcharts from 'shared/utils/transformForHighcharts';
 
 const mapStateToProps = (state, ownProps) => {
-  let {widget, dashboard, slices} = ownProps;
-  const {ui: {isHighContrastMode, viewport}} = state;
+  let { widget, dashboard, slices } = ownProps;
+  const {
+    ui: { isHighContrastMode, viewport },
+  } = state;
 
-  if (slices && slices.length) { // 2 apis - can supply either "slices" or "widget and dashboard"
+  if (slices && slices.length) {
+    // 2 apis - can supply either "slices" or "widget and dashboard"
     widget = slices[0].widget;
   }
 
@@ -24,13 +27,13 @@ const mapStateToProps = (state, ownProps) => {
       _type: 'fact',
       chartDescription: widget.description,
       // slices: makeFact(widget, dashboard)
-    }
+    };
   }
 
   if (!(slices && slices.length)) {
     slices = getDenormalizedSlices(state, {
       widget,
-      dashboard
+      dashboard,
     });
   }
 
@@ -52,5 +55,5 @@ const mapDispatchToProps = null;
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(ChartWidget);

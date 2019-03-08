@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { findDOMNode } from 'react-dom'
+import { findDOMNode } from 'react-dom';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import jump from 'jump.js';
@@ -15,7 +15,10 @@ import {
   getServiceDashboardUrlAnchor,
 } from './../../utils/formatUrl';
 import { onNextFrame } from './../../utils/DOM';
-import { WidgetTypeSlice, WidgetTypeFact } from './../../components/widgetListItem';
+import {
+  WidgetTypeSlice,
+  WidgetTypeFact,
+} from './../../components/widgetListItem';
 import { sanitizeBtlWidgetByType } from 'shared/redux/widgets/widgetsHelpers';
 import {
   createWidget,
@@ -44,11 +47,11 @@ class PageDashboardWidgets extends Component {
   }
 
   componentWillUnmount() {
-    const {ui, actions} = this.props;
+    const { ui, actions } = this.props;
     // clear lastWidgetImpression on unmount so the component can rerender correctly
     // without losing its alert message
     if (ui.lastWidgetImpression && ui.lastWidgetImpression.widgetId) {
-      actions.setLastWidgetImpression({});  // clear
+      actions.setLastWidgetImpression({}); // clear
     }
   }
 
@@ -57,34 +60,38 @@ class PageDashboardWidgets extends Component {
     if (node !== 'undefined') {
       onNextFrame(() => {
         jump(node, {
-          duration: -100 // appear to not transition,
+          duration: -100, // appear to not transition,
         });
       });
     }
   }
 
-  handleAddNewFact = (event) => {
+  handleAddNewFact = event => {
     event.preventDefault();
     const dashboardId = this.props.dashboard.id;
 
-    this.props.createWidget(dashboardId, {
-      formData: {
-        name: 'Fact',
-        description: 'Fact text',
-        options: {},
-        row: 0,
-        pos: 0,
-        type: 'fact',
-        size: 'small',
-        units: 'n',
-      },
-    }).then((widget) => {
-      console.log(`Fact widget created (${widget.id})`);
-      this.context.router.push(getDashboardWidgetFactUrl(dashboardId, widget.id));
-    });
-  }
+    this.props
+      .createWidget(dashboardId, {
+        formData: {
+          name: 'Fact',
+          description: 'Fact text',
+          options: {},
+          row: 0,
+          pos: 0,
+          type: 'fact',
+          size: 'small',
+          units: 'n',
+        },
+      })
+      .then(widget => {
+        console.log(`Fact widget created (${widget.id})`);
+        this.context.router.push(
+          getDashboardWidgetFactUrl(dashboardId, widget.id),
+        );
+      });
+  };
 
-  toggleChartForm = (event) => {
+  toggleChartForm = event => {
     if (event) {
       event.preventDefault();
     }
@@ -94,7 +101,7 @@ class PageDashboardWidgets extends Component {
     });
   };
 
-  toggleKpiForm = (event) => {
+  toggleKpiForm = event => {
     if (event) {
       event.preventDefault();
     }
@@ -104,24 +111,28 @@ class PageDashboardWidgets extends Component {
     });
   };
 
-  handleAddNewChart = (formData) => {
+  handleAddNewChart = formData => {
     this.toggleChartForm();
     const { dashboard } = this.props;
 
-    this.props.initialiseWidget(dashboard.id, formData).then((widget) => {
+    this.props.initialiseWidget(dashboard.id, formData).then(widget => {
       console.log(`Chart widget created (${widget.id})`);
-      window.location = getServiceDashboardUrlAnchor(dashboard.id, dashboard.name, widget.name);
+      window.location = getServiceDashboardUrlAnchor(
+        dashboard.id,
+        dashboard.name,
+        widget.name,
+      );
     });
-  }
+  };
 
-  handleAddKpis = (formData) => {
+  handleAddKpis = formData => {
     this.toggleKpiForm();
     const { dashboard } = this.props;
 
-    this.props.initialiseKpis(dashboard.id, formData).then((dashboard) => {
+    this.props.initialiseKpis(dashboard.id, formData).then(dashboard => {
       window.location = getServiceDashboardUrl(dashboard.id, dashboard.name);
     });
-  }
+  };
 
   render() {
     const pageKey = 'dashboardwidgets';
@@ -145,13 +156,17 @@ class PageDashboardWidgets extends Component {
       <div className={`page page-${pageKey}`}>
         <div className="page__header">
           <div className="container">
-            <div style={{
-              display: 'flex',
-              alignItems: 'center',
-            }}>
-              <div style={{
-                flex: '1',
-              }}>
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+              }}
+            >
+              <div
+                style={{
+                  flex: '1',
+                }}
+              >
                 <Breadcrumbs paths={breadcrumbPaths} />
 
                 <div>
@@ -170,9 +185,7 @@ class PageDashboardWidgets extends Component {
                   >
                     Add KPIs
                   </Link>
-
                   &nbsp;&nbsp;&nbsp;
-
                   <Link
                     to=""
                     className="UIK-button btn btn-primary pr-1"
@@ -180,9 +193,7 @@ class PageDashboardWidgets extends Component {
                   >
                     Add new chart
                   </Link>
-
                   &nbsp;&nbsp;&nbsp;
-
                   <Link
                     to=""
                     className="UIK-button btn btn-primary"
@@ -197,25 +208,25 @@ class PageDashboardWidgets extends Component {
         </div>
 
         {this.state.creatingChart && (
-          <div style={{
-            backgroundColor: '#f8f8f8',
-          }}>
+          <div
+            style={{
+              backgroundColor: '#f8f8f8',
+            }}
+          >
             <div className="container">
-              <CreateChart
-                onSubmit={this.handleAddNewChart}
-              />
+              <CreateChart onSubmit={this.handleAddNewChart} />
             </div>
           </div>
         )}
 
         {this.state.creatingKpis && (
-          <div style={{
-            backgroundColor: '#f8f8f8',
-          }}>
+          <div
+            style={{
+              backgroundColor: '#f8f8f8',
+            }}
+          >
             <div className="container">
-              <CreateKpis
-                onSubmit={this.handleAddKpis}
-              />
+              <CreateKpis onSubmit={this.handleAddKpis} />
             </div>
           </div>
         )}
@@ -223,24 +234,40 @@ class PageDashboardWidgets extends Component {
         <div className="page__body">
           <div className="container">
             <section className="widget-list">
-
-              {(!heroSlice && !btlSlices.length) && <div className="row">
-                <div className="col-xs-12">
-                  <UikitAlert type="info" text="Your dashboard does not yet contain any charts or facts. Please contact the dashboard team to set up this information." />
+              {!heroSlice && !btlSlices.length && (
+                <div className="row">
+                  <div className="col-xs-12">
+                    <UikitAlert
+                      type="info"
+                      text="Your dashboard does not yet contain any charts or facts. Please contact the dashboard team to set up this information."
+                    />
+                  </div>
                 </div>
-              </div>}
+              )}
 
-              {heroSlice && <div ref={String(heroSlice.widget.id)}>
-                <WidgetTypeSlice
+              {heroSlice && (
+                <div ref={String(heroSlice.widget.id)}>
+                  <WidgetTypeSlice
                     slice={heroSlice}
-                    actions={{setLastWidgetImpression: actions.setLastWidgetImpression}}
-                    alertProps={ui.lastWidgetImpression &&  ui.lastWidgetImpression.widgetId === heroSlice.widget.id ? ui.lastWidgetImpression : null}
-                />
-              </div>}
+                    actions={{
+                      setLastWidgetImpression: actions.setLastWidgetImpression,
+                    }}
+                    alertProps={
+                      ui.lastWidgetImpression &&
+                      ui.lastWidgetImpression.widgetId === heroSlice.widget.id
+                        ? ui.lastWidgetImpression
+                        : null
+                    }
+                  />
+                </div>
+              )}
 
               {btlSlices.map((slice, idx) => {
                 // check that we recognise the widget item, before continuing
-                if (slice === null || sanitizeBtlWidgetByType(slice.widget.type) === null) {
+                if (
+                  slice === null ||
+                  sanitizeBtlWidgetByType(slice.widget.type) === null
+                ) {
                   return null;
                 }
 
@@ -248,8 +275,16 @@ class PageDashboardWidgets extends Component {
                   <div key={idx} ref={String(slice.widget.id)}>
                     <WidgetTypeSlice
                       slice={slice}
-                      actions={{setLastWidgetImpression: actions.setLastWidgetImpression}}
-                      alertProps={ui.lastWidgetImpression &&  ui.lastWidgetImpression.widgetId === slice.widget.id ? ui.lastWidgetImpression : null}
+                      actions={{
+                        setLastWidgetImpression:
+                          actions.setLastWidgetImpression,
+                      }}
+                      alertProps={
+                        ui.lastWidgetImpression &&
+                        ui.lastWidgetImpression.widgetId === slice.widget.id
+                          ? ui.lastWidgetImpression
+                          : null
+                      }
                     />
                   </div>
                 );
@@ -260,8 +295,16 @@ class PageDashboardWidgets extends Component {
                   <div key={idx} ref={String(fact.widget.id)}>
                     <WidgetTypeFact
                       fact={fact}
-                      actions={{setLastWidgetImpression: actions.setLastWidgetImpression}}
-                      alertProps={ui.lastWidgetImpression && ui.lastWidgetImpression.widgetId === fact.widget.id ? ui.lastWidgetImpression : null}
+                      actions={{
+                        setLastWidgetImpression:
+                          actions.setLastWidgetImpression,
+                      }}
+                      alertProps={
+                        ui.lastWidgetImpression &&
+                        ui.lastWidgetImpression.widgetId === fact.widget.id
+                          ? ui.lastWidgetImpression
+                          : null
+                      }
                     />
                   </div>
                 );
@@ -293,8 +336,11 @@ export default connect(
     isAdmin: state.currentUser.admin,
   }),
   dispatch => ({
-    createWidget: (dashboardId, payload) => dispatch(createWidget(dashboardId, payload)),
-    initialiseWidget: (dashboardId, payload) => dispatch(initialiseWidget(dashboardId, payload)),
-    initialiseKpis: (dashboardId, payload) => dispatch(initialiseKpis(dashboardId, payload)),
+    createWidget: (dashboardId, payload) =>
+      dispatch(createWidget(dashboardId, payload)),
+    initialiseWidget: (dashboardId, payload) =>
+      dispatch(initialiseWidget(dashboardId, payload)),
+    initialiseKpis: (dashboardId, payload) =>
+      dispatch(initialiseKpis(dashboardId, payload)),
   }),
 )(PageDashboardWidgets);

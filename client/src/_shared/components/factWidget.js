@@ -12,7 +12,7 @@ const FactWidget = ({ description = 'No fact available.' }) => {
 };
 
 FactWidget.propTypes = {
-  description: PropTypes.string
+  description: PropTypes.string,
 };
 
 export default FactWidget;

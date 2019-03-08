@@ -11,7 +11,7 @@ const Pagination = ({
   nextKey,
   dashboardId,
   widgetId,
-  disablePrev
+  disablePrev,
 }) => {
   const disableNext = isPeriodInTheFuture(nextKey);
   return (
@@ -47,7 +47,8 @@ Pagination.propTypes = {
   nextKey: PropTypes.string.isRequired,
   dashboardId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
     .isRequired,
-  widgetId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
+  widgetId: PropTypes.oneOfType([PropTypes.string, PropTypes.number])
+    .isRequired,
 };
 
 export default Pagination;

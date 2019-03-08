@@ -1,8 +1,7 @@
-
-export const selectDashboards = (state) => {
+export const selectDashboards = state => {
   return state.dashboards;
 };
 
-export const selectDashboard = (state, {dashboardId}) => {
+export const selectDashboard = (state, { dashboardId }) => {
   return state.dashboards.find(d => d.id == dashboardId); // ==
 };

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import BaseForm from './../baseForm';
 import {
   MESSAGE_ERROR_NUMERIC,
-  MESSAGE_ERROR_PERCENTILE
+  MESSAGE_ERROR_PERCENTILE,
 } from './../../../constants/messages';
 import { getHumanisedUnits } from 'shared/redux/datasets/datasetsHelper';
 
@@ -97,10 +97,10 @@ class SliceForm extends BaseForm {
         groups: keys.map((key, idx) => {
           return {
             dataset_id: key,
-            value: formData.groups[key]
+            value: formData.groups[key],
           };
-        })
-      }
+        }),
+      },
     };
   }
 
@@ -113,12 +113,12 @@ class SliceForm extends BaseForm {
         groups: {
           type: 'object',
           title: '', // explicitly don't render a title
-          properties: {}
-        }
-      }
+          properties: {},
+        },
+      },
     };
     let uiSchema = {
-      groups: {}
+      groups: {},
     };
 
     formModel.groups.forEach(group => {
@@ -126,15 +126,15 @@ class SliceForm extends BaseForm {
 
       schema.properties.groups.properties[key] = {
         type: 'string', // must be string because of null option in API :(
-        title: group.dataset.label
+        title: group.dataset.label,
       };
 
       uiSchema.groups[key] = {
         'ui:widget': 'customText',
         'ui:options': {
-          addonText: getHumanisedUnits(group.dataset.units)
+          addonText: getHumanisedUnits(group.dataset.units),
         },
-        'ui:disabled': canSubmit === false
+        'ui:disabled': canSubmit === false,
       };
     });
 
@@ -142,14 +142,14 @@ class SliceForm extends BaseForm {
       formModel,
       canSubmit,
       schema,
-      uiSchema
+      uiSchema,
     };
   }
 
   // todo - there's a dupe of this in withPreview
   makeFormDataFromProps(props) {
     let formData = {
-      groups: {}
+      groups: {},
     };
     props.formModel.groups.forEach(group => {
       const key = group.dataset.id;
@@ -174,7 +174,7 @@ SliceForm.propTypes = {
   handleSubmitSuccess: PropTypes.func,
   formModel: PropTypes.object.isRequired,
   completedUrl: PropTypes.string,
-  handleCancel: PropTypes.func
+  handleCancel: PropTypes.func,
 };
 
 export default SliceForm;

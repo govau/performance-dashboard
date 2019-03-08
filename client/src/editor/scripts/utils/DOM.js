@@ -3,8 +3,8 @@
  * the next frame's render.
  * @param callback <Function>
  */
-export const onNextFrame = (callback) => {
-  setTimeout(function () {
-    window.requestAnimationFrame(callback)
-  }, 0)
+export const onNextFrame = callback => {
+  setTimeout(function() {
+    window.requestAnimationFrame(callback);
+  }, 0);
 };

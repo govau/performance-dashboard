@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Breadcrumbs from 'shared/components/uikit-breadcrumbs';
 import {
   initialiseDashboard,
-  createDashboard
+  createDashboard,
 } from 'shared/redux/dashboards/dashboardsActions';
 import { createWidget } from 'shared/redux/widgets/widgetsActions';
 import KpiForm from './KpiForm';
@@ -27,12 +27,12 @@ class CreateDashboard extends Component {
     digitalTakeup: '',
     completionRate: '',
     periodMonth: `0${new Date().getMonth() + 1}`.slice(-2),
-    periodYear: new Date().getFullYear()
+    periodYear: new Date().getFullYear(),
   };
 
   static get contextTypes() {
     return {
-      router: PropTypes.object.isRequired
+      router: PropTypes.object.isRequired,
     };
   }
 
@@ -51,23 +51,23 @@ class CreateDashboard extends Component {
         {
           title,
           body,
-          time: new Date().toString().split(' ')[4]
-        }
+          time: new Date().toString().split(' ')[4],
+        },
       ],
       noteTitle: '',
-      noteBody: ''
+      noteBody: '',
     });
   };
 
   removeNote = time => {
     this.setState({
-      notes: this.state.notes.filter(note => note.time !== time)
+      notes: this.state.notes.filter(note => note.time !== time),
     });
   };
 
   handleInput = key => event => {
     this.setState({
-      [key]: event.target.value
+      [key]: event.target.value,
     });
   };
 
@@ -85,7 +85,7 @@ class CreateDashboard extends Component {
       userSatisfaction,
       costPerTransaction,
       digitalTakeup,
-      completionRate
+      completionRate,
     } = this.state;
 
     if (name === '' || description === '' || organisationId === '') {
@@ -102,7 +102,7 @@ class CreateDashboard extends Component {
     }
 
     this.setState({
-      processing: true
+      processing: true,
     });
 
     this.props
@@ -119,8 +119,8 @@ class CreateDashboard extends Component {
           digitalTakeup: this.state.digitalTakeup,
           completionRate: this.state.completionRate,
           periodMonth: this.state.periodMonth,
-          periodYear: this.state.periodYear.toString()
-        }
+          periodYear: this.state.periodYear.toString(),
+        },
       })
       .then(dashboard => {
         console.log(`Dashboard initialised, redirecting: ${dashboard.id}`);
@@ -131,7 +131,7 @@ class CreateDashboard extends Component {
   render = () => {
     const breadcrumbPaths = [
       { path: '/', name: 'Manage dashboards' },
-      { path: '/create', name: 'Create dashboard' }
+      { path: '/create', name: 'Create dashboard' },
     ];
 
     return (
@@ -312,7 +312,7 @@ CreateDashboard.propTypes = {
   initialiseDashboard: PropTypes.func.isRequired,
   createWidget: PropTypes.func.isRequired,
   createDashboard: PropTypes.func.isRequired,
-  organisations: PropTypes.array.isRequired
+  organisations: PropTypes.array.isRequired,
 };
 
 export default connect(
@@ -326,6 +326,6 @@ export default connect(
     },
     createWidget: (dashboardId, payload) => {
       return dispatch(createWidget(dashboardId, payload));
-    }
-  })
+    },
+  }),
 )(CreateDashboard);

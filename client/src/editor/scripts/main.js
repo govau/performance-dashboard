@@ -13,5 +13,5 @@ const history = syncHistoryWithStore(hashHistory, store);
 
 render(
   <Root store={store} history={history} />,
-  document.getElementById('editor_index')
+  document.getElementById('editor_index'),
 );

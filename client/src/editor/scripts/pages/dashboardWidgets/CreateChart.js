@@ -5,12 +5,12 @@ import {
   charts,
   units,
   intervals,
-  getOptions
+  getOptions,
 } from '../../constants/options';
 
 export default class CreateChart extends Component {
   static propTypes = {
-    onSubmit: PropTypes.func.isRequired
+    onSubmit: PropTypes.func.isRequired,
   };
 
   state = {
@@ -27,7 +27,7 @@ export default class CreateChart extends Component {
     datasetLabel: '',
     datasetNotes: '',
     datasetUnits: '',
-    datasetValue: ''
+    datasetValue: '',
   };
 
   getYears = startYear => {
@@ -44,7 +44,7 @@ export default class CreateChart extends Component {
 
   handleInput = key => event => {
     this.setState({
-      [key]: event.target.value
+      [key]: event.target.value,
     });
   };
 
@@ -60,7 +60,7 @@ export default class CreateChart extends Component {
       datasets,
       interval,
       firstLabel,
-      units
+      units,
     } = this.state;
 
     if (name === '' || units === '' || description === '' || type === '') {
@@ -99,7 +99,7 @@ export default class CreateChart extends Component {
       interval,
       datasets,
       label: firstLabel,
-      units
+      units,
     });
   };
 
@@ -124,20 +124,20 @@ export default class CreateChart extends Component {
           // notes,
           // units,
           value,
-          time: new Date().toString().split(' ')[4]
-        }
+          time: new Date().toString().split(' ')[4],
+        },
       ],
       datasetName: '',
       datasetLabel: '',
       datasetNotes: '',
       datasetUnits: '',
-      datasetValue: ''
+      datasetValue: '',
     });
   };
 
   handleRemoveDataset = time => {
     this.setState({
-      datasets: this.state.datasets.filter(dataset => dataset.time !== time)
+      datasets: this.state.datasets.filter(dataset => dataset.time !== time),
     });
   };
 
@@ -167,7 +167,7 @@ export default class CreateChart extends Component {
     <div
       style={{
         paddingTop: '24px',
-        marginBottom: '24px'
+        marginBottom: '24px',
       }}
       className="container"
     >

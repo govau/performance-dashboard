@@ -1,11 +1,9 @@
-
 let win = typeof global === 'undefined' ? window : global;
-
 
 const SCREEN_SIZES = {
   sm: 544,
   md: 992,
-  lg: 1200
+  lg: 1200,
 };
 
 export const getViewport = () => {
@@ -23,11 +21,9 @@ export const getViewport = () => {
   return viewport;
 };
 
-
 let attached = false;
 
-const runOnResize = ({emitter}) => {
-
+const runOnResize = ({ emitter }) => {
   let _v;
 
   const handleChange = () => {

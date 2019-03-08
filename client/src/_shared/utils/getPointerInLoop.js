@@ -1,4 +1,3 @@
-
 const getPointerInLoop = (groupLength, increment) => {
   if (increment < groupLength) {
     return increment;

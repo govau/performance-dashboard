@@ -2,7 +2,6 @@ import d3 from 'd3';
 import Axis from './Axis';
 import getDate from './../Helpers/getDate';
 
-
 /**
  * Crudely get the best Tick values by sample size
  * @param sample {Array} - the data sample
@@ -10,14 +9,10 @@ import getDate from './../Helpers/getDate';
  */
 const getBestTickValues = (sample = []) => {
   let size = sample.length;
-  if ([1,2,3,4].indexOf(size) >= 0) {
-    return sample.map((d) => d.x);
+  if ([1, 2, 3, 4].indexOf(size) >= 0) {
+    return sample.map(d => d.x);
   }
-  return [
-    sample[0].x,
-    sample[Math.floor(size / 2)].x,
-    sample[size - 1].x
-  ];
+  return [sample[0].x, sample[Math.floor(size / 2)].x, sample[size - 1].x];
 };
 
 let numberOfInstance = 0;
@@ -27,7 +22,6 @@ let numberOfInstance = 0;
  * @extends Axis
  */
 class XAxis extends Axis {
-
   /**
    * Constructor
    * @param  {Object} options - [description]
@@ -45,11 +39,12 @@ class XAxis extends Axis {
     let sampleData = this.chart.data[0];
     let size = sampleData.length;
 
-    return d3.svg.axis()
-          .scale(this.chart.xScale)
-          .orient('bottom')
-          .tickFormat(getDate().long)
-          .tickValues(getBestTickValues(sampleData));
+    return d3.svg
+      .axis()
+      .scale(this.chart.xScale)
+      .orient('bottom')
+      .tickFormat(getDate().long)
+      .tickValues(getBestTickValues(sampleData));
   }
 
   /**
@@ -58,11 +53,16 @@ class XAxis extends Axis {
    */
   render() {
     super.render();
-    this.axis.attr('class', 'x axis')
-        .attr('transform', `translate(${this.chart.margin.left}, ${this.chart.height + this.chart.margin.top})`);
+    this.axis
+      .attr('class', 'x axis')
+      .attr(
+        'transform',
+        `translate(${this.chart.margin.left}, ${this.chart.height +
+          this.chart.margin.top})`,
+      );
 
-    numberOfInstance ++;
-    d3.select(window).on('resize.' + 'xAxis' + numberOfInstance, ()=>{
+    numberOfInstance++;
+    d3.select(window).on('resize.' + 'xAxis' + numberOfInstance, () => {
       this.axis.call(this.Axis);
     });
   }
