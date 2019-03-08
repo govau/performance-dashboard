@@ -61,11 +61,11 @@
     #
     if !development_server? %>
     <%= getPublicJavascript('app_shell.js') %>
-    <%= getPublicJavascript('editor-vendor.js') %>
+    <%# <%= getPublicJavascript('editor-vendor.js') %> %>
     <%= getPublicJavascript('editor.js') %>
   <% else %>
       <script src="http://localhost:8080/javascripts/app_shell.js"></script>
-      <script src="http://localhost:8080/javascripts/editor-vendor.js"></script>
+      <%# <script src="http://localhost:8080/javascripts/editor-vendor.js"></script> %>
       <script src="http://localhost:8080/javascripts/editor.js"></script>
   <% end %>
 </body>
