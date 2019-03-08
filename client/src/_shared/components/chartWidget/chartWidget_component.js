@@ -5,24 +5,25 @@ import {
   ColumnWidget,
   DonutWidget,
   StackedColumnWidget,
-  SparklineWidget,
+  SparklineWidget
 } from '@gov.au/datavizkit';
 import FactWidget from 'shared/components/factWidget';
 
 const WIDGET_TYPES = {
-  hero: {component: HeroWidget},
-  line: {component: LineWidget},
-  column: {component: ColumnWidget},
-  stackedColumn: {component: StackedColumnWidget},
-  donut: {component: DonutWidget},
-  sparkline: {component: SparklineWidget},
-  fact: {component: FactWidget},
+  hero: { component: HeroWidget },
+  line: { component: LineWidget },
+  column: { component: ColumnWidget },
+  stackedColumn: { component: StackedColumnWidget },
+  donut: { component: DonutWidget },
+  sparkline: { component: SparklineWidget },
+  fact: { component: FactWidget }
 };
 
-const BtlWidget = (props) => {
-  const {_type} = props;
+const BtlWidget = props => {
+  const { _type } = props;
 
-  if (  // whitelist
+  if (
+    // whitelist
     _type !== 'hero' &&
     _type !== 'donut' &&
     _type !== 'column' &&
@@ -34,7 +35,7 @@ const BtlWidget = (props) => {
     if (__DEV__) {
       return null;
     } else {
-      throw new Error(`Widget type: "${_type}" is not yet supported.`)
+      throw new Error(`Widget type: "${_type}" is not yet supported.`);
     }
   }
 
@@ -42,23 +43,24 @@ const BtlWidget = (props) => {
 
   if (_type === 'fact') {
     return (
-      <div className="D_widget-card D_widget widget">{/* todo - deprecate these classes */}
+      <div className="D_widget-card D_widget widget">
+        {/* todo - deprecate these classes */}
         <Widget description={props.chartDescription} />
       </div>
-    )
+    );
   }
 
   if (_type === 'hero') {
-    return <Widget {...props} />
+    return <Widget {...props} />;
   }
 
   // todo - rename these props like those passes in
   return (
-    <div className={`D_widget-card D_widget widget`}>{/* todo - deprecate these classes */}
+    <div className={`D_widget-card D_widget widget`}>
+      {/* todo - deprecate these classes */}
       <Widget {...props} />
     </div>
   );
-
 };
 
 export default BtlWidget;

@@ -250,10 +250,12 @@
 .widget-text {
   dt {
     font-weight: 600;
+    font-size: 110%;
+    margin-bottom: $gutter/2;
   }
 
   dd {
-    margin-bottom: $gutter / 2;
+    margin-bottom: $gutter*5;
   }
 
   .department {
@@ -262,6 +264,8 @@
 
   .widget__title {
     padding: 0;
+    margin-bottom: $gutter*5;
+    font-size: 120%;
   }
 
   .widget-text__footer {

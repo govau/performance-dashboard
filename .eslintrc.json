@@ -1,0 +1,40 @@
+{
+  "parser": "babel-eslint",
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended"
+  ],
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "version": "detect"
+    }
+  },  
+  "globals": {
+    "window": true,
+    "__DEV__": true
+  },
+  "rules": {
+    "eqeqeq": 0,
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "no-console": "warn",
+    "react/prop-types": "warn",
+    "no-unused-vars": "warn",
+    "no-undef": "warn",
+    "react/display-name": "warn",
+    "react/no-find-dom-node": "warn",
+    "react/no-string-refs": "warn"
+  },
+  "plugins": [
+    "react"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true,
+      "modules": true
+    }
+  }  
+}

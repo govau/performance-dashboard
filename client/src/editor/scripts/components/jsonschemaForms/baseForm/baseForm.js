@@ -1,8 +1,8 @@
-import React, {PureComponent} from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import SchemaForm from 'react-jsonschema-form';
 import isArray from 'lodash/isArray';
-import CustomFieldTemplate from './../../jsonschemaFields/customFieldTemplate'
+import CustomFieldTemplate from './../../jsonschemaFields/customFieldTemplate';
 import InputBasicWidget from './../../jsonschemaFields/customTextWidget';
 import * as helpers from './baseForm_helpers';
 
@@ -16,7 +16,6 @@ const widgets = {
  */
 
 class BaseForm extends PureComponent {
-
   constructor(props) {
     super(props);
 
@@ -62,15 +61,15 @@ class BaseForm extends PureComponent {
   }
 
   onBeforeSubmit() {
-    const {globalErrors} = this.state;
+    const { globalErrors } = this.state;
     if (globalErrors && globalErrors.length) {
-      this.setState({globalErrors: []});
+      this.setState({ globalErrors: [] });
     }
-    this.setState({pending: true});
+    this.setState({ pending: true });
   }
 
   onSubmitSuccess() {
-    this.setState({pending: false});
+    this.setState({ pending: false });
   }
 
   onSubmitError(errors) {
@@ -84,75 +83,74 @@ class BaseForm extends PureComponent {
   }
 
   validate(formData, errors) {
-    return errors;  // must return errors
+    return errors; // must return errors
   }
 
   renderGlobalErrors() {
-    const {globalErrors} = this.state;
+    const { globalErrors } = this.state;
     return helpers.renderGlobalErrors(globalErrors);
   }
 
-  render({formProps, formData}) {
-
+  render({ formProps, formData }) {
     if (!formProps) {
       throw new Error('must provide formProps to base form');
     }
 
-    const {
-      schema,
-      uiSchema,
-      canSubmit = true,
-      children,
-    } = this.props;
+    const { schema, uiSchema, canSubmit = true, children } = this.props;
 
-    const {pending} = this.state;
+    const { pending } = this.state;
 
     return (
       <div>
-        <div className="mb-1">
-          {this.renderGlobalErrors()}
-        </div>
-        <SchemaForm ref={(el => this.form = el)}
-                    noHtml5Validate={true}
-                    autocomplete="off"
-                    showErrorList={false}
-                    FieldTemplate={CustomFieldTemplate}
-                    widgets={widgets}
-                    formData={formData}
-                    schema={schema}
-                    uiSchema={uiSchema}
-                    canSubmit={canSubmit}
-                    onChange={this.onChange}
-                    onSubmit={this.onSubmit}
-                    onError={this.onError}
-                    validate={this.validate} {...formProps}>
-
+        <div className="mb-1">{this.renderGlobalErrors()}</div>
+        <SchemaForm
+          ref={el => (this.form = el)}
+          noHtml5Validate={true}
+          autocomplete="off"
+          showErrorList={false}
+          FieldTemplate={CustomFieldTemplate}
+          widgets={widgets}
+          formData={formData}
+          schema={schema}
+          uiSchema={uiSchema}
+          canSubmit={canSubmit}
+          onChange={this.onChange}
+          onSubmit={this.onSubmit}
+          onError={this.onError}
+          validate={this.validate}
+          {...formProps}
+        >
           {children ? children : null}
 
           <div>
-            <button type="submit" className="UIK-button btn btn-primary" disabled={canSubmit === false || pending}>{pending ? `Saving...` : `Save`}</button>
-            <button className='UIK-button btn btn-link' onClick={this.onCancel}>Cancel</button>
+            <button
+              type="submit"
+              className="UIK-button btn btn-primary"
+              disabled={canSubmit === false || pending}
+            >
+              {pending ? `Saving...` : `Save`}
+            </button>
+            <button className="UIK-button btn btn-link" onClick={this.onCancel}>
+              Cancel
+            </button>
           </div>
         </SchemaForm>
       </div>
-    )
+    );
   }
 }
 
-if (__DEV__) {
-  BaseForm.propTypes = {
-    formData: PropTypes.object.isRequired,
-    schema: PropTypes.object.isRequired,
-    uiSchema: PropTypes.object.isRequired,
-    canSubmit: PropTypes.bool,
-    onSubmit: PropTypes.func.isRequired,
-    onCancel: PropTypes.func.isRequired,
-    onError: PropTypes.func,
-    onChange: PropTypes.func,
-    validate: PropTypes.func,
-    children: PropTypes.node
-  };
-}
-
+BaseForm.propTypes = {
+  formData: PropTypes.object.isRequired,
+  schema: PropTypes.object.isRequired,
+  uiSchema: PropTypes.object.isRequired,
+  canSubmit: PropTypes.bool,
+  onSubmit: PropTypes.func.isRequired,
+  onCancel: PropTypes.func.isRequired,
+  onError: PropTypes.func,
+  onChange: PropTypes.func,
+  validate: PropTypes.func,
+  children: PropTypes.node
+};
 
 export default BaseForm;

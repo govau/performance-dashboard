@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
 import BaseForm from './../baseForm';
-import {MESSAGE_ERROR_NUMERIC, MESSAGE_ERROR_PERCENTILE} from './../../../constants/messages';
-import {getHumanisedUnits} from 'shared/redux/datasets/datasetsHelper';
+import {
+  MESSAGE_ERROR_NUMERIC,
+  MESSAGE_ERROR_PERCENTILE
+} from './../../../constants/messages';
+import { getHumanisedUnits } from 'shared/redux/datasets/datasetsHelper';
 
 class SliceForm extends BaseForm {
   constructor(props) {
@@ -22,13 +25,14 @@ class SliceForm extends BaseForm {
 
   onSubmit(formState) {
     const self = this;
-    const {formData} = formState;
+    const { formData } = formState;
 
     const payload = this.normalizePayload(formData);
 
     self.onBeforeSubmit();
 
-    return this.props.handleSubmit(payload)
+    return this.props
+      .handleSubmit(payload)
       .then(response => {
         self.onSubmitSuccess();
         return response;
@@ -43,14 +47,14 @@ class SliceForm extends BaseForm {
       });
   }
 
-  onCancel() { // todo - refactor
+  onCancel() {
+    // todo - refactor
     this.props.hidePreview();
     this.props.handleCancel(this.props.formModel.widget.id);
     return; // must return so the form doesn't try to submit - library bug
   }
 
   validate(formData, errors) {
-
     super.validate(formData, errors);
 
     const self = this;
@@ -83,7 +87,7 @@ class SliceForm extends BaseForm {
   }
 
   normalizePayload(formData) {
-    const {formModel} = this.props;
+    const { formModel } = this.props;
     const keys = Object.keys(formData.groups);
     return {
       widget_id: formModel.widget.id,
@@ -94,27 +98,27 @@ class SliceForm extends BaseForm {
           return {
             dataset_id: key,
             value: formData.groups[key]
-          }
+          };
         })
       }
-    }
+    };
   }
 
   makeFormProps() {
-    const {canSubmit, formModel} = this.props;
+    const { canSubmit, formModel } = this.props;
 
     let schema = {
-      "type": "object",
-      "properties": {
-        "groups": {
-          "type": "object",
-          "title": '',  // explicitly don't render a title
-          "properties": {},
-        },
+      type: 'object',
+      properties: {
+        groups: {
+          type: 'object',
+          title: '', // explicitly don't render a title
+          properties: {}
+        }
       }
     };
     let uiSchema = {
-      "groups": {}
+      groups: {}
     };
 
     formModel.groups.forEach(group => {
@@ -122,15 +126,15 @@ class SliceForm extends BaseForm {
 
       schema.properties.groups.properties[key] = {
         type: 'string', // must be string because of null option in API :(
-        title: group.dataset.label,
+        title: group.dataset.label
       };
 
       uiSchema.groups[key] = {
-        "ui:widget": "customText",
-        "ui:options": {
+        'ui:widget': 'customText',
+        'ui:options': {
           addonText: getHumanisedUnits(group.dataset.units)
         },
-        "ui:disabled": canSubmit === false
+        'ui:disabled': canSubmit === false
       };
     });
 
@@ -139,7 +143,7 @@ class SliceForm extends BaseForm {
       canSubmit,
       schema,
       uiSchema
-    }
+    };
   }
 
   // todo - there's a dupe of this in withPreview
@@ -149,7 +153,10 @@ class SliceForm extends BaseForm {
     };
     props.formModel.groups.forEach(group => {
       const key = group.dataset.id;
-      formData.groups[key] = group.value === null || typeof group.value === 'undefined' ? '' : String(group.value);
+      formData.groups[key] =
+        group.value === null || typeof group.value === 'undefined'
+          ? ''
+          : String(group.value);
     });
     return formData;
   }
@@ -157,20 +164,17 @@ class SliceForm extends BaseForm {
   render() {
     const formProps = this.makeFormProps();
     const formData = this.formData;
-    return super.render({formProps, formData});
+    return super.render({ formProps, formData });
   }
-
 }
 
-if (__DEV__) {
-  SliceForm.propTypes = {
-    canSubmit: PropTypes.bool,
-    handleSubmit: PropTypes.func.isRequired,
-    handleSubmitSuccess: PropTypes.func,
-    formModel: PropTypes.object.isRequired,
-    completedUrl: PropTypes.string,
-    handleCancel: PropTypes.func
-  };
-}
+SliceForm.propTypes = {
+  canSubmit: PropTypes.bool,
+  handleSubmit: PropTypes.func.isRequired,
+  handleSubmitSuccess: PropTypes.func,
+  formModel: PropTypes.object.isRequired,
+  completedUrl: PropTypes.string,
+  handleCancel: PropTypes.func
+};
 
 export default SliceForm;

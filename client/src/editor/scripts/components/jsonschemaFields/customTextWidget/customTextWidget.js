@@ -12,12 +12,10 @@ const InputBasic = props => {
     <TextWidget {...props} />
 };
 
-if (__DEV__) {
-  InputBasic.propTypes = {
-    options: PropTypes.shape({
-      addonText: PropTypes.string
-    })
-  };
-}
+InputBasic.propTypes = {
+  options: PropTypes.shape({
+    addonText: PropTypes.string
+  })
+};
 
 export default InputBasic;

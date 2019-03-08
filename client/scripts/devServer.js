@@ -1,61 +1,61 @@
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import CaseSensitivePathsPlugin from 'case-sensitive-paths-webpack-plugin';
-import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
+// import WatchMissingNodeModulesPlugin from 'react-dev-utils/WatchMissingNodeModulesPlugin';
 import chalk from 'chalk';
 import clearConsole from 'react-dev-utils/clearConsole';
 import formatWebpackMessages from 'react-dev-utils/formatWebpackMessages';
 import openBrowser from 'react-dev-utils/openBrowser';
-
 import * as CONFIG from './../config/_config';
 import webpackConfig from './../config/webpack.config.devserver';
 
-
 // start: alter webpackConfig to play nicely with dev-server
 
-let devServerPublicPath = `http://${CONFIG.WEBPACK_HOST}:${CONFIG.WEBPACK_PORT}/`;
+let devServerPublicPath = `http://${CONFIG.WEBPACK_HOST}:${
+  CONFIG.WEBPACK_PORT
+}/`;
 webpackConfig.output.publicPath = devServerPublicPath;
 
 // same as --inline
 // webpack/hot/dev-server will reload the entire page if the HMR update fails.
 // If you want to reload the page on your own, you can add
 // webpack/hot/only-dev-server to the entry point instead.
-for(let [key, value] of Object.entries(webpackConfig.entry)) {
-	if (!Array.isArray(value)) {
-		throw new Error('Entry value must be an array');
-	}
-	value.unshift(
-	  // `webpack-dev-server/client?${devServerPublicPath}`,
-	  // 'webpack/hot/dev-server',    // reload if HMR fails
-    require.resolve('./../scripts/webpackHotDevClient'),  // todo !!
+for (let [key, value] of Object.entries(webpackConfig.entry)) {
+  if (!Array.isArray(value)) {
+    throw new Error('Entry value must be an array');
+  }
+  value.unshift(
+    // `webpack-dev-server/client?${devServerPublicPath}`,
+    // 'webpack/hot/dev-server',    // reload if HMR fails
+    require.resolve('./../scripts/webpackHotDevClient') // todo !!
     // app entry point is not required here because it is carried across
     // from webpack.config, hence "unshift".
-	);
+  );
 }
 
 // same as: --hot
 webpackConfig.plugins.push(new webpack.HotModuleReplacementPlugin());
 webpackConfig.plugins.push(new CaseSensitivePathsPlugin());
-webpackConfig.plugins.push(new WatchMissingNodeModulesPlugin(CONFIG.DIR_NPM));
-webpackConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({
-  name: 'editor-vendor',
-  chunks: ["editor"],
-  minChunks(module, count) {
-    var context = module.context;
-    return context && [
-        'node_modules/react',
-        'node_modules/react-dom',
-        'node_modules/react-redux',
-        'node_modules/redux',
-        'node_modules/redux-jsonschema-form',
-        'node_modules/jsonschema',
-        'node_modules/react-router',
-        'node_modules/history',
-        'node_modules/validator',
-        'node_modules/lodash'
-      ].find(substr => context.indexOf(substr) >= 0);
-  }
-}));
+// webpackConfig.plugins.push(new WatchMissingNodeModulesPlugin(CONFIG.DIR_NPM));
+// webpackConfig.plugins.push(new webpack.optimize.CommonsChunkPlugin({
+//   name: 'editor-vendor',
+//   chunks: ["editor"],
+//   minChunks(module, count) {
+//     var context = module.context;
+//     return context && [
+//         'node_modules/react',
+//         'node_modules/react-dom',
+//         'node_modules/react-redux',
+//         'node_modules/redux',
+//         'node_modules/redux-jsonschema-form',
+//         'node_modules/jsonschema',
+//         'node_modules/react-router',
+//         'node_modules/history',
+//         'node_modules/validator',
+//         'node_modules/lodash'
+//       ].find(substr => context.indexOf(substr) >= 0);
+//   }
+// }));
 
 // create an instance of webpack compiler
 var compiler = webpack(webpackConfig);
@@ -89,10 +89,16 @@ compiler.plugin('done', function(stats) {
 
   if (showInstructions) {
     console.log();
-    console.log(`The app is listening at ${devServerPublicPath}, but develop on Rails server at ${chalk.cyan(('http://localhost:3000'))}.`)
+    console.log(
+      `The app is listening at ${devServerPublicPath}, but develop on Rails server at ${chalk.cyan(
+        'http://localhost:3000'
+      )}.`
+    );
     console.log();
     console.log('Note that the development build is not optimized.');
-    console.log('To create a production build, use ' + chalk.cyan('yarn run build') + '.');
+    console.log(
+      'To create a production build, use ' + chalk.cyan('yarn run build') + '.'
+    );
     console.log();
     isFirstCompile = false;
   }
@@ -118,11 +124,18 @@ compiler.plugin('done', function(stats) {
     });
     // Teach some ESLint tricks.
     console.log('You may use special comments to disable some warnings.');
-    console.log('Use ' + chalk.yellow('// eslint-disable-next-line') + ' to ignore the next line.');
-    console.log('Use ' + chalk.yellow('/* eslint-disable */') + ' to ignore all warnings in a file.');
+    console.log(
+      'Use ' +
+        chalk.yellow('// eslint-disable-next-line') +
+        ' to ignore the next line.'
+    );
+    console.log(
+      'Use ' +
+        chalk.yellow('/* eslint-disable */') +
+        ' to ignore all warnings in a file.'
+    );
   }
 });
-
 
 // create an instance of webpack-dev-server
 let devServer = new WebpackDevServer(compiler, {
@@ -154,7 +167,7 @@ let devServer = new WebpackDevServer(compiler, {
   noInfo: false,
   quiet: true,
   stats: {
-	  colors: true
+    colors: true
   },
   // Reportedly, this avoids CPU overload on some systems.
   watchOptions: {
@@ -163,15 +176,14 @@ let devServer = new WebpackDevServer(compiler, {
 });
 
 // bind the server to location and callback
-devServer.listen(CONFIG.WEBPACK_PORT, CONFIG.WEBPACK_HOST, function (err) {
+devServer.listen(CONFIG.WEBPACK_PORT, CONFIG.WEBPACK_HOST, function(err) {
   if (err) {
-	  console.log(err);
+    console.log(err);
   }
   clearConsole();
 
   console.log(chalk.cyan('Starting the development server...'));
   openBrowser('http://localhost:3000');
 });
-
 
 export default devServer;

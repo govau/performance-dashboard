@@ -2,7 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Breadcrumbs from 'shared/components/uikit-breadcrumbs';
 
-const PageLayout = ({pageKey, HeaderComponent, BodyComponent = null, breadcrumbPaths = null, children = null}) => {
+const PageLayout = ({
+  pageKey,
+  HeaderComponent,
+  BodyComponent = null,
+  breadcrumbPaths = null,
+  children = null
+}) => {
   return (
     <div className={`page page-${pageKey}`}>
       <div className="page__header">
@@ -27,17 +33,15 @@ const PageLayout = ({pageKey, HeaderComponent, BodyComponent = null, breadcrumbP
         </div>
       </div>
     </div>
-  )
+  );
 };
 
-if (__DEV__) {
-  PageLayout.propTypes = {
-    pageKey: PropTypes.string.isRequired,
-    HeaderComponent: PropTypes.func,
-    BodyComponent: PropTypes.func,
-    children: PropTypes.element,
-    breadcrumbPaths: PropTypes.array
-  };
-}
+PageLayout.propTypes = {
+  pageKey: PropTypes.string.isRequired,
+  HeaderComponent: PropTypes.func,
+  BodyComponent: PropTypes.func,
+  children: PropTypes.element,
+  breadcrumbPaths: PropTypes.array
+};
 
 export default PageLayout;

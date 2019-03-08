@@ -15,12 +15,13 @@ class FactForm extends BaseForm {
 
   onSubmit(formState) {
     const self = this;
-    const {formData} = formState;
+    const { formData } = formState;
     const payload = this.normalizePayload(formData);
 
     self.onBeforeSubmit();
 
-    return this.props.handleSubmit(payload)
+    return this.props
+      .handleSubmit(payload)
       .then(response => {
         self.onSubmitSuccess();
         return response;
@@ -35,13 +36,14 @@ class FactForm extends BaseForm {
       });
   }
 
-  onCancel() {  // todo - refactor
+  onCancel() {
+    // todo - refactor
     this.props.handleCancel(this.props.formModel.widget.id);
     return; // must return so the form doesn't try to submit - library bug
   }
 
   makeFormDataFromProps(props) {
-    const {formModel} = props;
+    const { formModel } = props;
 
     return {
       description: formModel.widget.description
@@ -49,28 +51,26 @@ class FactForm extends BaseForm {
   }
 
   makeFormProps() {
-    const {canSubmit, formModel} = this.props;
+    const { canSubmit, formModel } = this.props;
 
     let schema = {
-      "type": "object",
-      "properties": {
-        "description": {
-          type: "string",
+      type: 'object',
+      properties: {
+        description: {
+          type: 'string',
           title: 'Description'
         }
       },
-      "required": [
-        "description"
-      ]
+      required: ['description']
     };
     let uiSchema = {
-      "description": {
-        "ui:widget": "textarea",
-        "ui:autofocus": true,
-        "ui:options": {
+      description: {
+        'ui:widget': 'textarea',
+        'ui:autofocus': true,
+        'ui:options': {
           rows: 15
         },
-        "ui:disabled": canSubmit === false
+        'ui:disabled': canSubmit === false
       }
     };
 
@@ -79,11 +79,11 @@ class FactForm extends BaseForm {
       canSubmit,
       schema,
       uiSchema
-    }
+    };
   }
 
   normalizePayload(formData) {
-    const {formModel} = this.props;
+    const { formModel } = this.props;
 
     return {
       dashboard_id: formModel.dashboard.id,
@@ -91,26 +91,23 @@ class FactForm extends BaseForm {
       formData: {
         description: formData.description
       }
-    }
+    };
   }
 
   render() {
     const formProps = this.makeFormProps();
     const formData = this.formData;
-    return super.render({formProps, formData});
+    return super.render({ formProps, formData });
   }
-
 }
 
-if (__DEV__) {
-  FactForm.propTypes = {
-    canSubmit: PropTypes.bool,
-    handleSubmit: PropTypes.func.isRequired,
-    formModel: PropTypes.object.isRequired,
-    completedUrl: PropTypes.string,
-    handleCancel: PropTypes.func,
-    handleSaveSuccess: PropTypes.func
-  };
-}
+FactForm.propTypes = {
+  canSubmit: PropTypes.bool,
+  handleSubmit: PropTypes.func.isRequired,
+  formModel: PropTypes.object.isRequired,
+  completedUrl: PropTypes.string,
+  handleCancel: PropTypes.func,
+  handleSaveSuccess: PropTypes.func
+};
 
 export default FactForm;

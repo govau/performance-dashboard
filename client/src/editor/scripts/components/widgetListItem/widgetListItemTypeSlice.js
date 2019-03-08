@@ -1,40 +1,51 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {Link} from 'react-router';
-import {CAN_UPDATE_SLICE} from './../../config';
+import { Link } from 'react-router';
+import { CAN_UPDATE_SLICE } from './../../config';
 import Preview from './../datagroupPreview';
 import TrafficLight from './../widgetTrafficLight';
 import UikitAlert from 'shared/components/uikit-alert';
-import {isLatestSlice} from 'shared/redux/slices/slicesSelectors';
+import { isLatestSlice } from 'shared/redux/slices/slicesSelectors';
 import {
   getDashboardWidgetSliceUrl,
   getServiceDashboardUrlAnchor
 } from './../../utils/formatUrl';
-import {getNextPeriod} from 'shared/redux/slices/slicesSelectors';
-import {getWidgetType, isKpi} from 'shared/utils/proposedApiChanges'
-import {makeDeriveColor} from 'shared/utils/getColors'
+import { getNextPeriod } from 'shared/redux/slices/slicesSelectors';
+import { getWidgetType, isKpi } from 'shared/utils/proposedApiChanges';
+import { makeDeriveColor } from 'shared/utils/getColors';
 
-const WidgetTypeSlice = (props) => {
-  const {
-    slice,
-    actions,
-    alertProps
-  } = props;
+const WidgetTypeSlice = props => {
+  const { slice, actions, alertProps } = props;
 
-  const serviceDashboardUrlAnchor = getServiceDashboardUrlAnchor(slice.dashboard.id, slice.dashboard.name, slice.widget.name);
-  const editUrl = getDashboardWidgetSliceUrl(slice.dashboard.id, slice.widget.id, slice.period_start);
-  const addUrl = getDashboardWidgetSliceUrl(slice.dashboard.id, slice.widget.id, getNextPeriod(slice.period_start));
-  const title = slice.widget.name === 'Kpis' ? 'Key performance indicators' : slice.widget.name;
+  const serviceDashboardUrlAnchor = getServiceDashboardUrlAnchor(
+    slice.dashboard.id,
+    slice.dashboard.name,
+    slice.widget.name
+  );
+  const editUrl = getDashboardWidgetSliceUrl(
+    slice.dashboard.id,
+    slice.widget.id,
+    slice.period_start
+  );
+  const addUrl = getDashboardWidgetSliceUrl(
+    slice.dashboard.id,
+    slice.widget.id,
+    getNextPeriod(slice.period_start)
+  );
+  const title =
+    slice.widget.name === 'Kpis'
+      ? 'Key performance indicators'
+      : slice.widget.name;
   const widgetType = getWidgetType(slice.widget);
   const deriveColor = makeDeriveColor(slice.widget.pos, isKpi(widgetType));
 
   return (
     <article className="widget-list__item">
       {alertProps && alertProps.description && (
-        <UikitAlert 
+        <UikitAlert
           type={alertProps.type}
           text={alertProps.description}
-          className="animated fadeIn" 
+          className="animated fadeIn"
         />
       )}
 
@@ -43,13 +54,13 @@ const WidgetTypeSlice = (props) => {
           <h1 className="h5">{title}</h1>
         </div>
         <div className="meta-status">
-          <TrafficLight 
-            dateSeriesEnd={slice.widget.series_end} 
+          <TrafficLight
+            dateSeriesEnd={slice.widget.series_end}
             datePublished={slice.widget.last_updated_at}
             type={slice.widget.type}
             units={slice.widget.units}
             size={slice.widget.size}
-            period ={slice.period}
+            period={slice.period}
           />
         </div>
       </header>
@@ -60,32 +71,38 @@ const WidgetTypeSlice = (props) => {
             <Preview slice={slice} getColorByRowFn={deriveColor} />
           )}
         </div>
-        
+
         <div className="col-xs-12 col-lg-6 ctas">
           {slice.period !== 'custom' && (
             <span>
-              <Link 
-                to={addUrl} 
+              <Link
+                to={addUrl}
                 className="UIK-button btn btn-primary"
                 disabled={isLatestSlice(slice)}
-                onClick={() => actions.setLastWidgetImpression({widgetId: slice.widget.id})}
+                onClick={() =>
+                  actions.setLastWidgetImpression({ widgetId: slice.widget.id })
+                }
               >
                 Add new data
               </Link>
-              
+
               <br />
-            
-              <Link to={editUrl}
+
+              <Link
+                to={editUrl}
                 className="UIK-link"
                 disabled={CAN_UPDATE_SLICE === false}
-                onClick={(e) => CAN_UPDATE_SLICE === false ?
-                  e.preventDefault() :
-                  actions.setLastWidgetImpression({widgetId: slice.widget.id})
+                onClick={e =>
+                  CAN_UPDATE_SLICE === false
+                    ? e.preventDefault()
+                    : actions.setLastWidgetImpression({
+                        widgetId: slice.widget.id
+                      })
                 }
               >
                 Edit existing data
               </Link>
-              
+
               <br />
             </span>
           )}
@@ -105,19 +122,18 @@ const WidgetTypeSlice = (props) => {
           
           <br/>
           
-          */}          
+          */}
 
-          <a 
-            href={serviceDashboardUrlAnchor} 
-            className="UIK-link" 
-            target="blank" 
+          <a
+            href={serviceDashboardUrlAnchor}
+            className="UIK-link"
+            target="blank"
             rel="external"
           >
             View on Dashboard
           </a>
         </div>
       </div>
-
     </article>
   );
 };
@@ -127,16 +143,14 @@ WidgetTypeSlice.defaultProps = {
   alertProps: null
 };
 
-if (__DEV__) {
-  WidgetTypeSlice.propTypes = {
-    alertProps: PropTypes.shape({
-      description: PropTypes.string,
-      type: PropTypes.string
-    }),
-    actions: PropTypes.shape({
-      setLastWidgetImpression: PropTypes.func.isRequired
-    })
-  };
-}
+WidgetTypeSlice.propTypes = {
+  alertProps: PropTypes.shape({
+    description: PropTypes.string,
+    type: PropTypes.string
+  }),
+  actions: PropTypes.shape({
+    setLastWidgetImpression: PropTypes.func.isRequired
+  })
+};
 
 export default WidgetTypeSlice;

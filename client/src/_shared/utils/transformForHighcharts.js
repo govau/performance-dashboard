@@ -2,10 +2,13 @@ import findIndex from 'lodash/findIndex';
 import uniq from 'lodash/uniq';
 import get from 'lodash/get';
 import merge from 'lodash/merge';
-import {getUnitsType} from './../utils/proposedApiChanges';
-import {dateFormats} from 'shared/utils/formatDates';
-import {makeGetBtlColorset, makeGetKpiColorset} from './getColors';
-import {getWidgetType, getWidgetCoordinatesType} from 'shared/utils/proposedApiChanges';
+import { getUnitsType } from './../utils/proposedApiChanges';
+import { dateFormats } from 'shared/utils/formatDates';
+import { makeGetBtlColorset, makeGetKpiColorset } from './getColors';
+import {
+  getWidgetType,
+  getWidgetCoordinatesType
+} from 'shared/utils/proposedApiChanges';
 
 /**
  * todo - rename "section"
@@ -17,18 +20,17 @@ import {getWidgetType, getWidgetCoordinatesType} from 'shared/utils/proposedApiC
  * categories are slice names - dates
  */
 
-const getCategories = (slices) => {
+const getCategories = slices => {
   let categories;
 
   if (slices[0].period === 'custom') {
-    categories = slices.map(s => s.row_label);  
-  }
-  else {
-    categories = slices.map(s => dateFormats.monthYear(s.period_start));  
+    categories = slices.map(s => s.row_label);
+  } else {
+    categories = slices.map(s => dateFormats.monthYear(s.period_start));
   }
 
   return categories;
-}
+};
 
 const transformForHighcharts = (slices, isKpi = false) => {
   if (typeof slices === 'undefined' || slices.length === 0) {
@@ -54,12 +56,13 @@ const transformForHighcharts = (slices, isKpi = false) => {
     _singleSection: null,
     series: null,
     xAxis: null,
-    yAxis: null,
+    yAxis: null
   };
 
-  const dataProps = get(config, '_coordinatesType') === 'polar' ?
-    transformDataForPolar(config, slices) :
-    transformDataForCartesian(config, slices);
+  const dataProps =
+    get(config, '_coordinatesType') === 'polar'
+      ? transformDataForPolar(config, slices)
+      : transformDataForCartesian(config, slices);
 
   const mergedConfig = merge(config, dataProps);
 
@@ -82,17 +85,17 @@ const transformDataForPolar = (config, slices) => {
   if (recentSlices.length === 1 && recentSlices[0].groups.length > 0) {
     return merge(polarSingleCategoryMultipleSections(config, recentSlices), {
       _singleCategory: true,
-      _singleSection: false,
+      _singleSection: false
     });
   } else {
-
     if (__DEV__) {
-      throw new Error('Invalid slice state for polar data type transformation.');
+      throw new Error(
+        'Invalid slice state for polar data type transformation.'
+      );
     } else {
       console.warn('Invalid slice state for polar data type transformation.');
     }
   }
-
 };
 
 const transformDataForCartesian = (config, slices) => {
@@ -108,68 +111,73 @@ const transformDataForCartesian = (config, slices) => {
   // multiple category  - slices.length > 1
   // multiple section - slices[0].groups.length > 1
 
-  if (slices.length === 1) {  // singular category
+  if (slices.length === 1) {
+    // singular category
 
     const slice = slices[0];
 
-    if (slice.groups.length > 1) { // multiple section
+    if (slice.groups.length > 1) {
+      // multiple section
 
       return merge(cartesianSingleCategoryMultipleSections(config, slices), {
         _singleCategory: true,
         _singleSection: false,
-        _coordinatesType: 'cartesian',
+        _coordinatesType: 'cartesian'
       });
+    } else if (slice.groups.length === 1) {
+      // single section (column)
 
-    } else if (slice.groups.length === 1) {  // single section (column)
-
-      return merge(cartesianSingleCategorySingleSection(config, slices), { // todo - think we can delete this
+      return merge(cartesianSingleCategorySingleSection(config, slices), {
+        // todo - think we can delete this
         _singleCategory: true,
         _singleSection: true,
-        _coordinatesType: 'cartesian',
+        _coordinatesType: 'cartesian'
       });
-
     } else {
-
       if (__DEV__) {
-        throw new Error(`No groups provided. You shouldn't be able to reach here.`);
+        throw new Error(
+          `No groups provided. You shouldn't be able to reach here.`
+        );
       } else {
-        console.warn(`No groups provided. You shouldn't be able to reach here.`);
+        console.warn(
+          `No groups provided. You shouldn't be able to reach here.`
+        );
       }
     }
-
-  } else {  // multiple category
+  } else {
+    // multiple category
 
     const slice = slices[0];
 
-    if (slice.groups.length > 1) { // multiple section
+    if (slice.groups.length > 1) {
+      // multiple section
 
       return merge(cartesianMultipleCategoryMultipleSeries(config, slices), {
         _singleCategory: false,
         _singleSection: false,
-        _coordinatesType: 'cartesian',
+        _coordinatesType: 'cartesian'
       });
-
-    } else if (slice.groups.length === 1) { // single section (column)
+    } else if (slice.groups.length === 1) {
+      // single section (column)
 
       return merge(cartesianMultipleCategorySingleSeries(config, slices), {
         _singleCategory: false,
         _singleSection: true,
-        _coordinatesType: 'cartesian',
+        _coordinatesType: 'cartesian'
       });
-
     } else {
-
       if (__DEV__) {
-        throw new Error(`No groups provided. You shouldn't be able to reach here.`);
+        throw new Error(
+          `No groups provided. You shouldn't be able to reach here.`
+        );
       } else {
-        console.warn(`No groups provided. You shouldn't be able to reach here.`);
+        console.warn(
+          `No groups provided. You shouldn't be able to reach here.`
+        );
       }
     }
-
   }
-
 };
-
 
 /**
  * polarSingleCategoryMultipleSections
@@ -196,10 +204,14 @@ const transformDataForCartesian = (config, slices) => {
  */
 const polarSingleCategoryMultipleSections = (config, slices) => {
   const position = get(slices[0], 'widget.pos');
-  const getColor = config._isKpi === true ? makeGetKpiColorset() : makeGetBtlColorset(position);
+  const getColor =
+    config._isKpi === true
+      ? makeGetKpiColorset()
+      : makeGetBtlColorset(position);
 
   const c = {
-    series: slices.map(s => { // there is only a single slice, but return Array
+    series: slices.map(s => {
+      // there is only a single slice, but return Array
       return {
         name: dateFormats.monthYear(s.period_start),
         data: s.groups.map((g, idx) => {
@@ -207,16 +219,15 @@ const polarSingleCategoryMultipleSections = (config, slices) => {
             name: get(g, 'dataset.label'),
             units: get(g, 'dataset.units'),
             y: g.value,
-            color: getColor(idx),
-          }
+            color: getColor(idx)
+          };
         })
-      }
-    }),
+      };
+    })
   };
 
   return c;
 };
-
 
 /**
  * cartesianSingleCategorySingleSection
@@ -241,18 +252,19 @@ const polarSingleCategoryMultipleSections = (config, slices) => {
  */
 
 const cartesianSingleCategorySingleSection = (config, slices) => {
-
   // todo
   console.warn('SLICE TYPE NOT YET SUPPORTED - EXPERIMENTAL .');
   // throw new Error('SLICE TYPE NOT YET SUPPORTED.');
 
-
   const position = slices[0].widget.pos;
-  const getColor = config._isKpi === true ? makeGetKpiColorset() : makeGetBtlColorset(position);
+  const getColor =
+    config._isKpi === true
+      ? makeGetKpiColorset()
+      : makeGetBtlColorset(position);
 
   const c = {
     xAxis: {
-      categories: getCategories(slices),
+      categories: getCategories(slices)
     },
     series: [
       {
@@ -260,14 +272,13 @@ const cartesianSingleCategorySingleSection = (config, slices) => {
         _unitsType: getUnitsType(slices[0].groups[0].dataset.units),
         units: slices[0].groups[0].dataset.unit,
         data: [slices[0].groups[0].value],
-        color: getColor(0),
+        color: getColor(0)
       }
     ]
   };
 
   return c;
 };
-
 
 /**
  *
@@ -305,26 +316,30 @@ const cartesianSingleCategoryMultipleSections = (config, slices) => {
 
   const slice = slices[0];
   const position = slice.widget.pos;
-  const getColor = config._isKpi === true ? makeGetKpiColorset() : makeGetBtlColorset(position);
+  const getColor =
+    config._isKpi === true
+      ? makeGetKpiColorset()
+      : makeGetBtlColorset(position);
 
   const c = {
-    xAxis: [{
-      categories: getCategories(slices),
-    }],
+    xAxis: [
+      {
+        categories: getCategories(slices)
+      }
+    ],
     series: slice.groups.map((g, idx) => {
       return {
         name: g.dataset.label,
         units: g.dataset.units,
         _unitsType: getUnitsType(g.dataset.units),
         data: [g.value],
-        color: getColor(idx),
-      }
-    }),
+        color: getColor(idx)
+      };
+    })
   };
-  
+
   return c;
 };
-
 
 /**
  *
@@ -349,7 +364,6 @@ const cartesianSingleCategoryMultipleSections = (config, slices) => {
 //   name: 'slice-1',
 //   data: [1, 2, 2, 3] // categories
 // }, ]
-
 
 /**
  * cartesianMultipleCategorySingleSeries
@@ -380,22 +394,26 @@ const cartesianSingleCategoryMultipleSections = (config, slices) => {
  */
 const cartesianMultipleCategorySingleSeries = (config, slices) => {
   const position = slices[0].widget.pos;
-  const getColor = config._isKpi === true ? makeGetKpiColorset() : makeGetBtlColorset(position);
+  const getColor =
+    config._isKpi === true
+      ? makeGetKpiColorset()
+      : makeGetBtlColorset(position);
 
   var multipleCategories = slices
     .map(s => s.groups)
-    .map(groups => { // category
+    .map(groups => {
+      // category
       return groups
-        .filter((group, idx) => { // take the first only (there should only be one)
+        .filter((group, idx) => {
+          // take the first only (there should only be one)
           return idx === 0;
         })
         .map(group => {
           return group.value;
         });
-      });
+    });
 
   var singleSection = [slices[0].groups[0].dataset];
-
 
   var configSeries = singleSection.map((section, idx) => {
     return {
@@ -403,40 +421,38 @@ const cartesianMultipleCategorySingleSeries = (config, slices) => {
       // color: section.color,
       units: section.units,
       data: multipleCategories.map(c => c[idx]),
-      color: config._isKpi === true ? getColor(position) : getColor(0),  // todo - this is a hack for kpi count widgets
+      color: config._isKpi === true ? getColor(position) : getColor(0) // todo - this is a hack for kpi count widgets
     };
   });
-
 
   const minimumValue = configSeries[0].data
     .filter(val => {
       return val !== null;
-    }).reduce((a,b) => {
+    })
+    .reduce((a, b) => {
       return a < b ? a : b;
     }, []);
-
 
   // todo - date formatting should happen in datavizkit not here
   const configXaxisCategories = getCategories(slices);
 
-  const yAxesTitles = uniq(singleSection.map(g => g.units))
-    .map(u => {
-      if (u === '%') {
-        return 'Percentage (%)';
-      } else if (u === '$') {
-        return 'AUD ($)';
-      } else if (u === 's') {
-        return 'Time (m:s)';
-      } else {
-        return '';
-      }
-    });
+  const yAxesTitles = uniq(singleSection.map(g => g.units)).map(u => {
+    if (u === '%') {
+      return 'Percentage (%)';
+    } else if (u === '$') {
+      return 'AUD ($)';
+    } else if (u === 's') {
+      return 'Time (m:s)';
+    } else {
+      return '';
+    }
+  });
 
   const configYaxis = yAxesTitles.map(title => {
     const c = {
       title: {
-        text: '',
-      },
+        text: ''
+      }
     };
     if (title === 'Percentage (%)') {
       c.floor = 0;
@@ -451,15 +467,16 @@ const cartesianMultipleCategorySingleSeries = (config, slices) => {
 
   const c = {
     yAxis: configYaxis,
-    xAxis: [{
-      categories: configXaxisCategories,
-    }],
+    xAxis: [
+      {
+        categories: configXaxisCategories
+      }
+    ],
     series: configSeries
   };
 
   return c;
 };
-
 
 // multiple columns with multiple sections
 // title: {
@@ -525,45 +542,46 @@ const cartesianMultipleCategorySingleSeries = (config, slices) => {
  * @returns {Object}
  */
 const cartesianMultipleCategoryMultipleSeries = (config, slices) => {
-
   const position = slices[0].widget.pos;
-  const getColor = config._isKpi === true ? makeGetKpiColorset() : makeGetBtlColorset(position);
+  const getColor =
+    config._isKpi === true
+      ? makeGetKpiColorset()
+      : makeGetBtlColorset(position);
 
   const multipleCategories = slices
     .map(s => s.groups)
-    .map(groups => { // category
+    .map(groups => {
+      // category
       return groups.map(group => {
         return group.value;
       });
     });
 
-
   const multipleSections = slices[0].groups.map(g => g.dataset);
 
-
-  const yAxesTitles = uniq(multipleSections.map(g => g.units))
-    .map(u => {
-      if (u === '%') {
-        return 'Percentage (%)';
-      } else if (u === '$') {
-        return 'AUD ($)';
-      } else if (u === 's') {
-        return 'Time (m:s)';
-      } else {
-        return ''
-      }
-    });
+  const yAxesTitles = uniq(multipleSections.map(g => g.units)).map(u => {
+    if (u === '%') {
+      return 'Percentage (%)';
+    } else if (u === '$') {
+      return 'AUD ($)';
+    } else if (u === 's') {
+      return 'Time (m:s)';
+    } else {
+      return '';
+    }
+  });
 
   var configSeries = multipleSections.map((section, idx) => {
-
-    let yAxisIndex = findIndex(yAxesTitles, (title) => title.includes(section.units));
+    let yAxisIndex = findIndex(yAxesTitles, title =>
+      title.includes(section.units)
+    );
 
     const serie = {
       name: section.label,
       units: section.units,
       // color: section.color,
       data: multipleCategories.map(c => c[idx]),
-      color: getColor(idx),
+      color: getColor(idx)
     };
 
     if (typeof yAxisIndex !== 'undefined' && yAxisIndex >= 0) {
@@ -575,13 +593,13 @@ const cartesianMultipleCategoryMultipleSeries = (config, slices) => {
   // shows minimum value of all data, not per axis
   const minimumValue = configSeries
     .map(s => s.data)
-    .reduce((a,b) => {
+    .reduce((a, b) => {
       return [...a, ...b];
     }, [])
     .filter(val => {
       return val !== null;
     })
-    .reduce((a,b) => {
+    .reduce((a, b) => {
       return a < b ? a : b;
     }, []);
 
@@ -590,9 +608,9 @@ const cartesianMultipleCategoryMultipleSeries = (config, slices) => {
   const configYaxis = yAxesTitles.map(title => {
     const c = {
       title: {
-        text: title,
+        text: title
       },
-      opposite: title === 'AUD ($)',
+      opposite: title === 'AUD ($)'
     };
     if (title === 'Percentage (%)') {
       c.floor = 0;
@@ -602,12 +620,12 @@ const cartesianMultipleCategoryMultipleSeries = (config, slices) => {
     }
 
     if (title === 'AUD ($)' || title === 'Time (m:s)') {
-
       // minimumValue of data series that are money
       const moneyValues = configSeries
         .filter(s => {
           return s.yAxis === 1;
-        }).reduce((a,b) => {
+        })
+        .reduce((a, b) => {
           return [...a, ...b];
         }, [])
         .filter(val => {
@@ -615,7 +633,7 @@ const cartesianMultipleCategoryMultipleSeries = (config, slices) => {
         });
 
       if (moneyValues && moneyValues.length > 0) {
-        c.min = moneyValues.reduce((a,b) => {
+        c.min = moneyValues.reduce((a, b) => {
           return a < b ? a : b;
         });
       }
@@ -626,9 +644,11 @@ const cartesianMultipleCategoryMultipleSeries = (config, slices) => {
 
   const c = {
     yAxis: configYaxis,
-    xAxis: [{
-      categories: configXaxisCategories,
-    }],
+    xAxis: [
+      {
+        categories: configXaxisCategories
+      }
+    ],
     series: configSeries
   };
 

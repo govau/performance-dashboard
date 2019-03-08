@@ -6,4 +6,3 @@ export const CAN_UPDATE_SLICE = true;
 export const CAN_CREATE_SLICE = true;
 export const CAN_UPDATE_FACT = true;
 export const CAN_UPDATE_WIDGET_DESCRIPTIONS = false;
-

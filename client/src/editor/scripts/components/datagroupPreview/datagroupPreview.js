@@ -65,11 +65,9 @@ const Preview = ({slice, getColorByRowFn}) => {
   )
 };
 
-if (__DEV__) {
-  Preview.propTypes = {
-    slice: PropTypes.object.isRequired,
-    getColorByRowFn: PropTypes.func.isRequired,
-  };
-}
+Preview.propTypes = {
+  slice: PropTypes.object.isRequired,
+  getColorByRowFn: PropTypes.func.isRequired,
+};
 
 export default Preview;

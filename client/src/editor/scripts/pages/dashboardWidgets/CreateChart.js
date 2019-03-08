@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { 
-  months, 
-  charts, 
-  units, 
-  intervals, 
-  getOptions,
+import {
+  months,
+  charts,
+  units,
+  intervals,
+  getOptions
 } from '../../constants/options';
 
 export default class CreateChart extends Component {
   static propTypes = {
-    onSubmit: PropTypes.func.isRequired,
+    onSubmit: PropTypes.func.isRequired
   };
 
   state = {
@@ -20,18 +20,19 @@ export default class CreateChart extends Component {
     units: '',
     interval: '',
     periodMonth: `0${new Date().getMonth() + 1}`.slice(-2),
-    periodYear: (new Date()).getFullYear(),
+    periodYear: new Date().getFullYear(),
     firstLabel: '',
     datasets: [],
     datasetName: '',
     datasetLabel: '',
     datasetNotes: '',
     datasetUnits: '',
-    datasetValue: '',
+    datasetValue: ''
   };
 
-  getYears = (startYear) => {
-    const currentYear = new Date().getFullYear(), years = [];
+  getYears = startYear => {
+    const currentYear = new Date().getFullYear(),
+      years = [];
     startYear = startYear || 1980;
 
     while (startYear <= currentYear) {
@@ -41,16 +42,16 @@ export default class CreateChart extends Component {
     return years;
   };
 
-  handleInput = (key) => (event) => {
+  handleInput = key => event => {
     this.setState({
-      [key]: event.target.value,
+      [key]: event.target.value
     });
   };
 
-  handleFormSubmission = (event) => {
+  handleFormSubmission = event => {
     event.preventDefault();
-    
-    const { 
+
+    const {
       name,
       description,
       type,
@@ -59,31 +60,20 @@ export default class CreateChart extends Component {
       datasets,
       interval,
       firstLabel,
-      units,
-     } = this.state;
+      units
+    } = this.state;
 
-    if (
-      name === ''
-      || units === ''
-      || description === ''
-      || type === ''
-    ) {
+    if (name === '' || units === '' || description === '' || type === '') {
       alert('Please add name, units, description & type');
       return;
     }
 
-    if (
-      interval === 'custom'
-      && firstLabel === ''
-    ) {
+    if (interval === 'custom' && firstLabel === '') {
       alert('Please enter First category label');
       return;
     }
 
-    if (
-      interval === 'month'
-      && (periodYear === '' || periodMonth === '')
-    ) {
+    if (interval === 'month' && (periodYear === '' || periodMonth === '')) {
       alert('Please enter a Start month');
       return;
     }
@@ -109,11 +99,11 @@ export default class CreateChart extends Component {
       interval,
       datasets,
       label: firstLabel,
-      units,
+      units
     });
   };
 
-  handleAddDataset = (event) => {
+  handleAddDataset = event => {
     event.preventDefault();
     const name = this.state.datasetName;
     // const label = this.state.datasetLabel;
@@ -127,26 +117,27 @@ export default class CreateChart extends Component {
 
     this.setState({
       datasets: [
-        ...this.state.datasets, {
+        ...this.state.datasets,
+        {
           name,
           label: name,
           // notes,
           // units,
           value,
-          time: new Date().toString().split(" ")[4],
-        },
+          time: new Date().toString().split(' ')[4]
+        }
       ],
       datasetName: '',
       datasetLabel: '',
       datasetNotes: '',
       datasetUnits: '',
-      datasetValue: '',
+      datasetValue: ''
     });
   };
 
-  handleRemoveDataset = (time) => {
+  handleRemoveDataset = time => {
     this.setState({
-      datasets: this.state.datasets.filter(dataset => dataset.time !== time),
+      datasets: this.state.datasets.filter(dataset => dataset.time !== time)
     });
   };
 
@@ -156,7 +147,7 @@ export default class CreateChart extends Component {
     if (!state.interval) {
       return '';
     }
-    
+
     if (state.interval === 'custom') {
       if (!state.firstLabel) {
         return '';
@@ -170,13 +161,13 @@ export default class CreateChart extends Component {
     }
 
     return '';
-  }
+  };
 
   render = () => (
     <div
       style={{
         paddingTop: '24px',
-        marginBottom: '24px',
+        marginBottom: '24px'
       }}
       className="container"
     >
@@ -239,7 +230,7 @@ export default class CreateChart extends Component {
 
             <div className="col-xs-12 col-lg-6">
               <label>Units</label>
-              
+
               <select
                 className="form-control"
                 value={this.state.units}
@@ -274,18 +265,12 @@ export default class CreateChart extends Component {
                   onChange={this.handleInput('periodYear')}
                   required
                 >
-                  <option
-                    key=""
-                    value=""
-                  >
+                  <option key="" value="">
                     Select
                   </option>
 
                   {this.getYears('1950').map(year => (
-                    <option
-                      key={year}
-                      value={year}
-                    >
+                    <option key={year} value={year}>
                       {year}
                     </option>
                   ))}
@@ -296,7 +281,7 @@ export default class CreateChart extends Component {
         )}
 
         {this.state.interval === 'custom' && (
-            <div className="form-group">
+          <div className="form-group">
             <label>First category label</label>
 
             <input
@@ -312,9 +297,7 @@ export default class CreateChart extends Component {
 
         <label>Datasets</label>
 
-        <div
-          style={{ backgroundColor: '#fff', padding: '24px' }}
-        >
+        <div style={{ backgroundColor: '#fff', padding: '24px' }}>
           <table style={{ width: '100%' }}>
             <thead>
               <tr>
@@ -347,7 +330,10 @@ export default class CreateChart extends Component {
 
                   <td>
                     <a
-                      onClick={(event) => { event.preventDefault(); this.handleRemoveDataset(dataset.time); }}
+                      onClick={event => {
+                        event.preventDefault();
+                        this.handleRemoveDataset(dataset.time);
+                      }}
                       className="UIK-link"
                     >
                       Remove
@@ -401,10 +387,7 @@ export default class CreateChart extends Component {
                 </td>
 
                 <td>
-                  <a
-                    onClick={this.handleAddDataset}
-                    className="UIK-link"
-                  >
+                  <a onClick={this.handleAddDataset} className="UIK-link">
                     Add
                   </a>
                 </td>
@@ -417,11 +400,7 @@ export default class CreateChart extends Component {
 
         <br />
 
-        <input
-          type="submit"
-          value="Create chart"
-          className="btn btn-primary"
-        />
+        <input type="submit" value="Create chart" className="btn btn-primary" />
       </form>
     </div>
   );

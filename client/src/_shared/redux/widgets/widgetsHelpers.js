@@ -1,4 +1,3 @@
-
 import isTypeOfState from './../../utils/isTypeOfState';
 
 /**
@@ -7,24 +6,18 @@ import isTypeOfState from './../../utils/isTypeOfState';
  */
 export const isWidget = isTypeOfState(['row', 'pos', 'type', 'size', 'units']);
 
-
 /**
  * Filters widgets by widget type for Below The Line Widgets
  * @param widgetType {String} widget.type
  * @returns {String|null} the type
  */
 export const sanitizeBtlWidgetByType = widgetType => {
-  const exclusions = [
-    'kpi-sparkline',
-    'fact',
-    'full'
-  ];
+  const exclusions = ['kpi-sparkline', 'fact', 'full'];
   if (exclusions.includes(widgetType) === false) {
     return 'time-series';
   }
   return null;
 };
-
 
 /**
  * @param widgets {Array} Widgets state
@@ -39,7 +32,7 @@ export const updateWidgetInWidgets = (widgets, widget) => {
   }
   return widgets.map(w => {
     if (w.id == widget.id) {
-      return {...w, ...widget};
+      return { ...w, ...widget };
     }
     return w;
   });

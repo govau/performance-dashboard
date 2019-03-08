@@ -42,25 +42,23 @@ const Field = (props) => {
   );
 };
 
-if (__DEV__) {
-  Field.propTypes = {
-    id: PropTypes.string,
-    classNames: PropTypes.string,
-    label: PropTypes.string,
-    children: PropTypes.node.isRequired,
-    errors: PropTypes.element,
-    rawErrors: PropTypes.arrayOf(PropTypes.string),
-    help: PropTypes.element,
-    rawHelp: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-    description: PropTypes.element,
-    rawDescription: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
-    hidden: PropTypes.bool,
-    required: PropTypes.bool,
-    readonly: PropTypes.bool,
-    displayLabel: PropTypes.bool,
-    fields: PropTypes.object,
-    formContext: PropTypes.object,
-  };
-}
+Field.propTypes = {
+  id: PropTypes.string,
+  classNames: PropTypes.string,
+  label: PropTypes.string,
+  children: PropTypes.node.isRequired,
+  errors: PropTypes.element,
+  rawErrors: PropTypes.arrayOf(PropTypes.string),
+  help: PropTypes.element,
+  rawHelp: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  description: PropTypes.element,
+  rawDescription: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
+  hidden: PropTypes.bool,
+  required: PropTypes.bool,
+  readonly: PropTypes.bool,
+  displayLabel: PropTypes.bool,
+  fields: PropTypes.object,
+  formContext: PropTypes.object,
+};
 
 export default Field;
