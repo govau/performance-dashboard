@@ -93,7 +93,7 @@ jobs:
         key: rails-demo-yarn-{{ checksum "yarn.lock" }}
       - run: yarn install
       - run: yarn run build
-      - run: curl -F access_token=$ROLLBAR_ACCESS_TOKEN_SERVER -F environment=production -F revision=$CIRCLE_SHA1 -F rollbar_username=jonalport -F local_username=$CIRCLE_USERNAME -F comment='Deployed by Circle' 'https://api.rollbar.com/api/1/deploy/'
+      - run: curl -F access_token=$ROLLBAR_ACCESS_TOKEN_SERVER -F environment=production -F revision=$CIRCLE_SHA1 -F rollbar_username=jonalport -F local_username=$CIRCLE_USERNAME -F comment='Circle deployed Performance Dashboard to prod' 'https://api.rollbar.com/api/1/deploy/'
       - run: curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version=6.32.0&source=github-rel'
       - run: sudo dpkg -i cf-cli_amd64.deb
       - run: cf install-plugin https://github.com/govau/autopilot/releases/download/0.0.5-venapp/autopilot-linux -f
