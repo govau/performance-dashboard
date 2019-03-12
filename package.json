@@ -36,7 +36,7 @@
     "bourbon": "https://github.com/thoughtbot/bourbon#v5.0.0.beta.6",
     "bourbon-neat": "https://github.com/thoughtbot/neat#v1.8.0",
     "browserify": "^13.1.0",
-    "chalk": "1.1.3",
+    "chalk": "2.4.2",
     "classnames": "^2.2.6",
     "connect-history-api-fallback": "1.3.0",
     "cross-spawn": "4.0.2",
@@ -87,7 +87,7 @@
     "mini-css-extract-plugin": "^0.5.0",
     "moment": "^2.15.1",
     "moment-range": "^2.2.0",
-    "nock": "^8.1.0",
+    "nock": "^10.0.6",
     "node-bourbon": "^4.2.8",
     "node-neat": "^1.7.2",
     "node-sass": "^4.10.0",
@@ -117,7 +117,7 @@
     "sinon": "^1.17.7",
     "stream-browserify": "^2.0.1",
     "style-loader": "^0.23.1",
-    "tap-spec": "^4.1.1",
+    "tap-spec": "^5.0.0",
     "textures": "^1.0.3",
     "tiny-emitter": "^2.0.0",
     "url-loader": "^0.5.7",
@@ -197,7 +197,7 @@
     "babel-plugin-module-resolver": "^2.7.0",
     "case-sensitive-paths-webpack-plugin": "^1.1.4",
     "codecov": "^3.2.0",
-    "commitizen": "^2.9.1",
+    "commitizen": "^3.0.7",
     "cz-conventional-changelog": "^1.2.0",
     "git-revision-webpack-plugin": "^2.5.1",
     "husky": "^0.12.0",
@@ -218,8 +218,5 @@
       "helpMessage": "\nPlease fix your commit message (and consider using http://npm.im/commitizen)\n",
       "warnOnFail": false
     }
-  },
-  "eslintConfig": {
-    "extends": "react-app"
   }
 }
