@@ -12,13 +12,14 @@ const NODE_ENV = String(
 );
 const DEBUG = NODE_ENV === 'development';
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const devMode = process.env.NODE_ENV !== 'production';
+
+console.log('Mode is ' + NODE_ENV);
 
 let webpackConfig = {
   name: projectName,
-  devtool: 'eval-source-map',
+  devtool: 'inline-source-map',
   context: CONFIG.DIR_SRC,
-  mode: NODE_ENV,
+  mode: 'development',
   entry: {
     ['dashboard']: [`./dashboard`],
     ['dashboard-index']: [`./dashboard-index`],
@@ -36,20 +37,14 @@ let webpackConfig = {
   module: {
     rules: [
       {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        enforce: 'pre',
-        use: ['babel-loader', 'eslint-loader'],
-      },
-      {
-        test: /\.(js)$/,
+        test: /(\.js|\.jsx)$/,
         loaders: ['babel-loader'],
         exclude: [CONFIG.DIR_NPM, CONFIG.DIR_TEST],
       },
       {
         test: /\.(sa|sc|c)ss$/,
         use: [
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'style-loader',
           {
             loader: 'css-loader',
             options: {

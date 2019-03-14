@@ -142,7 +142,7 @@
     "pretty": "prettier --write 'client/**/*.js'",
     "test-legacy": "npm run test-browser && npm run test-browser:legacy && npm run test:react",
     "test": "npm run test-browser && npm run test:react",
-    "lint": "eslint client/src/editor",
+    "lint": "eslint client/src/**/*.js",
     "test:react": "NODE_ENV=test jest --env=jsdom",
     "test:react:watch": "npm run test:react -- --watch --verbose",
     "test:react:coverage": "npm run test:react -- --coverage --runInBand",
