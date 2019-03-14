@@ -90,9 +90,10 @@
     lodash "^4.17.11"
     to-fast-properties "^2.0.0"
 
-"@gov.au/datavizkit@^1.0.32-development":
+"@gov.au/datavizkit@^1.1.1":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@gov.au/datavizkit/-/datavizkit-1.1.1.tgz#b6a52ffb2c7e9088f35f05ebaf36f97c1b4ae2d4"
+  integrity sha512-mjMw/zae5OW8sR+2CjrGwDjPgfYtM8GgFqSVEd+qhJnnXtvQaRPzs2VvSx/g7moO2f/Sg5XS0gv480xsp9pV+A==
   dependencies:
     highcharts "^6.0.5"
     jsx-to-string "1.0.2"
