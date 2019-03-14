@@ -17,7 +17,7 @@ console.log('Mode is ' + NODE_ENV);
 
 let webpackConfig = {
   name: projectName,
-  devtool: 'inline-source-map',
+  devtool: 'cheap-module-eval-source-map',
   context: CONFIG.DIR_SRC,
   mode: 'development',
   entry: {
