@@ -19,7 +19,7 @@ const Footer = () => {
             <div className="govau-footer__container__utils">
               <div className="line-1">
                 <a
-                  href="mailto:performance-dashboard@digital.gov.au"
+                  href="mailto:performance-dashboard@dta.gov.au"
                   rel="external"
                   className="UIK-button btn btn-secondary report-an-issue"
                 >

@@ -1,5 +1,5 @@
 # General application constants
 
 module ApplicationConstants
-  CONTACT_EMAIL = 'performance-dashboard@digital.gov.au'
+  CONTACT_EMAIL = 'performance-dashboard@dta.gov.au'
 end

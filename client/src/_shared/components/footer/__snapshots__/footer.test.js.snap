@@ -21,7 +21,7 @@ exports[`(Components) Footer - footer  should match Snapshot 1`] = `
             className="line-1">
             <a
               className="UIK-button btn btn-secondary report-an-issue"
-              href="mailto:performance-dashboard@digital.gov.au"
+              href="mailto:performance-dashboard@dta.gov.au"
               rel="external">
               Report an issue
             </a>
