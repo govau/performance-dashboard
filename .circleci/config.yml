@@ -37,6 +37,7 @@ jobs:
           POSTGRES_USER: dashboard_test_user
           POSTGRES_DB: dashboard_test
           POSTGRES_PASSWORD: ""
+    working_directory: ~/repo
     steps:
       - attach_workspace:
           at: ~/repo
