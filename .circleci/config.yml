@@ -4,30 +4,9 @@
 version: 2
 
 jobs:
-  js_build:
+  build:
     docker:
-      - image: circleci/node:11
-    working_directory: ~/repo
-    steps:
-      - checkout
-      - type: cache-restore
-        name: Restore yarn cache
-        key: rails-demo-yarn-{{ checksum "yarn.lock" }}
-      - run: yarn install
-      - type: cache-save
-        name: Store yarn cache
-        key: rails-demo-yarn-{{ checksum "yarn.lock" }}
-        paths:
-          - ~/.yarn-cache
-      - run: yarn run test:react:coverage
-      - run: yarn run build
-      - persist_to_workspace:
-          root: ~/repo
-          paths:
-            - public/
-  ruby_build:
-    docker:
-      - image: circleci/ruby:2.6.6-node
+      - image: circleci/ruby:2.4.4-node
         environment:
           PGHOST: 127.0.0.1
           PGUSER: dashboard_test_user
@@ -40,8 +19,6 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - attach_workspace:
-          at: ~/repo
       - run:
           name: Configure Bundler
           command: |
@@ -57,10 +34,21 @@ jobs:
         key: perfdash-ruby-deps-{{ checksum "Gemfile.lock" }}
         paths:
           - vendor/bundle
+      - type: cache-restore
+        name: Restore yarn cache
+        key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+      - run: yarn install
+      - type: cache-save
+        name: Store yarn cache
+        key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+        paths:
+          - ~/.yarn-cache
+      - run: yarn run test:react:coverage
+      - run: yarn run build
       - run: bundle exec rspec
   deploy_staging:
     docker:
-      - image: circleci/ruby:2.6.6-node
+      - image: circleci/ruby:2.4.4-node
     working_directory: ~/repo
     steps:
       - checkout
@@ -74,6 +62,11 @@ jobs:
         name: Restore bundle cache
         key: perfdash-ruby-deps-{{ checksum "Gemfile.lock" }}
       - run: bundle install --path vendor/bundle
+      - type: cache-restore
+        name: Restore yarn cache
+        key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+      - run: yarn install
+      - run: yarn run build
       - run: curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version=6.32.0&source=github-rel'
       - run: sudo dpkg -i cf-cli_amd64.deb
       - run: cf install-plugin https://github.com/govau/autopilot/releases/download/0.0.5-venapp/autopilot-linux -f
@@ -81,7 +74,7 @@ jobs:
       - run: cf zero-downtime-push dashboard-staging -f manifest-staging.yml -p .
   deploy_production:
     docker:
-      - image: circleci/ruby:2.6.6-node
+      - image: circleci/ruby:2.4.4-node
     working_directory: ~/repo
     steps:
       - checkout
@@ -95,6 +88,11 @@ jobs:
         name: Restore bundle cache
         key: perfdash-ruby-deps-{{ checksum "Gemfile.lock" }}
       - run: bundle install --path vendor/bundle
+      - type: cache-restore
+        name: Restore yarn cache
+        key: rails-demo-yarn-{{ checksum "yarn.lock" }}
+      - run: yarn install
+      - run: yarn run build
       - run: curl -F access_token=$ROLLBAR_ACCESS_TOKEN_SERVER -F environment=production -F revision=$CIRCLE_SHA1 -F rollbar_username=jonalport -F local_username=$CIRCLE_USERNAME -F comment='Circle deployed Performance Dashboard to prod' 'https://api.rollbar.com/api/1/deploy/'
       - run: curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version=6.32.0&source=github-rel'
       - run: sudo dpkg -i cf-cli_amd64.deb
@@ -105,25 +103,19 @@ workflows:
   version: 2
   build_test_deploy:
     jobs:
-      - js_build:
-          filters:
-            tags:
-              only: /.*/ # i.e. always build for all tags & branches
-      - ruby_build:
-          requires:
-            - js_build
+      - build:
           filters:
             tags:
               only: /.*/ # i.e. always build for all tags & branches
       - deploy_staging:
           requires:
-            - ruby_build
+            - build
           filters:
             branches:
               only: /^master$/
       - deploy_production:
           requires:
-            - ruby_build
+            - build
           filters:
             branches:
               ignore:

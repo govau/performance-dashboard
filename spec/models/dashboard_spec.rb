@@ -47,27 +47,27 @@ RSpec.describe Dashboard, type: :model do
 
   describe 'last_updated' do
     before do
-      FactoryGirl.create(:widget, :dashboard => dashboard, :last_updated_at => '2020-01-01')
+      FactoryGirl.create(:widget, :dashboard => dashboard, :last_updated_at => '2030-01-01')
       FactoryGirl.create(:widget, :dashboard => dashboard)
     end
 
-    it { expect(dashboard.last_updated_at).to eq Date.parse('2020-01-01') }
+    it { expect(dashboard.last_updated_at).to eq Date.parse('2030-01-01') }
   end
 
-  describe '#published?' do 
+  describe '#published?' do
     subject { dashboard.published? }
 
-    context 'published_at is null' do 
+    context 'published_at is null' do
       let(:dashboard) { FactoryGirl.create(:dashboard) }
       it { is_expected.to be false }
     end
 
-    context 'published_at is in the past' do 
+    context 'published_at is in the past' do
       let(:dashboard) { FactoryGirl.create(:dashboard_published) }
       it { is_expected.to be true }
     end
 
-    context 'published_at is in the future' do 
+    context 'published_at is in the future' do
       let(:dashboard) { FactoryGirl.create(:dashboard, published_at: 5.days.from_now) }
       it { is_expected.to be false }
     end
