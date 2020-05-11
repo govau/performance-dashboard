@@ -6,7 +6,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.4.4-node
+      - image: circleci/ruby:2.6.6-node
         environment:
           PGHOST: 127.0.0.1
           PGUSER: dashboard_test_user
@@ -48,7 +48,7 @@ jobs:
       - run: bundle exec rspec
   deploy_staging:
     docker:
-      - image: circleci/ruby:2.4.4-node
+      - image: circleci/ruby:2.6.6-node
     working_directory: ~/repo
     steps:
       - checkout
@@ -74,7 +74,7 @@ jobs:
       - run: cf zero-downtime-push dashboard-staging -f manifest-staging.yml -p .
   deploy_production:
     docker:
-      - image: circleci/ruby:2.4.4-node
+      - image: circleci/ruby:2.6.6-node
     working_directory: ~/repo
     steps:
       - checkout
