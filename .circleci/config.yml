@@ -47,7 +47,7 @@ jobs:
           command: |
             echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
             source $BASH_ENV
-            gem install bundler -v 1.17.3
+            gem install bundler -v 2.1.4
       - type: cache-restore
         name: Restore bundle cache
         key: perfdash-ruby-deps-{{ checksum "Gemfile.lock" }}
@@ -69,7 +69,7 @@ jobs:
           command: |
             echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
             source $BASH_ENV
-            gem install bundler -v 1.17.3
+            gem install bundler -v 2.1.4
       - type: cache-restore
         name: Restore bundle cache
         key: perfdash-ruby-deps-{{ checksum "Gemfile.lock" }}
@@ -90,7 +90,7 @@ jobs:
           command: |
             echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
             source $BASH_ENV
-            gem install bundler -v 1.17.3
+            gem install bundler -v 2.1.4
       - type: cache-restore
         name: Restore bundle cache
         key: perfdash-ruby-deps-{{ checksum "Gemfile.lock" }}
