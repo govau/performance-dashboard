@@ -10,20 +10,20 @@ RSpec.describe WidgetDecorator, type: :decorator do
 
   let(:unit)            { 's' }
 
-  let(:widget)      { FactoryGirl.create(:widget_with_data, rows_count: 0,
+  let(:widget)      { FactoryBot.create(:widget_with_data, rows_count: 0,
     datasets_count: 0, last_updated_at: '2020-01-01', units: unit) }
 
   let(:dataset)     {
-    ds = FactoryGirl.create :dataset, units: unit
-    widget.data_table.datasets << ds  
-    widget.datasets << ds  
+    ds = FactoryBot.create :dataset, units: unit
+    widget.data_table.datasets << ds
+    widget.datasets << ds
     ds
   }
 
-  let!(:latest)     { FactoryGirl.create(:data_row, row_date: latest_ts,
+  let!(:latest)     { FactoryBot.create(:data_row, row_date: latest_ts,
     data_table: widget.data_table, values: { dataset.id => latest_value })}
 
-  let!(:previous)     { FactoryGirl.create(:data_row, row_date: previous_ts,
+  let!(:previous)     { FactoryBot.create(:data_row, row_date: previous_ts,
     data_table: widget.data_table, values: { dataset.id => previous_value })}
 
   subject { widget.decorate }
@@ -35,7 +35,7 @@ RSpec.describe WidgetDecorator, type: :decorator do
   #TODO Refactor this portion into its own spec as it's no longer #to_chart
   describe 'rendering data for charts' do
 
-    let(:widget)  { FactoryGirl.create(:widget_with_data, datasets_count: 2).decorate }
+    let(:widget)  { FactoryBot.create(:widget_with_data, datasets_count: 2).decorate }
     let(:chart) { ApplicationController.new.render_to_string('chart/_widget', locals: { widget: widget })}
     subject(:data)  { JSON.parse(chart) }
 
@@ -168,7 +168,7 @@ RSpec.describe WidgetDecorator, type: :decorator do
 
   describe 'size to style' do
    let(:attrs) { {} }
-   let(:widget) { FactoryGirl.create(:widget_with_data, attrs) }
+   let(:widget) { FactoryBot.create(:widget_with_data, attrs) }
    subject { widget.decorate }
 
    context 'extra-small' do

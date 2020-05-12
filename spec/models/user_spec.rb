@@ -6,7 +6,7 @@ RSpec.describe User, type: :model do
   it { is_expected.to have_many :dashboards }
 
   describe '#generate_session_token!' do
-    subject(:user) { FactoryGirl.create(:user) }
+    subject(:user) { FactoryBot.create(:user) }
 
     context do
       let!(:token) { user.generate_session_token! }
@@ -32,7 +32,7 @@ RSpec.describe User, type: :model do
       let!(:expired_token) { user.generate_session_token! }
       let!(:token) {  user.generate_session_token! }
 
-      subject(:user) { FactoryGirl.create(:user, :tokens => [api_token]) }
+      subject(:user) { FactoryBot.create(:user, :tokens => [api_token]) }
 
       it { is_expected.to have(3).tokens }
 
@@ -46,9 +46,9 @@ RSpec.describe User, type: :model do
 
   describe 'tokens' do
     let(:active)   { Token.create! }
-    let(:expired)  { FactoryGirl.create(:token_expired) }
+    let(:expired)  { FactoryBot.create(:token_expired) }
 
-    subject(:user) { FactoryGirl.create(:user, :tokens => [expired, active]) }
+    subject(:user) { FactoryBot.create(:user, :tokens => [expired, active]) }
 
     describe 'expiration' do
       its(:token) { should eq active }
@@ -72,8 +72,8 @@ RSpec.describe User, type: :model do
   end
 
   describe 'unique association rows' do
-    subject { FactoryGirl.create(:user) }
-    let(:dashboard) { FactoryGirl.create(:dashboard) }
+    subject { FactoryBot.create(:user) }
+    let(:dashboard) { FactoryBot.create(:dashboard) }
 
     before do
       subject.dashboards << dashboard
@@ -82,21 +82,21 @@ RSpec.describe User, type: :model do
     specify { expect { subject.dashboards << dashboard }.to raise_error ActiveRecord::RecordInvalid }
   end
 
-  describe 'permissions' do 
-    subject { FactoryGirl.create(:user) } 
+  describe 'permissions' do
+    subject { FactoryBot.create(:user) }
 
-    context 'no dashboards' do 
+    context 'no dashboards' do
       specify { expect(subject.dashboards.count).to eq 0 }
     end
 
-    context 'with a dashboard' do 
-      let(:dashboard) { FactoryGirl.create(:dashboard_with_widgets) }
-      
-      before do 
-        subject.dashboards << dashboard 
+    context 'with a dashboard' do
+      let(:dashboard) { FactoryBot.create(:dashboard_with_widgets) }
+
+      before do
+        subject.dashboards << dashboard
       end
 
-      specify { expect(subject.permissions.count).to eq 1 } 
+      specify { expect(subject.permissions.count).to eq 1 }
       specify { expect(subject.datasets).to include dashboard.datasets.first }
     end
   end

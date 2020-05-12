@@ -20,7 +20,7 @@ require 'simplecov'
 #
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 
-require 'factory_girl'
+require 'factory_bot'
 require 'rspec/collection_matchers'
 
 SimpleCov.start do
@@ -32,7 +32,7 @@ end
 
 RSpec.configure do |config|
 
-  config.include FactoryGirl::Syntax::Methods
+  config.include FactoryBot::Syntax::Methods
 
   config.filter_run :focus => true
   config.run_all_when_everything_filtered = true

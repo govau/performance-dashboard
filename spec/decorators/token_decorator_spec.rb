@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe TokenDecorator, type: :decorator do
-  let(:token)         { FactoryGirl.create(:token) }
+  let(:token)         { FactoryBot.create(:token) }
   subject(:decorator) { token.decorate }
 
   specify { expect(subject.display_name).to eq "Token #{token.id}" }

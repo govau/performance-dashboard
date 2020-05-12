@@ -1,7 +1,7 @@
 RSpec.shared_examples 'measureable' do
 
   let(:unit)        { 'n' }
-  subject(:dataset) { FactoryGirl.create(:dataset, :units => unit) }
+  subject(:dataset) { FactoryBot.create(:dataset, :units => unit) }
 
   its(:prefix) { is_expected.to eq ''}
   its(:suffix) { is_expected.to eq ''}

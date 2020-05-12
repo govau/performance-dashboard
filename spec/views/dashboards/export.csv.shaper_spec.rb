@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'dashboards/export.csv.shaper', type: :view do
-  let(:dashboard) { FactoryGirl.create(:dashboard_with_widgets) }
+  let(:dashboard) { FactoryBot.create(:dashboard_with_widgets) }
 
   before do
     assign :dashboard, dashboard

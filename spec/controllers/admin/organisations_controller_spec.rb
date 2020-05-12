@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Admin::OrganisationsController, type: :controller do
   describe '#import' do
-    let(:user) { FactoryGirl.create :user_confirmed, admin: true }
-    let(:organisation) { FactoryGirl.create :organisation }
-    let!(:dashboard) { FactoryGirl.create :dashboard, organisation: organisation }
+    let(:user) { FactoryBot.create :user_confirmed, admin: true }
+    let(:organisation) { FactoryBot.create :organisation }
+    let!(:dashboard) { FactoryBot.create :dashboard, organisation: organisation }
     let(:data) { fixture_file_upload 'valid-data.json' }
     let(:definition) { fixture_file_upload 'valid-definition.json' }
 

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'chart/_widget', type: :view do
   let(:options) { {} }
-  let(:widget) { FactoryGirl.create(:widget_with_data, options: options) }
+  let(:widget) { FactoryBot.create(:widget_with_data, options: options) }
   let(:do_render) { render 'chart/widget', widget: widget.decorate }
   before { view.lookup_context.prefixes << 'application' }
   subject { JSON.parse(rendered) }

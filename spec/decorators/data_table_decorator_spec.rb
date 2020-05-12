@@ -1,18 +1,18 @@
 require 'rails_helper'
 
 RSpec.describe DataTableDecorator, type: :decorator do
-  let(:data_table) { FactoryGirl.create :data_table }
+  let(:data_table) { FactoryBot.create :data_table }
   subject { DataTableDecorator.decorate(data_table) }
 
   describe 'calculations' do
-    let!(:latest) { FactoryGirl.create :data_row, data_table: data_table,
+    let!(:latest) { FactoryBot.create :data_row, data_table: data_table,
       row_date: Date.today, datasets: [data_table.datasets.first],
       value: latest_value }
-    let!(:previous) { FactoryGirl.create :data_row, data_table: data_table,
+    let!(:previous) { FactoryBot.create :data_row, data_table: data_table,
       row_date: 1.month.ago, datasets: [data_table.datasets.first],
       value: previous_value }
 
-    describe 'latest and previous' do 
+    describe 'latest and previous' do
       let(:latest_value) { 99 }
       let(:previous_value) { 99 }
       its(:latest) { is_expected.to eq latest }

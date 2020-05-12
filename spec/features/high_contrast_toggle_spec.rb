@@ -3,7 +3,7 @@
 # RSpec.describe "high contrast mode toggle", :type => :feature, :js => true do
 #
 #   context 'a user should be able to change the contrast of the dashboard pages' do
-#     let(:dashboard)    { FactoryGirl.create(:dashboard_published) }
+#     let(:dashboard)    { FactoryBot.create(:dashboard_published) }
 #
 #     before(:example) do
 #       visit(dashboard_path(dashboard))

@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :dashboard do
     organisation
     sequence(:name) { |n| "dashboard-#{n}" }
@@ -21,7 +21,7 @@ FactoryGirl.define do
         dashboard.widgets << create(:widget_hero)
         dashboard.widgets << Widget::KPIS.collect{ |n| create(:widget_with_data,
           dashboard: dashboard, name: n) }
-        dashboard.widgets << create_list(:widget_with_data, evaluator.widgets_count, 
+        dashboard.widgets << create_list(:widget_with_data, evaluator.widgets_count,
           dashboard: dashboard)
 
         dashboard.datasets.each {|d| d.update_attributes!(:organisation_id => dashboard.organisation.id) }

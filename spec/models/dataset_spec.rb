@@ -7,7 +7,7 @@ RSpec.describe Dataset, type: :model do
 
   describe 'measurable' do
     let(:unit)        { 'n' }
-    subject(:dataset) { FactoryGirl.create(:dataset, :units => unit) }
+    subject(:dataset) { FactoryBot.create(:dataset, :units => unit) }
 
     its(:prefix) { is_expected.to eq ''}
     its(:suffix) { is_expected.to eq ''}
@@ -31,35 +31,35 @@ RSpec.describe Dataset, type: :model do
     end
   end
 
-  describe 'color' do   
-    let(:dataset) { FactoryGirl.create(:dataset, name: name, color: color) }
+  describe 'color' do
+    let(:dataset) { FactoryBot.create(:dataset, name: name, color: color) }
     subject { dataset.color_string }
 
-    context 'has a colour' do 
+    context 'has a colour' do
       let(:color) { 0xff00 } # horrible green
 
-      context 'KPI' do 
+      context 'KPI' do
         let(:name) { 'User satisfaction' }
-        it { is_expected.to eq '#00FF00' } # overrides KPI default 
+        it { is_expected.to eq '#00FF00' } # overrides KPI default
       end
 
-      context 'Other' do 
-        let(:name) { 'Something else' } 
-        it { is_expected.to eq '#00FF00' } 
+      context 'Other' do
+        let(:name) { 'Something else' }
+        it { is_expected.to eq '#00FF00' }
       end
     end
 
-    context 'has no colour' do 
+    context 'has no colour' do
       let(:color) { nil }
 
-      context 'KPI' do 
+      context 'KPI' do
         let(:name) { 'User satisfaction' }
-        it { is_expected.to eq '#F2B038' } # KPI default 
+        it { is_expected.to eq '#F2B038' } # KPI default
       end
 
-      context 'Other' do 
-        let(:name) { 'Something else' } 
-        it { is_expected.to be_nil } 
+      context 'Other' do
+        let(:name) { 'Something else' }
+        it { is_expected.to be_nil }
       end
     end
   end

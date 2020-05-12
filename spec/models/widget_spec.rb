@@ -21,27 +21,27 @@ RSpec.describe Widget, type: :model do
 
   its(:data_updated_at) { is_expected.to_not be_present }
 
-  describe '#has_data?' do 
-    context 'No data table' do 
-      subject { FactoryGirl.create :widget }
+  describe '#has_data?' do
+    context 'No data table' do
+      subject { FactoryBot.create :widget }
       it { is_expected.not_to have_data }
       it { is_expected.not_to have_current_data }
     end
 
-    context 'Data table with no rows' do 
-      subject { FactoryGirl.create :widget_with_data, rows_count: 0 }
+    context 'Data table with no rows' do
+      subject { FactoryBot.create :widget_with_data, rows_count: 0 }
       it { is_expected.not_to have_data }
       it { is_expected.not_to have_current_data }
     end
 
-    context 'Data table with rows' do 
-      subject { FactoryGirl.create :widget_with_data }
+    context 'Data table with rows' do
+      subject { FactoryBot.create :widget_with_data }
       it { is_expected.to have_data }
       it { is_expected.to have_current_data }
     end
 
-    context 'Data table whose rows have null values' do 
-      subject { FactoryGirl.create :widget_with_data, rows_count: 1 }
+    context 'Data table whose rows have null values' do
+      subject { FactoryBot.create :widget_with_data, rows_count: 1 }
 
       before do
         subject.data_table.data_rows.each do |row|
@@ -51,7 +51,7 @@ RSpec.describe Widget, type: :model do
 
           row.save!
         end
-      end   
+      end
 
       it { is_expected.to have_data }
       it { is_expected.not_to have_current_data }
@@ -59,7 +59,7 @@ RSpec.describe Widget, type: :model do
   end
 
   describe 'options' do
-    subject(:widget) { FactoryGirl.create(:widget,
+    subject(:widget) { FactoryBot.create(:widget,
       options: {'stacking' => 'percentage', 'displayRoundedData' => true}) }
 
     its(:options) {
@@ -73,7 +73,7 @@ RSpec.describe Widget, type: :model do
 
   describe 'kpis' do
     before {
-      Widget::KPIS.each{ |n| FactoryGirl.create(:widget, :name => n) }
+      Widget::KPIS.each{ |n| FactoryBot.create(:widget, :name => n) }
     }
     subject { Widget.kpis }
     it { is_expected.to have(4).widgets }
@@ -81,14 +81,14 @@ RSpec.describe Widget, type: :model do
 
   describe 'hero' do
     before {
-      FactoryGirl.create(:widget, :is_hero => true)
+      FactoryBot.create(:widget, :is_hero => true)
     }
     subject { Widget.hero }
     it { is_expected.to have(1).widget }
   end
 
   describe 'units' do
-    subject(:widget) { FactoryGirl.create(:widget, :units => units) }
+    subject(:widget) { FactoryBot.create(:widget, :units => units) }
 
     context 'seconds' do
       let(:units) { 's' }

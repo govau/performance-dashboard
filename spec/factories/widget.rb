@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :widget do
     dashboard
     sequence(:name) { |n| "widget-#{n}" }
@@ -21,10 +21,10 @@ FactoryGirl.define do
         widget.data_table = create(:data_table, dashboard: widget.dashboard,
           rows_count: evaluator.rows_count,
           datasets_count: evaluator.datasets_count)
-        
+
         widget.save
 
-        widget.data_table.datasets.each do |dataset| 
+        widget.data_table.datasets.each do |dataset|
           widget.datasets << dataset
         end
 
