@@ -16,7 +16,7 @@ RSpec.describe 'authentication feature toggles', type: :feature do
     end
 
     describe 'two factor' do
-      let(:user) { FactoryGirl.create(:user_confirmed) }
+      let(:user) { FactoryBot.create(:user_confirmed) }
 
       def use_sign_in_form
         visit new_user_session_path

@@ -23,7 +23,7 @@ RSpec.describe Api::V1::WidgetsController, :type => :controller do
       before { req }
 
       context 'with unowned dashboard' do
-        let(:other) { FactoryGirl.create(:dashboard_with_widgets) }
+        let(:other) { FactoryBot.create(:dashboard_with_widgets) }
         let(:did) { other.id }
         it { expect(response).to have_http_status(404) }
       end
@@ -57,10 +57,10 @@ RSpec.describe Api::V1::WidgetsController, :type => :controller do
         it { expect(response).to have_http_status(404) }
       end
 
-      context 'with owned dashboard' do 
+      context 'with owned dashboard' do
         let(:did) { dashboard.id }
 
-        context 'with unowned widget' do          
+        context 'with unowned widget' do
           let(:wid) { 999 }
           it { expect(response).to have_http_status(404) }
         end

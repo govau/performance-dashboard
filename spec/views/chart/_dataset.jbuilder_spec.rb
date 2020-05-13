@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'chart/_dataset', type: :view do
-  let!(:widget) { FactoryGirl.create :widget_with_data }
+  let!(:widget) { FactoryBot.create :widget_with_data }
   let(:dataset) { widget.data_table.datasets.first }
   let(:decorated_dataset) { dataset.decorate(context:
     { data_table: widget.data_table })}

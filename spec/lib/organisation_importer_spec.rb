@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'organisation_importer'
 
 describe OrganisationImporter do
-  let(:organisation) { FactoryGirl.create :organisation }
+  let(:organisation) { FactoryBot.create :organisation }
   let(:definition_json) { File.read("spec/fixtures/valid-definition.json") }
   let(:dashboard_id) { 999999 }
 
@@ -35,11 +35,11 @@ describe OrganisationImporter do
     end
 
     context 'with preexisting dashboard' do
-      let!(:old_dashboard) { FactoryGirl.create :dashboard,
+      let!(:old_dashboard) { FactoryBot.create :dashboard,
         id: dashboard_id, organisation: organisation }
-      let!(:old_widget) { FactoryGirl.create :widget_with_data,
+      let!(:old_widget) { FactoryBot.create :widget_with_data,
         dashboard: old_dashboard }
-      let!(:user) { FactoryGirl.create :user, organisation: organisation }
+      let!(:user) { FactoryBot.create :user, organisation: organisation }
 
       before do
         user.dashboards << old_dashboard

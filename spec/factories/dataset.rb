@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :dataset do
     sequence(:name)   { |n| "dataset-#{n}" }
     sequence(:label)  { |n| "d-#{n}" }

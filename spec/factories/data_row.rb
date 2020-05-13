@@ -1,6 +1,6 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :data_row do
-    transient do 
+    transient do
       datasets []
       value { rand(100000) }
     end

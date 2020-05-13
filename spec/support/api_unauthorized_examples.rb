@@ -17,8 +17,8 @@ shared_examples 'api_unauthorized_examples' do
   end
 
   context 'with expired token' do
-    let(:token)         { FactoryGirl.create(:token_expired) }
-    let(:user)          { FactoryGirl.create(:user, :tokens => [token]) }
+    let(:token)         { FactoryBot.create(:token_expired) }
+    let(:user)          { FactoryBot.create(:user, :tokens => [token]) }
 
     let(:authorization) { ActionController::HttpAuthentication::Token.encode_credentials(token) }
 

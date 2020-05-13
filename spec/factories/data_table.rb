@@ -1,5 +1,5 @@
-FactoryGirl.define do 
-  factory :data_table do 
+FactoryBot.define do
+  factory :data_table do
     transient do
       datasets_count 1
       rows_count 0

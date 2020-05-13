@@ -2,13 +2,13 @@ require 'rails_helper'
 
 RSpec.describe DashboardDecorator, type: :decorator do
   let(:opts) { {} }
-  let(:dashboard) { FactoryGirl.create(:dashboard_with_widgets, opts) }
+  let(:dashboard) { FactoryBot.create(:dashboard_with_widgets, opts) }
   let(:decorator) { DashboardDecorator.new(dashboard) }
 
   subject { dashboard.decorate }
 
   context 'dashboard without widgets' do
-    let(:dashboard) { FactoryGirl.create(:dashboard, opts) }
+    let(:dashboard) { FactoryBot.create(:dashboard, opts) }
     it { is_expected.to_not be_show_hero }
     it { is_expected.to_not be_show_kpis }
   end

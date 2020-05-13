@@ -26,8 +26,8 @@
 #   let(:cached_show) { "#{@cache_dir}/dashboards/#{@dashboard.to_param}.html" }
 
 #   before do
-#     @user = FactoryGirl.create(:user)
-#     @dashboard = FactoryGirl.create(:dashboard_with_widgets, :published)
+#     @user = FactoryBot.create(:user)
+#     @dashboard = FactoryBot.create(:dashboard_with_widgets, :published)
 #     @user.dashboards << @dashboard
 
 #     get root_path

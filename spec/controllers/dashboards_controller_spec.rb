@@ -9,9 +9,9 @@ RSpec.describe DashboardsController, :type => :controller do
       expect(response).to render_template(:index)
     end
 
-    describe 'shows only published dashboards' do 
-      let(:published) { FactoryGirl.create(:dashboard_published) }
-      let(:unpublished) { FactoryGirl.create(:dashboard) }
+    describe 'shows only published dashboards' do
+      let(:published) { FactoryBot.create(:dashboard_published) }
+      let(:unpublished) { FactoryBot.create(:dashboard) }
 
       before { get :index }
 
@@ -21,7 +21,7 @@ RSpec.describe DashboardsController, :type => :controller do
   end
 
   describe "GET show page with a valid dashboard id" do
-    let(:dashboard)    { FactoryGirl.create(:dashboard_published) }
+    let(:dashboard)    { FactoryBot.create(:dashboard_published) }
     it "responds successfully with an HTTP 200 status code" do
       get :show, params: {id: dashboard.id}
       expect(response).to be_success
@@ -31,7 +31,7 @@ RSpec.describe DashboardsController, :type => :controller do
   end
 
   describe "GET show page with the ID of an unpublished dashboard" do
-    let(:dashboard)    { FactoryGirl.create(:dashboard) }
+    let(:dashboard)    { FactoryBot.create(:dashboard) }
 
     it "should catch an exception" do
       expect {
@@ -50,7 +50,7 @@ RSpec.describe DashboardsController, :type => :controller do
 
   describe "Export the csv data" do
     context "with a valid dashboard id" do
-      let(:dashboard) { FactoryGirl.create(:dashboard_with_widgets, :published) }
+      let(:dashboard) { FactoryBot.create(:dashboard_with_widgets, :published) }
       it "responds successfully with an HTTP 200 status code" do
         get :export, params: {id: dashboard.id, format: 'csv' }
         expect(response).to be_success

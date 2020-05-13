@@ -18,7 +18,7 @@ RSpec.describe Token, type: :model do
 
   describe 'active' do
     let!(:active)   { Token.create! }
-    let!(:expired)  { FactoryGirl.create(:token_expired) }
+    let!(:expired)  { FactoryBot.create(:token_expired) }
 
     subject { Token.active.all }
     it      { is_expected.to have(1).token }
@@ -26,7 +26,7 @@ RSpec.describe Token, type: :model do
 
   describe 'expired' do
     let!(:active)   { Token.create! }
-    let!(:expired)  { FactoryGirl.create(:token_expired) }
+    let!(:expired)  { FactoryBot.create(:token_expired) }
 
     subject { Token.expired.all }
     it      { is_expected.to have(1).token }
@@ -40,7 +40,7 @@ RSpec.describe Token, type: :model do
 
   describe 'authenticate!' do
     let!(:active)   { Token.create! }
-    let!(:expired)  { FactoryGirl.create(:token_expired) }
+    let!(:expired)  { FactoryBot.create(:token_expired) }
 
     context 'active token' do
       let(:authenticated) { Token.authenticate!(active) }

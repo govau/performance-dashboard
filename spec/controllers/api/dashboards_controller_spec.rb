@@ -57,7 +57,7 @@ RSpec.describe Api::V1::DashboardsController, :type => :controller do
       include_context 'api_authorisation'
 
       context 'with unowned dashboard' do
-        let(:other) { FactoryGirl.create(:dashboard_with_widgets) }
+        let(:other) { FactoryBot.create(:dashboard_with_widgets) }
         before { put :update, :params => { :id => other.id } }
         it { expect(response).to have_http_status(404) }
       end

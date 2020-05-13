@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby '2.4.4'
+ruby '2.6.6'
 
 # https://github.com/bundler/bundler/blob/master/lib/bundler/dsl.rb#L263
 git_source(:github) do |repo_name|
@@ -15,7 +15,7 @@ gem 'puma', '~> 3.8'
 gem 'activeadmin', github: 'activeadmin'
 gem 'active_model_serializers', '~> 0.10.0'
 gem 'cancancan',                '~> 1.10'
-gem 'devise', github: 'micapam/devise', ref: 'a2afb7b3'
+gem 'devise', github: 'govau/devise'
 gem 'draper',                   '> 3.x'
 gem 'erubis'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
@@ -72,7 +72,7 @@ end
 group :test do
   gem 'capybara', '~> 2.8.1'
   gem 'database_cleaner'
-  gem 'factory_girl_rails', '~> 4.0'
+  gem 'factory_bot_rails', '~> 4.0'
   gem 'faker'
   gem 'guard-rspec', require: false
   gem 'poltergeist'

@@ -10,7 +10,7 @@
 #         :display_kpis =>  false
 #       }}
 #
-#     let!(:dashboard)  { FactoryGirl.create(:dashboard_with_widgets, opts) }
+#     let!(:dashboard)  { FactoryBot.create(:dashboard_with_widgets, opts) }
 #
 #     before(:example) do
 #       visit('/')
