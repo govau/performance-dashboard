@@ -41,7 +41,8 @@ jobs:
     steps:
       - checkout
       - attach_workspace:
-          at: ~/repo
+          at: ~/js_output
+      - run: cp -rfv ~/js_output/public ~/repo/public
       - run:
           name: Configure Bundler
           command: |
@@ -64,20 +65,13 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run:
-          name: Configure Bundler
-          command: |
-            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
-            source $BASH_ENV
-            gem install bundler -v 2.1.4
-      - type: cache-restore
-        name: Restore bundle cache
-        key: perfdash-ruby-deps-{{ checksum "Gemfile.lock" }}
-      - run: bundle install --path vendor/bundle
+      - attach_workspace:
+          at: ~/js_output
+      - run: cp -rfv ~/js_output/public ~/repo/public
       - run: curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version=6.32.0&source=github-rel'
       - run: sudo dpkg -i cf-cli_amd64.deb
       - run: cf install-plugin https://github.com/govau/autopilot/releases/download/0.0.5-venapp/autopilot-linux -f
-      - run: cf login -a $CF_API_STAGING -u $CF_USER -p $CF_PASSWORD_STAGING -o $CF_ORG -s $CF_SPACE
+      - run: cf login -a $CF_API_STAGING -u $CF_USERNAME -p $CF_PASSWORD_STAGING -o $CF_ORG -s $CF_SPACE
       - run: cf zero-downtime-push dashboard-staging -f manifest-staging.yml -p .
   deploy_production:
     docker:
@@ -85,21 +79,14 @@ jobs:
     working_directory: ~/repo
     steps:
       - checkout
-      - run:
-          name: Configure Bundler
-          command: |
-            echo 'export BUNDLER_VERSION=$(cat Gemfile.lock | tail -1 | tr -d " ")' >> $BASH_ENV
-            source $BASH_ENV
-            gem install bundler -v 2.1.4
-      - type: cache-restore
-        name: Restore bundle cache
-        key: perfdash-ruby-deps-{{ checksum "Gemfile.lock" }}
-      - run: bundle install --path vendor/bundle
+      - attach_workspace:
+          at: ~/js_output
+      - run: cp -rfv ~/js_output/public ~/repo/public
       - run: curl -F access_token=$ROLLBAR_ACCESS_TOKEN_SERVER -F environment=production -F revision=$CIRCLE_SHA1 -F rollbar_username=jonalport -F local_username=$CIRCLE_USERNAME -F comment='Circle deployed Performance Dashboard to prod' 'https://api.rollbar.com/api/1/deploy/'
       - run: curl -v -L -o cf-cli_amd64.deb 'https://cli.run.pivotal.io/stable?release=debian64&version=6.32.0&source=github-rel'
       - run: sudo dpkg -i cf-cli_amd64.deb
       - run: cf install-plugin https://github.com/govau/autopilot/releases/download/0.0.5-venapp/autopilot-linux -f
-      - run: cf login -a $CF_API_PRODUCTION -u $CF_USER -p $CF_PASSWORD_PRODUCTION -o $CF_ORG -s $CF_SPACE
+      - run: cf login -a $CF_API_PROD -u $CF_USERNAME -p $CF_PASSWORD_PROD -o $CF_ORG -s $CF_SPACE
       - run: cf zero-downtime-push dashboard -f manifest-production.yml -p .
 workflows:
   version: 2
