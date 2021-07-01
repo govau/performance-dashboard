@@ -38,12 +38,6 @@
   <body class="dashboard <%= body_class(yield(:body_class_names)) %>" data-route="<%= body_route %>">
 
     <a href="#skiptocontent" tabindex="1" class="skip">Skip to content</a>
-    <div style="background: #45c2f0;color: #fff; text-align: center;">
-      <div style="padding:5px 0px">
-        <span style="background:#000;padding:3px;text-transform:uppercase;font-weight:bolder;margin-right:5px">Important</span>
-        Performance Dashboard is retiring with our last day of operation on 4 July 2021. Contact us via our <a href="/feedback">feedback</a> for any queries.
-      </div>
-    </div>
     <div class="dashboard__top-bar">
       <section>
         <%= render :partial => "partials/phase-banner", :locals => { :message => "This is a beta. Help us make it better for you" } %>
@@ -52,6 +46,12 @@
       <header class="main__header" role="banner">
         <%= render :partial => "partials/header", :locals => { :is_public_site => true } %>
       </header>
+    </div>
+    <div style="background: #45c2f0;color: #fff; text-align: center;">
+      <div style="padding:5px 0px">
+        <span style="background:#000;padding:3px;text-transform:uppercase;font-weight:bolder;margin-right:5px">Important</span>
+        Performance Dashboard is retiring with our last day of operation on 30 July 2021. Contact us via our <a href="/feedback">feedback</a> for any queries.
+      </div>
     </div>
 
     <main role="main" id="skiptocontent">
