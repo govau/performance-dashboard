@@ -207,7 +207,7 @@
     "strip-json-comments": "^2.0.1",
     "validate-commit-msg": "^2.8.2",
     "webpack": "^4.29.6",
-    "webpack-bundle-analyzer": "^2.3.0",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.2.3"
   },
   "config": {
